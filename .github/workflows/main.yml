@@ -1,5 +1,7 @@
 name: Build and Test app
 on: 
+  pull_request:
+    branches: [master]
   push:
     branches: [master]
 jobs:

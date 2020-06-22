@@ -9,7 +9,7 @@ jobs:
     runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.5' }}
-      XC_PROJECT: ${{ 'mamba.xcodeproj' }}
+      XC_PROJECT: ${{ 'mamba/mamba.xcodeproj' }}
       XC_SCHEME: ${{ 'mamba' }}
     steps:
     - name: Select latest Xcode

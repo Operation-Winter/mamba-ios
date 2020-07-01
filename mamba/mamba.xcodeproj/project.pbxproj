@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		261E1ECF24A48AB600937D89 /* Codename Mamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codename Mamba.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		261E1ECF24A48AB600937D89 /* Mamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mamba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1ED224A48AB600937D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		261E1ED424A48AB700937D89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		261E1ED624A48AB700937D89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		261E1ED024A48AB600937D89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				261E1ECF24A48AB600937D89 /* Codename Mamba.app */,
+				261E1ECF24A48AB600937D89 /* Mamba.app */,
 				261E1EE524A48ABA00937D89 /* mambaTests.xctest */,
 				261E1EF024A48ABA00937D89 /* mambaUITests.xctest */,
 			);
@@ -153,7 +153,7 @@
 			);
 			name = mamba;
 			productName = mamba;
-			productReference = 261E1ECF24A48AB600937D89 /* Codename Mamba.app */;
+			productReference = 261E1ECF24A48AB600937D89 /* Mamba.app */;
 			productType = "com.apple.product-type.application";
 		};
 		261E1EE424A48ABA00937D89 /* mambaTests */ = {
@@ -445,7 +445,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
-				PRODUCT_NAME = "Codename Mamba";
+				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,7 +466,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
-				PRODUCT_NAME = "Codename Mamba";
+				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

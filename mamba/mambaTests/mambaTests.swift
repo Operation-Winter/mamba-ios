@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import mamba
+@testable import Codename_Mamba
 
 class mambaTests: XCTestCase {
 

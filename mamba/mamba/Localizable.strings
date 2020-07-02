@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  mamba
+
+  Created by Armand Kamffer on 2020/07/02.
+  Copyright © 2020 Armand Kamffer. All rights reserved.
+*/
+
+"LANDING_PLANNING_HOST" = "HOST PLANNING";
+"LANDING_PLANNING_JOIN" = "JOIN PLANNING";
+"LANDING_RETRO_HOST" = "HOST PLANNING";
+"LANDING_RETRO_JOIN" = "JOIN PLANNING";
+

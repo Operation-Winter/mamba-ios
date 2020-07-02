@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "261E1ECE24A48AB600937D89"
-               BuildableName = "Codename Mamba.app"
+               BuildableName = "Mamba.app"
                BlueprintName = "mamba"
                ReferencedContainer = "container:mamba.xcodeproj">
             </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "261E1ECE24A48AB600937D89"
-            BuildableName = "Codename Mamba.app"
+            BuildableName = "Mamba.app"
             BlueprintName = "mamba"
             ReferencedContainer = "container:mamba.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "261E1ECE24A48AB600937D89"
-            BuildableName = "Codename Mamba.app"
+            BuildableName = "Mamba.app"
             BlueprintName = "mamba"
             ReferencedContainer = "container:mamba.xcodeproj">
          </BuildableReference>

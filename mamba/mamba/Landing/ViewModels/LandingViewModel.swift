@@ -10,9 +10,15 @@ import Foundation
 
 class LandingViewModel {
     private(set) var landingItems: [LandingItem] = [
-        LandingItem(imageName: "PlanningHost", title: "LANDING_PLANNING_HOST"),
-        LandingItem(imageName: "PlanningJoin", title: "LANDING_PLANNING_JOIN"),
-        LandingItem(imageName: "RetroHost", title: "LANDING_RETRO_HOST"),
-        LandingItem(imageName: "RetroJoin", title: "LANDING_RETRO_JOIN")
+        .planningHost,
+        .planningJoin,
+        .retroHost,
+        .retroJoin
     ]
+    
+    private(set) var chunkedLandingItems: [[LandingItem]]
+    
+    init() {
+        chunkedLandingItems = landingItems.chunked(into: 2)
+    }
 }

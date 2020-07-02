@@ -10,6 +10,8 @@ import SwiftUI
 
 struct LandingView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
+    @EnvironmentObject var navigation: NavigationStack
+    
     private let viewModel = LandingViewModel()
     
     init() {
@@ -27,24 +29,36 @@ struct LandingView: View {
     }
     
     var compactView: some View {
-        List(viewModel.landingItems) { item in
-            LandingItemView(title: item.title, imageName: item.imageName)
+        List(viewModel.landingItems, id: \.self) { item in
+            LandingItemView(title: item.titleKey, imageName: item.imageName)
+                .onTapGesture { self.landingItemTapped(item) }
         }
     }
     
     var regularView: some View {
-        let chunkedLandingItems = viewModel.landingItems.chunked(into: 2)
         return List {
-                    ForEach(0..<chunkedLandingItems.count) { index in
+            ForEach(0 ..< viewModel.chunkedLandingItems.count) { index in
                         HStack {
-                            ForEach(chunkedLandingItems[index]) { item in
-                                LandingItemView(title: item.title, imageName: item.imageName)
-                                .padding(.leading, 2)
-                                .padding(.trailing, 2)
+                            ForEach(self.viewModel.chunkedLandingItems[index], id: \.self) { item in
+                                LandingItemView(title: item.titleKey, imageName: item.imageName)
+                                    .onTapGesture { self.landingItemTapped(item) }
+                                    .padding(.leading, 2)
+                                    .padding(.trailing, 2)
                             }
                         }
                     }
         }.padding(.top, 10)
+    }
+    
+    private func landingItemTapped(_ item: LandingItem) {
+        switch item {
+        case .planningHost:
+            self.navigation.advance(AnyView(PlanningHostView()))
+        case .planningJoin:
+            self.navigation.advance(AnyView(PlanningJoinView()))
+        default:
+            return
+        }
     }
 }
 
@@ -53,12 +67,15 @@ struct LandingView_Previews: PreviewProvider {
         Group {
             LandingView()
                 .environment(\.colorScheme, .light)
+                .environment(\.horizontalSizeClass, .compact)
                 .previewDisplayName("Light mode")
 
             LandingView()
                 .environment(\.colorScheme, .dark)
+                .environment(\.horizontalSizeClass, .regular)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)
-        }
+                .frame(width: 800, height: 400)
+        }.previewLayout(.sizeThatFits)
     }
 }

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LandingView()
+        NavigationHost()
+            .environmentObject(NavigationStack(AnyView(LandingView())))
     }
 }
 

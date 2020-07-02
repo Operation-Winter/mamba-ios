@@ -682,7 +682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Codename Mamba.app/Codename Mamba";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mamba.app/Mamba";
 			};
 			name = Debug;
 		};
@@ -704,7 +704,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Codename Mamba.app/Codename Mamba";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mamba.app/Mamba";
 			};
 			name = Release;
 		};

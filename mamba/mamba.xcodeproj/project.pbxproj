@@ -107,14 +107,13 @@
 		261E1ED124A48AB600937D89 /* mamba */ = {
 			isa = PBXGroup;
 			children = (
+				ED9D448624AE51F600034216 /* Resources */,
 				ED9D447924AE4BDB00034216 /* Landing */,
 				261E1ED224A48AB600937D89 /* AppDelegate.swift */,
 				261E1ED424A48AB700937D89 /* SceneDelegate.swift */,
-				261E1ED824A48ABA00937D89 /* Assets.xcassets */,
 				261E1EDD24A48ABA00937D89 /* LaunchScreen.storyboard */,
 				261E1EE024A48ABA00937D89 /* Info.plist */,
 				261E1EDA24A48ABA00937D89 /* Preview Content */,
-				ED9D447724AE4AEA00034216 /* Localizable.strings */,
 			);
 			path = mamba;
 			sourceTree = "<group>";
@@ -178,6 +177,15 @@
 				ED9D448424AE4DC800034216 /* LandingItemView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ED9D448624AE51F600034216 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				261E1ED824A48ABA00937D89 /* Assets.xcassets */,
+				ED9D447724AE4AEA00034216 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

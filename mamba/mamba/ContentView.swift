@@ -9,8 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    let imageNames = [
+        "PlanningHost",
+        "PlanningJoin",
+        "RetroHost",
+        "RetroJoin"
+    ]
+    
     var body: some View {
-        Text("Codename Mamba")
+        VStack {
+            ForEach(imageNames, id: \.hashValue) { imageName in
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(30, antialiased: true)
+            }
+        }
     }
 }
 

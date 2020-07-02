@@ -12,8 +12,24 @@ struct NavigationHost: View {
     @EnvironmentObject var navigation: NavigationStack
     
     var body: some View {
-        self.navigation.currentView
-    } 
+        ZStack {
+            if self.navigation.userAction == .none {
+                self.navigation.currentView
+            }
+            
+            if self.navigation.userAction == .push {
+                self.navigation.currentView
+                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                    .animation(.easeInOut)
+            }
+            
+            if self.navigation.userAction == .pop {
+                self.navigation.currentView
+                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
+                    .animation(.easeInOut)
+            }
+        }
+    }
 }
 
 struct NavigationHost_Previews: PreviewProvider {

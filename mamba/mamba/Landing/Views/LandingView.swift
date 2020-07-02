@@ -53,9 +53,9 @@ struct LandingView: View {
     private func landingItemTapped(_ item: LandingItem) {
         switch item {
         case .planningHost:
-            self.navigation.advance(AnyView(PlanningHostView()))
+            self.navigation.push(AnyView(PlanningHostView()))
         case .planningJoin:
-            self.navigation.advance(AnyView(PlanningJoinView()))
+            self.navigation.push(AnyView(PlanningJoinView()))
         default:
             return
         }

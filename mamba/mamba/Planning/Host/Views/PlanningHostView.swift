@@ -12,14 +12,28 @@ struct PlanningHostView: View {
     @EnvironmentObject var navigation: NavigationStack
     
     var body: some View {
-        VStack {
-            Button(action: {
-                self.navigation.unwind()
-            }) {
-                Text("Back")
+        HStack {
+            Spacer()
+            VStack {
+                Spacer()
+                Button(action: {
+                    self.navigation.pop()
+                }) {
+                    Text("Back")
+                }
+                Spacer()
+                Button(action: {
+                    self.navigation.push(AnyView(PlanningJoinView()))
+                }) {
+                    Text("Push")
+                }
+                Spacer()
+                Text("Planning Host View")
+                    .foregroundColor(.black)
+                Spacer()
             }
-            Text("Planning Host View")
-        }
+            Spacer()
+        }.background(Color.white)
     }
 }
 

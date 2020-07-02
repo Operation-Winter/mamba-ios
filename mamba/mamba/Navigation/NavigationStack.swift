@@ -8,23 +8,38 @@
 
 import SwiftUI
 
+enum NavigationAction {
+    case push
+    case pop
+    case none
+}
+
 final class NavigationStack: ObservableObject {
-    @Published var viewStack: [AnyView] = []
     @Published var currentView: AnyView
+    var viewStack: [AnyView] = []
+    var userAction: NavigationAction
     
     init(_ currentView: AnyView) {
+        userAction = .none
         self.currentView = currentView
     }
     
-    func advance(_ view: AnyView) {
+    func push(_ view: AnyView) {
         viewStack.append(currentView)
-        self.currentView = view
+        userAction = .push
+        withAnimation {
+            currentView = view
+        }
     }
     
-    func unwind() {
-        guard viewStack.count > 0 else { return }
-        let last = viewStack.endIndex - 1
-        currentView = viewStack[last]
-        viewStack.remove(at: last)
+    func pop() {
+        let index = viewStack.endIndex - 1
+        guard let lastView = viewStack.element(at: index) else { return }
+        userAction = .pop
+        withAnimation {
+            currentView = lastView
+        }
+        viewStack.remove(at: index)
     }
 }
+

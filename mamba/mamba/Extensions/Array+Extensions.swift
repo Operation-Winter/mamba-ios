@@ -14,4 +14,10 @@ extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
+    
+    func element(at index: Int) -> Element? {
+        indices.contains(index)
+            ? self[index]
+            : nil
+    }
 }

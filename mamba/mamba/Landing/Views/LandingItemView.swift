@@ -21,6 +21,7 @@ struct LandingItemView: View {
             
             Text(title)
                 .fontWeight(.medium)
+                .fixedSize(horizontal: true, vertical: false)
                 .padding(14)
                 .shadow(radius: 5)
                 .foregroundColor(.white)

@@ -38,15 +38,15 @@ struct LandingView: View {
     var regularView: some View {
         return List {
             ForEach(0 ..< viewModel.chunkedLandingItems.count) { index in
-                        HStack {
-                            ForEach(self.viewModel.chunkedLandingItems[index], id: \.self) { item in
-                                LandingItemView(title: item.titleKey, imageName: item.imageName)
-                                    .onTapGesture { self.landingItemTapped(item) }
-                                    .padding(.leading, 2)
-                                    .padding(.trailing, 2)
-                            }
-                        }
+                HStack {
+                    ForEach(self.viewModel.chunkedLandingItems[index], id: \.self) { item in
+                        LandingItemView(title: item.titleKey, imageName: item.imageName)
+                            .onTapGesture { self.landingItemTapped(item) }
+                            .padding(.leading, 2)
+                            .padding(.trailing, 2)
                     }
+                }
+            }
         }.padding(.top, 10)
     }
     

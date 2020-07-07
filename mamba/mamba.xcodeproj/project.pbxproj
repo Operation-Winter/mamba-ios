@@ -15,8 +15,15 @@
 		261E1EDF24A48ABA00937D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1EDD24A48ABA00937D89 /* LaunchScreen.storyboard */; };
 		261E1EEA24A48ABA00937D89 /* mambaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EE924A48ABA00937D89 /* mambaTests.swift */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
+		26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */; };
+		26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */; };
+		26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AFC24B4AA04003FB1A4 /* ClearButton.swift */; };
+		26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */; };
+		26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */; };
+		26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */; };
+		26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */; };
 		ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */; };
-		ED38EACD24AE60A900564F85 /* PlanningHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostView.swift */; };
+		ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */; };
 		ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */; };
 		ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD324AE643500564F85 /* NavigationStack.swift */; };
 		ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD524AE64EC00564F85 /* NavigationHost.swift */; };
@@ -59,8 +66,15 @@
 		261E1EF024A48ABA00937D89 /* mambaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mambaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = mamba/Planning/Host/Setup/ViewModels/PlanningHostSetupViewModel.swift; sourceTree = SOURCE_ROOT; };
+		26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldStyle.swift; sourceTree = "<group>"; };
+		26772AFC24B4AA04003FB1A4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
+		26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyle.swift; sourceTree = "<group>"; };
+		26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningColorScheme.swift; sourceTree = "<group>"; };
+		26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroColorScheme.swift; sourceTree = "<group>"; };
 		ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		ED38EACC24AE60A800564F85 /* PlanningHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostView.swift; sourceTree = "<group>"; };
+		ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupView.swift; sourceTree = "<group>"; };
 		ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinView.swift; sourceTree = "<group>"; };
 		ED38EAD324AE643500564F85 /* NavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		ED38EAD524AE64EC00564F85 /* NavigationHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHost.swift; sourceTree = "<group>"; };
@@ -96,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26018A2224B49C2300C8B268 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				ED38EAC424AE606B00564F85 /* Views */,
+				ED38EAC524AE606F00564F85 /* ViewModels */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
 		261E1EC624A48AB600937D89 = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +142,9 @@
 		261E1ED124A48AB600937D89 /* mamba */ = {
 			isa = PBXGroup;
 			children = (
+				26772B0524B4B407003FB1A4 /* Styling */,
 				ED9D447924AE4BDB00034216 /* Landing */,
 				ED38EAC124AE604300564F85 /* Planning */,
-				ED38EAC024AE603C00564F85 /* Retro */,
 				ED38EABD24AE5C3800564F85 /* Extensions */,
 				ED38EAD024AE640600564F85 /* Navigation */,
 				261E1ED224A48AB600937D89 /* AppDelegate.swift */,
@@ -161,19 +184,65 @@
 			path = mambaUITests;
 			sourceTree = "<group>";
 		};
+		26772AF724B4A5C9003FB1A4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				26772AFE24B4AA68003FB1A4 /* TextField */,
+				26772AFB24B4A9F3003FB1A4 /* ViewModifiers */,
+				26772AF824B4A660003FB1A4 /* Styles */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		26772AF824B4A660003FB1A4 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		26772AFB24B4A9F3003FB1A4 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				26772AFC24B4AA04003FB1A4 /* ClearButton.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		26772AFE24B4AA68003FB1A4 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		26772B0524B4B407003FB1A4 /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				26772B0624B4B414003FB1A4 /* Colors */,
+				26772AF724B4A5C9003FB1A4 /* Components */,
+			);
+			path = Styling;
+			sourceTree = "<group>";
+		};
+		26772B0624B4B414003FB1A4 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */,
+				26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */,
+				26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		ED38EABD24AE5C3800564F85 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		ED38EAC024AE603C00564F85 /* Retro */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Retro;
 			sourceTree = "<group>";
 		};
 		ED38EAC124AE604300564F85 /* Planning */ = {
@@ -188,10 +257,7 @@
 		ED38EAC224AE605800564F85 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				ED38EAC424AE606B00564F85 /* Views */,
-				ED38EAC524AE606F00564F85 /* ViewModels */,
-				ED38EAC624AE607400564F85 /* Models */,
-				ED38EACB24AE608B00564F85 /* Services */,
+				26018A2224B49C2300C8B268 /* Setup */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -200,9 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				ED38EAC724AE607800564F85 /* Views */,
-				ED38EAC824AE607D00564F85 /* ViewModels */,
-				ED38EAC924AE608200564F85 /* Models */,
-				ED38EACA24AE608600564F85 /* Services */,
 			);
 			path = Join;
 			sourceTree = "<group>";
@@ -210,7 +273,7 @@
 		ED38EAC424AE606B00564F85 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ED38EACC24AE60A800564F85 /* PlanningHostView.swift */,
+				ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,15 +281,10 @@
 		ED38EAC524AE606F00564F85 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */,
 			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		ED38EAC624AE607400564F85 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
+			name = ViewModels;
+			path = ../ViewModels;
 			sourceTree = "<group>";
 		};
 		ED38EAC724AE607800564F85 /* Views */ = {
@@ -235,34 +293,6 @@
 				ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		ED38EAC824AE607D00564F85 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		ED38EAC924AE608200564F85 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		ED38EACA24AE608600564F85 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		ED38EACB24AE608B00564F85 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		ED38EAD024AE640600564F85 /* Navigation */ = {
@@ -450,16 +480,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
+				26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */,
+				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
+				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */,
-				ED38EACD24AE60A900564F85 /* PlanningHostView.swift in Sources */,
+				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
+				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
+				26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */,
 				ED9D448824AE54F800034216 /* ContentView.swift in Sources */,
 				ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */,
 				ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
+				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,
 			);

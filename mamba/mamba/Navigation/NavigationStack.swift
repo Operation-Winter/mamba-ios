@@ -9,13 +9,14 @@
 import SwiftUI
 
 enum NavigationAction {
-    case push
-    case pop
+    case present
+    case dismiss
     case none
 }
 
 final class NavigationStack: ObservableObject {
     @Published var currentView: AnyView
+    @Published var accentColor: Color?
     var viewStack: [AnyView] = []
     var userAction: NavigationAction
     
@@ -24,18 +25,23 @@ final class NavigationStack: ObservableObject {
         self.currentView = currentView
     }
     
-    func push(_ view: AnyView) {
+    func present(_ view: AnyView, colorScheme: Product? = nil) {
         viewStack.append(currentView)
-        userAction = .push
+        userAction = .present
         withAnimation {
             currentView = view
         }
+        
+        if let colorScheme = colorScheme {
+            DefaultStyle.shared.setColorScheme(product: colorScheme)
+            accentColor = DefaultStyle.shared.colorScheme.accent()
+        }
     }
     
-    func pop() {
+    func dismiss() {
         let index = viewStack.endIndex - 1
         guard let lastView = viewStack.element(at: index) else { return }
-        userAction = .pop
+        userAction = .dismiss
         withAnimation {
             currentView = lastView
         }

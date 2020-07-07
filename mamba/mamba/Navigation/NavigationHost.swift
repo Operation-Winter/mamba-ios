@@ -17,18 +17,18 @@ struct NavigationHost: View {
                 self.navigation.currentView
             }
             
-            if self.navigation.userAction == .push {
+            if self.navigation.userAction == .present {
                 self.navigation.currentView
                     .transition(.asymmetric(insertion: .scale, removal: .opacity))
                     .animation(.easeInOut)
             }
             
-            if self.navigation.userAction == .pop {
+            if self.navigation.userAction == .dismiss {
                 self.navigation.currentView
-                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .opacity))
+                    .transition(.opacity)
                     .animation(.easeInOut)
             }
-        }
+        }.accentColor(self.navigation.accentColor)
     }
 }
 

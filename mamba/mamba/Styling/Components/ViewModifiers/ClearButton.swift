@@ -14,6 +14,7 @@ struct ClearButton: ViewModifier {
     public func body(content: Content) -> some View {
         ZStack(alignment: .trailing) {
             content
+                .zIndex(0)
             
             if !self.text.isEmpty {
                 Button(action: {
@@ -22,7 +23,7 @@ struct ClearButton: ViewModifier {
                     Image(systemName: "multiply.circle.fill")
                         .foregroundColor(.secondary)
                         .padding()
-                }
+                }.zIndex(1)
             }
         }
     }

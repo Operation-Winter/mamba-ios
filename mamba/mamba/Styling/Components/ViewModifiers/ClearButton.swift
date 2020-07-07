@@ -21,7 +21,8 @@ struct ClearButton: ViewModifier {
                 }) {
                     Image(systemName: "multiply.circle.fill")
                         .foregroundColor(.secondary)
-                }.padding()
+                        .padding()
+                }
             }
         }
     }

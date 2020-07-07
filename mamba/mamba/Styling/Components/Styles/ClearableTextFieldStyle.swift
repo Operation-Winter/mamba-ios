@@ -14,7 +14,7 @@ struct ClearableTextFieldStyle: TextFieldStyle {
             configuration
                 .padding(12)
                 .background(RoundedRectangle(cornerRadius: 15)
-                    .fill(DefaultStyle.shared.colorScheme.accent().opacity(0.2)))
+                    .fill(Color.gray.opacity(0.2)))
         }
     }
 }

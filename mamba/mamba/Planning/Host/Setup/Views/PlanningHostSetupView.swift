@@ -1,5 +1,5 @@
 //
-//  PlanningJoinView.swift
+//  PlanningHostSetupView.swift
 //  mamba
 //
 //  Created by Armand Kamffer on 2020/07/02.
@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct PlanningJoinView: View {
+struct PlanningHostSetupView: View {
     @EnvironmentObject var navigation: NavigationStack
-    @State private var tempName: String = ""
+    @ObservedObject var viewModel = PlanningHostSetupViewModel()
     
     var body: some View {
         HStack {
             Spacer()
             VStack {
-                Text("PLANNING JOIN SETUP")
+                Text("PLANNING HOST SETUP")
                     .foregroundColor(.accentColor)
                     .font(.title)
                     .padding()
                 
-                ClearableTextField(text: self.$tempName)
+                ClearableTextField(text: self.$viewModel.sessionName)
                 
                 Spacer()
                 Button(action: {
@@ -33,11 +33,12 @@ struct PlanningJoinView: View {
             }
             Spacer()
         }
+        
     }
 }
 
-struct PlanningJoinView_Previews: PreviewProvider {
+struct PlanningHostSetupView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningJoinView()
+        PlanningHostSetupView()
     }
 }

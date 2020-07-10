@@ -33,7 +33,6 @@ struct PlanningHostSetupView: View {
             }
             Spacer()
         }
-        
     }
 }
 

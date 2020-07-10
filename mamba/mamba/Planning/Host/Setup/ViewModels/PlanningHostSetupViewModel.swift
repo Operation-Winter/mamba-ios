@@ -10,4 +10,19 @@ import Foundation
 
 class PlanningHostSetupViewModel: ObservableObject {
     @Published var sessionName: String = ""
+    
+    
+    //            switch result {
+    //            case .failure(let error):
+    //                print("Error in receiving message: \(error)")
+    //            case .success(let message):
+    //                switch message {
+    //                case .string(let text):
+    //                    print("Received string: \(text)")
+    //                case .data(let data):
+    //                    print("Received data: \(data)")
+    //                @unknown default:
+    //                    print("Unknown message type")
+    //                }
+    //            }
 }

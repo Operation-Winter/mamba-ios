@@ -7,40 +7,32 @@
 //
 
 import Foundation
+import Combine
 
 public class MambaNetworking {
     static let shared = MambaNetworking()
     
-    private var webSocketTask: URLSessionWebSocketTask?
+    var webSocket: WebSocketHandler?
     
     private init() {}
     
-    public func connectToWebSocket(url: URL, successHandler: @escaping (URLSessionWebSocketTask.Message) -> (), errorHandler: @escaping (Error) -> ()) {
-        let urlSession = URLSession(configuration: .default)
-        webSocketTask = urlSession.webSocketTask(with: url)
-        webSocketTask?.resume()
+    public func startPlanningHostSession(url: URL) -> AnyPublisher<PlanningHostCommand, Error> {
+        let webSocketHandler = WebSocketHandler(url: url)
+        webSocketHandler.startSession()
+        webSocket = webSocketHandler
         
-        webSocketTask?.receive { result in
-            switch result {
-            case .failure(let error):
-                errorHandler(error)
-            case .success(let message):
-                successHandler(message)
+        return webSocketHandler.subject
+            .compactMap {
+                switch $0 {
+                case .data(let data): return data
+                case .string(let value):
+                    guard let data = value.data(using: .utf8) else { return nil }
+                    return data
+                @unknown default:
+                    return nil
+                }
             }
-        }
-    }
-    
-    public func pingWebSocket(errorHandler: @escaping (Error) -> ()) {
-        webSocketTask?.sendPing { error in
-            guard let error = error else { return }
-            errorHandler(error)
-        }
-    }
-    
-    public func sendMessageToWebSocket(message: URLSessionWebSocketTask.Message, errorHandler: @escaping (Error) -> ()) {
-        webSocketTask?.send(message) { error in
-            guard let error = error else { return }
-            errorHandler(error)
-        }
+            .decode(type: PlanningHostCommand.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 public class MambaNetworking {
     static let shared = MambaNetworking()
     
-    var webSocketTask: URLSessionWebSocketTask?
+    private var webSocketTask: URLSessionWebSocketTask?
     
     private init() {}
     

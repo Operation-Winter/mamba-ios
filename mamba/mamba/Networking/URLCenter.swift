@@ -13,11 +13,11 @@ class URLCenter {
     private let networkEnvironment: NetworkEnvironment
 
     var baseURL: URL {
-        return networkEnvironment.baseURL
+        networkEnvironment.baseURL
     }
     
     var webSocketBaseURL: URL {
-        return networkEnvironment.webSocketBaseURL
+        networkEnvironment.webSocketBaseURL
     }
     
     private init() {

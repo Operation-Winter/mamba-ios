@@ -12,13 +12,14 @@ import Combine
 public class MambaNetworking {
     static let shared = MambaNetworking()
     
-    var webSocket: WebSocketHandler?
+    private var webSocket: WebSocketHandler?
     
     private init() {}
     
-    public func startPlanningHostSession(url: URL) -> AnyPublisher<PlanningHostCommand, Error> {
-        let webSocketHandler = WebSocketHandler(url: url)
-        webSocketHandler.startSession()
+    public func startPlanningHostSession() -> AnyPublisher<PlanningCommands.HostReceive, Error> {
+        let planningHostUrl = URLCenter.shared.planningHostWSURL()
+        let webSocketHandler = WebSocketHandler(url: planningHostUrl)
+        webSocketHandler.start()
         webSocket = webSocketHandler
         
         return webSocketHandler.subject
@@ -32,7 +33,13 @@ public class MambaNetworking {
                     return nil
                 }
             }
-            .decode(type: PlanningHostCommand.self, decoder: JSONDecoder())
+            .decode(type: PlanningCommands.HostReceive.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
+    }
+    
+    public func send(command: PlanningCommands.HostSend) throws {
+        let messageData = try JSONEncoder().encode(command)
+        let message = URLSessionWebSocketTask.Message.data(messageData)
+        webSocket?.send(message: message)
     }
 }

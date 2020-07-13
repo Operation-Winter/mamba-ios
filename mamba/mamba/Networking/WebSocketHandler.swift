@@ -18,7 +18,7 @@ class WebSocketHandler {
         self.webSocketTask = urlSession.webSocketTask(with: url)
     }
     
-    public func startSession() {
+    public func start() {
         webSocketTask.resume()
         
         webSocketTask.receive { result in
@@ -31,21 +31,21 @@ class WebSocketHandler {
         }
     }
     
-    public func pingWebSocket() {
+    public func ping() {
         webSocketTask.sendPing { error in
             guard let error = error else { return }
             self.subject.send(completion: .failure(error))
         }
     }
     
-    public func sendMessageToWebSocket(message: URLSessionWebSocketTask.Message) {
+    public func send(message: URLSessionWebSocketTask.Message) {
         webSocketTask.send(message) { error in
             guard let error = error else { return }
             self.subject.send(completion: .failure(error))
         }
     }
     
-    public func closeWebSocket() {
+    public func close() {
         webSocketTask.cancel(with: .normalClosure, reason: nil)
         self.subject.send(completion: .finished)
     }

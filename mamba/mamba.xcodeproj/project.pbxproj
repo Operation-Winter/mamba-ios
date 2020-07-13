@@ -15,9 +15,9 @@
 		261E1EDF24A48ABA00937D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1EDD24A48ABA00937D89 /* LaunchScreen.storyboard */; };
 		261E1EEA24A48ABA00937D89 /* mambaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EE924A48ABA00937D89 /* mambaTests.swift */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
-		2661E01224BC5F0400D46119 /* PlanningHostCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningHostCommand.swift */; };
+		2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* SetupSessionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionCommand.swift */; };
-		2661E01924BC81CB00D46119 /* PlanningJoinCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningJoinCommand.swift */; };
+		2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */; };
 		2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01C24BC931C00D46119 /* WebSocketHandler.swift */; };
 		26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */; };
 		26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */; };
@@ -32,6 +32,7 @@
 		269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557824BC300600EEC682 /* NetworkEnvironment.swift */; };
 		269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */; };
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
+		ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */; };
 		ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */; };
 		ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */; };
 		ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */; };
@@ -76,9 +77,9 @@
 		261E1EF024A48ABA00937D89 /* mambaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mambaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2661E01124BC5F0400D46119 /* PlanningHostCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostCommand.swift; sourceTree = "<group>"; };
+		2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* SetupSessionCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionCommand.swift; sourceTree = "<group>"; };
-		2661E01824BC81CB00D46119 /* PlanningJoinCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinCommand.swift; sourceTree = "<group>"; };
+		2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01C24BC931C00D46119 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
 		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = mamba/Planning/Host/Setup/ViewModels/PlanningHostSetupViewModel.swift; sourceTree = SOURCE_ROOT; };
 		26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		269F557824BC300600EEC682 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
+		ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommand.swift; sourceTree = "<group>"; };
 		ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupView.swift; sourceTree = "<group>"; };
 		ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinView.swift; sourceTree = "<group>"; };
@@ -208,9 +210,7 @@
 		2661E01024BC5ED500D46119 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				2661E01124BC5F0400D46119 /* PlanningHostCommand.swift */,
-				2661E01824BC81CB00D46119 /* PlanningJoinCommand.swift */,
-				2661E01324BC5FF000D46119 /* Models */,
+				ED36B44E24BCCEAE007FF62E /* Planning */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -279,11 +279,11 @@
 		269F530224B83C9900EEC682 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				269F557324BC2D4A00EEC682 /* URLCenter.swift */,
 				269F530324B83CAA00EEC682 /* MambaNetworking.swift */,
 				2661E01C24BC931C00D46119 /* WebSocketHandler.swift */,
-				269F557724BC2FF500EEC682 /* NetworkEnvironment */,
 				2661E01024BC5ED500D46119 /* Commands */,
+				ED01C6EA24BCD2FE00A23727 /* URLCenter */,
+				269F557724BC2FF500EEC682 /* NetworkEnvironment */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -298,11 +298,30 @@
 			path = NetworkEnvironment;
 			sourceTree = "<group>";
 		};
+		ED01C6EA24BCD2FE00A23727 /* URLCenter */ = {
+			isa = PBXGroup;
+			children = (
+				269F557324BC2D4A00EEC682 /* URLCenter.swift */,
+				269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */,
+			);
+			path = URLCenter;
+			sourceTree = "<group>";
+		};
+		ED36B44E24BCCEAE007FF62E /* Planning */ = {
+			isa = PBXGroup;
+			children = (
+				ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */,
+				2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */,
+				2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */,
+				2661E01324BC5FF000D46119 /* Models */,
+			);
+			path = Planning;
+			sourceTree = "<group>";
+		};
 		ED38EABD24AE5C3800564F85 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */,
-				269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,7 +569,8 @@
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */,
-				2661E01924BC81CB00D46119 /* PlanningJoinCommand.swift in Sources */,
+				ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */,
+				2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
@@ -563,7 +583,7 @@
 				ED9D448824AE54F800034216 /* ContentView.swift in Sources */,
 				ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */,
 				ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */,
-				2661E01224BC5F0400D46119 /* PlanningHostCommand.swift in Sources */,
+				2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */,
 				269F530424B83CAA00EEC682 /* MambaNetworking.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,

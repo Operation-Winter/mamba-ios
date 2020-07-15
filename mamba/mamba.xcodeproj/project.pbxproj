@@ -16,7 +16,7 @@
 		261E1EEA24A48ABA00937D89 /* mambaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EE924A48ABA00937D89 /* mambaTests.swift */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */; };
-		2661E01724BC818600D46119 /* SetupSessionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionCommand.swift */; };
+		2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */; };
 		2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01C24BC931C00D46119 /* WebSocketHandler.swift */; };
 		26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */; };
@@ -78,7 +78,7 @@
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostSend+Extensions.swift"; sourceTree = "<group>"; };
-		2661E01624BC818600D46119 /* SetupSessionCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionCommand.swift; sourceTree = "<group>"; };
+		2661E01624BC818600D46119 /* SetupSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01C24BC931C00D46119 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
 		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = mamba/Planning/Host/Setup/ViewModels/PlanningHostSetupViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -218,7 +218,7 @@
 		2661E01324BC5FF000D46119 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2661E01624BC818600D46119 /* SetupSessionCommand.swift */,
+				2661E01624BC818600D46119 /* SetupSessionMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -561,7 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2661E01724BC818600D46119 /* SetupSessionCommand.swift in Sources */,
+				2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */,
 				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
 				269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */,
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,

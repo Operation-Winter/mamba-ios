@@ -10,7 +10,7 @@ import Foundation
 
 class DevelopmentNetworkEnvironment: NetworkEnvironment {
     var baseURL: URL = {
-        guard let url = URL(string: "mamba.armandkamffer.co.za:83") else { fatalError() }
+        guard let url = URL(string: "http://mamba.armandkamffer.co.za:83") else { fatalError() }
         return url
     }()
     

@@ -21,6 +21,6 @@ class PlanningHostSetupViewModel: ObservableObject {
             }, receiveValue: { (command) in
                 print(command)
             })
-        try? MambaNetworking.shared.send(command: .setupSession(SetupSessionCommand(sessionName: "Test session")))
+        try? MambaNetworking.shared.send(command: .setupSession(SetupSessionMessage(sessionName: "Cerberus 33")))
     }
 }

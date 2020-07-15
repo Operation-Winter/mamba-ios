@@ -10,7 +10,7 @@ import Foundation
 
 class LocalNetworkEnvironment: NetworkEnvironment {
     var baseURL: URL = {
-        guard let url = URL(string: "localhost:8080") else { fatalError() }
+        guard let url = URL(string: "http://localhost:8080") else { fatalError() }
         return url
     }()
     

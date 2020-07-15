@@ -30,7 +30,7 @@ public enum PlanningCommands {
     }
 
     public enum HostSend: Codable {
-        case setupSession(SetupSessionCommand)
+        case setupSession(SetupSessionMessage)
         case addTicket
         case skipVote
         case removeUser

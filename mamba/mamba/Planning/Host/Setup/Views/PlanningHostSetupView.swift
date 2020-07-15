@@ -32,6 +32,8 @@ struct PlanningHostSetupView: View {
                 Spacer()
             }
             Spacer()
+        }.onAppear {
+            self.viewModel.sendCommand()
         }
     }
 }

@@ -10,12 +10,12 @@ import Foundation
 
 class LocalNetworkEnvironment: NetworkEnvironment {
     var baseURL: URL = {
-        guard let url = URL(string: "localhost") else { fatalError() }
+        guard let url = URL(string: "http://localhost:8080") else { fatalError() }
         return url
     }()
     
     var webSocketBaseURL: URL = {
-        guard let url = URL(string: "ws://localhost") else { fatalError() }
+        guard let url = URL(string: "ws://localhost:8080") else { fatalError() }
         return url
     }()
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public struct SetupSessionCommand: Codable {
+public struct SetupSessionMessage: Codable {
     let sessionName: String
 }

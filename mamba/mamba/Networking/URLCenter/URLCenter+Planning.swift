@@ -17,6 +17,6 @@ extension URLCenter {
     }
     
     func planningJoinWSURL(sessionID: String) -> URL {
-        return webSocketBaseURL.appendingPathComponent(planningJoinPath).appendingPathComponent(sessionID)
+        return webSocketBaseURL.appendingPathComponent(planningJoinPath)
     }
 }

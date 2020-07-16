@@ -20,7 +20,7 @@ public extension PlanningCommands.HostSend {
         
         switch type {
         case PlanningCommands.HostKey.setupSession.rawValue:
-            let model = try container.decode(SetupSessionCommand.self, forKey: .message)
+            let model = try container.decode(SetupSessionMessage.self, forKey: .message)
             self = .setupSession(model)
         case PlanningCommands.HostKey.addTicket.rawValue:
             self = .addTicket

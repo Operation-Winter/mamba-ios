@@ -38,6 +38,8 @@
 		ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */; };
 		ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD324AE643500564F85 /* NavigationStack.swift */; };
 		ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD524AE64EC00564F85 /* NavigationHost.swift */; };
+		ED83E28824C46D1400FCAB27 /* NetworkCloseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83E28724C46D1400FCAB27 /* NetworkCloseError.swift */; };
+		ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83E28524C46CDE00FCAB27 /* NetworkError.swift */; };
 		ED9D447824AE4AEA00034216 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED9D447724AE4AEA00034216 /* Localizable.strings */; };
 		ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D447A24AE4BEA00034216 /* LandingItem.swift */; };
 		ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448224AE4C9100034216 /* LandingViewModel.swift */; };
@@ -100,6 +102,8 @@
 		ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinView.swift; sourceTree = "<group>"; };
 		ED38EAD324AE643500564F85 /* NavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		ED38EAD524AE64EC00564F85 /* NavigationHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHost.swift; sourceTree = "<group>"; };
+		ED83E28524C46CDE00FCAB27 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		ED83E28724C46D1400FCAB27 /* NetworkCloseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCloseError.swift; sourceTree = "<group>"; };
 		ED9D447724AE4AEA00034216 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		ED9D447A24AE4BEA00034216 /* LandingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItem.swift; sourceTree = "<group>"; };
 		ED9D448224AE4C9100034216 /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 		269F530224B83C9900EEC682 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				ED83E28424C46CCB00FCAB27 /* Error Handling */,
 				269F530324B83CAA00EEC682 /* MambaNetworking.swift */,
 				2661E01C24BC931C00D46119 /* WebSocketHandler.swift */,
 				2661E01024BC5ED500D46119 /* Commands */,
@@ -383,6 +388,15 @@
 				ED38EAD524AE64EC00564F85 /* NavigationHost.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		ED83E28424C46CCB00FCAB27 /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				ED83E28524C46CDE00FCAB27 /* NetworkError.swift */,
+				ED83E28724C46D1400FCAB27 /* NetworkCloseError.swift */,
+			);
+			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 		ED9D447924AE4BDB00034216 /* Landing */ = {
@@ -562,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */,
+				ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */,
 				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
 				269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */,
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
@@ -577,6 +592,7 @@
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
 				ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */,
 				269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */,
+				ED83E28824C46D1400FCAB27 /* NetworkCloseError.swift in Sources */,
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
 				26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */,

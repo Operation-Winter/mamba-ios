@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 class WebSocketHandler {
-    public var subject = PassthroughSubject<URLSessionWebSocketTask.Message, Error>()
+    public var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
     private var webSocketTask: URLSessionWebSocketTask
     
     init(url: URL) {
@@ -24,7 +24,7 @@ class WebSocketHandler {
         webSocketTask.receive { result in
             switch result {
             case .failure(let error):
-                self.subject.send(completion: .failure(error))
+                self.subject.send(completion: .failure(.socketReceiveFailure(error)))
             case .success(let message):
                 self.subject.send(message)
             }
@@ -34,14 +34,14 @@ class WebSocketHandler {
     public func ping() {
         webSocketTask.sendPing { error in
             guard let error = error else { return }
-            self.subject.send(completion: .failure(error))
+            self.subject.send(completion: .failure(.socketPingFailure(error)))
         }
     }
     
     public func send(message: URLSessionWebSocketTask.Message) {
         webSocketTask.send(message) { error in
             guard let error = error else { return }
-            self.subject.send(completion: .failure(error))
+            self.subject.send(completion: .failure(.socketSendFailure(error)))
         }
     }
     

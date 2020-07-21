@@ -12,11 +12,11 @@ extension URLCenter {
     private var planningHostPath: String { "planning/host" }
     private var planningJoinPath: String { "planning/join" }
     
-    func planningHostWSURL() -> URL {
-        return webSocketBaseURL.appendingPathComponent(planningHostPath)
+    var planningHostWSURL: URL {
+        webSocketBaseURL.appendingPathComponent(planningHostPath)
     }
     
-    func planningJoinWSURL(sessionID: String) -> URL {
-        return webSocketBaseURL.appendingPathComponent(planningJoinPath)
+    var planningJoinWSURL: URL {
+        webSocketBaseURL.appendingPathComponent(planningJoinPath)
     }
 }

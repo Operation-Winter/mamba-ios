@@ -28,7 +28,12 @@ struct NavigationHost: View {
                     .transition(.opacity)
                     .animation(.easeInOut)
             }
-        }.accentColor(self.navigation.accentColor)
+        }.sheet(isPresented: self.$navigation.showSheet, content: {
+            self.navigation.modalView
+                .environmentObject(self.navigation)
+                .accentColor(self.navigation.accentColor)
+        })
+        .accentColor(self.navigation.accentColor)
     }
 }
 

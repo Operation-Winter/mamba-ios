@@ -19,21 +19,21 @@ public extension PlanningCommands.HostSend {
         let type = try container.decode(String.self, forKey: .type)
         
         switch type {
-        case PlanningCommands.HostKey.setupSession.rawValue:
-            let model = try container.decode(SetupSessionMessage.self, forKey: .message)
-            self = .setupSession(model)
         case PlanningCommands.HostKey.addTicket.rawValue:
             self = .addTicket
-        case PlanningCommands.HostKey.skipVote.rawValue:
-            self = .skipVote
-        case PlanningCommands.HostKey.removeUser.rawValue:
-            self = .removeUser
         case PlanningCommands.HostKey.endSession.rawValue:
             self = .endSession
         case PlanningCommands.HostKey.finishVoting.rawValue:
             self = .finishVoting
-        case PlanningCommands.HostKey.shareSession.rawValue:
-            self = .shareSession
+        case PlanningCommands.HostKey.reconnect.rawValue:
+            self = .reconnect
+        case PlanningCommands.HostKey.removeParticipant.rawValue:
+            self = .removeParticipant
+        case PlanningCommands.HostKey.skipVote.rawValue:
+            self = .skipVote
+        case PlanningCommands.HostKey.startSession.rawValue:
+            let model = try container.decode(StartSessionMessage.self, forKey: .message)
+            self = .startSession(model)
         default:
             throw DecodingError.keyNotFound(CodingKeys.message, DecodingError.Context(codingPath: [], debugDescription: "Invalid key: \(type)"))
         }
@@ -44,20 +44,20 @@ public extension PlanningCommands.HostSend {
         try container.encode(self.rawValue, forKey: .type)
         
         switch self {
-        case .setupSession(let message): try container.encode(message, forKey: .message)
+        case .startSession(let message): try container.encode(message, forKey: .message)
         default: try container.encodeNil(forKey: .message)
         }
     }
     
     var rawValue: String {
         switch self {
-        case .setupSession(_): return PlanningCommands.HostKey.setupSession.rawValue
+        case .startSession(_): return PlanningCommands.HostKey.startSession.rawValue
         case .addTicket: return PlanningCommands.HostKey.addTicket.rawValue
         case .skipVote: return PlanningCommands.HostKey.skipVote.rawValue
-        case .removeUser: return PlanningCommands.HostKey.removeUser.rawValue
+        case .removeParticipant: return PlanningCommands.HostKey.removeParticipant.rawValue
         case .endSession: return PlanningCommands.HostKey.endSession.rawValue
         case .finishVoting: return PlanningCommands.HostKey.finishVoting.rawValue
-        case .shareSession: return PlanningCommands.HostKey.shareSession.rawValue
+        case .reconnect: return PlanningCommands.HostKey.reconnect.rawValue
         }
     }
 }

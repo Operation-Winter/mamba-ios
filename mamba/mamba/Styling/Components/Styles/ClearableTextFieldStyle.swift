@@ -12,10 +12,10 @@ struct ClearableTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         ZStack() {
             configuration
-                .padding(12)
+                .padding(10)
                 .background(Rectangle()
-                    .fill(Color.gray.opacity(0.2)))
-                .cornerRadius(15)
+                    .fill(Color.white.opacity(0.6)))
+                .cornerRadius(10)
         }
     }
 }

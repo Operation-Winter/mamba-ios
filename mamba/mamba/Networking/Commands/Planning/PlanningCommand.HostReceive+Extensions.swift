@@ -19,18 +19,14 @@ public extension PlanningCommands.HostReceive {
         let type = try container.decode(String.self, forKey: .type)
         
         switch type {
-        case PlanningCommands.HostKey.newParticipant.rawValue:
-            self = .newParticipant
-        case PlanningCommands.HostKey.removeParticipant.rawValue:
-            self = .removeParticipant
-        case PlanningCommands.HostKey.participantList.rawValue:
-            self = .participantList
-        case PlanningCommands.HostKey.votingFinished.rawValue:
-            self = .votingFinished
-        case PlanningCommands.HostKey.ticketVote.rawValue:
-            self = .ticketVote
-        case PlanningCommands.HostKey.shareSession.rawValue:
-            self = .shareSession
+        case PlanningCommands.HostKey.noneState.rawValue:
+            self = .noneState
+        case PlanningCommands.HostKey.votingState.rawValue:
+            self = .votingState
+        case PlanningCommands.HostKey.finishedState.rawValue:
+            self = .finishedState
+        case PlanningCommands.HostKey.invalidCommand.rawValue:
+            self = .invalidCommand
         default:
             throw DecodingError.keyNotFound(CodingKeys.message, DecodingError.Context(codingPath: [], debugDescription: "Invalid key: \(type)"))
         }
@@ -47,12 +43,10 @@ public extension PlanningCommands.HostReceive {
     
     var rawValue: String {
         switch self {
-        case .newParticipant: return PlanningCommands.HostKey.newParticipant.rawValue
-        case .removeParticipant: return PlanningCommands.HostKey.removeParticipant.rawValue
-        case .participantList: return PlanningCommands.HostKey.participantList.rawValue
-        case .votingFinished: return PlanningCommands.HostKey.votingFinished.rawValue
-        case .ticketVote: return PlanningCommands.HostKey.ticketVote.rawValue
-        case .shareSession: return PlanningCommands.HostKey.shareSession.rawValue
+        case .noneState: return PlanningCommands.HostKey.noneState.rawValue
+        case .votingState: return PlanningCommands.HostKey.votingState.rawValue
+        case .finishedState: return PlanningCommands.HostKey.finishedState.rawValue
+        case .invalidCommand: return PlanningCommands.HostKey.invalidCommand.rawValue
         }
     }
 }

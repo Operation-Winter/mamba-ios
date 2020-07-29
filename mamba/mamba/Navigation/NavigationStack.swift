@@ -16,26 +16,34 @@ enum NavigationAction {
 
 final class NavigationStack: ObservableObject {
     @Published var currentView: AnyView
+    @Published var showSheet: Bool
     @Published var accentColor: Color?
-    var viewStack: [AnyView] = []
-    var userAction: NavigationAction
+    private(set) var modalView: AnyView
+    private var viewStack: [AnyView] = []
+    private(set) var userAction: NavigationAction
     
     init(_ currentView: AnyView) {
         userAction = .none
         self.currentView = currentView
+        self.modalView = AnyView(EmptyView())
+        self.showSheet = false
     }
     
     func present(_ view: AnyView, colorScheme: Product? = nil) {
         viewStack.append(currentView)
         userAction = .present
+        
+        if showSheet { showSheet.toggle() }
+        
         withAnimation {
             currentView = view
         }
-        
-        if let colorScheme = colorScheme {
-            DefaultStyle.shared.setColorScheme(product: colorScheme)
-            accentColor = DefaultStyle.shared.colorScheme.accent()
-        }
+        setColorScheme(colorScheme)
+    }
+    
+    func modal(_ view: AnyView, colorScheme: Product? = nil) {
+        modalView = view
+        setColorScheme(colorScheme)
     }
     
     func dismiss() {
@@ -46,6 +54,12 @@ final class NavigationStack: ObservableObject {
             currentView = lastView
         }
         viewStack.remove(at: index)
+    }
+    
+    func setColorScheme(_ product: Product?) {
+        guard let product = product else { return }
+        DefaultStyle.shared.setColorScheme(product: product)
+        accentColor = DefaultStyle.shared.colorScheme.accent()
     }
 }
 

@@ -15,7 +15,6 @@ struct ClearableTextField: View {
         TextField("Session name", text: self.$text)
             .textFieldStyle(ClearableTextFieldStyle())
             .modifier(ClearButton(text: self.$text))
-            .padding()
     }
 }
 

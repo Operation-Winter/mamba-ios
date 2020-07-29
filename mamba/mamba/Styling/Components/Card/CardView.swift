@@ -19,7 +19,7 @@ struct CardView<Content: View>: View {
         VStack(alignment: .center, spacing: 0) {
             content()
         }
-        .background(Color(red: 240 / 255, green: 240 / 255, blue: 240 / 255))
+        .background(DefaultStyle.shared.systemGray5)
         .cornerRadius(10)
         .padding(15)
     }
@@ -27,8 +27,23 @@ struct CardView<Content: View>: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView {
-            Text("Hi")
-        }
+        Group {
+            CardView {
+                Text("Card")
+                    .padding()
+            }
+            .environment(\.colorScheme, .light)
+            .previewDisplayName("Light mode")
+            .padding()
+            
+            CardView {
+                Text("Card")
+                    .padding()
+            }
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Dark mode")
+            .padding()
+            .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

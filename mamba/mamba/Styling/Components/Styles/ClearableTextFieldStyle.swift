@@ -13,8 +13,7 @@ struct ClearableTextFieldStyle: TextFieldStyle {
         ZStack() {
             configuration
                 .padding(10)
-                .background(Rectangle()
-                    .fill(Color.white.opacity(0.6)))
+                .background(Rectangle().foregroundColor(DefaultStyle.shared.systemGray4))
                 .cornerRadius(10)
         }
     }

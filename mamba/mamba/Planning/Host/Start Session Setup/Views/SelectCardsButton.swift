@@ -30,7 +30,7 @@ struct SelectCardsButton: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(11)
-            .background(Color.white.opacity(0.6))
+            .background(DefaultStyle.shared.systemGray4)
             .foregroundColor(.accentColor)
             .cornerRadius(8)
         }
@@ -39,6 +39,17 @@ struct SelectCardsButton: View {
 
 struct SelectCardsButton_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCardsButton(cardCount: "All") {}
+        Group {
+            SelectCardsButton(cardCount: "All") {}
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+                .padding()
+            
+            SelectCardsButton(cardCount: "All") {}
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .padding()
+                .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

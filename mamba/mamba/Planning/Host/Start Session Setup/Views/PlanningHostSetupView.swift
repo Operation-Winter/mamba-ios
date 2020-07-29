@@ -20,7 +20,8 @@ struct PlanningHostSetupView: View {
                     TitleText(titleKey: "PLANNING_HOST_SETUP_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    ClearableTextField(text: self.$viewModel.sessionName)
+                    ClearableTextField(text: self.$viewModel.sessionName,
+                                       placeholder: "PLANNING_HOST_START_SESSION_NAME_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
                     SelectCardsButton(cardCount: self.viewModel.selectedCardsCountTitle) {
@@ -43,6 +44,7 @@ struct PlanningHostSetupView: View {
                 }
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func navigateToHostSession() {
@@ -52,6 +54,15 @@ struct PlanningHostSetupView: View {
 
 struct PlanningHostSetupView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningHostSetupView(showSheet: .constant(true))
+        Group {
+            PlanningHostSetupView(showSheet: .constant(true))
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+            
+            PlanningHostSetupView(showSheet: .constant(true))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .background(Color.black)
+        }
     }
 }

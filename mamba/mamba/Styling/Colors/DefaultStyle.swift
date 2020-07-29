@@ -36,4 +36,28 @@ class DefaultStyle {
             colorScheme = RetroColorScheme()
         }
     }
+
+    var systemGray: Color {
+        return Color(UIColor.systemGray)
+    }
+    
+    var systemGray2: Color {
+        return Color(UIColor.systemGray2)
+    }
+    
+    var systemGray3: Color {
+        return Color(UIColor.systemGray3)
+    }
+    
+    var systemGray4: Color {
+        return Color(UIColor.systemGray4)
+    }
+    
+    var systemGray5: Color {
+        return Color(UIColor.systemGray5)
+    }
+    
+    var systemGray6: Color {
+        return Color(UIColor.systemGray6)
+    }
 }

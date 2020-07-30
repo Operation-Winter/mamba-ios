@@ -20,11 +20,14 @@ public extension PlanningCommands.HostReceive {
         
         switch type {
         case PlanningCommands.HostKey.noneState.rawValue:
-            self = .noneState
+            let model = try container.decode(PlanningSessionStateMessage.self, forKey: .message)
+            self = .noneState(model)
         case PlanningCommands.HostKey.votingState.rawValue:
-            self = .votingState
+            let model = try container.decode(PlanningSessionStateMessage.self, forKey: .message)
+            self = .votingState(model)
         case PlanningCommands.HostKey.finishedState.rawValue:
-            self = .finishedState
+            let model = try container.decode(PlanningSessionStateMessage.self, forKey: .message)
+            self = .finishedState(model)
         case PlanningCommands.HostKey.invalidCommand.rawValue:
             self = .invalidCommand
         default:

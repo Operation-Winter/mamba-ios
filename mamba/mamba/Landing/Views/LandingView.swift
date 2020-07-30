@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct LandingView: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
-    @EnvironmentObject var navigation: NavigationStack
-    
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    @EnvironmentObject private var navigation: NavigationStack
     private let viewModel = LandingViewModel()
     
     init() {
@@ -53,9 +52,11 @@ struct LandingView: View {
     private func landingItemTapped(_ item: LandingItem) {
         switch item {
         case .planningHost:
-            self.navigation.present(AnyView(PlanningHostSetupView()), colorScheme: .planning)
+            self.navigation.modal(AnyView(PlanningHostSetupView(showSheet: self.$navigation.showSheet)), colorScheme: .planning)
+            self.navigation.showSheet.toggle()
         case .planningJoin:
-            self.navigation.present(AnyView(PlanningJoinView()), colorScheme: .retro)
+            self.navigation.modal(AnyView(PlanningJoinView()), colorScheme: .planning)
+            self.navigation.showSheet.toggle()
         default:
             return
         }

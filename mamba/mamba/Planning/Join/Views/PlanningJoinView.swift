@@ -21,7 +21,7 @@ struct PlanningJoinView: View {
                     .font(.title)
                     .padding()
                 
-                ClearableTextField(text: self.$tempName)
+                ClearableTextField(text: self.$tempName, placeholder: "Join planning")
                 
                 Spacer()
                 Button(action: {

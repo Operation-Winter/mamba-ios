@@ -1,12 +1,13 @@
-/* 
-  Localizable.strings
-  mamba
-
-  Created by Armand Kamffer on 2020/07/02.
-  Copyright © 2020 Armand Kamffer. All rights reserved.
-*/
+"CANCEL" = "Cancel";
+"ALL" = "All";
+"NONE" = "None";
 
 "LANDING_PLANNING_HOST" = "HOST PLANNING";
 "LANDING_PLANNING_JOIN" = "JOIN PLANNING";
 "LANDING_RETRO_HOST" = "HOST RETRO";
 "LANDING_RETRO_JOIN" = "JOIN RETRO";
+"PLANNING_HOST_TITLE" = "Host planning";
+"PLANNING_HOST_SETUP_TITLE" = "Planning Host Setup";
+"PLANNING_HOST_START_SESSION_BUTTON_TITLE" = "START SESSION";
+"PLANNING_HOST_SETUP_SELECT_CARDS_TITLE" = "Selected cards: %@";
+"PLANNING_HOST_START_SESSION_NAME_PLACEHOLDER" = "Session name";

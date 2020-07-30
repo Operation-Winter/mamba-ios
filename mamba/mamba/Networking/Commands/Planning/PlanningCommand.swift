@@ -11,40 +11,35 @@ import Foundation
 public enum PlanningCommands {
     public enum HostKey: String {
         // MARK: - Planning Host Send
-        case setupSession = "SETUP_SESSION"
+        case startSession = "START_SESSION"
         case addTicket = "ADD_TICKET"
         case skipVote = "SKIP_VOTE"
-        case removeUser = "REMOVE_USER"
+        case removeParticipant = "REMOVE_PARTICIPANT"
         case endSession = "END_SESSION"
         case finishVoting = "FINISH_VOTING"
+        case reconnect = "RECONNECT"
         
         // MARK: - Planning Host Receive
-        case newParticipant = "NEW_PARTICIPANT"
-        case removeParticipant = "REMOVE_PARTICIPANT"
-        case participantList = "PARTICIPANT_LIST"
-        case votingFinished = "VOTING_FINISHED"
-        case ticketVote = "TICKET_VOTE"
-        
-        // MARK: - Planning Host Send/Receive
-        case shareSession = "SHARE_SESSION"
+        case noneState = "NONE_STATE"
+        case votingState = "VOTING_STATE"
+        case finishedState = "FINISHED_STATE"
+        case invalidCommand = "INVALID_COMMAND"
     }
 
     public enum HostSend: Codable {
-        case setupSession(SetupSessionMessage)
+        case startSession(StartSessionMessage)
         case addTicket
         case skipVote
-        case removeUser
+        case removeParticipant
         case endSession
         case finishVoting
-        case shareSession
+        case reconnect
     }
     
     public enum HostReceive: Codable {
-        case newParticipant
-        case removeParticipant
-        case participantList
-        case votingFinished
-        case ticketVote
-        case shareSession
+        case noneState
+        case votingState
+        case finishedState
+        case invalidCommand
     }
 }

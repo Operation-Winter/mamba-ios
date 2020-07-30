@@ -15,6 +15,13 @@
 		261E1EDF24A48ABA00937D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1EDD24A48ABA00937D89 /* LaunchScreen.storyboard */; };
 		261E1EEA24A48ABA00937D89 /* mambaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EE924A48ABA00937D89 /* mambaTests.swift */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
+		263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */; };
+		263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4224D18BE600EEAB1E /* RoundedButton.swift */; };
+		263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4524D18D4200EEAB1E /* TitleText.swift */; };
+		263ECA4924D190F000EEAB1E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4824D190F000EEAB1E /* CardView.swift */; };
+		263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4A24D1931100EEAB1E /* View+Extensions.swift */; };
+		263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */; };
+		263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */; };
@@ -79,11 +86,18 @@
 		261E1EF024A48ABA00937D89 /* mambaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mambaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCard.swift; sourceTree = "<group>"; };
+		263ECA4224D18BE600EEAB1E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		263ECA4524D18D4200EEAB1E /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
+		263ECA4824D190F000EEAB1E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		263ECA4A24D1931100EEAB1E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBarButton.swift; sourceTree = "<group>"; };
+		263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsButton.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* SetupSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01C24BC931C00D46119 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
-		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = mamba/Planning/Host/Setup/ViewModels/PlanningHostSetupViewModel.swift; sourceTree = SOURCE_ROOT; };
+		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = "mamba/Planning/Host/Start Session Setup/ViewModels/PlanningHostSetupViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldStyle.swift; sourceTree = "<group>"; };
 		26772AFC24B4AA04003FB1A4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
@@ -136,13 +150,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26018A2224B49C2300C8B268 /* Setup */ = {
+		26018A2224B49C2300C8B268 /* Start Session Setup */ = {
 			isa = PBXGroup;
 			children = (
 				ED38EAC424AE606B00564F85 /* Views */,
 				ED38EAC524AE606F00564F85 /* ViewModels */,
 			);
-			path = Setup;
+			path = "Start Session Setup";
 			sourceTree = "<group>";
 		};
 		261E1EC624A48AB600937D89 = {
@@ -211,6 +225,47 @@
 			path = mambaUITests;
 			sourceTree = "<group>";
 		};
+		263EC96924D16FAC00EEAB1E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				263EC96A24D16FB300EEAB1E /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		263EC96A24D16FB300EEAB1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		263ECA4124D1894700EEAB1E /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA4224D18BE600EEAB1E /* RoundedButton.swift */,
+				263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		263ECA4424D18D3800EEAB1E /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA4524D18D4200EEAB1E /* TitleText.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		263ECA4724D190E500EEAB1E /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA4824D190F000EEAB1E /* CardView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
 		2661E01024BC5ED500D46119 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +285,9 @@
 		26772AF724B4A5C9003FB1A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				263ECA4724D190E500EEAB1E /* Card */,
+				263ECA4424D18D3800EEAB1E /* Text */,
+				263ECA4124D1894700EEAB1E /* Button */,
 				26772AFE24B4AA68003FB1A4 /* TextField */,
 				26772AFB24B4A9F3003FB1A4 /* ViewModifiers */,
 				26772AF824B4A660003FB1A4 /* Styles */,
@@ -327,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */,
+				263ECA4A24D1931100EEAB1E /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +393,7 @@
 		ED38EAC124AE604300564F85 /* Planning */ = {
 			isa = PBXGroup;
 			children = (
+				263EC96924D16FAC00EEAB1E /* Shared */,
 				ED38EAC324AE605E00564F85 /* Join */,
 				ED38EAC224AE605800564F85 /* Host */,
 			);
@@ -343,7 +403,7 @@
 		ED38EAC224AE605800564F85 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				26018A2224B49C2300C8B268 /* Setup */,
+				26018A2224B49C2300C8B268 /* Start Session Setup */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -360,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */,
+				263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,8 +430,7 @@
 			children = (
 				26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */,
 			);
-			name = ViewModels;
-			path = ../ViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		ED38EAC724AE607800564F85 /* Views */ = {
@@ -584,15 +644,20 @@
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */,
+				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
+				263ECA4924D190F000EEAB1E /* CardView.swift in Sources */,
 				ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */,
+				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
+				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
 				ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */,
 				269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */,
 				ED83E28824C46D1400FCAB27 /* NetworkCloseError.swift in Sources */,
+				263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */,
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
 				26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */,
@@ -600,11 +665,13 @@
 				ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */,
 				ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */,
 				2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */,
+				263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */,
 				269F530424B83CAA00EEC682 /* MambaNetworking.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,
+				263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */,
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,
 			);
@@ -780,7 +847,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -801,7 +868,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

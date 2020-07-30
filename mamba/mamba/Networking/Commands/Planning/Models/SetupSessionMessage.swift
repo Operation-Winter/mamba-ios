@@ -8,6 +8,7 @@
 
 import Foundation
 
-public struct SetupSessionMessage: Codable {
+public struct StartSessionMessage: Codable {
     let sessionName: String
+    let availableCards: [PlanningCard]
 }

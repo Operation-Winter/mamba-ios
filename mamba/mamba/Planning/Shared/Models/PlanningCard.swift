@@ -21,4 +21,21 @@ enum PlanningCard: String, CaseIterable, Codable {
     case hundred = "HUNDRED"
     case question = "QUESTION"
     case coffee = "COFFEE"
+    
+    var imageName: String {
+        switch self {
+        case .zero: return "PlanningCardZero"
+        case .one: return "PlanningCardOne"
+        case .two: return "PlanningCardTwo"
+        case .three: return "PlanningCardThree"
+        case .five: return "PlanningCardFive"
+        case .eight: return "PlanningCardEight"
+        case .thirteen: return "PlanningCardThirteen"
+        case .twenty: return "PlanningCardTwenty"
+        case .fourty: return "PlanningCardFourty"
+        case .hundred: return "PlanningCardHundred"
+        case .question: return "PlanningCardQuestion"
+        case .coffee: return "PlanningCardCoffee"
+        }
+    }
 }

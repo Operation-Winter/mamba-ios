@@ -24,9 +24,7 @@ struct PlanningHostSetupView: View {
                                        placeholder: "PLANNING_HOST_START_SESSION_NAME_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
-                    SelectCardsButton(cardCount: self.viewModel.selectedCardsCountTitle) {
-                        // TODO: MAM-27
-                    }
+                    SelectCardsButton(cardCount: self.viewModel.selectedCardsCountTitle, destination: PlanningHostAvailableCardsView(availableCards: self.viewModel.availableCards))
                     .padding(leading: 20, top: 15, trailing: 20)
     
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {

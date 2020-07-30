@@ -11,14 +11,26 @@ import Combine
 
 class PlanningHostSetupViewModel: ObservableObject {
     @Published var sessionName: String = ""
-    @Published var selectedCards = PlanningCard.allCases
+    @Published var availableCards = PlanningCard.allCases.map { AvailableCard(card: $0, selected: true) }
+    private var cancellables = [AnyCancellable]()
+    
+    init() {
+        availableCards.forEach {
+            let cardObservable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+            cancellables.append(cardObservable)
+        }
+    }
+    
+    private var selectedCardCount: Int {
+        availableCards.filter({ $0.selected }).count
+    }
     
     var selectedCardsCountTitle: String {
-        if selectedCards.count == PlanningCard.allCases.count {
+        if selectedCardCount == availableCards.count {
             return NSLocalizedString("ALL", comment: "All")
         }
-        if selectedCards.count <= PlanningCard.allCases.count && selectedCards.count > 0 {
-            return "\(selectedCards.count)"
+        if selectedCardCount <= availableCards.count && selectedCardCount > 0 {
+            return "\(selectedCardCount)"
         }
         return NSLocalizedString("NONE", comment: "None")
     }

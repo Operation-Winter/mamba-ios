@@ -40,6 +40,9 @@ public extension PlanningCommands.HostReceive {
         try container.encode(self.rawValue, forKey: .type)
         
         switch self {
+        case .noneState(let message): try container.encode(message, forKey: .message)
+        case .votingState(let message): try container.encode(message, forKey: .message)
+        case .finishedState(let message): try container.encode(message, forKey: .message)
         default: try container.encodeNil(forKey: .message)
         }
     }

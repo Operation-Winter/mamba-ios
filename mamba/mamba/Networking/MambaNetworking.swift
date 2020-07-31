@@ -51,6 +51,9 @@ public class MambaNetworking {
     
     private func decodeCommand<Command>(_ data: Data) -> Result<Command, NetworkError> where Command : Codable {
         do {
+            //TODO: Use os_log
+            let jsonString = String(decoding: data, as: UTF8.self)
+            print(jsonString)
             let command = try JSONDecoder().decode(Command.self, from: data)
             return Result<Command, NetworkError>.success(command)
         } catch let error as DecodingError {

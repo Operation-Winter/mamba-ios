@@ -37,9 +37,9 @@ public enum PlanningCommands {
     }
     
     public enum HostReceive: Codable {
-        case noneState
-        case votingState
-        case finishedState
+        case noneState(PlanningSessionStateMessage)
+        case votingState(PlanningSessionStateMessage)
+        case finishedState(PlanningSessionStateMessage)
         case invalidCommand
     }
 }

@@ -42,4 +42,38 @@ public enum PlanningCommands {
         case finishedState(PlanningSessionStateMessage)
         case invalidCommand
     }
+    
+    public enum JoinKey: String {
+        // MARK: - Planning Join Send
+        case joinSession = "JOIN_SESSION"
+        case vote = "VOTE"
+        case leaveSession = "LEAVE_SESSION"
+        case reconnect = "RECONNECT"
+        
+        // MARK: - Planning Host Receive
+        case noneState = "NONE_STATE"
+        case votingState = "VOTING_STATE"
+        case finishedState = "FINISHED_STATE"
+        case invalidCommand = "INVALID_COMMAND"
+        case invalidSession = "INVALID_SESSION"
+        case removeParticipant = "REMOVE_PARTICIPANT"
+        case endSession = "END_SESSION"
+    }
+    
+    public enum JoinSend: Codable {
+        case joinSession(JoinSessionMessage)
+        case vote
+        case leaveSession
+        case reconnect
+    }
+    
+    public enum JoinReceive: Codable {
+        case noneState(PlanningSessionStateMessage)
+        case votingState(PlanningSessionStateMessage)
+        case finishedState(PlanningSessionStateMessage)
+        case invalidCommand
+        case invalidSession
+        case removeParticipant
+        case endSession
+    }
 }

@@ -22,6 +22,9 @@
 		263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4A24D1931100EEAB1E /* View+Extensions.swift */; };
 		263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */; };
 		263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */; };
+		263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5024D293D300EEAB1E /* StoryPointCard.swift */; };
+		263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5424D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift */; };
+		263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5924D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */; };
@@ -93,6 +96,9 @@
 		263ECA4A24D1931100EEAB1E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBarButton.swift; sourceTree = "<group>"; };
 		263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsButton.swift; sourceTree = "<group>"; };
+		263ECA5024D293D300EEAB1E /* StoryPointCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPointCard.swift; sourceTree = "<group>"; };
+		263ECA5424D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostAvailableCardsView.swift; sourceTree = "<group>"; };
+		263ECA5924D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostAvailableCardsViewModel.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* SetupSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
@@ -262,8 +268,34 @@
 			isa = PBXGroup;
 			children = (
 				263ECA4824D190F000EEAB1E /* CardView.swift */,
+				263ECA5024D293D300EEAB1E /* StoryPointCard.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		263ECA5624D29CF800EEAB1E /* Card Selection */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA5724D29D0300EEAB1E /* Views */,
+				263ECA5824D29D0900EEAB1E /* ViewModels */,
+			);
+			path = "Card Selection";
+			sourceTree = "<group>";
+		};
+		263ECA5724D29D0300EEAB1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA5424D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		263ECA5824D29D0900EEAB1E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				263ECA5924D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		2661E01024BC5ED500D46119 /* Commands */ = {
@@ -404,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				26018A2224B49C2300C8B268 /* Start Session Setup */,
+				263ECA5624D29CF800EEAB1E /* Card Selection */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -647,6 +680,7 @@
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
 				263ECA4924D190F000EEAB1E /* CardView.swift in Sources */,
 				ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */,
+				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
@@ -660,6 +694,7 @@
 				263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */,
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
+				263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */,
 				26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */,
 				ED9D448824AE54F800034216 /* ContentView.swift in Sources */,
 				ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */,
@@ -668,6 +703,7 @@
 				263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */,
 				269F530424B83CAA00EEC682 /* MambaNetworking.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
+				263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,
@@ -847,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -868,7 +904,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

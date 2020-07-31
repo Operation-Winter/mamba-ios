@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct SelectCardsButton: View {
+struct SelectCardsButton<Content: View>: View {
     let cardCount: String
-    let action: () -> Void
+    let destination: Content
     
     private var buttonTitle: String {
         let title = NSLocalizedString("PLANNING_HOST_SETUP_SELECT_CARDS_TITLE", comment: "Selected cards:")
@@ -18,9 +18,7 @@ struct SelectCardsButton: View {
     }
     
     var body: some View {
-        Button(action: {
-            self.action()
-        }) {
+        NavigationLink(destination: destination) {
             HStack {
                 Spacer()
                 Text(buttonTitle)
@@ -40,12 +38,12 @@ struct SelectCardsButton: View {
 struct SelectCardsButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SelectCardsButton(cardCount: "All") {}
+            SelectCardsButton(cardCount: "All", destination: EmptyView())
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
                 .padding()
             
-            SelectCardsButton(cardCount: "All") {}
+            SelectCardsButton(cardCount: "All", destination: EmptyView())
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .padding()

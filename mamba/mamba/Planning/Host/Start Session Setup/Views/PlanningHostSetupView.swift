@@ -45,8 +45,8 @@ struct PlanningHostSetupView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    private func navigateToHostSession() {
-        self.navigation.present(AnyView(PlanningJoinView()))
+    private func navigateToHostLanding() {
+        // TODO: MAM-29
     }
 }
 

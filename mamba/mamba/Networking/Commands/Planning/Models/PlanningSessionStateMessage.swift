@@ -9,7 +9,7 @@
 import Foundation
 
 public struct PlanningSessionStateMessage: Codable {
-    let sessionID: String
+    let sessionCode: String
     let sessionName: String
     let availableCards: [PlanningCard]
 }

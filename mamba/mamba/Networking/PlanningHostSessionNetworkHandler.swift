@@ -14,12 +14,12 @@ public class PlanningHostSessionNetworkHandler {
     
     /// Starts a session with the Host Planning endpoint and sets up a pipeline of received commands
     /// - Returns: A Publisher that publishes the commands received over the WebSocket
-    public func startSession() -> AnyPublisher<Result<PlanningCommands.JoinReceive, NetworkError>, NetworkCloseError> {
-        let webSocketHandler = createWebSocketHandler(URLCenter.shared.planningJoinWSURL)
+    public func startSession() -> AnyPublisher<Result<PlanningCommands.HostReceive, NetworkError>, NetworkCloseError> {
+        let webSocketHandler = createWebSocketHandler(URLCenter.shared.planningHostWSURL)
         return CommandNetworking.createWebSocketPublisher(webSocketHandler.subject)
     }
     
-    public func send(command: PlanningCommands.JoinSend) throws {
+    public func send(command: PlanningCommands.HostSend) throws {
         let messageData = try JSONEncoder().encode(command)
         let message = URLSessionWebSocketTask.Message.data(messageData)
         webSocket?.send(message: message)

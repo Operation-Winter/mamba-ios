@@ -32,6 +32,7 @@
 		263ECC2A24D4102500EEAB1E /* PlanningHostSessionNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2924D4102500EEAB1E /* PlanningHostSessionNetworkHandler.swift */; };
 		263ECC2C24D4131100EEAB1E /* PlanningJoinSessionNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2B24D4131100EEAB1E /* PlanningJoinSessionNetworkHandler.swift */; };
 		263ECC2E24D4158900EEAB1E /* CommandNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2D24D4158900EEAB1E /* CommandNetworking.swift */; };
+		263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* SetupSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */; };
@@ -43,15 +44,17 @@
 		26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */; };
 		26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */; };
 		26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */; };
+		269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */; };
 		269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557324BC2D4A00EEC682 /* URLCenter.swift */; };
 		269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */; };
 		269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557824BC300600EEC682 /* NetworkEnvironment.swift */; };
 		269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */; };
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
+		26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E11B3524D429FF00C50F43 /* IntegerTextField.swift */; };
 		ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */; };
 		ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */; };
 		ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */; };
-		ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */; };
+		ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */; };
 		ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD324AE643500564F85 /* NavigationStack.swift */; };
 		ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EAD524AE64EC00564F85 /* NavigationHost.swift */; };
 		ED83E28824C46D1400FCAB27 /* NetworkCloseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83E28724C46D1400FCAB27 /* NetworkCloseError.swift */; };
@@ -112,6 +115,7 @@
 		263ECC2924D4102500EEAB1E /* PlanningHostSessionNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionNetworkHandler.swift; sourceTree = "<group>"; };
 		263ECC2B24D4131100EEAB1E /* PlanningJoinSessionNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSessionNetworkHandler.swift; sourceTree = "<group>"; };
 		263ECC2D24D4158900EEAB1E /* CommandNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandNetworking.swift; sourceTree = "<group>"; };
+		263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupViewModel.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommand.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* SetupSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommand.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
@@ -123,15 +127,17 @@
 		26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyle.swift; sourceTree = "<group>"; };
 		26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningColorScheme.swift; sourceTree = "<group>"; };
 		26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroColorScheme.swift; sourceTree = "<group>"; };
+		269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeTextField.swift; sourceTree = "<group>"; };
 		269F557324BC2D4A00EEC682 /* URLCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCenter.swift; sourceTree = "<group>"; };
 		269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCenter+Planning.swift"; sourceTree = "<group>"; };
 		269F557824BC300600EEC682 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
+		26E11B3524D429FF00C50F43 /* IntegerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextField.swift; sourceTree = "<group>"; };
 		ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommand.swift; sourceTree = "<group>"; };
 		ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupView.swift; sourceTree = "<group>"; };
-		ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinView.swift; sourceTree = "<group>"; };
+		ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupView.swift; sourceTree = "<group>"; };
 		ED38EAD324AE643500564F85 /* NavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		ED38EAD524AE64EC00564F85 /* NavigationHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHost.swift; sourceTree = "<group>"; };
 		ED83E28524C46CDE00FCAB27 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -310,6 +316,31 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		263ECC2F24D4171600EEAB1E /* Join Session Setup */ = {
+			isa = PBXGroup;
+			children = (
+				263ECC3024D4172200EEAB1E /* Views */,
+				263ECC3124D4172600EEAB1E /* ViewModel */,
+			);
+			path = "Join Session Setup";
+			sourceTree = "<group>";
+		};
+		263ECC3024D4172200EEAB1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		263ECC3124D4172600EEAB1E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2661E01024BC5ED500D46119 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */,
+				26E11B3524D429FF00C50F43 /* IntegerTextField.swift */,
+				269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -462,7 +495,7 @@
 		ED38EAC324AE605E00564F85 /* Join */ = {
 			isa = PBXGroup;
 			children = (
-				ED38EAC724AE607800564F85 /* Views */,
+				263ECC2F24D4171600EEAB1E /* Join Session Setup */,
 			);
 			path = Join;
 			sourceTree = "<group>";
@@ -482,14 +515,6 @@
 				26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		ED38EAC724AE607800564F85 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				ED38EACE24AE60B300564F85 /* PlanningJoinView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		ED38EAD024AE640600564F85 /* Navigation */ = {
@@ -695,16 +720,18 @@
 				263ECC2424D40CBC00EEAB1E /* JoinSessionCommand.swift in Sources */,
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
-				ED38EACF24AE60B300564F85 /* PlanningJoinView.swift in Sources */,
+				ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */,
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
 				263ECA4924D190F000EEAB1E /* CardView.swift in Sources */,
 				ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */,
+				26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */,
 				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */,
 				263ECC2A24D4102500EEAB1E /* PlanningHostSessionNetworkHandler.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
 				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
+				269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
@@ -716,6 +743,7 @@
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
 				263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */,
+				263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */,
 				263ECC2C24D4131100EEAB1E /* PlanningJoinSessionNetworkHandler.swift in Sources */,
 				26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */,
 				ED9D448824AE54F800034216 /* ContentView.swift in Sources */,

@@ -13,6 +13,7 @@ struct ClearableTextField: View {
     var placeholder: LocalizedStringKey
     
     var body: some View {
+        // TODO: Convert to UIKit UITextField to allow for Keyboard firstResponder
         TextField(placeholder, text: self.$text)
             .textFieldStyle(ClearableTextFieldStyle())
             .modifier(ClearButton(text: self.$text))

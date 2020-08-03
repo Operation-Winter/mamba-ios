@@ -55,7 +55,7 @@ struct LandingView: View {
             self.navigation.modal(AnyView(PlanningHostSetupView(showSheet: self.$navigation.showSheet)), colorScheme: .planning)
             self.navigation.showSheet.toggle()
         case .planningJoin:
-            self.navigation.modal(AnyView(PlanningJoinView()), colorScheme: .planning)
+            self.navigation.modal(AnyView(PlanningJoinSetupView(showSheet: self.$navigation.showSheet)), colorScheme: .planning)
             self.navigation.showSheet.toggle()
         default:
             return

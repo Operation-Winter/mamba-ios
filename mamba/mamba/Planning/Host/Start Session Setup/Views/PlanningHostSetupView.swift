@@ -16,7 +16,7 @@ struct PlanningHostSetupView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CardView {
+                VCardView {
                     TitleText(titleKey: "PLANNING_HOST_SETUP_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     
@@ -28,8 +28,9 @@ struct PlanningHostSetupView: View {
                     .padding(leading: 20, top: 15, trailing: 20)
     
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {
-                        // TODO: MAM-29
+                        self.navigateToHostLanding()
                     }
+                    .disabled(!self.viewModel.inputValid)
                     .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
                 }
                 
@@ -46,7 +47,13 @@ struct PlanningHostSetupView: View {
     }
     
     private func navigateToHostLanding() {
-        // TODO: MAM-29
+        // TODO: MAM-29 - Validation of input data
+        let planningCards: [PlanningCard] = self.viewModel.availableCards.compactMap {
+            guard $0.selected else { return nil }
+            return $0.card
+        }
+        let hostLandingView = PlanningHostSessionLandingView(sessionName: self.viewModel.sessionName, availableCards: planningCards)
+        navigation.present(AnyView(hostLandingView))
     }
 }
 

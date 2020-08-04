@@ -30,6 +30,7 @@ struct PlanningHostSetupView: View {
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {
                         self.navigateToHostLanding()
                     }
+                    .disabled(!self.viewModel.inputValid)
                     .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
                 }
                 

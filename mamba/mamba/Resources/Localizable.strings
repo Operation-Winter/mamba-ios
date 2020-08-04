@@ -1,6 +1,7 @@
 // MARK: - Common
 "CANCEL" = "Cancel";
 "ALL" = "All";
+"SOME" = "Some";
 "NONE" = "None";
 
 // MARK: - Landing screen

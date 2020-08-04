@@ -47,6 +47,7 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     }
     
     private func executeCommand(_ command: PlanningCommands.HostReceive) {
+        //TODO: Logging
         print(command)
         switch command {
         case .noneState(let message):

@@ -18,7 +18,7 @@
 		263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */; };
 		263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4224D18BE600EEAB1E /* RoundedButton.swift */; };
 		263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4524D18D4200EEAB1E /* TitleText.swift */; };
-		263ECA4924D190F000EEAB1E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4824D190F000EEAB1E /* CardView.swift */; };
+		263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4824D190F000EEAB1E /* VCardView.swift */; };
 		263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4A24D1931100EEAB1E /* View+Extensions.swift */; };
 		263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */; };
 		263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */; };
@@ -48,6 +48,11 @@
 		269CA06824D931ED000F42B9 /* PlanningHostSessionLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */; };
 		269CA06C24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */; };
 		269CA06F24D9332A000F42B9 /* PlanningHostSessionLandingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06E24D9332A000F42B9 /* PlanningHostSessionLandingService.swift */; };
+		269CA0DC24D93BB2000F42B9 /* PlanningParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */; };
+		269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DD24D93E00000F42B9 /* HCardView.swift */; };
+		269CA0E024D9479A000F42B9 /* PlanningHostParticipantRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DF24D9479A000F42B9 /* PlanningHostParticipantRowView.swift */; };
+		269CA0E224D947EA000F42B9 /* PlanningHostNoneStateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */; };
+		269CA0E424D94BCC000F42B9 /* PlanningSessionLandingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0E324D94BCC000F42B9 /* PlanningSessionLandingState.swift */; };
 		269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557324BC2D4A00EEC682 /* URLCenter.swift */; };
 		269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */; };
 		269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557824BC300600EEC682 /* NetworkEnvironment.swift */; };
@@ -104,7 +109,7 @@
 		263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCard.swift; sourceTree = "<group>"; };
 		263ECA4224D18BE600EEAB1E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		263ECA4524D18D4200EEAB1E /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
-		263ECA4824D190F000EEAB1E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		263ECA4824D190F000EEAB1E /* VCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCardView.swift; sourceTree = "<group>"; };
 		263ECA4A24D1931100EEAB1E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBarButton.swift; sourceTree = "<group>"; };
 		263ECA4E24D1952500EEAB1E /* SelectCardsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsButton.swift; sourceTree = "<group>"; };
@@ -134,6 +139,11 @@
 		269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingView.swift; sourceTree = "<group>"; };
 		269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingViewModel.swift; sourceTree = "<group>"; };
 		269CA06E24D9332A000F42B9 /* PlanningHostSessionLandingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingService.swift; sourceTree = "<group>"; };
+		269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipant.swift; sourceTree = "<group>"; };
+		269CA0DD24D93E00000F42B9 /* HCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCardView.swift; sourceTree = "<group>"; };
+		269CA0DF24D9479A000F42B9 /* PlanningHostParticipantRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostParticipantRowView.swift; sourceTree = "<group>"; };
+		269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostNoneStateCardView.swift; sourceTree = "<group>"; };
+		269CA0E324D94BCC000F42B9 /* PlanningSessionLandingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingState.swift; sourceTree = "<group>"; };
 		269F557324BC2D4A00EEC682 /* URLCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCenter.swift; sourceTree = "<group>"; };
 		269F557524BC2EF300EEC682 /* URLCenter+Planning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCenter+Planning.swift"; sourceTree = "<group>"; };
 		269F557824BC300600EEC682 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
@@ -255,22 +265,6 @@
 			path = mambaUITests;
 			sourceTree = "<group>";
 		};
-		263EC96924D16FAC00EEAB1E /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				263EC96A24D16FB300EEAB1E /* Models */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		263EC96A24D16FB300EEAB1E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		263ECA4124D1894700EEAB1E /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,8 +285,9 @@
 		263ECA4724D190E500EEAB1E /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				263ECA4824D190F000EEAB1E /* CardView.swift */,
+				263ECA4824D190F000EEAB1E /* VCardView.swift */,
 				263ECA5024D293D300EEAB1E /* StoryPointCard.swift */,
+				269CA0DD24D93E00000F42B9 /* HCardView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -359,6 +354,8 @@
 		2661E01324BC5FF000D46119 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */,
+				269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */,
 				2661E01624BC818600D46119 /* SetupSessionMessage.swift */,
 				263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */,
 				263ECC2324D40CBB00EEAB1E /* JoinSessionCommand.swift */,
@@ -430,6 +427,7 @@
 				269CA06A24D931F8000F42B9 /* Views */,
 				269CA06924D931F1000F42B9 /* ViewModels */,
 				269CA06D24D93307000F42B9 /* Services */,
+				269CA0DA24D93BA7000F42B9 /* Models */,
 			);
 			path = "Session Landing";
 			sourceTree = "<group>";
@@ -446,6 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */,
+				269CA0DF24D9479A000F42B9 /* PlanningHostParticipantRowView.swift */,
+				269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +456,14 @@
 				269CA06E24D9332A000F42B9 /* PlanningHostSessionLandingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		269CA0DA24D93BA7000F42B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				269CA0E324D94BCC000F42B9 /* PlanningSessionLandingState.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		269F530224B83C9900EEC682 /* Networking */ = {
@@ -516,7 +524,6 @@
 		ED38EAC124AE604300564F85 /* Planning */ = {
 			isa = PBXGroup;
 			children = (
-				263EC96924D16FAC00EEAB1E /* Shared */,
 				ED38EAC324AE605E00564F85 /* Join */,
 				ED38EAC224AE605800564F85 /* Host */,
 			);
@@ -752,6 +759,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				269CA0E024D9479A000F42B9 /* PlanningHostParticipantRowView.swift in Sources */,
 				2661E01724BC818600D46119 /* SetupSessionMessage.swift in Sources */,
 				ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */,
 				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
@@ -759,16 +767,19 @@
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
 				26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */,
 				263ECC2424D40CBC00EEAB1E /* JoinSessionCommand.swift in Sources */,
+				269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */,
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */,
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
-				263ECA4924D190F000EEAB1E /* CardView.swift in Sources */,
+				263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */,
 				ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */,
 				26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */,
 				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				2661E01924BC81CB00D46119 /* PlanningCommand.HostReceive+Extensions.swift in Sources */,
+				269CA0E224D947EA000F42B9 /* PlanningHostNoneStateCardView.swift in Sources */,
+				269CA0DC24D93BB2000F42B9 /* PlanningParticipant.swift in Sources */,
 				263ECC2A24D4102500EEAB1E /* PlanningHostSessionNetworkHandler.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
 				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
@@ -784,6 +795,7 @@
 				263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */,
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
+				269CA0E424D94BCC000F42B9 /* PlanningSessionLandingState.swift in Sources */,
 				263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */,
 				263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */,
 				263ECC2C24D4131100EEAB1E /* PlanningJoinSessionNetworkHandler.swift in Sources */,

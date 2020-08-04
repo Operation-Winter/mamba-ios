@@ -10,42 +10,47 @@ import SwiftUI
 
 struct PlanningHostSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
-    @ObservedObject private var viewModel = PlanningHostSessionLandingViewModel()
+    @ObservedObject private var viewModel: PlanningHostSessionLandingViewModel
+    
+    init(sessionName: String, availableCards: [PlanningCard]) {
+        viewModel = PlanningHostSessionLandingViewModel(sessionName: sessionName, availableCards: availableCards)
+    }
     
     var body: some View {
-        // TODO: Loading indicator when page loads
-        ScrollView {
-            CardView {
-                Text(self.viewModel.title)
-                    .font(.system(size: 20))
-                    .foregroundColor(.accentColor)
-                    .padding(leading: 20, top: 20, trailing: 20)
-                
-                Text("PLANNING_HOST_LANDING_NONE_STATE_DESCRIPTION")
-                    .font(.system(size: 15))
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .padding(leading: 20, top: 15, trailing: 20)
-                
-                RoundedButton(titleKey: "PLANNING_HOST_LANDING_ADD_TICKET_BUTTON_TITLE") {
-                    self.addTicket()
-                }
-                .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
+        Group {
+            if self.viewModel.state == .error {
+                //TODO: MAM-28
             }
+            
+            if self.viewModel.state == .loading {
+                Text("Loading...")
+            }
+            
+            if self.viewModel.state != .loading {
+                ScrollView {
+                    if self.viewModel.state == .none {
+                        PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
+                            self.addTicket()
+                        }
+                    }
+                    
+                    ForEach(self.viewModel.participants) { participant in
+                        PlanningHostParticipantRowView(participant: participant)
+                    }
+                }
+            }
+        }.onAppear{
+            self.viewModel.startSession()
         }
     }
     
     private func addTicket() {
         //TODO: MAM-31
     }
-    
-    private func showError() {
-        //TODO: MAM-28
-    }
 }
 
 struct PlanningHostSessionLandingView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningHostSessionLandingView()
+        PlanningHostSessionLandingView(sessionName: "Planning 1", availableCards: PlanningCard.allCases)
     }
 }

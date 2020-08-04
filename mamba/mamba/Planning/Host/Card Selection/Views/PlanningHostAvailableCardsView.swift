@@ -17,7 +17,7 @@ struct PlanningHostAvailableCardsView: View {
     
     var body: some View {
         ScrollView {
-            CardView {
+            VCardView {
                 VStack(alignment: .center, spacing: 20) {
                     ForEach(0 ..< self.viewModel.chunkedCards.count) { index in
                         HStack(alignment: .center, spacing: 20) {

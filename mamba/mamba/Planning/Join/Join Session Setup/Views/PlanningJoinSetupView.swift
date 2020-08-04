@@ -16,7 +16,7 @@ struct PlanningJoinSetupView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CardView {
+                VCardView {
                     TitleText(titleKey: "PLANNING_JOIN_SETUP_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     

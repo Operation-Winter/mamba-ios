@@ -1,14 +1,14 @@
 //
-//  CardView.swift
+//  HCardView.swift
 //  mamba
 //
-//  Created by Armand Kamffer on 2020/07/29.
+//  Created by Armand Kamffer on 2020/08/04.
 //  Copyright © 2020 Armand Kamffer. All rights reserved.
 //
 
 import SwiftUI
 
-struct CardView<Content: View>: View {
+struct HCardView<Content: View>: View {
     let content: () -> Content
     
     init(@ViewBuilder content: @escaping () -> Content) {
@@ -16,7 +16,7 @@ struct CardView<Content: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        HStack(alignment: .center, spacing: 0) {
             content()
         }
         .background(DefaultStyle.shared.systemGray5)
@@ -25,10 +25,10 @@ struct CardView<Content: View>: View {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
+struct HCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CardView {
+            HCardView {
                 Text("Card")
                     .padding()
             }
@@ -36,7 +36,7 @@ struct CardView_Previews: PreviewProvider {
             .previewDisplayName("Light mode")
             .padding()
             
-            CardView {
+            HCardView {
                 Text("Card")
                     .padding()
             }

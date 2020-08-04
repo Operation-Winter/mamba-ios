@@ -18,6 +18,7 @@
 "PLANNING_HOST_SETUP_SELECT_CARDS_MODAL_TITLE" = "Selected cards";
 "PLANNING_HOST_LANDING_ADD_TICKET_BUTTON_TITLE" = "ADD TICKET";
 "PLANNING_HOST_LANDING_NONE_STATE_DESCRIPTION" = "To start voting on tickets, you need to add a ticket.";
+"PLANNING_HOST_LANDING_CONNECTING_TITLE" = "Connecting...";
 
 
 // MARK: - Planning join

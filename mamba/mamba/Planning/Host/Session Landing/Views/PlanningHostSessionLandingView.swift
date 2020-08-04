@@ -17,26 +17,24 @@ struct PlanningHostSessionLandingView: View {
     }
     
     var body: some View {
-        Group {
+        ScrollView {
             if self.viewModel.state == .error {
                 //TODO: MAM-28
             }
             
             if self.viewModel.state == .loading {
-                Text("Loading...")
+                LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
             }
             
             if self.viewModel.state != .loading {
-                ScrollView {
-                    if self.viewModel.state == .none {
-                        PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
-                            self.addTicket()
-                        }
+                if self.viewModel.state == .none {
+                    PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
+                        self.addTicket()
                     }
-                    
-                    ForEach(self.viewModel.participants) { participant in
-                        PlanningHostParticipantRowView(participant: participant)
-                    }
+                }
+                
+                ForEach(self.viewModel.participants) { participant in
+                    PlanningHostParticipantRowView(participant: participant)
                 }
             }
         }.onAppear{

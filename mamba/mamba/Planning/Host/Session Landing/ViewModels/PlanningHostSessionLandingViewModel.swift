@@ -30,17 +30,17 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { networkError in
-            print(networkError)
-            //TODO: MAM-28
-        }, receiveValue: { result in
-            switch result {
-            case .success(let command):
-                self.executeCommand(command)
-            case .failure(let error):
-                print(error)
+                print(networkError)
                 //TODO: MAM-28
-            }
-        })
+            }, receiveValue: { result in
+                switch result {
+                case .success(let command):
+                    self.executeCommand(command)
+                case .failure(let error):
+                    print(error)
+                    //TODO: MAM-28
+                }
+            })
         
         let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
         try? service.sendCommand(.startSession(commandMessage))

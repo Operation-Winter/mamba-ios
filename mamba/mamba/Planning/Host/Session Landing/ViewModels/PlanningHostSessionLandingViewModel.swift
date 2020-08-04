@@ -13,7 +13,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     private var service: PlanningHostSessionLandingServiceProtocol
     private var cancellable: AnyCancellable?
     private var availableCards: [PlanningCard]
-    private var hasShownInitialShareModal: Bool = false
     private(set) var sessionCode: String = ""
     @Published var state: PlanningSessionLandingState = .loading
     @Published var sessionName: String

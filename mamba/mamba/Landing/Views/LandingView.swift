@@ -52,11 +52,11 @@ struct LandingView: View {
     private func landingItemTapped(_ item: LandingItem) {
         switch item {
         case .planningHost:
-            self.navigation.modal(AnyView(PlanningHostSetupView(showSheet: self.$navigation.showSheet)), colorScheme: .planning)
-            self.navigation.showSheet.toggle()
+            navigation.modal(AnyView(PlanningHostSetupView(showSheet: $navigation.showSheet)), colorScheme: .planning)
+            navigation.showSheet.toggle()
         case .planningJoin:
-            self.navigation.modal(AnyView(PlanningJoinSetupView(showSheet: self.$navigation.showSheet)), colorScheme: .planning)
-            self.navigation.showSheet.toggle()
+            navigation.modal(AnyView(PlanningJoinSetupView(showSheet: $navigation.showSheet)), colorScheme: .planning)
+            navigation.showSheet.toggle()
         default:
             return
         }

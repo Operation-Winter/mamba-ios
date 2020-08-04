@@ -24,6 +24,9 @@ struct PlanningHostSessionLandingView: View {
             
             if self.viewModel.state == .loading {
                 LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
+                    .onAppear {
+                        self.viewModel.startSession()
+                    }
             }
             
             if self.viewModel.state != .loading {
@@ -31,19 +34,28 @@ struct PlanningHostSessionLandingView: View {
                     PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
                         self.addTicket()
                     }
+                    .onReceive(self.viewModel.$showInitialShareModal, perform: { shouldShow in
+                        if shouldShow {
+                            self.showShareModal()
+                        }
+                    })
                 }
                 
                 ForEach(self.viewModel.participants) { participant in
                     PlanningHostParticipantRowView(participant: participant)
                 }
             }
-        }.onAppear{
-            self.viewModel.startSession()
         }
     }
     
     private func addTicket() {
         //TODO: MAM-31
+    }
+    
+    private func showShareModal() {
+        let shareView = PlanningHostSessionStartShareView(sessionCode: viewModel.sessionCode, showSheet: $navigation.showSheet)
+        navigation.modal(AnyView(shareView))
+        navigation.showSheet = true
     }
 }
 

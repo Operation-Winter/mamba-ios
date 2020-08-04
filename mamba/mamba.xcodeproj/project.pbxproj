@@ -60,6 +60,10 @@
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
 		26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E11B3524D429FF00C50F43 /* IntegerTextField.swift */; };
 		26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A4E24D9613B007CA2B8 /* LoadingView.swift */; };
+		26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */; };
+		26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */; };
+		26F98A5524D96EF7007CA2B8 /* CodeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5424D96EF7007CA2B8 /* CodeText.swift */; };
+		26F98A5724D97ACA007CA2B8 /* DoneBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5624D97ACA007CA2B8 /* DoneBarButton.swift */; };
 		ED36B44D24BCCDD5007FF62E /* PlanningCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */; };
 		ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */; };
 		ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */; };
@@ -152,6 +156,10 @@
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
 		26E11B3524D429FF00C50F43 /* IntegerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextField.swift; sourceTree = "<group>"; };
 		26F98A4E24D9613B007CA2B8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionStartShareView.swift; sourceTree = "<group>"; };
+		26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeText.swift; sourceTree = "<group>"; };
+		26F98A5424D96EF7007CA2B8 /* CodeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeText.swift; sourceTree = "<group>"; };
+		26F98A5624D97ACA007CA2B8 /* DoneBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneBarButton.swift; sourceTree = "<group>"; };
 		ED36B44C24BCCDD5007FF62E /* PlanningCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommand.swift; sourceTree = "<group>"; };
 		ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupView.swift; sourceTree = "<group>"; };
@@ -272,6 +280,7 @@
 			children = (
 				263ECA4224D18BE600EEAB1E /* RoundedButton.swift */,
 				263ECA4C24D1943400EEAB1E /* CancelBarButton.swift */,
+				26F98A5624D97ACA007CA2B8 /* DoneBarButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -280,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				263ECA4524D18D4200EEAB1E /* TitleText.swift */,
+				26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */,
+				26F98A5424D96EF7007CA2B8 /* CodeText.swift */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -449,6 +460,7 @@
 				269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */,
 				269CA0DF24D9479A000F42B9 /* PlanningHostParticipantRowView.swift */,
 				269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */,
+				26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -544,9 +556,9 @@
 		ED38EAC224AE605800564F85 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				269CA06624D931C5000F42B9 /* Session Landing */,
 				26018A2224B49C2300C8B268 /* Start Session Setup */,
 				263ECA5624D29CF800EEAB1E /* Card Selection */,
+				269CA06624D931C5000F42B9 /* Session Landing */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -775,11 +787,13 @@
 				ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */,
 				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
 				269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */,
+				26F98A5724D97ACA007CA2B8 /* DoneBarButton.swift in Sources */,
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
 				26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */,
 				263ECC2424D40CBC00EEAB1E /* JoinSessionCommand.swift in Sources */,
 				269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */,
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
+				26F98A5524D96EF7007CA2B8 /* CodeText.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */,
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
@@ -824,8 +838,10 @@
 				263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
 				26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */,
+				26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,
+				26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */,
 				263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */,
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,

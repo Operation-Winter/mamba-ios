@@ -1,34 +1,34 @@
 //
-//  CancelBarButton.swift
+//  DoneBarButton.swift
 //  mamba
 //
-//  Created by Armand Kamffer on 2020/07/29.
+//  Created by Armand Kamffer on 2020/08/04.
 //  Copyright © 2020 Armand Kamffer. All rights reserved.
 //
 
 import SwiftUI
 
-struct CancelBarButton: View {
+struct DoneBarButton: View {
     let action: () -> Void
     
     var body: some View {
         Button(action: {
             self.action()
         }) {
-            Text("CANCEL")
+            Text("DONE")
         }
     }
 }
 
-struct CancelBarButton_Previews: PreviewProvider {
+struct DoneBarButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CancelBarButton {}
+            DoneBarButton {}
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
                 .padding()
             
-            CancelBarButton {}
+            DoneBarButton {}
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .padding()

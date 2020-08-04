@@ -3,6 +3,7 @@
 "ALL" = "All";
 "SOME" = "Some";
 "NONE" = "None";
+"DONE" = "Done";
 
 // MARK: - Landing screen
 "LANDING_PLANNING_HOST" = "HOST PLANNING";
@@ -20,7 +21,8 @@
 "PLANNING_HOST_LANDING_ADD_TICKET_BUTTON_TITLE" = "ADD TICKET";
 "PLANNING_HOST_LANDING_NONE_STATE_DESCRIPTION" = "To start voting on tickets, you need to add a ticket.";
 "PLANNING_HOST_LANDING_CONNECTING_TITLE" = "Connecting...";
-
+"PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_TITLE" = "Share session";
+"PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_CODE_TITLE" = "Session Code";
 
 // MARK: - Planning join
 "PLANNING_JOIN_TITLE" = "Join planning";

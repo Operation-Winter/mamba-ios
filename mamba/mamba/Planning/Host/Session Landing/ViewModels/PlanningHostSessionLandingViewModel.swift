@@ -13,10 +13,11 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     private var service: PlanningHostSessionLandingServiceProtocol
     private var cancellable: AnyCancellable?
     private var availableCards: [PlanningCard]
-    private(set) var sessionCode: String?
+    private(set) var sessionCode: String = ""
     @Published var state: PlanningSessionLandingState = .loading
     @Published var sessionName: String
     @Published var participants = [PlanningParticipant]()
+    @Published var showInitialShareModal: Bool = false
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         self.service = PlanningHostSessionLandingService()
@@ -53,6 +54,12 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         case .noneState(let message):
             self.state = .none
             parseStateMessage(message)
+            
+            if !showInitialShareModal {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showInitialShareModal = true
+                }
+            }
         case .votingState(let message):
             self.state = .voting
             parseStateMessage(message)
@@ -66,6 +73,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     
     private func parseStateMessage(_ message: PlanningSessionStateMessage) {
         self.participants = message.participants
-        self.sessionCode = message.sessionName
+        self.sessionCode = message.sessionCode
     }
 }

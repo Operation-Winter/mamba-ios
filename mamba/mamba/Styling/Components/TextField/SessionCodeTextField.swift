@@ -30,10 +30,10 @@ struct SessionCodeTextField: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(DefaultStyle.shared.systemGray4)
-                        .frame(minHeight: 45)
+                        .frame(minWidth: 38, minHeight: 45)
                 )
                 .multilineTextAlignment(.center)
-                .frame(minHeight: 45)
+                .frame(minWidth: 38, minHeight: 45)
         }
     }
 }

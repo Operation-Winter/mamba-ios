@@ -28,7 +28,7 @@ struct PlanningHostSetupView: View {
                     .padding(leading: 20, top: 15, trailing: 20)
     
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {
-                        // TODO: MAM-29
+                        self.navigateToHostLanding()
                     }
                     .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
                 }
@@ -46,7 +46,8 @@ struct PlanningHostSetupView: View {
     }
     
     private func navigateToHostLanding() {
-        // TODO: MAM-29
+        // TODO: MAM-29 - Validation of input data
+        navigation.present(AnyView(PlanningHostSessionLandingView()))
     }
 }
 

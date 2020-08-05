@@ -20,6 +20,7 @@ struct PlanningHostSessionLandingView: View {
         ScrollView {
             if self.viewModel.state == .error {
                 //TODO: MAM-28
+                Text("Error connecting")
             }
             
             if self.viewModel.state == .loading {
@@ -29,7 +30,7 @@ struct PlanningHostSessionLandingView: View {
                     }
             }
             
-            if self.viewModel.state != .loading {
+            if self.viewModel.state != .loading && self.viewModel.state != .error {
                 if self.viewModel.state == .none {
                     PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
                         self.addTicket()
@@ -42,7 +43,7 @@ struct PlanningHostSessionLandingView: View {
                 }
                 
                 ForEach(self.viewModel.participants) { participant in
-                    PlanningHostParticipantRowView(participant: participant)
+                    PlanningParticipantRowView(participant: participant)
                 }
             }
         }

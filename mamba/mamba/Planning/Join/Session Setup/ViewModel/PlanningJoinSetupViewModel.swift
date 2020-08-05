@@ -29,7 +29,11 @@ class PlanningJoinSetupViewModel: ObservableObject {
         else {
             return nil
         }
-        
         return "\(code1)\(code2)\(code3)\(code4)\(code5)\(code6)"
+    }
+    
+    var inputValid: Bool {
+        !participantName.isEmpty
+            && sessionCode?.count == 6
     }
 }

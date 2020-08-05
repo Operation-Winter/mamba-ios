@@ -15,14 +15,14 @@ protocol PlanningHostSessionLandingServiceProtocol {
 }
 
 class PlanningHostSessionLandingService: PlanningHostSessionLandingServiceProtocol {
-    private var sessionHandler: PlanningHostSessionNetworkHandler
+    private var sessionHandler: PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>
 
     init() {
-        sessionHandler = PlanningHostSessionNetworkHandler()
+        sessionHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
     }
     
     func startSession() -> AnyPublisher<Result<PlanningCommands.HostReceive, NetworkError>, NetworkCloseError> {
-        return sessionHandler.startSession()
+        return sessionHandler.startSession(webSocketURL: URLCenter.shared.planningHostWSURL)
     }
     
     func sendCommand(_ command: PlanningCommands.HostSend) throws {

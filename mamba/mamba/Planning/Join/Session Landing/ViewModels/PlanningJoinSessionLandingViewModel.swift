@@ -1,5 +1,5 @@
 //
-//  PlanningHostSessionLandingViewModel.swift
+//  PlanningJoinSessionLandingView.swift
 //  mamba
 //
 //  Created by Armand Kamffer on 2020/08/04.
@@ -9,20 +9,19 @@
 import Foundation
 import Combine
 
-class PlanningHostSessionLandingViewModel: ObservableObject {
-    private var service: PlanningHostSessionLandingServiceProtocol
+class PlanningJoinSessionLandingViewModel: ObservableObject {
+    private var service: PlanningJoinSessionLandingServiceProtocol
+    private var sessionCode: String
+    private var participantName: String
     private var cancellable: AnyCancellable?
-    private var availableCards: [PlanningCard]
-    private(set) var sessionCode: String = ""
     @Published var state: PlanningSessionLandingState = .loading
-    @Published var sessionName: String
+    @Published var sessionName: String = ""
     @Published var participants = [PlanningParticipant]()
-    @Published var showInitialShareModal: Bool = false
     
-    init(sessionName: String, availableCards: [PlanningCard]) {
-        self.service = PlanningHostSessionLandingService()
-        self.sessionName = sessionName
-        self.availableCards = availableCards
+    init(sessionCode: String, participantName: String) {
+        self.service = PlanningJoinSessionLandingService()
+        self.sessionCode = sessionCode
+        self.participantName = participantName
     }
     
     func startSession() {
@@ -45,33 +44,34 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
                 }
             })
         
-        let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
-        try? service.sendCommand(.startSession(commandMessage))
+        let commandMessage = JoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
+        try? service.sendCommand(.joinSession(commandMessage))
         //TODO: MAM-28 Exception handling
     }
     
-    private func executeCommand(_ command: PlanningCommands.HostReceive) {
+    private func executeCommand(_ command: PlanningCommands.JoinReceive) {
         //TODO: Logging
         print(command)
         switch command {
         case .noneState(let message):
-            self.state = .none
+            state = .none
             parseStateMessage(message)
-            
-            if !showInitialShareModal {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.showInitialShareModal = true
-                }
-            }
         case .votingState(let message):
-            self.state = .voting
+            state = .voting
             parseStateMessage(message)
         case .finishedState(let message):
-            self.state = .finishedVoting
+            state = .finishedVoting
             parseStateMessage(message)
         case .invalidCommand:
-            self.state = .error
             //TODO: MAM-28
+            self.state = .error
+        case .invalidSession:
+            //TODO: MAM-28
+            self.state = .error
+        case .removeParticipant:
+            break
+        case .endSession:
+            break
         }
     }
     

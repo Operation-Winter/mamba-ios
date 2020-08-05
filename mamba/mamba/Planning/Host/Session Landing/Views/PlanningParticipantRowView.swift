@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PlanningHostParticipantRowView: View {
+struct PlanningParticipantRowView: View {
     let participant: PlanningParticipant
     
     var body: some View {
@@ -30,6 +30,6 @@ struct PlanningHostParticipantRowView: View {
 
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningHostParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+        PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
     }
 }

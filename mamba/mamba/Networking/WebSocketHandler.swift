@@ -32,6 +32,7 @@ class WebSocketHandler {
     }
     
     public func ping() {
+        print(webSocketTask.state.rawValue)
         webSocketTask.sendPing { error in
             guard let error = error else { return }
             self.subject.send(completion: .failure(.socketPingFailure(error)))

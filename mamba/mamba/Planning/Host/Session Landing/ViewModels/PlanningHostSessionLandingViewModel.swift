@@ -23,9 +23,16 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         self.service = PlanningHostSessionLandingService()
         self.sessionName = sessionName
         self.availableCards = availableCards
+        startSession()
     }
     
-    func startSession() {
+    func sendStartSessionCommand() {
+        let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
+        try? service.sendCommand(.startSession(commandMessage))
+        //TODO: MAM-28 Exception handling
+    }
+    
+    private func startSession() {
         guard cancellable == nil else { return }
         cancellable = service.startSession()
             .subscribe(on: DispatchQueue.global(qos: .background))
@@ -44,10 +51,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
                     //TODO: MAM-28
                 }
             })
-        
-        let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
-        try? service.sendCommand(.startSession(commandMessage))
-        //TODO: MAM-28 Exception handling
     }
     
     private func executeCommand(_ command: PlanningCommands.HostReceive) {

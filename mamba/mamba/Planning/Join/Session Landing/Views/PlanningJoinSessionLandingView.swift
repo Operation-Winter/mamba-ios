@@ -26,7 +26,7 @@ struct PlanningJoinSessionLandingView: View {
             if self.viewModel.state == .loading {
                 LoadingView(title: "PLANNING_JOIN_LANDING_CONNECTING_TITLE")
                     .onAppear {
-                        self.viewModel.startSession()
+                        self.viewModel.sendJoinSessionCommand()
                     }
             }
             

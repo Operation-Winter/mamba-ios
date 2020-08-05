@@ -26,7 +26,7 @@ struct PlanningHostSessionLandingView: View {
             if self.viewModel.state == .loading {
                 LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
                     .onAppear {
-                        self.viewModel.startSession()
+                        self.viewModel.sendStartSessionCommand()
                     }
             }
             

@@ -22,9 +22,17 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         self.service = PlanningJoinSessionLandingService()
         self.sessionCode = sessionCode
         self.participantName = participantName
+        
+        startSession()
     }
     
-    func startSession() {
+    func sendJoinSessionCommand() {
+        let commandMessage = JoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
+        try? service.sendCommand(.joinSession(commandMessage))
+        //TODO: MAM-28 Exception handling
+    }
+    
+    private func startSession() {
         guard cancellable == nil else { return }
         cancellable = service.startSession()
             .subscribe(on: DispatchQueue.global(qos: .background))
@@ -43,10 +51,6 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
                     //TODO: MAM-28
                 }
             })
-        
-        let commandMessage = JoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
-        try? service.sendCommand(.joinSession(commandMessage))
-        //TODO: MAM-28 Exception handling
     }
     
     private func executeCommand(_ command: PlanningCommands.JoinReceive) {

@@ -42,9 +42,12 @@ struct PlanningHostSessionLandingView: View {
                     })
                 }
                 
-                ForEach(self.viewModel.participants) { participant in
-                    PlanningParticipantRowView(participant: participant)
+                VStack(alignment: .center, spacing: 10) {
+                    ForEach(self.viewModel.participants) { participant in
+                        PlanningParticipantRowView(participant: participant)
+                    }
                 }
+                .padding(leading: 15, top: 5, bottom: 20, trailing: 15)
             }
         }
     }

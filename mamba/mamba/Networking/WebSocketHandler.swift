@@ -20,19 +20,22 @@ class WebSocketHandler {
     
     public func start() {
         webSocketTask.resume()
-        
+        receiveMessage()
+    }
+    
+    public func receiveMessage() {
         webSocketTask.receive { result in
             switch result {
             case .failure(let error):
                 self.subject.send(completion: .failure(.socketReceiveFailure(error)))
             case .success(let message):
                 self.subject.send(message)
+                self.receiveMessage()
             }
         }
     }
     
     public func ping() {
-        print(webSocketTask.state.rawValue)
         webSocketTask.sendPing { error in
             guard let error = error else { return }
             self.subject.send(completion: .failure(.socketPingFailure(error)))

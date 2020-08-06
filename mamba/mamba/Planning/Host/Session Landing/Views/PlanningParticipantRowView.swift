@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct PlanningHostParticipantRowView: View {
+struct PlanningParticipantRowView: View {
     let participant: PlanningParticipant
     
     var body: some View {
-        HCardView {
+        HStack {
             Image(systemName: "person.crop.circle.fill")
                 .resizable()
                 .frame(width: 26, height: 26)
@@ -25,11 +25,21 @@ struct PlanningHostParticipantRowView: View {
             
             Spacer()
         }
+        .background(DefaultStyle.shared.systemGray5)
+        .cornerRadius(10)
     }
 }
 
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningHostParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+        Group {
+            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

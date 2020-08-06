@@ -47,7 +47,6 @@ struct PlanningHostSetupView: View {
     }
     
     private func navigateToHostLanding() {
-        // TODO: MAM-29 - Validation of input data
         let planningCards: [PlanningCard] = self.viewModel.availableCards.compactMap {
             guard $0.selected else { return nil }
             return $0.card

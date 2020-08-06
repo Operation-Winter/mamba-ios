@@ -39,8 +39,9 @@ struct PlanningJoinSetupView: View {
                         .padding(leading: 20, top: 15, trailing: 20)
                     
                     RoundedButton(titleKey: "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE") {
-                        // TODO: MAM-33
+                        self.navigateToJoinLanding()
                     }
+                    .disabled(!self.viewModel.inputValid)
                     .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
                 }
                 
@@ -57,7 +58,9 @@ struct PlanningJoinSetupView: View {
     }
     
     private func navigateToJoinLanding() {
-        // TODO: MAM-33
+        guard let sessionCode = viewModel.sessionCode else { return }
+        let joinLandingView = PlanningJoinSessionLandingView(sessionCode: sessionCode, participantName: viewModel.participantName)
+        navigation.present(AnyView(joinLandingView))
     }
 }
 

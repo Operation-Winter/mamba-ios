@@ -20,13 +20,17 @@ class WebSocketHandler {
     
     public func start() {
         webSocketTask.resume()
-        
+        receiveMessage()
+    }
+    
+    public func receiveMessage() {
         webSocketTask.receive { result in
             switch result {
             case .failure(let error):
                 self.subject.send(completion: .failure(.socketReceiveFailure(error)))
             case .success(let message):
                 self.subject.send(message)
+                self.receiveMessage()
             }
         }
     }

@@ -34,7 +34,6 @@ struct HCardView_Previews: PreviewProvider {
             }
             .environment(\.colorScheme, .light)
             .previewDisplayName("Light mode")
-            .padding()
             
             HCardView {
                 Text("Card")
@@ -42,7 +41,6 @@ struct HCardView_Previews: PreviewProvider {
             }
             .environment(\.colorScheme, .dark)
             .previewDisplayName("Dark mode")
-            .padding()
             .background(Color.black)
         }.previewLayout(.sizeThatFits)
     }

@@ -53,7 +53,11 @@ struct PlanningHostSessionLandingView: View {
     }
     
     private func addTicket() {
-        //TODO: MAM-31
+        let addTicketView = PlanningAddTicketView(showSheet: $navigation.showSheet) { identifier, description in
+            self.viewModel.sendAddTicketCommand(identifier: identifier, description: description)
+        }
+        navigation.modal(AnyView(addTicketView))
+        navigation.showSheet = true
     }
     
     private func showShareModal() {

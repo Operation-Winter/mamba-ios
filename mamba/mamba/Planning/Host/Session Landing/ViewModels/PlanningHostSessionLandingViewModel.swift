@@ -32,6 +32,12 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         //TODO: MAM-28 Exception handling
     }
     
+    func sendAddTicketCommand(identifier: String, description: String) {
+        let commandMessage = AddTicketMessage(identifier: identifier, description: description)
+        try? service.sendCommand(.addTicket(commandMessage))
+        //TODO: MAM-28 Exception handling
+    }
+    
     private func startSession() {
         guard cancellable == nil else { return }
         cancellable = service.startSession()

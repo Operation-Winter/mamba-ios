@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-public class PlanningSessionNetworkHandler<Send: Codable, Receive: Codable> {
+public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> {
     private var webSocket: WebSocketHandler?
     
     public func startSession(webSocketURL: URL) -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
@@ -37,7 +37,7 @@ public class PlanningSessionNetworkHandler<Send: Codable, Receive: Codable> {
         }
     }
     
-    private func createWebSocketPublisher<Command>(_ webSocketSubject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> where Command : Codable {
+    private func createWebSocketPublisher<Command: Decodable>(_ webSocketSubject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> {
         return webSocketSubject
             .compactMap { self.parseMessage($0) }
             .map { self.decodeCommand($0) }
@@ -52,7 +52,7 @@ public class PlanningSessionNetworkHandler<Send: Codable, Receive: Codable> {
         }
     }
     
-    private func decodeCommand<Command>(_ data: Data) -> Result<Command, NetworkError> where Command : Codable {
+    private func decodeCommand<Command: Decodable>(_ data: Data) -> Result<Command, NetworkError> {
         do {
             //TODO: Use os_log
             let jsonString = String(decoding: data, as: UTF8.self)

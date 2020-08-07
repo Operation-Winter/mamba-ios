@@ -35,18 +35,6 @@ public extension PlanningCommands.HostReceive {
         }
     }
     
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.rawValue, forKey: .type)
-        
-        switch self {
-        case .noneState(let message): try container.encode(message, forKey: .message)
-        case .votingState(let message): try container.encode(message, forKey: .message)
-        case .finishedState(let message): try container.encode(message, forKey: .message)
-        default: try container.encodeNil(forKey: .message)
-        }
-    }
-    
     var rawValue: String {
         switch self {
         case .noneState: return PlanningCommands.HostKey.noneState.rawValue

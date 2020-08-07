@@ -26,9 +26,9 @@ public enum PlanningCommands {
         case invalidCommand = "INVALID_COMMAND"
     }
 
-    public enum HostSend: Codable {
+    public enum HostSend: Encodable {
         case startSession(StartSessionMessage)
-        case addTicket
+        case addTicket(AddTicketMessage)
         case skipVote
         case removeParticipant
         case endSession
@@ -36,7 +36,7 @@ public enum PlanningCommands {
         case reconnect
     }
     
-    public enum HostReceive: Codable {
+    public enum HostReceive: Decodable {
         case noneState(PlanningSessionStateMessage)
         case votingState(PlanningSessionStateMessage)
         case finishedState(PlanningSessionStateMessage)
@@ -60,14 +60,14 @@ public enum PlanningCommands {
         case endSession = "END_SESSION"
     }
     
-    public enum JoinSend: Codable {
+    public enum JoinSend: Encodable {
         case joinSession(JoinSessionMessage)
         case vote
         case leaveSession
         case reconnect
     }
     
-    public enum JoinReceive: Codable {
+    public enum JoinReceive: Decodable {
         case noneState(PlanningSessionStateMessage)
         case votingState(PlanningSessionStateMessage)
         case finishedState(PlanningSessionStateMessage)

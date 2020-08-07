@@ -1,5 +1,5 @@
 //
-//  AddTicketMessage.swift
+//  PlanningLandingError.swift
 //  mamba
 //
 //  Created by Armand Kamffer on 2020/08/07.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AddTicketMessage: Codable {
-    let identifier: String
+struct PlanningLandingError {
+    let code: String
     let description: String
 }

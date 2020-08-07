@@ -18,39 +18,64 @@ struct PlanningJoinSessionLandingView: View {
     
     var body: some View {
         ScrollView {
-            if self.viewModel.state == .error {
-                //TODO: MAM-28
-                Text("Error connecting")
+            stateViewBuilder()
+        }
+    }
+    
+    private func stateViewBuilder() -> AnyView {
+        switch viewModel.state {
+        case .error(let planningError):
+            return AnyView(errorCard(planningError: planningError))
+        case .loading:
+            return AnyView(loadingView)
+        case .none:
+            return AnyView(noneStateView)
+        case .voting:
+            return AnyView(votingStateView)
+        case .finishedVoting:
+            return AnyView(EmptyView())
+        }
+    }
+    
+    private func errorCard(planningError: PlanningLandingError) -> some View {
+        PlanningErrorCardView(error: PlanningLandingError(code: planningError.code, description: planningError.description), buttonTitle: "PLANNING_ERROR_BUTTON_BACK_TO_LANDING_TITLE") {
+            self.navigation.dismiss()
+        }
+    }
+    
+    private var loadingView: some View {
+        LoadingView(title: "PLANNING_JOIN_LANDING_CONNECTING_TITLE")
+            .onAppear {
+                self.viewModel.sendJoinSessionCommand()
             }
+    }
+    
+    private var noneStateView: some View {
+        Group {
+            PlanningJoinNoneStateHeaderView(title: self.viewModel.sessionName)
+            participantsList
+        }
+    }
+    
+    private var votingStateView: some View {
+        Group {
+            PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                              ticketIdentifier: self.viewModel.ticket?.identifier,
+                                              ticketDescription: self.viewModel.ticket?.description)
             
-            if self.viewModel.state == .loading {
-                LoadingView(title: "PLANNING_JOIN_LANDING_CONNECTING_TITLE")
-                    .onAppear {
-                        self.viewModel.sendJoinSessionCommand()
-                    }
-            }
+            PlanningJoinVotingCardView(selectedCard: self.$viewModel.selectedCard, availableCards: self.viewModel.availableCards)
             
-            if self.viewModel.state != .loading && self.viewModel.state != .error {
-                if self.viewModel.state == .none {
-                    PlanningJoinNoneStateHeaderView(title: self.viewModel.sessionName)
-                }
-                
-                if self.viewModel.state == .voting {
-                    PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
-                                                      ticketIdentifier: self.viewModel.ticket?.identifier,
-                                                      ticketDescription: self.viewModel.ticket?.description)
-                    
-                    PlanningJoinVotingCardView(selectedCard: self.$viewModel.selectedCard, availableCards: self.viewModel.availableCards)
-                }
-                
-                VStack(alignment: .center, spacing: 10) {
-                    ForEach(self.viewModel.participants) { participant in
-                        PlanningParticipantRowView(participant: participant)
-                    }
-                }
-                .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
+            participantsList
+        }
+    }
+
+    private var participantsList: some View {
+        VStack(alignment: .center, spacing: 10) {
+            ForEach(self.viewModel.participants) { participant in
+                PlanningParticipantRowView(participant: participant)
             }
         }
+        .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
     }
 }
 

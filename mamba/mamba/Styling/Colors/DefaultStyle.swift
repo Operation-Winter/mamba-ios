@@ -38,26 +38,30 @@ class DefaultStyle {
     }
 
     var systemGray: Color {
-        return Color(UIColor.systemGray)
+        Color(UIColor.systemGray)
     }
     
     var systemGray2: Color {
-        return Color(UIColor.systemGray2)
+        Color(UIColor.systemGray2)
     }
     
     var systemGray3: Color {
-        return Color(UIColor.systemGray3)
+        Color(UIColor.systemGray3)
     }
     
     var systemGray4: Color {
-        return Color(UIColor.systemGray4)
+        Color(UIColor.systemGray4)
     }
     
     var systemGray5: Color {
-        return Color(UIColor.systemGray5)
+        Color(UIColor.systemGray5)
     }
     
     var systemGray6: Color {
-        return Color(UIColor.systemGray6)
+        Color(UIColor.systemGray6)
+    }
+    
+    var errorRed: Color {
+        .red
     }
 }

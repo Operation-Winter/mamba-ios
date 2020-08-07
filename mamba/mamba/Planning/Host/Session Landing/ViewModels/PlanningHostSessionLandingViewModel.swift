@@ -28,13 +28,13 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     }
     
     func sendStartSessionCommand() {
-        let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
+        let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
         try? service.sendCommand(.startSession(commandMessage))
         //TODO: MAM-28 Exception handling
     }
     
     func sendAddTicketCommand(identifier: String, description: String) {
-        let commandMessage = AddTicketMessage(identifier: identifier, description: description)
+        let commandMessage = PlanningAddTicketMessage(identifier: identifier, description: description)
         try? service.sendCommand(.addTicket(commandMessage))
         //TODO: MAM-28 Exception handling
     }
@@ -45,17 +45,21 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { networkError in
-                print(networkError)
-                self.state = .error
-                //TODO: MAM-28
+                switch networkError {
+                case .finished:
+                    //TODO: Socket closed clientside, dismiss view?
+                    break
+                case .failure(let error):
+                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
+                    self.state = .error(planningError)
+                }
             }, receiveValue: { result in
                 switch result {
                 case .success(let command):
                     self.executeCommand(command)
                 case .failure(let error):
-                    print(error)
-                    self.state = .error
-                    //TODO: MAM-28
+                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
+                    self.state = .error(planningError)
                 }
             })
     }
@@ -79,9 +83,8 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         case .finishedState(let message):
             self.state = .finishedVoting
             parseStateMessage(message)
-        case .invalidCommand:
-            self.state = .error
-            //TODO: MAM-28
+        case .invalidCommand(let message):
+            self.state = .error(PlanningLandingError(code: message.code, description: message.description))
         }
     }
     

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class PlanningParticipant: Codable, Identifiable {
-    private(set) var id: String
-    private(set) var name: String
+public class PlanningParticipant: Codable, Identifiable {
+    public private(set) var id: String
+    public private(set) var name: String
     
-    init(id: String, name: String) {
+    public init(id: String, name: String) {
         self.id = id
         self.name = name
     }

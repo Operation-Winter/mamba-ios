@@ -30,7 +30,7 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
     }
     
     func sendJoinSessionCommand() {
-        let commandMessage = JoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
+        let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
         try? service.sendCommand(.joinSession(commandMessage))
         //TODO: MAM-28 Exception handling
     }
@@ -41,17 +41,21 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { networkError in
-                print(networkError)
-                self.state = .error
-                //TODO: MAM-28
+                switch networkError {
+                case .finished:
+                    //TODO: Socket closed clientside, dismiss view?
+                    break
+                case .failure(let error):
+                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
+                    self.state = .error(planningError)
+                }
             }, receiveValue: { result in
                 switch result {
                 case .success(let command):
                     self.executeCommand(command)
                 case .failure(let error):
-                    print(error)
-                    self.state = .error
-                    //TODO: MAM-28
+                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
+                    self.state = .error(planningError)
                 }
             })
     }
@@ -69,12 +73,12 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         case .finishedState(let message):
             state = .finishedVoting
             parseStateMessage(message)
-        case .invalidCommand:
-            //TODO: MAM-28
-            self.state = .error
+        case .invalidCommand(let message):
+            self.state = .error(PlanningLandingError(code: message.code, description: message.description))
         case .invalidSession:
-            //TODO: MAM-28
-            self.state = .error
+            let errorCode = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_CODE", comment: "0001")
+            let errorDescription = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_DESCRIPTION", comment: "Invalid session error description")
+            self.state = .error(PlanningLandingError(code: errorCode, description: errorDescription))
         case .removeParticipant:
             break
         case .endSession:

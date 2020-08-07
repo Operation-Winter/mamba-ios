@@ -29,14 +29,22 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     
     func sendStartSessionCommand() {
         let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
-        try? service.sendCommand(.startSession(commandMessage))
-        //TODO: MAM-28 Exception handling
+        sendCommand(.startSession(commandMessage))
     }
     
     func sendAddTicketCommand(identifier: String, description: String) {
         let commandMessage = PlanningAddTicketMessage(identifier: identifier, description: description)
-        try? service.sendCommand(.addTicket(commandMessage))
-        //TODO: MAM-28 Exception handling
+        sendCommand(.addTicket(commandMessage))
+    }
+    
+    func sendCommand(_ command: PlanningCommands.HostSend) {
+        do {
+            try service.sendCommand(command)
+        } catch let error as EncodingError {
+            state = .error(PlanningLandingError(code: error.errorCode, description: error.errorCustomDescription))
+        } catch {
+            state = .error(PlanningLandingError(code: "3105", description: error.localizedDescription))
+        }
     }
     
     private func startSession() {

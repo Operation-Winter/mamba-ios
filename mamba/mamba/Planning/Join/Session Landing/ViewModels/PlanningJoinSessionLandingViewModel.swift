@@ -31,8 +31,17 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
     
     func sendJoinSessionCommand() {
         let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
-        try? service.sendCommand(.joinSession(commandMessage))
-        //TODO: MAM-28 Exception handling
+        sendCommand(.joinSession(commandMessage))
+    }
+    
+    func sendCommand(_ command: PlanningCommands.JoinSend) {
+        do {
+            try service.sendCommand(command)
+        } catch let error as EncodingError {
+            state = .error(PlanningLandingError(code: error.errorCode, description: error.errorCustomDescription))
+        } catch {
+            state = .error(PlanningLandingError(code: "3105", description: error.localizedDescription))
+        }
     }
     
     private func startSession() {

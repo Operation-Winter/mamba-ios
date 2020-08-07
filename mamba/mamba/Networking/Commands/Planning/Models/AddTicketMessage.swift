@@ -8,12 +8,7 @@
 
 import Foundation
 
-public class AddTicketMessage: Codable {
+public struct AddTicketMessage: Codable {
     let identifier: String
     let description: String
-    
-    public init(identifier: String, description: String) {
-        self.identifier = identifier
-        self.description = description
-    }
 }

@@ -18,6 +18,7 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     @Published var sessionName: String
     @Published var participants = [PlanningParticipant]()
     @Published var showInitialShareModal: Bool = false
+    @Published var ticket: PlanningTicket?
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         self.service = PlanningHostSessionLandingService()
@@ -88,5 +89,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         self.participants = message.participants
         self.sessionCode = message.sessionCode
         self.sessionName = message.sessionName
+        self.ticket = message.ticket
     }
 }

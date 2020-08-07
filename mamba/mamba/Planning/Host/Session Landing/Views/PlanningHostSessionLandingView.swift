@@ -42,6 +42,12 @@ struct PlanningHostSessionLandingView: View {
                     })
                 }
                 
+                if self.viewModel.state == .voting {
+                    PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                                      ticketIdentifier: self.viewModel.ticket?.identifier,
+                                                      ticketDescription: self.viewModel.ticket?.description)
+                }
+                
                 VStack(alignment: .center, spacing: 10) {
                     ForEach(self.viewModel.participants) { participant in
                         PlanningParticipantRowView(participant: participant)

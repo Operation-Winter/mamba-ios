@@ -36,3 +36,10 @@
 "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE" = "JOIN SESSION";
 "PLANNING_JOIN_LANDING_NONE_STATE_DESCRIPTION" = "This is a safe space.\nWait for a ticket to be added.";
 "PLANNING_JOIN_LANDING_CONNECTING_TITLE" = "Joining session...";
+
+
+// MARK: Planning common
+"PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
+"PLANNING_TICKET_DESCRIPTION_TITLE" = "Ticket description";
+"PLANNING_TICKET_NO_IDENTIFIER_DESCRIPTION" = "No ticket identifier provided.";
+"PLANNING_TICKET_NO_DESCRIPTION_DESCRIPTION" = "No ticket description provided.";

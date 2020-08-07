@@ -14,9 +14,12 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
     private var sessionCode: String
     private var participantName: String
     private var cancellable: AnyCancellable?
+    private(set) var availableCards: [PlanningCard] = []
     @Published var state: PlanningSessionLandingState = .loading
     @Published var sessionName: String = ""
     @Published var participants = [PlanningParticipant]()
+    @Published var ticket: PlanningTicket?
+    @Published var selectedCard: PlanningCard?
     
     init(sessionCode: String, participantName: String) {
         self.service = PlanningJoinSessionLandingService()
@@ -83,5 +86,7 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         self.participants = message.participants
         self.sessionCode = message.sessionCode
         self.sessionName = message.sessionName
+        self.ticket = message.ticket
+        self.availableCards = message.availableCards
     }
 }

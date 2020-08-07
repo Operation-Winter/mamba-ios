@@ -57,6 +57,7 @@
 		269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */; };
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
 		26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E11B3524D429FF00C50F43 /* IntegerTextField.swift */; };
+		26E2F56424DD5B31008B2B4B /* PlanningJoinVotingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */; };
 		26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A4E24D9613B007CA2B8 /* LoadingView.swift */; };
 		26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */; };
 		26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */; };
@@ -161,6 +162,7 @@
 		269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
 		26E11B3524D429FF00C50F43 /* IntegerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextField.swift; sourceTree = "<group>"; };
+		26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinVotingCardView.swift; sourceTree = "<group>"; };
 		26F98A4E24D9613B007CA2B8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionStartShareView.swift; sourceTree = "<group>"; };
 		26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeText.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 			children = (
 				26F98A5C24D995A8007CA2B8 /* PlanningJoinSessionLandingView.swift */,
 				26F98A6024D996CC007CA2B8 /* PlanningJoinNoneStateHeaderView.swift */,
+				26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
+				26E2F56424DD5B31008B2B4B /* PlanningJoinVotingCardView.swift in Sources */,
 				26F98A7024DD4E6B007CA2B8 /* PlanningVotingStateTicketCardView.swift in Sources */,
 				ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */,
 				269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */,

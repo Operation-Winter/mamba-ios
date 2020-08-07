@@ -53,7 +53,7 @@ struct PlanningHostSessionLandingView: View {
                         PlanningParticipantRowView(participant: participant)
                     }
                 }
-                .padding(leading: 15, top: 5, bottom: 20, trailing: 15)
+                .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
             }
         }
     }

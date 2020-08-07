@@ -18,6 +18,7 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     @Published var sessionName: String
     @Published var participants = [PlanningParticipant]()
     @Published var showInitialShareModal: Bool = false
+    @Published var ticket: PlanningTicket?
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         self.service = PlanningHostSessionLandingService()
@@ -29,6 +30,12 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     func sendStartSessionCommand() {
         let commandMessage = StartSessionMessage(sessionName: sessionName, availableCards: availableCards)
         try? service.sendCommand(.startSession(commandMessage))
+        //TODO: MAM-28 Exception handling
+    }
+    
+    func sendAddTicketCommand(identifier: String, description: String) {
+        let commandMessage = AddTicketMessage(identifier: identifier, description: description)
+        try? service.sendCommand(.addTicket(commandMessage))
         //TODO: MAM-28 Exception handling
     }
     
@@ -82,5 +89,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         self.participants = message.participants
         self.sessionCode = message.sessionCode
         self.sessionName = message.sessionName
+        self.ticket = message.ticket
     }
 }

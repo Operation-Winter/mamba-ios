@@ -1,5 +1,5 @@
 //
-//  JoinSessionCommand.swift
+//  JoinSessionMessage.swift
 //  mamba
 //
 //  Created by Armand Kamffer on 2020/07/31.

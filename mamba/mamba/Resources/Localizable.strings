@@ -4,6 +4,7 @@
 "SOME" = "Some";
 "NONE" = "None";
 "DONE" = "Done";
+"ADD" = "Add";
 
 // MARK: - Landing screen
 "LANDING_PLANNING_HOST" = "HOST PLANNING";
@@ -23,6 +24,9 @@
 "PLANNING_HOST_LANDING_CONNECTING_TITLE" = "Starting session...";
 "PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_TITLE" = "Share session";
 "PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_CODE_TITLE" = "Session Code";
+"PLANNING_HOST_LANDING_ADD_TICKET_MODAL_TITLE" = "New ticket";
+"PLANNING_HOST_ADD_TICKET_IDENTIFIER_PLACEHOLDER" = "Enter ticket identifier...";
+"PLANNING_HOST_ADD_TICKET_DESCRIPTION_PLACEHOLDER" = "Enter ticket description...";
 
 // MARK: - Planning join
 "PLANNING_JOIN_TITLE" = "Join planning";
@@ -32,3 +36,10 @@
 "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE" = "JOIN SESSION";
 "PLANNING_JOIN_LANDING_NONE_STATE_DESCRIPTION" = "This is a safe space.\nWait for a ticket to be added.";
 "PLANNING_JOIN_LANDING_CONNECTING_TITLE" = "Joining session...";
+
+
+// MARK: Planning common
+"PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
+"PLANNING_TICKET_DESCRIPTION_TITLE" = "Ticket description";
+"PLANNING_TICKET_NO_IDENTIFIER_DESCRIPTION" = "No ticket identifier provided.";
+"PLANNING_TICKET_NO_DESCRIPTION_DESCRIPTION" = "No ticket description provided.";

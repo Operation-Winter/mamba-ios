@@ -13,4 +13,5 @@ public struct PlanningSessionStateMessage: Codable {
     let sessionName: String
     let availableCards: [PlanningCard]
     let participants: [PlanningParticipant]
+    let ticket: PlanningTicket?
 }

@@ -35,12 +35,20 @@ struct PlanningJoinSessionLandingView: View {
                     PlanningJoinNoneStateHeaderView(title: self.viewModel.sessionName)
                 }
                 
+                if self.viewModel.state == .voting {
+                    PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                                      ticketIdentifier: self.viewModel.ticket?.identifier,
+                                                      ticketDescription: self.viewModel.ticket?.description)
+                    
+                    PlanningJoinVotingCardView(selectedCard: self.$viewModel.selectedCard, availableCards: self.viewModel.availableCards)
+                }
+                
                 VStack(alignment: .center, spacing: 10) {
                     ForEach(self.viewModel.participants) { participant in
                         PlanningParticipantRowView(participant: participant)
                     }
                 }
-                .padding(leading: 15, top: 5, bottom: 20, trailing: 15)
+                .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
             }
         }
     }

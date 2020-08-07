@@ -21,7 +21,7 @@ struct VCardView<Content: View>: View {
         }
         .background(DefaultStyle.shared.systemGray5)
         .cornerRadius(10)
-        .padding(15)
+        .padding(leading: 15, top: 15, trailing: 15)
     }
 }
 

@@ -42,18 +42,28 @@ struct PlanningHostSessionLandingView: View {
                     })
                 }
                 
+                if self.viewModel.state == .voting {
+                    PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                                      ticketIdentifier: self.viewModel.ticket?.identifier,
+                                                      ticketDescription: self.viewModel.ticket?.description)
+                }
+                
                 VStack(alignment: .center, spacing: 10) {
                     ForEach(self.viewModel.participants) { participant in
                         PlanningParticipantRowView(participant: participant)
                     }
                 }
-                .padding(leading: 15, top: 5, bottom: 20, trailing: 15)
+                .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
             }
         }
     }
     
     private func addTicket() {
-        //TODO: MAM-31
+        let addTicketView = PlanningAddTicketView(showSheet: $navigation.showSheet) { identifier, description in
+            self.viewModel.sendAddTicketCommand(identifier: identifier, description: description)
+        }
+        navigation.modal(AnyView(addTicketView))
+        navigation.showSheet = true
     }
     
     private func showShareModal() {

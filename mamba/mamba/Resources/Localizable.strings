@@ -43,3 +43,10 @@
 "PLANNING_TICKET_DESCRIPTION_TITLE" = "Ticket description";
 "PLANNING_TICKET_NO_IDENTIFIER_DESCRIPTION" = "No ticket identifier provided.";
 "PLANNING_TICKET_NO_DESCRIPTION_DESCRIPTION" = "No ticket description provided.";
+"PLANNING_ERROR_BUTTON_BACK_TO_LANDING_TITLE" = "BACK TO LANDING";
+"PLANNING_ERROR_DESCRIPTION" = "The snakes are all hissing in unison!\nSomething went wrong!";
+
+
+// MARK: - Planning errors
+"PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";
+"PLANNING_INVALID_SESSION_ERROR_DESCRIPTION" = "The specified session code doesn't exist or is no longer available.";

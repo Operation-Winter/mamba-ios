@@ -29,7 +29,8 @@ public extension PlanningCommands.HostReceive {
             let model = try container.decode(PlanningSessionStateMessage.self, forKey: .message)
             self = .finishedState(model)
         case PlanningCommands.HostKey.invalidCommand.rawValue:
-            self = .invalidCommand
+            let model = try container.decode(PlanningInvalidCommandMessage.self, forKey: .message)
+            self = .invalidCommand(model)
         default:
             throw DecodingError.keyNotFound(CodingKeys.message, DecodingError.Context(codingPath: [], debugDescription: "Invalid key: \(type)"))
         }

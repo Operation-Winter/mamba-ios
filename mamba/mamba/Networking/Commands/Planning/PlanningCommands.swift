@@ -27,8 +27,8 @@ public enum PlanningCommands {
     }
 
     public enum HostSend: Encodable {
-        case startSession(StartSessionMessage)
-        case addTicket(AddTicketMessage)
+        case startSession(PlanningStartSessionMessage)
+        case addTicket(PlanningAddTicketMessage)
         case skipVote
         case removeParticipant
         case endSession
@@ -40,7 +40,7 @@ public enum PlanningCommands {
         case noneState(PlanningSessionStateMessage)
         case votingState(PlanningSessionStateMessage)
         case finishedState(PlanningSessionStateMessage)
-        case invalidCommand
+        case invalidCommand(PlanningInvalidCommandMessage)
     }
     
     public enum JoinKey: String {
@@ -61,7 +61,7 @@ public enum PlanningCommands {
     }
     
     public enum JoinSend: Encodable {
-        case joinSession(JoinSessionMessage)
+        case joinSession(PlanningJoinSessionMessage)
         case vote
         case leaveSession
         case reconnect
@@ -71,7 +71,7 @@ public enum PlanningCommands {
         case noneState(PlanningSessionStateMessage)
         case votingState(PlanningSessionStateMessage)
         case finishedState(PlanningSessionStateMessage)
-        case invalidCommand
+        case invalidCommand(PlanningInvalidCommandMessage)
         case invalidSession
         case removeParticipant
         case endSession

@@ -29,7 +29,8 @@ public extension PlanningCommands.JoinReceive {
             let model = try container.decode(PlanningSessionStateMessage.self, forKey: .message)
             self = .finishedState(model)
         case PlanningCommands.JoinKey.invalidCommand.rawValue:
-            self = .invalidCommand
+            let model = try container.decode(PlanningInvalidCommandMessage.self, forKey: .message)
+            self = .invalidCommand(model)
         case PlanningCommands.JoinKey.invalidSession.rawValue:
             self = .invalidSession
         case PlanningCommands.JoinKey.removeParticipant.rawValue:

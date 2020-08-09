@@ -18,44 +18,70 @@ struct PlanningHostSessionLandingView: View {
     
     var body: some View {
         ScrollView {
-            if self.viewModel.state == .error {
-                //TODO: MAM-28
-                Text("Error connecting")
+            stateViewBuilder()
+        }
+    }
+    
+    private func stateViewBuilder() -> AnyView {
+        switch viewModel.state {
+        case .error(let planningError):
+            return AnyView(errorCard(planningError: planningError))
+        case .loading:
+            return AnyView(loadingView)
+        case .none:
+            return AnyView(noneStateView)
+        case .voting:
+            return AnyView(votingStateView)
+        case .finishedVoting:
+            return AnyView(EmptyView())
+        }
+    }
+    
+    private func errorCard(planningError: PlanningLandingError) -> some View {
+        PlanningErrorCardView(error: PlanningLandingError(code: planningError.code, description: planningError.description), buttonTitle: "PLANNING_ERROR_BUTTON_BACK_TO_LANDING_TITLE") {
+            self.navigation.dismiss()
+        }
+    }
+    
+    private var loadingView: some View {
+        LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
+            .onAppear {
+                self.viewModel.sendStartSessionCommand()
             }
-            
-            if self.viewModel.state == .loading {
-                LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
-                    .onAppear {
-                        self.viewModel.sendStartSessionCommand()
-                    }
+    }
+    
+    private var noneStateView: some View {
+        Group {
+            PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
+                self.addTicket()
             }
+            .onReceive(self.viewModel.$showInitialShareModal, perform: { shouldShow in
+                if shouldShow {
+                    self.showShareModal()
+                }
+            })
             
-            if self.viewModel.state != .loading && self.viewModel.state != .error {
-                if self.viewModel.state == .none {
-                    PlanningHostNoneStateCardView(title: self.viewModel.sessionName) {
-                        self.addTicket()
-                    }
-                    .onReceive(self.viewModel.$showInitialShareModal, perform: { shouldShow in
-                        if shouldShow {
-                            self.showShareModal()
-                        }
-                    })
-                }
-                
-                if self.viewModel.state == .voting {
-                    PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
-                                                      ticketIdentifier: self.viewModel.ticket?.identifier,
-                                                      ticketDescription: self.viewModel.ticket?.description)
-                }
-                
-                VStack(alignment: .center, spacing: 10) {
-                    ForEach(self.viewModel.participants) { participant in
-                        PlanningParticipantRowView(participant: participant)
-                    }
-                }
-                .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
+            participantsList
+        }
+    }
+    
+    private var votingStateView: some View {
+        Group {
+            PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                              ticketIdentifier: self.viewModel.ticket?.identifier,
+                                              ticketDescription: self.viewModel.ticket?.description)
+            
+            participantsList
+        }
+    }
+    
+    private var participantsList: some View {
+        VStack(alignment: .center, spacing: 10) {
+            ForEach(self.viewModel.participants) { participant in
+                PlanningParticipantRowView(participant: participant)
             }
         }
+        .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
     }
     
     private func addTicket() {

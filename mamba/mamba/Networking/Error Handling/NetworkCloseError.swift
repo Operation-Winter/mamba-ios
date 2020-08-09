@@ -12,4 +12,20 @@ public enum NetworkCloseError: Error {
     case socketReceiveFailure(Error)
     case socketPingFailure(Error)
     case socketSendFailure(Error)
+    
+    public var errorCode: String {
+        switch self {
+        case .socketReceiveFailure(_): return "3000"
+        case .socketPingFailure(_): return "3001"
+        case .socketSendFailure(_): return "3002"
+        }
+    }
+    
+    public var errorDescription: String {
+        switch self {
+        case .socketReceiveFailure(let error): return error.localizedDescription
+        case .socketPingFailure(let error): return error.localizedDescription
+        case .socketSendFailure(let error): return error.localizedDescription
+        }
+    }
 }

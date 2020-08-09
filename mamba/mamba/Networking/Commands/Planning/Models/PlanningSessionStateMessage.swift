@@ -9,9 +9,9 @@
 import Foundation
 
 public struct PlanningSessionStateMessage: Codable {
-    let sessionCode: String
-    let sessionName: String
-    let availableCards: [PlanningCard]
-    let participants: [PlanningParticipant]
-    let ticket: PlanningTicket?
+    public let sessionCode: String
+    public let sessionName: String
+    public let availableCards: [PlanningCard]
+    public let participants: [PlanningParticipant]
+    public let ticket: PlanningTicket?
 }

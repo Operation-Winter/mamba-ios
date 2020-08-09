@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PlanningCard: String, CaseIterable, Codable {
+public enum PlanningCard: String, CaseIterable, Codable {
     case zero = "ZERO"
     case one = "ONE"
     case two = "TWO"
@@ -22,7 +22,7 @@ enum PlanningCard: String, CaseIterable, Codable {
     case question = "QUESTION"
     case coffee = "COFFEE"
     
-    var imageName: String {
+    public var imageName: String {
         switch self {
         case .zero: return "PlanningCardZero"
         case .one: return "PlanningCardOne"

@@ -13,7 +13,7 @@ class WebSocketHandler {
     public var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
     private var webSocketTask: URLSessionWebSocketTask
     
-    init(url: URL) {
+    public init(url: URL) {
         let urlSession = URLSession(configuration: .ephemeral)
         self.webSocketTask = urlSession.webSocketTask(with: url)
     }

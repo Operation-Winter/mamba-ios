@@ -25,4 +25,26 @@ public enum NetworkError: Error {
         @unknown default: return .unknownDecodingError(error)
         }
     }
+    
+    public var errorCode: String {
+        switch self {
+        case .decodingTypeMistmatch(_): return "3100"
+        case .decodingValueNotFound(_): return "3101"
+        case .decodingKeyNotFound(_): return "3102"
+        case .decodingDataCorrupted(_): return "3103"
+        case .unknownDecodingError(_): return "3104"
+        case .unknownError(_): return "3105"
+        }
+    }
+    
+    public var errorDescription: String {
+        switch self {
+        case .decodingTypeMistmatch(let description): return description
+        case .decodingValueNotFound(let description): return description
+        case .decodingKeyNotFound(let description): return description
+        case .decodingDataCorrupted(let description): return description
+        case .unknownDecodingError(let error): return error.localizedDescription
+        case .unknownError(let error): return error.localizedDescription
+        }
+    }
 }

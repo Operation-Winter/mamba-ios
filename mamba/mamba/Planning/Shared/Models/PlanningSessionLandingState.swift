@@ -9,7 +9,7 @@
 import Foundation
 
 enum PlanningSessionLandingState {
-    case error
+    case error(PlanningLandingError)
     case loading
     case none
     case voting

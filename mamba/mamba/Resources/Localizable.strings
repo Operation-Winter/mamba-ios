@@ -50,3 +50,8 @@
 // MARK: - Planning errors
 "PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";
 "PLANNING_INVALID_SESSION_ERROR_DESCRIPTION" = "The specified session code doesn't exist or is no longer available.";
+
+
+// MARK: - Networking errors
+"NETWORKING_ERROR_ENCODING_ERROR_INVALID_VALUE_DESCRIPTION" = "Failed to encode command being sent to session";
+"NETWORKING_ERROR_ENCODING_ERROR_UNKNOWN_DESCRIPTION" = "Unknown error occured sending command to session";

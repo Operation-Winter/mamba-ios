@@ -102,6 +102,7 @@
 		EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */; };
 		EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */; };
 		EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */; };
+		EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,7 @@
 		EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommandsTests.swift; sourceTree = "<group>"; };
 		EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCardTests.swift; sourceTree = "<group>"; };
 		EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCenterTests.swift; sourceTree = "<group>"; };
+		EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingErrorExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -810,15 +812,24 @@
 		EDEDE31324E15BE200CC666B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				EDEDE32E24E16AF900CC666B /* Error Handling */,
 				EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */,
 				EDEDE32024E161E700CC666B /* WebSocketHandlerTests.swift */,
-				EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */,
-				EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */,
 				EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */,
 				EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */,
 				EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		EDEDE32E24E16AF900CC666B /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */,
+				EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */,
+				EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */,
+			);
+			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1046,6 +1057,7 @@
 				EDEDE32124E161E700CC666B /* WebSocketHandlerTests.swift in Sources */,
 				EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */,
 				EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */,
+				EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */,
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
 				EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */,
 				EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */,

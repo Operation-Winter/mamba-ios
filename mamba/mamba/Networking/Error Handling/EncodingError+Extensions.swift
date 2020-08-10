@@ -18,8 +18,8 @@ public extension EncodingError {
     
     var errorCustomDescription: String {
         switch self {
-        case .invalidValue(_, _): return "Failed to encode command being sent to session"
-        @unknown default: return "Unknown error occured sending command to session"
+        case .invalidValue(_, _): return NSLocalizedString("NETWORKING_ERROR_ENCODING_ERROR_INVALID_VALUE_DESCRIPTION", comment: "Localized error description")
+        @unknown default: return NSLocalizedString("NETWORKING_ERROR_ENCODING_ERROR_UNKNOWN_DESCRIPTION", comment: "Localized error description")
         }
     }
 }

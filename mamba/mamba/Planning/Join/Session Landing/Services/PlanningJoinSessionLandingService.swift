@@ -15,11 +15,7 @@ protocol PlanningJoinSessionLandingServiceProtocol {
 }
 
 class PlanningJoinSessionLandingService: PlanningJoinSessionLandingServiceProtocol {
-    private var sessionHandler: PlanningSessionNetworkHandler<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>
-    
-    init() {
-        sessionHandler = PlanningSessionNetworkHandler<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>()
-    }
+    private var sessionHandler = PlanningSessionNetworkHandler<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>()
     
     func startSession() -> AnyPublisher<Result<PlanningCommands.JoinReceive, NetworkError>, NetworkCloseError> {
         return sessionHandler.start(webSocketURL: URLCenter.shared.planningJoinWSURL)

@@ -50,7 +50,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     private func startSession() {
         guard cancellable == nil else { return }
         cancellable = service.startSession()
-            .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { networkError in
                 switch networkError {

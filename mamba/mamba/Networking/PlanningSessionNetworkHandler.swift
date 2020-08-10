@@ -19,6 +19,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     
     public func send(command: Send) throws {
         let messageData = try JSONEncoder().encode(command)
+        Log.log(level: .debug, category: .networking, message: "Command data sent: %{private}@", args: String(describing: command))
         let message = URLSessionWebSocketTask.Message.data(messageData)
         webSocket?.send(message: message)
     }
@@ -54,14 +55,15 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     
     private func decodeCommand<Command: Decodable>(_ data: Data) -> Result<Command, NetworkError> {
         do {
-            //TODO: Use os_log
             let jsonString = String(decoding: data, as: UTF8.self)
-            print(jsonString)
+            Log.log(level: .debug, category: .networking, message: "Command received: %{private}@", args: jsonString)
             let command = try JSONDecoder().decode(Command.self, from: data)
             return Result<Command, NetworkError>.success(command)
         } catch let error as DecodingError {
+            Log.log(level: .error, category: .networking, message: "%{private}@: ParseDecodingError: %{private}@ %@ %@", args: String(describing: PlanningSessionNetworkHandler.self), error.localizedDescription, String(describing: Send.self), String(describing: Receive.self))
             return Result<Command, NetworkError>.failure(NetworkError.parseDecodingError(error))
         } catch {
+            Log.log(level: .error, category: .networking, message: "%{private}@: UnknownError: %{private}@ %@ %@", args: String(describing: PlanningSessionNetworkHandler.self), error.localizedDescription, String(describing: Send.self), String(describing: Receive.self))
             return Result<Command, NetworkError>.failure(NetworkError.unknownError(error))
         }
     }

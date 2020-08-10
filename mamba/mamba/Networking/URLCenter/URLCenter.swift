@@ -26,5 +26,7 @@ class URLCenter {
         #else
         networkEnvironment = DevelopmentNetworkEnvironment()
         #endif
+        
+        Log.log(level: .debug, category: .networking, message: "%@: Networking environment: %@", args: String(describing: URLCenter.self), String(describing: networkEnvironment))
     }
 }

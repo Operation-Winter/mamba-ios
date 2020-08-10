@@ -8,25 +8,39 @@
 
 import Foundation
 
-class URLCenter {
-    static let shared = URLCenter()
-    private let networkEnvironment: NetworkEnvironment
+public class URLCenter {
+    public static let shared = URLCenter()
+    private var environmentType: NetworkEnvironmentType
 
-    var baseURL: URL {
+    private var networkEnvironment: NetworkEnvironment {
+        makeNetworkEnvironment(environmentType)
+    }
+    
+    public var baseURL: URL {
         networkEnvironment.baseURL
     }
     
-    var webSocketBaseURL: URL {
+    public var webSocketBaseURL: URL {
         networkEnvironment.webSocketBaseURL
     }
     
     private init() {
         #if targetEnvironment(simulator)
-        networkEnvironment = LocalNetworkEnvironment()
+        environmentType = .local
         #else
-        networkEnvironment = DevelopmentNetworkEnvironment()
+        environmentType = .development
         #endif
-        
         Log.log(level: .debug, category: .networking, message: "%@: Networking environment: %@", args: String(describing: URLCenter.self), String(describing: networkEnvironment))
+    }
+    
+    public func makeNetworkEnvironment(_ environment: NetworkEnvironmentType) -> NetworkEnvironment {
+        switch environment {
+        case .local:
+            return LocalNetworkEnvironment()
+        case .development:
+            return DevelopmentNetworkEnvironment()
+        case .production:
+            return DevelopmentNetworkEnvironment()
+        }
     }
 }

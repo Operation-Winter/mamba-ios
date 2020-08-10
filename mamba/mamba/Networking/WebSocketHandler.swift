@@ -9,11 +9,22 @@
 import Foundation
 import Combine
 
-class WebSocketHandler {
-    public var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
+public protocol WebSocketAbstractHandler {
+    var subject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError> { get }
+    
+    init(url: URL)
+    func start()
+    func receiveMessage()
+    func ping()
+    func send(message: URLSessionWebSocketTask.Message)
+    func close()
+}
+
+class WebSocketHandler: WebSocketAbstractHandler {
+    public private(set) var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
     private var webSocketTask: URLSessionWebSocketTask
     
-    public init(url: URL) {
+    required public init(url: URL) {
         let urlSession = URLSession(configuration: .ephemeral)
         self.webSocketTask = urlSession.webSocketTask(with: url)
         Log.log(level: .info, category: .networking, message: "URLSession webSocketTask opened to %{private}@", args: url.absoluteString)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NetworkEnvironment {
+public protocol NetworkEnvironment {
     var baseURL: URL { get }
     var webSocketBaseURL: URL { get }
 }

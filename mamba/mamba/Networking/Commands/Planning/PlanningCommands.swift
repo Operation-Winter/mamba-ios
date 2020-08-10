@@ -9,7 +9,7 @@
 import Foundation
 
 public enum PlanningCommands {
-    public enum HostKey: String {
+    public enum HostKey: String, CaseIterable {
         // MARK: - Planning Host Send
         case startSession = "START_SESSION"
         case addTicket = "ADD_TICKET"
@@ -43,7 +43,7 @@ public enum PlanningCommands {
         case invalidCommand(PlanningInvalidCommandMessage)
     }
     
-    public enum JoinKey: String {
+    public enum JoinKey: String, CaseIterable {
         // MARK: - Planning Join Send
         case joinSession = "JOIN_SESSION"
         case vote = "VOTE"

@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> {
-    private var webSocket: WebSocketHandler?
+    private var webSocket: WebSocketAbstractHandler?
     
     public func startSession(webSocketURL: URL) -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
         let webSocketHandler = createWebSocketHandler(url: webSocketURL)
@@ -24,7 +24,11 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
         webSocket?.send(message: message)
     }
     
-    private func createWebSocketHandler(url: URL) -> WebSocketHandler {
+    public func configure(webSocket: WebSocketAbstractHandler) {
+        self.webSocket = webSocket
+    }
+    
+    private func createWebSocketHandler(url: URL) -> WebSocketAbstractHandler {
         let webSocketHandler = WebSocketHandler(url: url)
         webSocketHandler.start()
         webSocket = webSocketHandler

@@ -22,7 +22,7 @@ class PlanningHostSessionLandingService: PlanningHostSessionLandingServiceProtoc
     }
     
     func startSession() -> AnyPublisher<Result<PlanningCommands.HostReceive, NetworkError>, NetworkCloseError> {
-        return sessionHandler.startSession(webSocketURL: URLCenter.shared.planningHostWSURL)
+        return sessionHandler.start(webSocketURL: URLCenter.shared.planningHostWSURL)
     }
     
     func sendCommand(_ command: PlanningCommands.HostSend) throws {

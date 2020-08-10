@@ -39,16 +39,6 @@
                ReferencedContainer = "container:mamba.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "261E1EEF24A48ABA00937D89"
-               BuildableName = "mambaUITests.xctest"
-               BlueprintName = "mambaUITests"
-               ReferencedContainer = "container:mamba.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

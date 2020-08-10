@@ -22,7 +22,7 @@ class PlanningJoinSessionLandingService: PlanningJoinSessionLandingServiceProtoc
     }
     
     func startSession() -> AnyPublisher<Result<PlanningCommands.JoinReceive, NetworkError>, NetworkCloseError> {
-        return sessionHandler.startSession(webSocketURL: URLCenter.shared.planningJoinWSURL)
+        return sessionHandler.start(webSocketURL: URLCenter.shared.planningJoinWSURL)
     }
     
     func sendCommand(_ command: PlanningCommands.JoinSend) throws {

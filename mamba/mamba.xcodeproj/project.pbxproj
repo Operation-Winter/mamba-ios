@@ -104,6 +104,7 @@
 		EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */; };
 		EDEDE33224E173BB00CC666B /* NetworkEnvironmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */; };
 		EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */; };
+		EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33824E181C600CC666B /* MockWebSocketHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingErrorExtensionTests.swift; sourceTree = "<group>"; };
 		EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentType.swift; sourceTree = "<group>"; };
 		EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentTests.swift; sourceTree = "<group>"; };
+		EDEDE33824E181C600CC666B /* MockWebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,6 +821,7 @@
 				EDEDE32E24E16AF900CC666B /* Error Handling */,
 				EDEDE33324E175D000CC666B /* NetworkEnvironment */,
 				EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */,
+				EDEDE33824E181C600CC666B /* MockWebSocketHandler.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */,
 				EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */,
 				EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */,
 				EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */,

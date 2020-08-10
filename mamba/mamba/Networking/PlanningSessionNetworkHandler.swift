@@ -12,9 +12,14 @@ import Combine
 public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> {
     private var webSocket: WebSocketAbstractHandler?
     
-    public func startSession(webSocketURL: URL) -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
-        let webSocketHandler = createWebSocketHandler(url: webSocketURL)
-        return createWebSocketPublisher(webSocketHandler.subject)
+    public func start(webSocketURL: URL) -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
+        var webSocket: WebSocketAbstractHandler
+        if let socketHandler = self.webSocket {
+            webSocket = socketHandler
+        } else {
+            webSocket = createWebSocketHandler(url: webSocketURL)
+        }
+        return createWebSocketPublisher(webSocket.subject)
     }
     
     public func send(command: Send) throws {

@@ -7,13 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 class PlanningParticipantRowViewModel: Identifiable {
     let participantName: String
     let votingValue: String
+    let highlighted: Bool
 
-    init(participantName: String, votingValue: String) {
+    var borderWidth: CGFloat {
+        highlighted ? 2 : 0
+    }
+    
+    init(participantName: String, votingValue: String, highlighted: Bool = false) {
         self.participantName = participantName
         self.votingValue = votingValue
+        self.highlighted = highlighted
     }
 }

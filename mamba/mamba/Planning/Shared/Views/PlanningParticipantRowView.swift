@@ -33,6 +33,9 @@ struct PlanningParticipantRowView: View {
         }
         .background(DefaultStyle.shared.systemGray5)
         .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(DefaultStyle.shared.accent, lineWidth: self.viewModel.borderWidth))
     }
 }
 
@@ -44,6 +47,15 @@ struct PlanningHostParticipantRowView_Previews: PreviewProvider {
                 .previewDisplayName("Light mode")
             
             PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "5"))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .background(Color.black)
+            
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "", highlighted: true))
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+            
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "5", highlighted: true))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)

@@ -14,17 +14,17 @@ enum Product {
 }
 
 protocol ColorScheme {
-    func primary() -> Color
-    func secondary() -> Color
-    func tertiary() -> Color
-    func qauternary() -> Color
-    func quinary() -> Color
-    func accent() -> Color
+    func primary() -> UIColor
+    func secondary() -> UIColor
+    func tertiary() -> UIColor
+    func qauternary() -> UIColor
+    func quinary() -> UIColor
+    func accent() -> UIColor
 }
 
 class DefaultStyle {
     static let shared = DefaultStyle()
-    private(set) var colorScheme: ColorScheme = PlanningColorScheme()
+    private var colorScheme: ColorScheme = PlanningColorScheme()
     
     private init() { }
     
@@ -35,6 +35,34 @@ class DefaultStyle {
         case .retro:
             colorScheme = RetroColorScheme()
         }
+    }
+    
+    var primary: Color {
+        Color(colorScheme.primary())
+    }
+    
+    var uiPrimary: UIColor {
+        colorScheme.primary()
+    }
+    
+    var secondary: Color {
+        Color(colorScheme.secondary())
+    }
+    
+    var tertiary: Color {
+        Color(colorScheme.tertiary())
+    }
+    
+    var qauternary: Color {
+        Color(colorScheme.qauternary())
+    }
+    
+    var quinary: Color {
+        Color(colorScheme.quinary())
+    }
+    
+    var accent: Color {
+        Color(colorScheme.accent())
     }
 
     var systemGray: Color {

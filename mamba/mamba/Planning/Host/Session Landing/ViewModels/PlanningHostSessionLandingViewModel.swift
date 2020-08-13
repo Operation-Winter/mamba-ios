@@ -21,9 +21,47 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     @Published var ticket: PlanningTicket?
     
     var participantList: [PlanningParticipantRowViewModel] {
+        switch state {
+        case .finishedVoting: return outlierParticipantRows()
+        default: return participantRows()
+        }
+    }
+    
+    private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
             PlanningParticipantRowViewModel(participantName: $0.name,
                                             votingValue: participantVotedValue($0) ?? "")
+        }
+    }
+    
+    private func outlierParticipantRows() -> [PlanningParticipantRowViewModel] {
+        guard let ticketVotes = ticket?.ticketVotes else { return participantRows() }
+        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
+        let meanCount = groupedVotes.last?.value.count ?? 0
+        var list = [PlanningParticipantRowViewModel]()
+        for group in groupedVotes {
+            let filteredParticipants: [PlanningParticipantRowViewModel] = participants.filter {
+                group.key == $0.selectedCard
+            }.map {
+                let meanCard = group.value.count == meanCount ? $0.selectedCard : groupedVotes.last?.key
+                let highlighted = meanCard != $0.selectedCard
+                return PlanningParticipantRowViewModel(participantName: $0.name,
+                                                votingValue: participantVotedValue($0) ?? "",
+                                                highlighted: highlighted)
+            }
+            list.append(contentsOf: filteredParticipants)
+        }
+        return list
+    }
+    
+    var barGraphEntries: [CombinedBarGraphEntry] {
+        guard let ticketVotes = ticket?.ticketVotes else { return [] }
+        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }
+        
+        return groupedVotes.map {
+            return CombinedBarGraphEntry(title: $0.key.title, count: $0.self.value.count)
+        }.sorted {
+            $0.count > $1.count
         }
     }
     
@@ -45,10 +83,11 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     }
     
     private func participantVotedValue(_ participant: PlanningParticipant) -> String? {
+        let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+        
         switch state {
-        case .voting, .finishedVoting:
-            let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
-            return selectedCard?.title ?? "..."
+        case .voting: return "..."
+        case .finishedVoting: return selectedCard?.title ?? "Skipped"
         default:
             return nil
         }

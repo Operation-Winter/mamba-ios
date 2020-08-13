@@ -9,27 +9,27 @@
 import SwiftUI
 
 struct PlanningColorScheme: ColorScheme {
-    func primary() -> Color {
-        return Color(red: 56 / 255, green: 2 / 255, blue: 59 / 255)
+    func primary() -> UIColor {
+        return UIColor(red: 56 / 255, green: 2 / 255, blue: 59 / 255, alpha: 1)
     }
     
-    func secondary() -> Color {
-        return Color(red: 162 / 255, green: 136 / 255, blue: 227 / 255)
+    func secondary() -> UIColor {
+        return UIColor(red: 162 / 255, green: 136 / 255, blue: 227 / 255, alpha: 1)
     }
     
-    func tertiary() -> Color {
-        return Color(red: 187 / 255, green: 213 / 255, blue: 237 / 255)
+    func tertiary() -> UIColor {
+        return UIColor(red: 187 / 255, green: 213 / 255, blue: 237 / 255, alpha: 1)
     }
     
-    func qauternary() -> Color {
-        return Color(red: 206 / 255, green: 253 / 255, blue: 255 / 255)
+    func qauternary() -> UIColor {
+        return UIColor(red: 206 / 255, green: 253 / 255, blue: 255 / 255, alpha: 1)
     }
     
-    func quinary() -> Color {
-        return Color(red: 204 / 255, green: 255 / 255, blue: 203 / 255)
+    func quinary() -> UIColor {
+        return UIColor(red: 204 / 255, green: 255 / 255, blue: 203 / 255, alpha: 1)
     }
     
-    func accent() -> Color {
+    func accent() -> UIColor {
         return secondary()
     }
 }

@@ -27,7 +27,7 @@ struct PlanningHostAvailableCardsView: View {
                                     
                                     Image(systemName: self.systemImageName(selected: availableCard.selected))
                                         .padding(top: 10, trailing: 10)
-                                        .foregroundColor(DefaultStyle.shared.colorScheme.qauternary())
+                                        .foregroundColor(DefaultStyle.shared.qauternary)
                                 }.onTapGesture {
                                     availableCard.selected.toggle()
                                 }

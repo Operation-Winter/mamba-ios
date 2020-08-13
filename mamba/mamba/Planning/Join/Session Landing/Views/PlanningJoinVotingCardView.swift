@@ -38,7 +38,7 @@ struct PlanningJoinVotingCardView: View {
         if self.selectedCard == card {
             return AnyView(StoryPointCard(card: card)
                     .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(DefaultStyle.shared.colorScheme.accent(), lineWidth: 4))
+                            .stroke(DefaultStyle.shared.accent, lineWidth: 4))
             )
         }
         return AnyView(StoryPointCard(card: card))

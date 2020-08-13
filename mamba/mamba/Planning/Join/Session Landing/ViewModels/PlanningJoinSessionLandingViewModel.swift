@@ -25,11 +25,17 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         }
     }
     
+    var participantList: [PlanningParticipantRowViewModel] {
+        participants.map {
+            PlanningParticipantRowViewModel(participantName: $0.name,
+                                            votingValue: participantVotedValue($0) ?? "")
+        }
+    }
+    
     init(sessionCode: String, participantName: String) {
         self.service = PlanningJoinSessionLandingService()
         self.sessionCode = sessionCode
         self.participantName = participantName
-        
         startSession()
     }
     
@@ -38,11 +44,11 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         sendCommand(.joinSession(commandMessage))
     }
     
-    func participantVotedValue(_ participant: PlanningParticipant) -> String? {
+    private func participantVotedValue(_ participant: PlanningParticipant) -> String? {
         switch state {
-        case .voting, .finishedVoting:
+        case .finishedVoting:
             let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
-            return selectedCard?.title ?? "..."
+            return selectedCard?.title ?? "Skipped"
         default:
             return nil
         }

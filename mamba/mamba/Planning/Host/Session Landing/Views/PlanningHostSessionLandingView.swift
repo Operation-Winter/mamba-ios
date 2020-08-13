@@ -81,14 +81,16 @@ struct PlanningHostSessionLandingView: View {
                                               ticketIdentifier: self.viewModel.ticket?.identifier,
                                               ticketDescription: self.viewModel.ticket?.description)
             
+            PlanningFinishedVotingStateGraphCardView(barGraphEntries: self.viewModel.barGraphEntries)
+            
             participantsList
         }
     }
     
     private var participantsList: some View {
         VStack(alignment: .center, spacing: 10) {
-            ForEach(self.viewModel.participants) { participant in
-                PlanningParticipantRowView(participant: participant, rightValue: self.viewModel.participantVotedValue(participant))
+            ForEach(self.viewModel.participantList) { viewModel in
+                PlanningParticipantRowView(viewModel: viewModel)
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)

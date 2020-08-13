@@ -59,7 +59,7 @@ final class NavigationStack: ObservableObject {
     func setColorScheme(_ product: Product?) {
         guard let product = product else { return }
         DefaultStyle.shared.setColorScheme(product: product)
-        accentColor = DefaultStyle.shared.colorScheme.accent()
+        accentColor = DefaultStyle.shared.accent
     }
 }
 

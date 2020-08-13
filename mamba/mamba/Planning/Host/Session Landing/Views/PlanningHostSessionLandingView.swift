@@ -82,6 +82,7 @@ struct PlanningHostSessionLandingView: View {
                                               ticketDescription: self.viewModel.ticket?.description)
             
             PlanningFinishedVotingStateGraphCardView(barGraphEntries: self.viewModel.barGraphEntries)
+                .padding(.top, 10)
             
             participantsList
         }

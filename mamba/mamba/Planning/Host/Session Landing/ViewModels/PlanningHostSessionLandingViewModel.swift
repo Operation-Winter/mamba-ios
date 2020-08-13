@@ -9,67 +9,13 @@
 import Foundation
 import Combine
 
-class PlanningHostSessionLandingViewModel: ObservableObject {
-    private var service: PlanningHostSessionLandingServiceProtocol
-    private var cancellable: AnyCancellable?
-    private var availableCards: [PlanningCard]
-    private(set) var sessionCode: String = ""
-    @Published var state: PlanningSessionLandingState = .loading
-    @Published var sessionName: String
-    @Published var participants = [PlanningParticipant]()
+class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.HostSend, PlanningCommands.HostReceive> {
     @Published var showInitialShareModal: Bool = false
-    @Published var ticket: PlanningTicket?
-    
-    var participantList: [PlanningParticipantRowViewModel] {
-        switch state {
-        case .finishedVoting: return outlierParticipantRows()
-        default: return participantRows()
-        }
-    }
-    
-    private func participantRows() -> [PlanningParticipantRowViewModel] {
-        participants.map {
-            PlanningParticipantRowViewModel(participantName: $0.name,
-                                            votingValue: participantVotedValue($0) ?? "")
-        }
-    }
-    
-    private func outlierParticipantRows() -> [PlanningParticipantRowViewModel] {
-        guard let ticketVotes = ticket?.ticketVotes else { return participantRows() }
-        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
-        let meanCount = groupedVotes.last?.value.count ?? 0
-        var list = [PlanningParticipantRowViewModel]()
-        for group in groupedVotes {
-            let filteredParticipants: [PlanningParticipantRowViewModel] = participants.filter {
-                group.key == $0.selectedCard
-            }.map {
-                let meanCard = group.value.count == meanCount ? $0.selectedCard : groupedVotes.last?.key
-                let highlighted = meanCard != $0.selectedCard
-                return PlanningParticipantRowViewModel(participantName: $0.name,
-                                                votingValue: participantVotedValue($0) ?? "",
-                                                highlighted: highlighted)
-            }
-            list.append(contentsOf: filteredParticipants)
-        }
-        return list
-    }
-    
-    var barGraphEntries: [CombinedBarGraphEntry] {
-        guard let ticketVotes = ticket?.ticketVotes else { return [] }
-        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }
-        
-        return groupedVotes.map {
-            return CombinedBarGraphEntry(title: $0.key.title, count: $0.self.value.count)
-        }.sorted {
-            $0.count > $1.count
-        }
-    }
     
     init(sessionName: String, availableCards: [PlanningCard]) {
-        self.service = PlanningHostSessionLandingService()
+        super.init(websocketURL: URLCenter.shared.planningHostWSURL)
         self.sessionName = sessionName
-        self.availableCards = availableCards
-        startSession()
+        configure(availableCards: availableCards)
     }
     
     func sendStartSessionCommand() {
@@ -82,58 +28,8 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         sendCommand(.addTicket(commandMessage))
     }
     
-    private func participantVotedValue(_ participant: PlanningParticipant) -> String? {
-        let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
-        
-        switch state {
-        case .voting: return "..."
-        case .finishedVoting: return selectedCard?.title ?? "Skipped"
-        default:
-            return nil
-        }
-    }
-    
-    private func sendCommand(_ command: PlanningCommands.HostSend) {
-        Log.log(level: .debug, category: .planning, message: "Host sending command: %@", args: String(describing: command))
-        do {
-            try service.sendCommand(command)
-        } catch let error as EncodingError {
-            executeError(code: error.errorCode, description: error.errorCustomDescription)
-        } catch {
-            executeError(code: "3105", description: error.localizedDescription)
-        }
-    }
-    
-    private func startSession() {
-        guard cancellable == nil else { return }
-        cancellable = service.startSession()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { networkError in
-                switch networkError {
-                case .finished:
-                    //TODO: MAM-61
-                    break
-                case .failure(let error):
-                    self.executeError(code: error.errorCode, description: error.errorDescription)
-                }
-            }, receiveValue: { result in
-                switch result {
-                case .success(let command):
-                    self.executeCommand(command)
-                case .failure(let error):
-                    self.executeError(code: error.errorCode, description: error.errorDescription)
-                }
-            })
-    }
-    
-    private func executeError(code: String, description: String) {
-        Log.log(level: .error, category: .planning, message: "Host executing error state: %@-%@", args: code, description)
-        let planningError = PlanningLandingError(code: code, description: description)
-        self.state = .error(planningError)
-    }
-    
-    private func executeCommand(_ command: PlanningCommands.HostReceive) {
-        Log.log(level: .debug, category: .planning, message: "Host executing received command: %{private}@", args: String(describing: command))
+    public override func executeCommand(_ command: PlanningCommands.HostReceive) {
+        super.executeCommand(command)
         switch command {
         case .noneState(let message):
             self.state = .none
@@ -152,17 +48,6 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
             parseStateMessage(message)
         case .invalidCommand(let message):
             executeError(code: message.code, description: message.description)
-        }
-    }
-    
-    private func parseStateMessage(_ message: PlanningSessionStateMessage) {
-        self.participants = message.participants
-        self.sessionCode = message.sessionCode
-        self.sessionName = message.sessionName
-        self.ticket = message.ticket
-        
-        for participant in self.participants {
-            participant.selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
         }
     }
 }

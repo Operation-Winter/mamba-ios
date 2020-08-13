@@ -10,21 +10,21 @@ import SwiftUI
 
 struct HorizontalCombinedBarGraphView: View {
     let barGraphEntries: [CombinedBarGraphEntry]
+    let barWidth: CGFloat
     
     var body: some View {
-        HStack(alignment: .center, spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             ForEach(self.barGraphEntries.indices) { index in
                 ZStack(alignment: .center) {
                     Rectangle()
                         .fill(self.color(index: index))
-                        .frame(height: 30)
-                        .aspectRatio(self.aspectRatio(index: index), contentMode: .fit)
+                        .frame(width: self.entryWidth(index: index), height: 30)
                     
                     StrokeText(text: self.barGraphEntries[index].title, width: 0.5, color: DefaultStyle.shared.accent)
                         .foregroundColor(.white)
                 }
             }
-        }
+        }.frame(width: barWidth)
     }
     
     private func color(index: Int) -> Color {
@@ -41,10 +41,9 @@ struct HorizontalCombinedBarGraphView: View {
         return CGFloat(voteCount) / CGFloat(totalVotesCount)
     }
     
-    private func aspectRatio(index: Int) -> CGFloat {
+    private func entryWidth(index: Int) -> CGFloat {
         let ratio = widthRatio(index: index)
-        let width = UIScreen.main.bounds.width
-        return (ratio * width) / 30
+        return (ratio * barWidth)
     }
 }
 
@@ -52,10 +51,10 @@ struct HorizontalCombinedBarGraphView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HorizontalCombinedBarGraphView(barGraphEntries: [
-                CombinedBarGraphEntry(title: "5", count: 6),
-                CombinedBarGraphEntry(title: "1", count: 3),
-                CombinedBarGraphEntry(title: "8", count: 2)
-            ])
+                CombinedBarGraphEntry(title: "5", count: 2),
+                CombinedBarGraphEntry(title: "1", count: 1),
+                CombinedBarGraphEntry(title: "8", count: 1)
+            ], barWidth: 400)
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
                 .padding()
@@ -64,7 +63,7 @@ struct HorizontalCombinedBarGraphView_Previews: PreviewProvider {
                 CombinedBarGraphEntry(title: "5", count: 6),
                 CombinedBarGraphEntry(title: "1", count: 3),
                 CombinedBarGraphEntry(title: "8", count: 2)
-            ])
+            ], barWidth: 200)
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .padding()

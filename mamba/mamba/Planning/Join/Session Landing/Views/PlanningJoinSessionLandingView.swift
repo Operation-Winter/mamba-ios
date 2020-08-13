@@ -73,6 +73,9 @@ struct PlanningJoinSessionLandingView: View {
                                               ticketIdentifier: self.viewModel.ticket?.identifier,
                                               ticketDescription: self.viewModel.ticket?.description)
             
+            PlanningFinishedVotingStateGraphCardView(barGraphEntries: self.viewModel.barGraphEntries)
+                .padding(.top, 10)
+            
             participantsList
         }
     }

@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct PlanningParticipantRowView: View {
-    let participant: PlanningParticipant
-    let rightValue: String?
+    let viewModel: PlanningParticipantRowViewModel
     
     var body: some View {
         HStack {
@@ -20,14 +19,14 @@ struct PlanningParticipantRowView: View {
                 .foregroundColor(.accentColor)
                 .padding(leading: 14, top: 9, bottom: 9)
             
-            Text(self.participant.name)
+            Text(self.viewModel.participantName)
                 .padding(leading: 15)
                 .foregroundColor(.accentColor)
             
             Spacer()
             
-            if self.rightValue != nil {
-                Text(self.rightValue!)
+            if !self.viewModel.votingValue.isEmpty {
+                Text(self.viewModel.votingValue)
                     .foregroundColor(.accentColor)
                     .padding(top: 9, bottom: 9, trailing: 14)
             }
@@ -40,10 +39,11 @@ struct PlanningParticipantRowView: View {
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"), rightValue: nil)
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: ""))
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
-            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"), rightValue: "5")
+            
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "5"))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)

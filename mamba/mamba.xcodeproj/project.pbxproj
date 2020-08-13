@@ -63,6 +63,7 @@
 		26E2F56F24DD89BF008B2B4B /* EncodingError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */; };
 		26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */; };
 		26E2F85524E50F6D008B2B4B /* PlanningTicketVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */; };
+		26E2F85D24E52314008B2B4B /* PlanningParticipantRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85C24E52314008B2B4B /* PlanningParticipantRowViewModel.swift */; };
 		26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A4E24D9613B007CA2B8 /* LoadingView.swift */; };
 		26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */; };
 		26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */; };
@@ -189,6 +190,7 @@
 		26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EncodingError+Extensions.swift"; sourceTree = "<group>"; };
 		26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningVoteMessage.swift; sourceTree = "<group>"; };
 		26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningTicketVote.swift; sourceTree = "<group>"; };
+		26E2F85C24E52314008B2B4B /* PlanningParticipantRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipantRowViewModel.swift; sourceTree = "<group>"; };
 		26F98A4E24D9613B007CA2B8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionStartShareView.swift; sourceTree = "<group>"; };
 		26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeText.swift; sourceTree = "<group>"; };
@@ -405,7 +407,6 @@
 		263ECC3024D4172200EEAB1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */,
 				ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */,
 			);
 			path = Views;
@@ -580,6 +581,14 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		26E2F85B24E52305008B2B4B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				26E2F85C24E52314008B2B4B /* PlanningParticipantRowViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		26F98A4D24D96129007CA2B8 /* LoadingIndicators */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				26F98A7224DD5022007CA2B8 /* Views */,
+				26E2F85B24E52305008B2B4B /* ViewModels */,
 				26E2F56724DD6DB9008B2B4B /* Models */,
 			);
 			path = Shared;
@@ -661,6 +671,7 @@
 		26F98A7224DD5022007CA2B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */,
 				26F98A6F24DD4E6B007CA2B8 /* PlanningVotingStateTicketCardView.swift */,
 				26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */,
 			);
@@ -1062,6 +1073,7 @@
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
 				26F98A6E24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift in Sources */,
 				269CA0E424D94BCC000F42B9 /* PlanningSessionLandingState.swift in Sources */,
+				26E2F85D24E52314008B2B4B /* PlanningParticipantRowViewModel.swift in Sources */,
 				26F98A6A24DD468B007CA2B8 /* PlanningAddTicketViewModel.swift in Sources */,
 				263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */,
 				263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */,

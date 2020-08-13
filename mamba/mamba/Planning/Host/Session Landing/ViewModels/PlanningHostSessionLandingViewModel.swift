@@ -20,6 +20,13 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
     @Published var showInitialShareModal: Bool = false
     @Published var ticket: PlanningTicket?
     
+    var participantList: [PlanningParticipantRowViewModel] {
+        participants.map {
+            PlanningParticipantRowViewModel(participantName: $0.name,
+                                            votingValue: participantVotedValue($0) ?? "")
+        }
+    }
+    
     init(sessionName: String, availableCards: [PlanningCard]) {
         self.service = PlanningHostSessionLandingService()
         self.sessionName = sessionName
@@ -37,7 +44,7 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         sendCommand(.addTicket(commandMessage))
     }
     
-    func participantVotedValue(_ participant: PlanningParticipant) -> String? {
+    private func participantVotedValue(_ participant: PlanningParticipant) -> String? {
         switch state {
         case .voting, .finishedVoting:
             let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard

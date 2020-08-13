@@ -11,6 +11,7 @@ import Foundation
 public class PlanningParticipant: Codable, Identifiable {
     public private(set) var id: String
     public private(set) var name: String
+    public var selectedCard: PlanningCard? = nil
     
     public init(id: String, name: String) {
         self.id = id

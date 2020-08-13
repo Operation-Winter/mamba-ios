@@ -33,7 +33,7 @@ struct PlanningHostSessionLandingView: View {
         case .voting:
             return AnyView(votingStateView)
         case .finishedVoting:
-            return AnyView(EmptyView())
+            return AnyView(votingFinishedStateView)
         }
     }
     
@@ -75,10 +75,20 @@ struct PlanningHostSessionLandingView: View {
         }
     }
     
+    private var votingFinishedStateView: some View {
+        Group {
+            PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
+                                              ticketIdentifier: self.viewModel.ticket?.identifier,
+                                              ticketDescription: self.viewModel.ticket?.description)
+            
+            participantsList
+        }
+    }
+    
     private var participantsList: some View {
         VStack(alignment: .center, spacing: 10) {
             ForEach(self.viewModel.participants) { participant in
-                PlanningParticipantRowView(participant: participant)
+                PlanningParticipantRowView(participant: participant, rightValue: self.viewModel.participantVotedValue(participant))
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)

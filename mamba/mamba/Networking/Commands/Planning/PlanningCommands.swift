@@ -62,7 +62,7 @@ public enum PlanningCommands {
     
     public enum JoinSend: Encodable {
         case joinSession(PlanningJoinSessionMessage)
-        case vote
+        case vote(PlanningVoteMessage)
         case leaveSession
         case reconnect
     }

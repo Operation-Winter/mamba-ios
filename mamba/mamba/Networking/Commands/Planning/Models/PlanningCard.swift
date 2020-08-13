@@ -38,4 +38,21 @@ public enum PlanningCard: String, CaseIterable, Codable {
         case .coffee: return "PlanningCardCoffee"
         }
     }
+    
+    public var title: String {
+        switch self {
+        case .zero: return NSLocalizedString("PLANNING_CARD_ZERO_TITLE", comment: "0")
+        case .one: return NSLocalizedString("PLANNING_CARD_ONE_TITLE", comment: "1")
+        case .two: return NSLocalizedString("PLANNING_CARD_TWO_TITLE", comment: "2")
+        case .three: return NSLocalizedString("PLANNING_CARD_THREE_TITLE", comment: "3")
+        case .five: return NSLocalizedString("PLANNING_CARD_FIVE_TITLE", comment: "5")
+        case .eight: return NSLocalizedString("PLANNING_CARD_EIGHT_TITLE", comment: "8")
+        case .thirteen: return NSLocalizedString("PLANNING_CARD_THIRTEEN_TITLE", comment: "13")
+        case .twenty: return NSLocalizedString("PLANNING_CARD_TWENTY_TITLE", comment: "20")
+        case .fourty: return NSLocalizedString("PLANNING_CARD_FOURTY_TITLE", comment: "40")
+        case .hundred: return NSLocalizedString("PLANNING_CARD_HUNDRED_TITLE", comment: "100")
+        case .question: return NSLocalizedString("PLANNING_CARD_QUESTION_TITLE", comment: "?")
+        case .coffee: return NSLocalizedString("PLANNING_CARD_COFFEE_TITLE", comment: "Coffee")
+        }
+    }
 }

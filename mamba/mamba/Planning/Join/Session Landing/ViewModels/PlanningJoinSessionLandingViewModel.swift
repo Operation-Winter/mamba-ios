@@ -19,7 +19,11 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
     @Published var sessionName: String = ""
     @Published var participants = [PlanningParticipant]()
     @Published var ticket: PlanningTicket?
-    @Published var selectedCard: PlanningCard?
+    @Published var selectedCard: PlanningCard? {
+        didSet {
+            sendVoteCommand()
+        }
+    }
     
     init(sessionCode: String, participantName: String) {
         self.service = PlanningJoinSessionLandingService()
@@ -34,13 +38,35 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         sendCommand(.joinSession(commandMessage))
     }
     
-    func sendCommand(_ command: PlanningCommands.JoinSend) {
+    func participantVotedValue(_ participant: PlanningParticipant) -> String? {
+        switch state {
+        case .voting, .finishedVoting:
+            let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+            return selectedCard?.title ?? "..."
+        default:
+            return nil
+        }
+    }
+    
+    private func sendVoteCommand() {
+        guard
+            let ticketId = ticket?.identifier,
+            let selectedCard = selectedCard
+        else {
+            return
+        }
+        let commandMessage = PlanningVoteMessage(ticketId: ticketId, selectedCard: selectedCard)
+        sendCommand(.vote(commandMessage))
+    }
+    
+    private func sendCommand(_ command: PlanningCommands.JoinSend) {
+        Log.log(level: .debug, category: .planning, message: "Join sending command: %@", args: String(describing: command))
         do {
             try service.sendCommand(command)
         } catch let error as EncodingError {
-            state = .error(PlanningLandingError(code: error.errorCode, description: error.errorCustomDescription))
+            executeError(code: error.errorCode, description: error.errorCustomDescription)
         } catch {
-            state = .error(PlanningLandingError(code: "3105", description: error.localizedDescription))
+            executeError(code: "3105", description: error.localizedDescription)
         }
     }
     
@@ -51,26 +77,29 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
             .sink(receiveCompletion: { networkError in
                 switch networkError {
                 case .finished:
-                    //TODO: Socket closed clientside, dismiss view?
+                    //TODO: MAM-61
                     break
                 case .failure(let error):
-                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
-                    self.state = .error(planningError)
+                    self.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             }, receiveValue: { result in
                 switch result {
                 case .success(let command):
                     self.executeCommand(command)
                 case .failure(let error):
-                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
-                    self.state = .error(planningError)
+                    self.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             })
     }
     
+    private func executeError(code: String, description: String) {
+        Log.log(level: .error, category: .planning, message: "Join executing error state: %@-%@", args: code, description)
+        let planningError = PlanningLandingError(code: code, description: description)
+        self.state = .error(planningError)
+    }
+    
     private func executeCommand(_ command: PlanningCommands.JoinReceive) {
-        //TODO: Logging
-        print(command)
+        Log.log(level: .debug, category: .planning, message: "Join executing received command: %{private}@", args: String(describing: command))
         switch command {
         case .noneState(let message):
             state = .none
@@ -82,11 +111,11 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
             state = .finishedVoting
             parseStateMessage(message)
         case .invalidCommand(let message):
-            self.state = .error(PlanningLandingError(code: message.code, description: message.description))
+            executeError(code: message.code, description: message.description)
         case .invalidSession:
             let errorCode = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_CODE", comment: "0001")
             let errorDescription = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_DESCRIPTION", comment: "Invalid session error description")
-            self.state = .error(PlanningLandingError(code: errorCode, description: errorDescription))
+            executeError(code: errorCode, description: errorDescription)
         case .removeParticipant:
             break
         case .endSession:
@@ -100,5 +129,9 @@ class PlanningJoinSessionLandingViewModel: ObservableObject {
         self.sessionName = message.sessionName
         self.ticket = message.ticket
         self.availableCards = message.availableCards
+        
+        for participant in self.participants {
+            participant.selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+        }
     }
 }

@@ -61,6 +61,8 @@
 		26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */; };
 		26E2F56B24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */; };
 		26E2F56F24DD89BF008B2B4B /* EncodingError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */; };
+		26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */; };
+		26E2F85524E50F6D008B2B4B /* PlanningTicketVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */; };
 		26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A4E24D9613B007CA2B8 /* LoadingView.swift */; };
 		26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */; };
 		26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */; };
@@ -185,6 +187,8 @@
 		26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningLandingError.swift; sourceTree = "<group>"; };
 		26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningInvalidCommandMessage.swift; sourceTree = "<group>"; };
 		26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EncodingError+Extensions.swift"; sourceTree = "<group>"; };
+		26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningVoteMessage.swift; sourceTree = "<group>"; };
+		26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningTicketVote.swift; sourceTree = "<group>"; };
 		26F98A4E24D9613B007CA2B8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionStartShareView.swift; sourceTree = "<group>"; };
 		26F98A5224D96CAE007CA2B8 /* SessionCodeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeText.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 		263ECC3024D4172200EEAB1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */,
 				ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */,
 			);
 			path = Views;
@@ -428,11 +433,8 @@
 				26F98A7324DD5163007CA2B8 /* PlanningTicket.swift */,
 				263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */,
 				269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */,
-				263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */,
-				2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */,
-				263ECC2324D40CBB00EEAB1E /* PlanningJoinSessionMessage.swift */,
-				26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */,
-				26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */,
+				26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */,
+				26E2F85624E50F8C008B2B4B /* Messages */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -518,7 +520,6 @@
 			isa = PBXGroup;
 			children = (
 				269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */,
-				269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */,
 				26F98A5024D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift */,
 				269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */,
 			);
@@ -564,6 +565,19 @@
 				26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		26E2F85624E50F8C008B2B4B /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */,
+				2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */,
+				263ECC2324D40CBB00EEAB1E /* PlanningJoinSessionMessage.swift */,
+				26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */,
+				26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */,
+				26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		26F98A4D24D96129007CA2B8 /* LoadingIndicators */ = {
@@ -638,8 +652,8 @@
 		26F98A7124DD501B007CA2B8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				26E2F56724DD6DB9008B2B4B /* Models */,
 				26F98A7224DD5022007CA2B8 /* Views */,
+				26E2F56724DD6DB9008B2B4B /* Models */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -994,6 +1008,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E2F85524E50F6D008B2B4B /* PlanningTicketVote.swift in Sources */,
 				269CA0E024D9479A000F42B9 /* PlanningParticipantRowView.swift in Sources */,
 				2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */,
 				EDEDE31124E1494800CC666B /* Log.swift in Sources */,
@@ -1068,6 +1083,7 @@
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
 				26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */,
 				26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */,
+				26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,
 				26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */,
@@ -1259,7 +1275,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1280,7 +1296,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

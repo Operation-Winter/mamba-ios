@@ -37,13 +37,24 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         sendCommand(.addTicket(commandMessage))
     }
     
-    func sendCommand(_ command: PlanningCommands.HostSend) {
+    func participantVotedValue(_ participant: PlanningParticipant) -> String? {
+        switch state {
+        case .voting, .finishedVoting:
+            let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+            return selectedCard?.title ?? "..."
+        default:
+            return nil
+        }
+    }
+    
+    private func sendCommand(_ command: PlanningCommands.HostSend) {
+        Log.log(level: .debug, category: .planning, message: "Host sending command: %@", args: String(describing: command))
         do {
             try service.sendCommand(command)
         } catch let error as EncodingError {
-            state = .error(PlanningLandingError(code: error.errorCode, description: error.errorCustomDescription))
+            executeError(code: error.errorCode, description: error.errorCustomDescription)
         } catch {
-            state = .error(PlanningLandingError(code: "3105", description: error.localizedDescription))
+            executeError(code: "3105", description: error.localizedDescription)
         }
     }
     
@@ -54,26 +65,29 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
             .sink(receiveCompletion: { networkError in
                 switch networkError {
                 case .finished:
-                    //TODO: Socket closed clientside, dismiss view?
+                    //TODO: MAM-61
                     break
                 case .failure(let error):
-                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
-                    self.state = .error(planningError)
+                    self.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             }, receiveValue: { result in
                 switch result {
                 case .success(let command):
                     self.executeCommand(command)
                 case .failure(let error):
-                    let planningError = PlanningLandingError(code: error.errorCode, description: error.errorDescription)
-                    self.state = .error(planningError)
+                    self.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             })
     }
     
+    private func executeError(code: String, description: String) {
+        Log.log(level: .error, category: .planning, message: "Host executing error state: %@-%@", args: code, description)
+        let planningError = PlanningLandingError(code: code, description: description)
+        self.state = .error(planningError)
+    }
+    
     private func executeCommand(_ command: PlanningCommands.HostReceive) {
-        //TODO: Logging
-        print(command)
+        Log.log(level: .debug, category: .planning, message: "Host executing received command: %{private}@", args: String(describing: command))
         switch command {
         case .noneState(let message):
             self.state = .none
@@ -91,7 +105,7 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
             self.state = .finishedVoting
             parseStateMessage(message)
         case .invalidCommand(let message):
-            self.state = .error(PlanningLandingError(code: message.code, description: message.description))
+            executeError(code: message.code, description: message.description)
         }
     }
     
@@ -100,5 +114,9 @@ class PlanningHostSessionLandingViewModel: ObservableObject {
         self.sessionCode = message.sessionCode
         self.sessionName = message.sessionName
         self.ticket = message.ticket
+        
+        for participant in self.participants {
+            participant.selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+        }
     }
 }

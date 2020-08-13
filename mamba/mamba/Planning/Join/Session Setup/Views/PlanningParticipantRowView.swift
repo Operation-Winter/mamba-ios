@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PlanningParticipantRowView: View {
     let participant: PlanningParticipant
+    let rightValue: String?
     
     var body: some View {
         HStack {
@@ -24,6 +25,12 @@ struct PlanningParticipantRowView: View {
                 .foregroundColor(.accentColor)
             
             Spacer()
+            
+            if self.rightValue != nil {
+                Text(self.rightValue!)
+                    .foregroundColor(.accentColor)
+                    .padding(top: 9, bottom: 9, trailing: 14)
+            }
         }
         .background(DefaultStyle.shared.systemGray5)
         .cornerRadius(10)
@@ -33,10 +40,10 @@ struct PlanningParticipantRowView: View {
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"), rightValue: nil)
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
-            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"))
+            PlanningParticipantRowView(participant: PlanningParticipant(id: "xxx", name: "Piet Pompies"), rightValue: "5")
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)

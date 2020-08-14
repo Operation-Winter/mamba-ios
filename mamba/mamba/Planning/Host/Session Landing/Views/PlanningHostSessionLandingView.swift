@@ -40,7 +40,7 @@ struct PlanningHostSessionLandingView: View {
         }.alert(isPresented: self.$showConfirmAlert) {
             Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
-                  secondaryButton: .default(Text("YES"), action: self.endSession))
+                  secondaryButton: .destructive(Text("YES"), action: self.endSession))
         }
     }
     

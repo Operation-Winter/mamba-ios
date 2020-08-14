@@ -41,7 +41,7 @@ struct PlanningJoinSessionLandingView: View {
         }.alert(isPresented: self.$showConfirmAlert) {
             Alert(title: Text("PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
-                  secondaryButton: .default(Text("YES"), action: self.leaveSession))
+                  secondaryButton: .destructive(Text("YES"), action: self.leaveSession))
         }
     }
     

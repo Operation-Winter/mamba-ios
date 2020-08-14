@@ -25,8 +25,13 @@ struct PlanningParticipantRowView: View {
             
             Spacer()
             
-            if !self.viewModel.votingValue.isEmpty {
-                Text(self.viewModel.votingValue)
+            if self.viewModel.votingValue != nil {
+                Text(self.viewModel.votingValue!)
+                    .foregroundColor(.accentColor)
+                    .padding(top: 9, bottom: 9, trailing: 14)
+            } else if self.viewModel.votingImageName != nil {
+                Image(systemName: self.viewModel.votingImageName!)
+                    .frame(width: 26, height: 26)
                     .foregroundColor(.accentColor)
                     .padding(top: 9, bottom: 9, trailing: 14)
             }

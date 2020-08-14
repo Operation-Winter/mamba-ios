@@ -32,15 +32,15 @@ struct PlanningHostSessionLandingView: View {
                 PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareActionTapped, menuAction: self.menuActionTapped)
             }
         }.actionSheet(isPresented: self.$showActionsMenu) {
-            ActionSheet(title: Text("Additional actions"), message: nil, buttons: [
+            ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
                 .default(Text("PLANNING_HOST_MENU_FINISH_VOTING")) { },
                 .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: self.showEndSessionConfirmation),
                 .cancel()
             ])
         }.alert(isPresented: self.$showConfirmAlert) {
-            Alert(title: Text("Are you sure you want to end the session?"), message: nil,
+            Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
-                  secondaryButton: .default(Text("Yes"), action: self.endSession))
+                  secondaryButton: .default(Text("YES"), action: self.endSession))
         }
     }
     

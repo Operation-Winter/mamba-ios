@@ -34,14 +34,14 @@ struct PlanningJoinSessionLandingView: View {
                 }, menuAction: self.menuActionTapped)
             }
         }.actionSheet(isPresented: self.$showActionsMenu) {
-            ActionSheet(title: Text("Additional actions"), message: nil, buttons: [
+            ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
                 .default(Text("PLANNING_JOIN_MENU_LEAVE_SESSION"), action: self.showLeaveSessionConfirmation),
                 .cancel()
             ])
         }.alert(isPresented: self.$showConfirmAlert) {
-            Alert(title: Text("Are you sure you want to leave the session?"), message: nil,
+            Alert(title: Text("PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
-                  secondaryButton: .default(Text("Yes"), action: self.leaveSession))
+                  secondaryButton: .default(Text("YES"), action: self.leaveSession))
         }
     }
     

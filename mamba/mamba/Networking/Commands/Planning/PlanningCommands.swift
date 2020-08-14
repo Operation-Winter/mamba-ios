@@ -18,6 +18,7 @@ public enum PlanningCommands {
         case endSession = "END_SESSION"
         case finishVoting = "FINISH_VOTING"
         case reconnect = "RECONNECT"
+        case revote = "REVOTE"
         
         // MARK: - Planning Host Receive
         case noneState = "NONE_STATE"
@@ -34,6 +35,7 @@ public enum PlanningCommands {
         case endSession
         case finishVoting
         case reconnect
+        case revote
     }
     
     public enum HostReceive: Decodable {

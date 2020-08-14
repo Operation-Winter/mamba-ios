@@ -42,6 +42,7 @@ fileprivate class Expected {
         "END_SESSION",
         "FINISH_VOTING",
         "RECONNECT",
+        "REVOTE",
         "NONE_STATE",
         "VOTING_STATE",
         "FINISHED_STATE",

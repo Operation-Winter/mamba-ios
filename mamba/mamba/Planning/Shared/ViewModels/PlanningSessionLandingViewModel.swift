@@ -39,6 +39,13 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         }
     }
     
+    var toolBarHidden: Bool {
+        switch state {
+        case .error(_), .loading: return true
+        default: return false
+        }
+    }
+    
     init(websocketURL: URL) {
         self.service = PlanningSessionLandingService<Send, Receive>(sessionURL: websocketURL)
         startSession()

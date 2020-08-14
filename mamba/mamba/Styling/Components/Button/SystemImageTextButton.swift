@@ -9,13 +9,40 @@
 import SwiftUI
 
 struct SystemImageTextButton: View {
+    let title: LocalizedStringKey
+    let imageSystemName: String
+    let action: () -> Void
+    
+    private var uiImage: UIImage? {
+        UIImage(systemName: imageSystemName)
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action) {
+            HStack {
+                Text(title)
+                
+                if self.uiImage != nil {
+                    Image(uiImage: uiImage!)
+                }
+            }
+        }
     }
 }
 
 struct SystemImageTextButton_Previews: PreviewProvider {
     static var previews: some View {
-        SystemImageTextButton()
+        Group {
+            SystemImageTextButton(title: "PLANNING_HOST_PARTICIPANT_SKIP_VOTE", imageSystemName: "arrowshape.turn.up.right", action: {})
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+                .padding()
+            
+            SystemImageTextButton(title: "PLANNING_HOST_PARTICIPANT_SKIP_VOTE", imageSystemName: "arrowshape.turn.up.right", action: {})
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .padding()
+                .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

@@ -9,13 +9,29 @@
 import SwiftUI
 
 struct PlanningJoinToolbarView: View {
+    let shareAction: () -> Void
+    let menuAction: () -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            SystemImageButton(imageSystemName: "square.and.arrow.up", action: shareAction)
+                .disabled(true)
+            
+            Spacer()
+            
+            SystemImageButton(imageSystemName: "slider.horizontal.3", action: menuAction)
+                .disabled(true)
+        }
+            .padding()
+            .background(
+                DefaultStyle.shared.systemGray6
+                    .edgesIgnoringSafeArea([.bottom, .leading, .trailing])
+            )
     }
 }
 
 struct PlanningJoinToolbarView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningJoinToolbarView()
+        PlanningJoinToolbarView(shareAction: {}, menuAction: {})
     }
 }

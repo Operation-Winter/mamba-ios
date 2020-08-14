@@ -17,13 +17,17 @@ struct PlanningHostSessionLandingView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 0) {
             ScrollView {
                 stateViewBuilder()
             }
             
             if !self.viewModel.toolBarHidden {
-                PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareSession, menuAction: {})
+                PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: {
+                    // TODO: MAM-66
+                }, menuAction: {
+                    
+                })
             }
         }
     }
@@ -98,6 +102,15 @@ struct PlanningHostSessionLandingView: View {
         VStack(alignment: .center, spacing: 10) {
             ForEach(self.viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
+                    .contextMenu {
+                        SystemImageTextButton(title: "PLANNING_HOST_PARTICIPANT_SKIP_VOTE", imageSystemName: "arrowshape.turn.up.right", action: {
+                            // TODO: MAM-64
+                        })
+                        
+                        SystemImageTextButton(title: "PLANNING_HOST_PARTICIPANT_REMOVE", imageSystemName: "xmark", action: {
+                            // TODO: MAM-65
+                        })
+                    }
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
@@ -113,10 +126,6 @@ struct PlanningHostSessionLandingView: View {
     
     private func revoteTicket() {
         viewModel.sendRevoteTicketCommand()
-    }
-    
-    private func shareSession() {
-        
     }
     
     private func showShareModal() {

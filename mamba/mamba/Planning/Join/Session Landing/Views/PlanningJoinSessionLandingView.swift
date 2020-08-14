@@ -17,8 +17,18 @@ struct PlanningJoinSessionLandingView: View {
     }
     
     var body: some View {
-        ScrollView {
-            stateViewBuilder()
+        VStack(alignment: .center, spacing: 0) {
+            ScrollView {
+                stateViewBuilder()
+            }
+            
+            if !self.viewModel.toolBarHidden {
+                PlanningJoinToolbarView(shareAction: {
+                    // TODO: MAM-68
+                }, menuAction: {
+                    
+                })
+            }
         }
     }
     
@@ -64,6 +74,7 @@ struct PlanningJoinSessionLandingView: View {
                                               ticketDescription: self.viewModel.ticket?.description)
             
             PlanningJoinVotingCardView(selectedCard: self.$viewModel.selectedCard, availableCards: self.viewModel.availableCards)
+                .padding(.bottom, 20)
         }
     }
     

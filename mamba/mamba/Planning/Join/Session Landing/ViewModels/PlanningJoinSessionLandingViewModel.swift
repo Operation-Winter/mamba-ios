@@ -60,7 +60,8 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         case .removeParticipant:
             break
         case .endSession:
-            break
+            dismiss = true
+            closeSession()
         }
     }
 

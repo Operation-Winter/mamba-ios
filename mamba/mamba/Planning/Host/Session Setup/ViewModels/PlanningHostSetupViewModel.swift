@@ -34,9 +34,8 @@ class PlanningHostSetupViewModel: ObservableObject {
     }
     
     init() {
-        availableCards.forEach {
-            let cardObservable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
-            cancellables.append(cardObservable)
+        cancellables = availableCards.map { $0.objectWillChange.sink(receiveValue: { [weak self] in
+            self?.objectWillChange.send() })
         }
     }
 }

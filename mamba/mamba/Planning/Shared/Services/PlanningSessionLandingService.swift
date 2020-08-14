@@ -24,4 +24,8 @@ class PlanningSessionLandingService<Send: Encodable, Receive: Decodable> {
     func send(command: Send) throws {
         try sessionHandler.send(command: command)
     }
+    
+    func close() {
+        sessionHandler.close()
+    }
 }

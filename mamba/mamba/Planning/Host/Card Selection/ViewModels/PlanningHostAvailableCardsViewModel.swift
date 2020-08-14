@@ -18,20 +18,8 @@ class PlanningHostAvailableCardsViewModel: ObservableObject {
     init(availableCards: [AvailableCard]) {
         cards = availableCards
         chunkedCards = cards.chunked(into: 3)
-        
-        cards.forEach {
-            let cardObservable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
-            cancellables.append(cardObservable)
+        cancellables = cards.map { $0.objectWillChange.sink(receiveValue: { [weak self] in
+            self?.objectWillChange.send() })
         }
-    }
-}
-
-class AvailableCard: Identifiable, ObservableObject {
-    let card: PlanningCard
-    @Published var selected: Bool
-    
-    init(card: PlanningCard, selected: Bool) {
-        self.card = card
-        self.selected = selected
     }
 }

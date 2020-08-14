@@ -17,7 +17,11 @@ struct PlanningJoinSessionLandingView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        if viewModel.dismiss {
+            self.navigation.dismiss()
+        }
+        
+        return VStack(alignment: .center, spacing: 0) {
             ScrollView {
                 stateViewBuilder()
             }

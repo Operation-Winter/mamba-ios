@@ -33,6 +33,10 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
         self.webSocket = webSocket
     }
     
+    public func close() {
+        webSocket?.close()
+    }
+    
     private func createWebSocketHandler(url: URL) -> WebSocketAbstractHandler {
         let webSocketHandler = WebSocketHandler(url: url)
         webSocketHandler.start()

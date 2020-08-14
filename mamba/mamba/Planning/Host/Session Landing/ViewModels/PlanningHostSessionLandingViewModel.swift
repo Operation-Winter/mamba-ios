@@ -39,6 +39,11 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         sendCommand(.revote)
     }
     
+    func sendEndSessionCommand() {
+        sendCommand(.endSession)
+        closeSession()
+    }
+    
     public override func executeCommand(_ command: PlanningCommands.HostReceive) {
         super.executeCommand(command)
         switch command {

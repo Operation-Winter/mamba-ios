@@ -37,33 +37,33 @@ class WebSocketHandler: WebSocketAbstractHandler {
     }
     
     public func receiveMessage() {
-        webSocketTask.receive { result in
+        webSocketTask.receive { [weak self] result in
             switch result {
             case .failure(let error):
-                self.subject.send(completion: .failure(.socketReceiveFailure(error)))
+                self?.subject.send(completion: .failure(.socketReceiveFailure(error)))
                 Log.log(level: .error, category: .networking, message: "%{private}@: SocketReceiveFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
             case .success(let message):
-                self.subject.send(message)
+                self?.subject.send(message)
                 Log.log(level: .info, category: .networking, message: "WebSocket task received message")
-                self.receiveMessage()
+                self?.receiveMessage()
             }
         }
     }
     
     public func ping() {
         Log.log(level: .info, category: .networking, message: "Ping WebSocketTask")
-        webSocketTask.sendPing { error in
+        webSocketTask.sendPing { [weak self] error in
             guard let error = error else { return }
-            self.subject.send(completion: .failure(.socketPingFailure(error)))
+            self?.subject.send(completion: .failure(.socketPingFailure(error)))
             Log.log(level: .error, category: .networking, message: "%{private}@: SocketPingFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
         }
     }
     
     public func send(message: URLSessionWebSocketTask.Message) {
         Log.log(level: .info, category: .networking, message: "Send WebSocketTask Message")
-        webSocketTask.send(message) { error in
+        webSocketTask.send(message) { [weak self] error in
             guard let error = error else { return }
-            self.subject.send(completion: .failure(.socketSendFailure(error)))
+            self?.subject.send(completion: .failure(.socketSendFailure(error)))
             Log.log(level: .error, category: .networking, message: "%{private}@: SocketSendFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
         }
     }

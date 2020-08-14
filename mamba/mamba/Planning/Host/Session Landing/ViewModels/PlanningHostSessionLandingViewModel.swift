@@ -12,6 +12,13 @@ import Combine
 class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.HostSend, PlanningCommands.HostReceive> {
     @Published var showInitialShareModal: Bool = false
     
+    var revoteDisabled: Bool {
+        if case .finishedVoting = state {
+            return false
+        }
+        return true
+    }
+    
     init(sessionName: String, availableCards: [PlanningCard]) {
         super.init(websocketURL: URLCenter.shared.planningHostWSURL)
         self.sessionName = sessionName
@@ -26,6 +33,10 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     func sendAddTicketCommand(identifier: String, description: String) {
         let commandMessage = PlanningAddTicketMessage(identifier: identifier, description: description)
         sendCommand(.addTicket(commandMessage))
+    }
+    
+    func sendRevoteTicketCommand() {
+        sendCommand(.revote)
     }
     
     public override func executeCommand(_ command: PlanningCommands.HostReceive) {

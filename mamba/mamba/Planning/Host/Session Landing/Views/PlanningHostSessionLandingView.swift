@@ -17,8 +17,14 @@ struct PlanningHostSessionLandingView: View {
     }
     
     var body: some View {
-        ScrollView {
-            stateViewBuilder()
+        VStack {
+            ScrollView {
+                stateViewBuilder()
+            }
+            
+            if !self.viewModel.toolBarHidden {
+                PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareSession, menuAction: {})
+            }
         }
     }
     
@@ -47,7 +53,7 @@ struct PlanningHostSessionLandingView: View {
         LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
             .onAppear {
                 self.viewModel.sendStartSessionCommand()
-            }
+        }
     }
     
     private var noneStateView: some View {
@@ -103,6 +109,14 @@ struct PlanningHostSessionLandingView: View {
         }
         navigation.modal(AnyView(addTicketView))
         navigation.showSheet = true
+    }
+    
+    private func revoteTicket() {
+        viewModel.sendRevoteTicketCommand()
+    }
+    
+    private func shareSession() {
+        
     }
     
     private func showShareModal() {

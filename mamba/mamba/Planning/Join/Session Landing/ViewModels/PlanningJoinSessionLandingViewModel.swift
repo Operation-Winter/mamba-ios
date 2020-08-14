@@ -17,15 +17,20 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         configure(sessionCode: sessionCode)
         configure(participantName: participantName)
         
-        cancellable = $selectedCard.sink { selectedCard in
+        cancellable = $selectedCard.sink { [weak self] selectedCard in
             guard let card = selectedCard else { return }
-            self.sendVoteCommand(card)
+            self?.sendVoteCommand(card)
         }
     }
     
     func sendJoinSessionCommand() {
         let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
         sendCommand(.joinSession(commandMessage))
+    }
+    
+    func sendLeaveSessionCommand() {
+        sendCommand(.leaveSession)
+        closeSession()
     }
     
     private func sendVoteCommand(_ selectedCard: PlanningCard) {

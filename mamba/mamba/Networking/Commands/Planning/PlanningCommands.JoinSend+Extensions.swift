@@ -21,7 +21,8 @@ public extension PlanningCommands.JoinSend {
         switch self {
         case .joinSession(let message): try container.encode(message, forKey: .message)
         case .vote(let message): try container.encode(message, forKey: .message)
-        default: try container.encodeNil(forKey: .message)
+        default:
+            break
         }
     }
     

@@ -148,7 +148,7 @@ struct PlanningHostSessionLandingView: View {
     }
     
     private func endSession() {
-        Log.log(level: .info, category: .planning, message: "Host - End session tapped")
+        Log.log(level: .info, category: .planning, message: "Host - End session confirmed")
         viewModel.sendEndSessionCommand()
     }
     

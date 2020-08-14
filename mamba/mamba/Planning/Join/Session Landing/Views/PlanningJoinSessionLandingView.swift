@@ -11,6 +11,8 @@ import SwiftUI
 struct PlanningJoinSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @ObservedObject private var viewModel: PlanningJoinSessionLandingViewModel
+    @State private var showActionsMenu = false
+    @State private var showConfirmAlert = false
     
     init(sessionCode: String, participantName: String) {
         viewModel = PlanningJoinSessionLandingViewModel(sessionCode: sessionCode, participantName: participantName)
@@ -29,10 +31,17 @@ struct PlanningJoinSessionLandingView: View {
             if !self.viewModel.toolBarHidden {
                 PlanningJoinToolbarView(shareAction: {
                     // TODO: MAM-68
-                }, menuAction: {
-                    
-                })
+                }, menuAction: self.menuActionTapped)
             }
+        }.actionSheet(isPresented: self.$showActionsMenu) {
+            ActionSheet(title: Text("Additional actions"), message: nil, buttons: [
+                .default(Text("PLANNING_JOIN_MENU_LEAVE_SESSION"), action: self.showLeaveSessionConfirmation),
+                .cancel()
+            ])
+        }.alert(isPresented: self.$showConfirmAlert) {
+            Alert(title: Text("Are you sure you want to leave the session?"), message: nil,
+                  primaryButton: .cancel(),
+                  secondaryButton: .default(Text("Yes"), action: self.leaveSession))
         }
     }
     
@@ -102,6 +111,21 @@ struct PlanningJoinSessionLandingView: View {
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
+    }
+    
+    private func menuActionTapped() {
+        Log.log(level: .info, category: .planning, message: "Join - Menu tapped")
+        showActionsMenu = true
+    }
+    
+    private func showLeaveSessionConfirmation() {
+        Log.log(level: .info, category: .planning, message: "Join - Leave session tapped")
+        showConfirmAlert = true
+    }
+    
+    private func leaveSession() {
+        Log.log(level: .info, category: .planning, message: "Join - Leave session confirmed")
+        viewModel.sendLeaveSessionCommand()
     }
 }
 

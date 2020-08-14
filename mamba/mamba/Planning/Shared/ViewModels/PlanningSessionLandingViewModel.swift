@@ -24,6 +24,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     var participantList: [PlanningParticipantRowViewModel] {
         switch state {
+        case .voting: return votingParticipantRows()
         case .finishedVoting: return outlierParticipantRows()
         default: return participantRows()
         }
@@ -105,7 +106,15 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
             PlanningParticipantRowViewModel(participantName: $0.name,
-                                            votingValue: participantVotedValue($0) ?? "")
+                                            votingValue: participantVotedValue($0))
+        }
+    }
+    
+    private func votingParticipantRows() -> [PlanningParticipantRowViewModel] {
+        participants.map {
+            let imageName = $0.selectedCard == nil ? "ellipsis" : "checkmark.circle"
+            return PlanningParticipantRowViewModel(participantName: $0.name,
+                                            votingImageName: imageName)
         }
     }
     
@@ -121,7 +130,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
                 let meanCard = group.value.count == meanCount ? $0.selectedCard : groupedVotes.last?.key
                 let highlighted = meanCard != $0.selectedCard
                 return PlanningParticipantRowViewModel(participantName: $0.name,
-                                                       votingValue: participantVotedValue($0) ?? "",
+                                                       votingValue: participantVotedValue($0),
                                                        highlighted: highlighted)
             }
             list.append(contentsOf: filteredParticipants)

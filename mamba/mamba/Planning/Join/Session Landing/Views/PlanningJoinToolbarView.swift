@@ -20,7 +20,6 @@ struct PlanningJoinToolbarView: View {
             Spacer()
             
             SystemImageButton(imageSystemName: "slider.horizontal.3", action: menuAction)
-                .disabled(true)
         }
             .padding()
             .background(

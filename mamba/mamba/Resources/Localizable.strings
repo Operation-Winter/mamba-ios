@@ -5,6 +5,7 @@
 "NONE" = "None";
 "DONE" = "Done";
 "ADD" = "Add";
+"YES" = "Yes";
 
 // MARK: - Landing screen
 "LANDING_PLANNING_HOST" = "HOST PLANNING";
@@ -31,6 +32,7 @@
 "PLANNING_HOST_PARTICIPANT_REMOVE" = "Remove";
 "PLANNING_HOST_MENU_FINISH_VOTING" = "Finish voting";
 "PLANNING_HOST_MENU_END_SESSION" = "End session";
+"PLANNING_HOST_MENU_END_SESSION_CONFIRM" = "Are you sure you want to end the session?";
 
 // MARK: - Planning join
 "PLANNING_JOIN_TITLE" = "Join planning";
@@ -40,7 +42,8 @@
 "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE" = "JOIN SESSION";
 "PLANNING_JOIN_LANDING_NONE_STATE_DESCRIPTION" = "This is a safe space.\nWait for a ticket to be added.";
 "PLANNING_JOIN_LANDING_CONNECTING_TITLE" = "Joining session...";
-
+"PLANNING_JOIN_MENU_LEAVE_SESSION" = "Leave session";
+"PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM" = "Are you sure you want to leave the session?";
 
 // MARK: Planning common
 "PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
@@ -50,12 +53,11 @@
 "PLANNING_ERROR_BUTTON_BACK_TO_LANDING_TITLE" = "BACK TO LANDING";
 "PLANNING_ERROR_DESCRIPTION" = "The snakes are all hissing in unison!\nSomething went wrong!";
 "PLANNING_FINISHED_STATE_VOTING_RESULTS_TITLE" = "Voting results";
-
+"PLANNING_ADDITIONAL_ACTION_SHEET_TITLE" = "Additional actions";
 
 // MARK: - Planning errors
 "PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";
 "PLANNING_INVALID_SESSION_ERROR_DESCRIPTION" = "The specified session code doesn't exist or is no longer available.";
-
 
 // MARK: - Networking errors
 "NETWORKING_ERROR_ENCODING_ERROR_INVALID_VALUE_DESCRIPTION" = "Failed to encode command being sent to session";

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum NavigationAction {
     case present
@@ -21,12 +22,19 @@ final class NavigationStack: ObservableObject {
     private(set) var modalView: AnyView
     private var viewStack: [AnyView] = []
     private(set) var userAction: NavigationAction
+    private var cancellable: AnyCancellable?
     
     init(_ currentView: AnyView) {
         userAction = .none
         self.currentView = currentView
         self.modalView = AnyView(EmptyView())
         self.showSheet = false
+        
+        cancellable = $showSheet.sink(receiveValue: { [weak self] showSheet in
+            if !showSheet {
+                self?.modalView = AnyView(EmptyView())
+            }
+        })
     }
     
     func present(_ view: AnyView, colorScheme: Product? = nil) {

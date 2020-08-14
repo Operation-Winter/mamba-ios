@@ -17,15 +17,20 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         configure(sessionCode: sessionCode)
         configure(participantName: participantName)
         
-        cancellable = $selectedCard.sink { selectedCard in
+        cancellable = $selectedCard.sink { [weak self] selectedCard in
             guard let card = selectedCard else { return }
-            self.sendVoteCommand(card)
+            self?.sendVoteCommand(card)
         }
     }
     
     func sendJoinSessionCommand() {
         let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
         sendCommand(.joinSession(commandMessage))
+    }
+    
+    func sendLeaveSessionCommand() {
+        sendCommand(.leaveSession)
+        closeSession()
     }
     
     private func sendVoteCommand(_ selectedCard: PlanningCard) {
@@ -53,9 +58,11 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             let errorDescription = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_DESCRIPTION", comment: "Invalid session error description")
             executeError(code: errorCode, description: errorDescription)
         case .removeParticipant:
+            // TODO: MAM-63
             break
         case .endSession:
-            break
+            dismiss = true
+            closeSession()
         }
     }
 

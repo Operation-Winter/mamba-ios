@@ -11,9 +11,7 @@ import Foundation
 class LandingViewModel {
     private(set) var landingItems: [LandingItem] = [
         .planningHost,
-        .planningJoin,
-        .retroHost,
-        .retroJoin
+        .planningJoin
     ]
     
     private(set) var chunkedLandingItems: [[LandingItem]]

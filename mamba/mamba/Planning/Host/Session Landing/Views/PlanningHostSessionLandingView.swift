@@ -11,20 +11,36 @@ import SwiftUI
 struct PlanningHostSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @ObservedObject private var viewModel: PlanningHostSessionLandingViewModel
+    @State private var showActionsMenu = false
+    @State private var showConfirmAlert = false
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         viewModel = PlanningHostSessionLandingViewModel(sessionName: sessionName, availableCards: availableCards)
     }
     
     var body: some View {
-        VStack {
+        if viewModel.dismiss {
+            self.navigation.dismiss()
+        }
+        
+        return VStack(alignment: .center, spacing: 0) {
             ScrollView {
                 stateViewBuilder()
             }
             
             if !self.viewModel.toolBarHidden {
-                PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareSession, menuAction: {})
+                PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareActionTapped, menuAction: self.menuActionTapped)
             }
+        }.actionSheet(isPresented: self.$showActionsMenu) {
+            ActionSheet(title: Text("Additional actions"), message: nil, buttons: [
+                .default(Text("PLANNING_HOST_MENU_FINISH_VOTING")) { },
+                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: self.showEndSessionConfirmation),
+                .cancel()
+            ])
+        }.alert(isPresented: self.$showConfirmAlert) {
+            Alert(title: Text("Are you sure you want to end the session?"), message: nil,
+                  primaryButton: .cancel(),
+                  secondaryButton: .default(Text("Yes"), action: self.endSession))
         }
     }
     
@@ -98,12 +114,22 @@ struct PlanningHostSessionLandingView: View {
         VStack(alignment: .center, spacing: 10) {
             ForEach(self.viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
+                    .contextMenu {
+                        ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_SKIP_VOTE", imageSystemName: "arrowshape.turn.up.right", action: {
+                            // TODO: MAM-64
+                        })
+                        
+                        ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_REMOVE", imageSystemName: "xmark", action: {
+                            // TODO: MAM-65
+                        })
+                    }
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
     }
     
     private func addTicket() {
+        Log.log(level: .info, category: .planning, message: "Host - Add ticket tapped")
         let addTicketView = PlanningAddTicketView(showSheet: $navigation.showSheet) { identifier, description in
             self.viewModel.sendAddTicketCommand(identifier: identifier, description: description)
         }
@@ -112,11 +138,27 @@ struct PlanningHostSessionLandingView: View {
     }
     
     private func revoteTicket() {
+        Log.log(level: .info, category: .planning, message: "Host - Revote ticket tapped")
         viewModel.sendRevoteTicketCommand()
     }
     
-    private func shareSession() {
-        
+    private func showEndSessionConfirmation() {
+        Log.log(level: .info, category: .planning, message: "Host - End session tapped")
+        showConfirmAlert = true
+    }
+    
+    private func endSession() {
+        Log.log(level: .info, category: .planning, message: "Host - End session tapped")
+        viewModel.sendEndSessionCommand()
+    }
+    
+    private func shareActionTapped() {
+        Log.log(level: .info, category: .planning, message: "Host - Share tapped")
+    }
+    
+    private func menuActionTapped() {
+        Log.log(level: .info, category: .planning, message: "Host - Menu tapped")
+        showActionsMenu = true
     }
     
     private func showShareModal() {

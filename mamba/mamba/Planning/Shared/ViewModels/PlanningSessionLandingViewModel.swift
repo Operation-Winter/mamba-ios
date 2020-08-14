@@ -20,6 +20,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     @Published var participants = [PlanningParticipant]()
     @Published var ticket: PlanningTicket?
     @Published var selectedCard: PlanningCard?
+    @Published var dismiss: Bool = false
     
     var participantList: [PlanningParticipantRowViewModel] {
         switch state {
@@ -96,6 +97,11 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         self.state = .error(planningError)
     }
     
+    public func closeSession() {
+        Log.log(level: .info, category: .planning, message: "Closing session")
+        service.close()
+    }
+    
     private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
             PlanningParticipantRowViewModel(participantName: $0.name,
@@ -140,20 +146,19 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         guard cancellable == nil else { return }
         cancellable = service.startSession()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { networkError in
+            .sink(receiveCompletion: { [weak self] networkError in
                 switch networkError {
                 case .finished:
-                    //TODO: MAM-61
-                    break
+                    self?.dismiss = true
                 case .failure(let error):
-                    self.executeError(code: error.errorCode, description: error.errorDescription)
+                    self?.executeError(code: error.errorCode, description: error.errorDescription)
                 }
-            }, receiveValue: { result in
+            }, receiveValue: { [weak self] result in
                 switch result {
                 case .success(let command):
-                    self.executeCommand(command)
+                    self?.executeCommand(command)
                 case .failure(let error):
-                    self.executeError(code: error.errorCode, description: error.errorDescription)
+                    self?.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             })
     }

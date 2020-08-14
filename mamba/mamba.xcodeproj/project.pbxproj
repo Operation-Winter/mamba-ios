@@ -11,6 +11,9 @@
 		260FBDF324E563E000DF4189 /* PlanningSessionLandingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBDF224E563E000DF4189 /* PlanningSessionLandingService.swift */; };
 		260FBDF824E65DF900DF4189 /* PlanningHostToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBDF724E65DF900DF4189 /* PlanningHostToolbarView.swift */; };
 		260FBDFA24E65F3D00DF4189 /* SystemImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBDF924E65F3D00DF4189 /* SystemImageButton.swift */; };
+		260FBDFC24E6706D00DF4189 /* PlanningJoinToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBDFB24E6706D00DF4189 /* PlanningJoinToolbarView.swift */; };
+		260FBDFE24E6771F00DF4189 /* ContextMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBDFD24E6771F00DF4189 /* ContextMenuButton.swift */; };
+		260FBE6B24E69BCF00DF4189 /* AvailableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FBE6A24E69BCF00DF4189 /* AvailableCard.swift */; };
 		261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1ED224A48AB600937D89 /* AppDelegate.swift */; };
 		261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1ED424A48AB700937D89 /* SceneDelegate.swift */; };
 		261E1ED724A48AB700937D89 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1ED624A48AB700937D89 /* LandingView.swift */; };
@@ -139,6 +142,9 @@
 		260FBDF224E563E000DF4189 /* PlanningSessionLandingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingService.swift; sourceTree = "<group>"; };
 		260FBDF724E65DF900DF4189 /* PlanningHostToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostToolbarView.swift; sourceTree = "<group>"; };
 		260FBDF924E65F3D00DF4189 /* SystemImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageButton.swift; sourceTree = "<group>"; };
+		260FBDFB24E6706D00DF4189 /* PlanningJoinToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinToolbarView.swift; sourceTree = "<group>"; };
+		260FBDFD24E6771F00DF4189 /* ContextMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuButton.swift; sourceTree = "<group>"; };
+		260FBE6A24E69BCF00DF4189 /* AvailableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableCard.swift; sourceTree = "<group>"; };
 		261E1ECF24A48AB600937D89 /* Mamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mamba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1ED224A48AB600937D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		261E1ED424A48AB700937D89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +299,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		260FBE6924E69BBC00DF4189 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				260FBE6A24E69BCF00DF4189 /* AvailableCard.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		261E1EC624A48AB600937D89 = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +383,7 @@
 				26F98A5624D97ACA007CA2B8 /* DoneBarButton.swift */,
 				26F98A6B24DD485A007CA2B8 /* AddBarButton.swift */,
 				260FBDF924E65F3D00DF4189 /* SystemImageButton.swift */,
+				260FBDFD24E6771F00DF4189 /* ContextMenuButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -399,6 +414,7 @@
 			children = (
 				263ECA5724D29D0300EEAB1E /* Views */,
 				263ECA5824D29D0900EEAB1E /* ViewModels */,
+				260FBE6924E69BBC00DF4189 /* Models */,
 			);
 			path = "Card Selection";
 			sourceTree = "<group>";
@@ -647,6 +663,7 @@
 				26F98A5C24D995A8007CA2B8 /* PlanningJoinSessionLandingView.swift */,
 				26F98A6024D996CC007CA2B8 /* PlanningJoinNoneStateHeaderView.swift */,
 				26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */,
+				260FBDFB24E6706D00DF4189 /* PlanningJoinToolbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1055,6 +1072,7 @@
 				EDEDE31724E15D1100CC666B /* LogLevel.swift in Sources */,
 				26F98A7424DD5163007CA2B8 /* PlanningTicket.swift in Sources */,
 				ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */,
+				260FBE6B24E69BCF00DF4189 /* AvailableCard.swift in Sources */,
 				26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */,
 				26E2F86624E53D2C008B2B4B /* StrokeText.swift in Sources */,
 				269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */,
@@ -1109,6 +1127,7 @@
 				269CA0E424D94BCC000F42B9 /* PlanningSessionLandingState.swift in Sources */,
 				26E2F85D24E52314008B2B4B /* PlanningParticipantRowViewModel.swift in Sources */,
 				26F98A6A24DD468B007CA2B8 /* PlanningAddTicketViewModel.swift in Sources */,
+				260FBDFC24E6706D00DF4189 /* PlanningJoinToolbarView.swift in Sources */,
 				263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */,
 				263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */,
 				263ECC2C24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift in Sources */,
@@ -1131,6 +1150,7 @@
 				26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */,
 				26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */,
 				26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */,
+				260FBDFE24E6771F00DF4189 /* ContextMenuButton.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				26E2F86924E546F6008B2B4B /* CombinedBarGraphEntry.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,

@@ -22,6 +22,17 @@ struct SystemImageButton: View {
 
 struct SystemImageButton_Previews: PreviewProvider {
     static var previews: some View {
-        SystemImageButton(imageSystemName: "plus") {}
+        Group {
+            SystemImageButton(imageSystemName: "plus") {}
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+                .padding()
+            
+            SystemImageButton(imageSystemName: "plus") {}
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .padding()
+                .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

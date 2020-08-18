@@ -12,50 +12,68 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    @ObservedObject var navigation: NavigationStack = NavigationStack(AnyView(LandingView()))
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
-        // Use a UIHostingController as window root view controller.
+        let navigationHost = NavigationHost().environmentObject(navigation)
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(rootView: navigationHost)
             self.window = window
             window.makeKeyAndVisible()
         }
     }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard
+            userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let urlToOpen = userActivity.webpageURL else { return }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        handleUrl(urlToOpen)
+    }
+    
+    func handleUrl(_ url: URL) {
+        guard let firstPath = url.pathComponents.element(at: 1) else { return }
+        switch firstPath {
+        case "planning":
+            navigateToPlanning(pathComponents: url.pathComponents)
+        default:
+            return
+        }
+    }
+    
+    func navigateToPlanning(pathComponents: [String]) {
+        switch pathComponents.element(at: 2) {
+        case "join":
+            guard let sessionCode = pathComponents.element(at: 3) else { return }
+            navigateToPlanningJoin(sessionCode: sessionCode)
+        default:
+            return
+        }
+    }
+    
+    func navigateToPlanningJoin(sessionCode: String) {
+        DispatchQueue.main.async {
+            self.navigation.dismiss()
+            self.navigation.present(AnyView(LandingView()))
+            let joinSetupView = PlanningJoinSetupView(showSheet: self.$navigation.showSheet)
+            joinSetupView.configure(sessionCode: sessionCode)
+            self.navigation.modal(AnyView(joinSetupView))
+            self.navigation.showSheet = true
+            
+            Log.log(level: .info, category: .planning, message: "Deeplinking to Planning Join Code: %@", args: sessionCode)
+        }
     }
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
+    func sceneDidDisconnect(_ scene: UIScene) { }
 
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
+    func sceneDidBecomeActive(_ scene: UIScene) { }
 
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
+    func sceneWillResignActive(_ scene: UIScene) { }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
+    func sceneWillEnterForeground(_ scene: UIScene) { }
+
+    func sceneDidEnterBackground(_ scene: UIScene) { }
 
 }

@@ -41,7 +41,7 @@ class WebSocketHandler: WebSocketAbstractHandler {
             switch result {
             case .failure(let error):
                 self?.subject.send(completion: .failure(.socketReceiveFailure(error)))
-                Log.log(level: .error, category: .networking, message: "%{private}@: SocketReceiveFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
+                Log.log(level: .error, category: .networking, message: "SocketReceiveFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
             case .success(let message):
                 self?.subject.send(message)
                 Log.log(level: .info, category: .networking, message: "WebSocket task received message")
@@ -55,7 +55,7 @@ class WebSocketHandler: WebSocketAbstractHandler {
         webSocketTask.sendPing { [weak self] error in
             guard let error = error else { return }
             self?.subject.send(completion: .failure(.socketPingFailure(error)))
-            Log.log(level: .error, category: .networking, message: "%{private}@: SocketPingFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
+            Log.log(level: .error, category: .networking, message: "SocketPingFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
         }
     }
     
@@ -64,7 +64,7 @@ class WebSocketHandler: WebSocketAbstractHandler {
         webSocketTask.send(message) { [weak self] error in
             guard let error = error else { return }
             self?.subject.send(completion: .failure(.socketSendFailure(error)))
-            Log.log(level: .error, category: .networking, message: "%{private}@: SocketSendFailure: %@", args: String(describing: WebSocketHandler.self), error.localizedDescription)
+            Log.log(level: .error, category: .networking, message: "SocketSendFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
         }
     }
     

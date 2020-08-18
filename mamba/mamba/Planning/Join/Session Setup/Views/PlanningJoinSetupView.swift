@@ -13,6 +13,10 @@ struct PlanningJoinSetupView: View {
     @ObservedObject private var viewModel = PlanningJoinSetupViewModel()
     @Binding var showSheet: Bool
 
+    func configure(sessionCode: String) {
+        viewModel.sessionCode = sessionCode
+    }
+    
     var body: some View {
         NavigationView {
             VStack {

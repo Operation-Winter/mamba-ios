@@ -22,7 +22,9 @@ public struct Log {
         os_log(level.type, log: category.log, message)
     }
 
-    public static func log(level: LogLevel, category: LogCategory, message: StaticString, args: CVarArg...) {
-        os_log(level.type, log: category.log, message, args)
+    public static func log(level: LogLevel, category: LogCategory, message: StaticString, args: CVarArg) {
+        let type = level.type
+        let log = category.log
+        os_log(type, log: log, message, args)
     }
 }

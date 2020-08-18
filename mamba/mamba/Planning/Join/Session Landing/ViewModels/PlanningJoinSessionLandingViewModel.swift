@@ -58,8 +58,8 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             let errorDescription = NSLocalizedString("PLANNING_INVALID_SESSION_ERROR_DESCRIPTION", comment: "Invalid session error description")
             executeError(code: errorCode, description: errorDescription)
         case .removeParticipant:
-            // TODO: MAM-63
-            break
+            dismiss = true
+            closeSession()
         case .endSession:
             dismiss = true
             closeSession()

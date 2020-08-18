@@ -33,7 +33,7 @@ struct PlanningParticipantRowView: View {
                 Image(systemName: self.viewModel.votingImageName!)
                     .frame(width: 26, height: 26)
                     .foregroundColor(.accentColor)
-                    .padding(top: 9, bottom: 9, trailing: 14)
+                    .padding(top: 9, bottom: 9, trailing: 10)
             }
         }
         .background(DefaultStyle.shared.systemGray5)
@@ -47,20 +47,20 @@ struct PlanningParticipantRowView: View {
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: ""))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingValue: "100"))
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "5"))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingValue: "5"))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "", highlighted: true))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantName: "Piet Pompies", votingValue: "5", highlighted: true))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)

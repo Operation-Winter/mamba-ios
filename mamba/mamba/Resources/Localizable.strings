@@ -54,6 +54,7 @@
 "PLANNING_ERROR_DESCRIPTION" = "The snakes are all hissing in unison!\nSomething went wrong!";
 "PLANNING_FINISHED_STATE_VOTING_RESULTS_TITLE" = "Voting results";
 "PLANNING_ADDITIONAL_ACTION_SHEET_TITLE" = "Additional actions";
+"PLANNING_VOTING_FINISHED_NO_VOTES_DESCRIPTION" = "No votes have been made.";
 
 // MARK: - Planning errors
 "PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";

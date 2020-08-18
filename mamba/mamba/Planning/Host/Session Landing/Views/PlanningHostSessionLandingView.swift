@@ -32,11 +32,7 @@ struct PlanningHostSessionLandingView: View {
                 PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareActionTapped, menuAction: self.menuActionTapped)
             }
         }.actionSheet(isPresented: self.$showActionsMenu) {
-            ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
-                .default(Text("PLANNING_HOST_MENU_FINISH_VOTING")) { },
-                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: self.showEndSessionConfirmation),
-                .cancel()
-            ])
+            self.actionsMenuActionSheet()
         }.alert(isPresented: self.$showConfirmAlert) {
             Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
@@ -56,6 +52,22 @@ struct PlanningHostSessionLandingView: View {
             return AnyView(votingStateView)
         case .finishedVoting:
             return AnyView(votingFinishedStateView)
+        }
+    }
+    
+    private func actionsMenuActionSheet() -> ActionSheet {
+        switch viewModel.state {
+        case .voting:
+            return ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
+                .default(Text("PLANNING_HOST_MENU_FINISH_VOTING"), action: self.finishVotingActionTapped),
+                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: self.showEndSessionConfirmation),
+                .cancel()
+            ])
+        default:
+            return ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
+                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: self.showEndSessionConfirmation),
+                .cancel()
+            ])
         }
     }
     
@@ -93,7 +105,7 @@ struct PlanningHostSessionLandingView: View {
                                               ticketIdentifier: self.viewModel.ticket?.identifier,
                                               ticketDescription: self.viewModel.ticket?.description)
             
-            participantsList
+            votingParticipantsList
         }
     }
     
@@ -115,12 +127,26 @@ struct PlanningHostSessionLandingView: View {
             ForEach(self.viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
                     .contextMenu {
+                        ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_REMOVE", imageSystemName: "xmark", action: {
+                            self.participantRemoveTapped(participantId: viewModel.participantId)
+                        })
+                }
+            }
+        }
+        .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
+    }
+    
+    private var votingParticipantsList: some View {
+        VStack(alignment: .center, spacing: 10) {
+            ForEach(self.viewModel.participantList) { viewModel in
+                PlanningParticipantRowView(viewModel: viewModel)
+                    .contextMenu {
                         ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_SKIP_VOTE", imageSystemName: "arrowshape.turn.up.right", action: {
-                            // TODO: MAM-64
+                            self.participantSkipVoteTapped(participantId: viewModel.participantId)
                         })
                         
                         ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_REMOVE", imageSystemName: "xmark", action: {
-                            // TODO: MAM-65
+                            self.participantRemoveTapped(participantId: viewModel.participantId)
                         })
                     }
             }
@@ -147,6 +173,11 @@ struct PlanningHostSessionLandingView: View {
         showConfirmAlert = true
     }
     
+    private func finishVotingActionTapped() {
+        Log.log(level: .info, category: .planning, message: "Host - Finish voting tapped")
+        viewModel.sendFinishVotingCommand()
+    }
+    
     private func endSession() {
         Log.log(level: .info, category: .planning, message: "Host - End session confirmed")
         viewModel.sendEndSessionCommand()
@@ -159,6 +190,16 @@ struct PlanningHostSessionLandingView: View {
     private func menuActionTapped() {
         Log.log(level: .info, category: .planning, message: "Host - Menu tapped")
         showActionsMenu = true
+    }
+    
+    private func participantSkipVoteTapped(participantId: String) {
+        Log.log(level: .info, category: .planning, message: "Host - Skip participant vote tapped")
+        viewModel.sendSkipParticipantVoteCommand(participantId: participantId)
+    }
+    
+    private func participantRemoveTapped(participantId: String) {
+        Log.log(level: .info, category: .planning, message: "Host - Skip participant vote tapped")
+        viewModel.sendRemoveParticipantCommand(participantId: participantId)
     }
     
     private func showShareModal() {

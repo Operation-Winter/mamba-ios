@@ -19,19 +19,39 @@ struct PlanningFinishedVotingStateGraphCardView: View {
                 .multilineTextAlignment(.center)
                 .padding(leading: 20, top: 15, trailing: 20)
             
-            HorizontalCombinedBarGraphView(barGraphEntries: self.barGraphEntries, barWidth: UIScreen.main.bounds.width - 70)
-                .padding(leading: 20, top: 15, bottom: 20, trailing: 20)
-                .frame(maxWidth: .infinity)
+            if self.barGraphEntries.count > 0 {
+                HorizontalCombinedBarGraphView(barGraphEntries: self.barGraphEntries, barWidth: UIScreen.main.bounds.width - 70)
+                    .padding(leading: 20, top: 15, bottom: 20, trailing: 20)
+                    .frame(maxWidth: .infinity)
+            } else {
+                Text("PLANNING_VOTING_FINISHED_NO_VOTES_DESCRIPTION")
+                    .font(.system(size: 16))
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.center)
+                    .padding(leading: 20, top: 15, bottom: 20, trailing: 20)
+                    .frame(maxWidth: .infinity)
+            }
         }
     }
 }
 
 struct PlanningFinishedVotingStateGraphCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningFinishedVotingStateGraphCardView(barGraphEntries: [
-            CombinedBarGraphEntry(title: "5", count: 10),
-            CombinedBarGraphEntry(title: "1", count: 2),
-            CombinedBarGraphEntry(title: "3", count: 1)
-        ])
+        Group {
+            PlanningFinishedVotingStateGraphCardView(barGraphEntries: [
+                CombinedBarGraphEntry(title: "5", count: 10),
+                CombinedBarGraphEntry(title: "1", count: 2),
+                CombinedBarGraphEntry(title: "3", count: 1)
+            ])
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+                .padding()
+            
+            PlanningFinishedVotingStateGraphCardView(barGraphEntries: [])
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .padding()
+                .background(Color.black)
+        }.previewLayout(.sizeThatFits)
     }
 }

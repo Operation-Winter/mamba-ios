@@ -34,8 +34,9 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         guard let ticketVotes = ticket?.ticketVotes else { return [] }
         let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }
         
-        return groupedVotes.map {
-            return CombinedBarGraphEntry(title: $0.key.title, count: $0.self.value.count)
+        return groupedVotes.compactMap {
+            guard let selectedCard = $0.key else { return nil }
+            return CombinedBarGraphEntry(title: selectedCard.title, count: $0.value.count)
         }.sorted {
             $0.count > $1.count
         }
@@ -88,7 +89,9 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         self.availableCards = message.availableCards
         
         for participant in self.participants {
-            participant.selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
+            let vote = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })
+            participant.selectedCard = vote?.selectedCard
+            participant.skipped = vote != nil && vote?.selectedCard == nil
         }
     }
     
@@ -105,50 +108,54 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
-            PlanningParticipantRowViewModel(participantName: $0.name,
-                                            votingValue: participantVotedValue($0))
+            PlanningParticipantRowViewModel(participantId: $0.id,
+                                            participantName: $0.name,
+                                            votingValue: $0.selectedCard?.title)
+        }
+    }
+    
+    private func votingParticipantRowImage(skipped: Bool, cardSelected: Bool) -> String {
+        if skipped {
+            return "arrowshape.turn.up.right"
+        } else {
+            return cardSelected ? "checkmark.circle" : "ellipsis"
         }
     }
     
     private func votingParticipantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
-            let imageName = $0.selectedCard == nil ? "ellipsis" : "checkmark.circle"
-            return PlanningParticipantRowViewModel(participantName: $0.name,
-                                            votingImageName: imageName)
+            let imageName = votingParticipantRowImage(skipped: $0.skipped ?? false, cardSelected: $0.selectedCard != nil)
+            return PlanningParticipantRowViewModel(participantId: $0.id,
+                                                   participantName: $0.name,
+                                                   votingImageName: imageName)
         }
     }
     
     private func outlierParticipantRows() -> [PlanningParticipantRowViewModel] {
         guard let ticketVotes = ticket?.ticketVotes else { return participantRows() }
+        let filteredVotes = ticketVotes.filter { $0.selectedCard != nil }
+        let filteredGroupedVotes = Dictionary(grouping: filteredVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
+        let meanCount = filteredGroupedVotes.last?.value.count ?? 0
+
         let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
-        let meanCount = groupedVotes.last?.value.count ?? 0
+        
         var list = [PlanningParticipantRowViewModel]()
         for group in groupedVotes {
             let filteredParticipants: [PlanningParticipantRowViewModel] = participants.filter {
                 group.key == $0.selectedCard
             }.map {
                 let meanCard = group.value.count == meanCount ? $0.selectedCard : groupedVotes.last?.key
-                let highlighted = meanCard != $0.selectedCard
-                return PlanningParticipantRowViewModel(participantName: $0.name,
-                                                       votingValue: participantVotedValue($0),
+                let highlighted = meanCard != $0.selectedCard && meanCard != nil
+                let imageName = $0.selectedCard?.title == nil ? votingParticipantRowImage(skipped: $0.skipped ?? false, cardSelected: $0.selectedCard != nil) : nil
+                return PlanningParticipantRowViewModel(participantId: $0.id,
+                                                       participantName: $0.name,
+                                                       votingValue: $0.selectedCard?.title,
+                                                       votingImageName: imageName,
                                                        highlighted: highlighted)
             }
             list.append(contentsOf: filteredParticipants)
         }
         return list
-    }
-    
-    private func participantVotedValue(_ participant: PlanningParticipant) -> String? {
-        switch state {
-        case .voting:
-            let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
-            return selectedCard == nil ? "􀀀" : "􀁣"
-        case .finishedVoting:
-            let selectedCard = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })?.selectedCard
-            return selectedCard?.title ?? "Skipped"
-        default:
-            return nil
-        }
     }
     
     private func startSession() {

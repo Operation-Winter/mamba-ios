@@ -30,8 +30,8 @@ public enum PlanningCommands {
     public enum HostSend: Encodable {
         case startSession(PlanningStartSessionMessage)
         case addTicket(PlanningAddTicketMessage)
-        case skipVote
-        case removeParticipant
+        case skipVote(PlanningSkipVoteMessage)
+        case removeParticipant(PlanningRemoveParticipantMessage)
         case endSession
         case finishVoting
         case reconnect

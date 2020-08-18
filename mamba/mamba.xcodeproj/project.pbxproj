@@ -37,6 +37,8 @@
 		263ECC2824D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */; };
 		263ECC2C24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */; };
 		263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */; };
+		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
+		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */; };
@@ -174,6 +176,8 @@
 		263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.JoinReceive+Extensions.swift"; sourceTree = "<group>"; };
 		263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionNetworkHandler.swift; sourceTree = "<group>"; };
 		263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupViewModel.swift; sourceTree = "<group>"; };
+		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
+		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningStartSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
@@ -610,6 +614,8 @@
 				26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */,
 				26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */,
 				26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */,
+				26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */,
+				26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 				26F98A5D24D995A8007CA2B8 /* PlanningJoinSessionLandingView.swift in Sources */,
 				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
 				269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */,
+				26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
@@ -1145,6 +1152,7 @@
 				263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */,
 				263ECC2624D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
+				26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */,
 				263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
 				26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */,
@@ -1343,7 +1351,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1364,7 +1372,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

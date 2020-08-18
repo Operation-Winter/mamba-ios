@@ -9,6 +9,6 @@
 import Foundation
 
 public struct PlanningVoteMessage: Codable {
-    let ticketId: String
-    let selectedCard: PlanningCard
+    public let ticketId: String
+    public let selectedCard: PlanningCard
 }

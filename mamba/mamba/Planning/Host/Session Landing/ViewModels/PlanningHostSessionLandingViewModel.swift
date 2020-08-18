@@ -44,6 +44,21 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         closeSession()
     }
     
+    func sendFinishVotingCommand() {
+        sendCommand(.finishVoting)
+    }
+    
+    func sendSkipParticipantVoteCommand(participantId: String) {
+        let commandMessage = PlanningSkipVoteMessage(participantId: participantId)
+        sendCommand(.skipVote(commandMessage))
+    }
+    
+    func sendRemoveParticipantCommand(participantId: String) {
+        let commandMessage = PlanningRemoveParticipantMessage(participantId: participantId)
+        sendCommand(.removeParticipant(commandMessage))
+    }
+    
+    
     public override func executeCommand(_ command: PlanningCommands.HostReceive) {
         super.executeCommand(command)
         switch command {

@@ -10,11 +10,23 @@ import SwiftUI
 
 struct RoundedButton: View {
     let titleKey: LocalizedStringKey
+    let systemImage: String?
     let action: () -> Void
+    
+    init(titleKey: LocalizedStringKey, systemImage: String? = nil, action: @escaping () -> Void) {
+        self.titleKey = titleKey
+        self.systemImage = systemImage
+        self.action = action
+    }
     
     var body: some View {
         Button(action: action) {
-            Text(titleKey)
+            HStack {
+                if self.systemImage != nil {
+                    Image(systemName: self.systemImage!)
+                }
+                Text(titleKey)
+            }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(11)
                 .background(Color.accentColor)
@@ -33,6 +45,17 @@ struct RoundedButton_Previews: PreviewProvider {
                 .padding()
             
             RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE", action: {})
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark mode")
+                .padding()
+                .background(Color.black)
+            
+            RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE", systemImage: "square.and.arrow.up", action: {})
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light mode")
+                .padding()
+            
+            RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE", systemImage: "square.and.arrow.up", action: {})
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .padding()

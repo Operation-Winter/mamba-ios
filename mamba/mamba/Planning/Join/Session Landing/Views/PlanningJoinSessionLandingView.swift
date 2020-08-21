@@ -173,8 +173,8 @@ struct PlanningJoinSessionLandingView: View {
     }
     
     private func showShareSheet(shareItems: [Any]) {
-        let av = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+        let shareController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(shareController, animated: true, completion: nil)
     }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: ObservableObject {
     private var service: PlanningSessionLandingService<Send, Receive>
@@ -47,6 +48,14 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         case .error(_), .loading: return true
         default: return false
         }
+    }
+    
+    var shareSessionCode: String {
+        sessionCode
+    }
+    
+    var shareSessionLink: URL {
+        URLCenter.shared.planningJoinURL(sessionCode: sessionCode)
     }
     
     init(websocketURL: URL) {
@@ -104,6 +113,17 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     public func closeSession() {
         Log.log(level: .info, category: .planning, message: "Closing session")
         service.close()
+    }
+    
+    public func shareSessionQRCode() -> UIImage? {
+        let data = shareSessionLink.absoluteString.data(using: String.Encoding.ascii)
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+        
+        filter.setValue(data, forKey: "inputMessage")
+        let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+        guard let output = filter.outputImage?.transformed(by: transform) else { return nil }
+        return UIImage(ciImage: output)
     }
     
     private func participantRows() -> [PlanningParticipantRowViewModel] {

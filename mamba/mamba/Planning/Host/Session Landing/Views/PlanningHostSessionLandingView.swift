@@ -11,8 +11,9 @@ import SwiftUI
 struct PlanningHostSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @ObservedObject private var viewModel: PlanningHostSessionLandingViewModel
-    @State private var showActionsMenu = false
+    @State private var showActionSheet = false
     @State private var showConfirmAlert = false
+    @State private var actionSheetType: PlanningSessionLandingActionSheetType = .menu
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         viewModel = PlanningHostSessionLandingViewModel(sessionName: sessionName, availableCards: availableCards)
@@ -31,8 +32,8 @@ struct PlanningHostSessionLandingView: View {
             if !self.viewModel.toolBarHidden {
                 PlanningHostToolbarView(revoteDisabled: self.viewModel.revoteDisabled, addTicketAction: self.addTicket, revoteAction: self.revoteTicket, shareAction: self.shareActionTapped, menuAction: self.menuActionTapped)
             }
-        }.actionSheet(isPresented: self.$showActionsMenu) {
-            self.actionsMenuActionSheet()
+        }.actionSheet(isPresented: self.$showActionSheet) {
+            self.actionSheetBuilder()
         }.alert(isPresented: self.$showConfirmAlert) {
             Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
@@ -55,6 +56,15 @@ struct PlanningHostSessionLandingView: View {
         }
     }
     
+    private func actionSheetBuilder() -> ActionSheet {
+        switch actionSheetType {
+        case .share:
+            return shareActionSheet()
+        case .menu:
+            return actionsMenuActionSheet()
+        }
+    }
+    
     private func actionsMenuActionSheet() -> ActionSheet {
         switch viewModel.state {
         case .voting:
@@ -69,6 +79,15 @@ struct PlanningHostSessionLandingView: View {
                 .cancel()
             ])
         }
+    }
+    
+    private func shareActionSheet() -> ActionSheet {
+        ActionSheet(title: Text("PLANNING_SHARE_SESSION_SHEET_TITLE"), message: nil, buttons: [
+            .default(Text("PLANNING_SHARE_SESSION_SESSION_CODE"), action: self.shareSessionCode),
+            .default(Text("PLANNING_SHARE_SESSION_LINK"), action: self.shareSessionLink),
+            .default(Text("PLANNING_SHARE_SESSION_QR_CODE"), action: self.shareSessionQRCode),
+            .cancel()
+        ])
     }
     
     private func errorCard(planningError: PlanningLandingError) -> some View {
@@ -185,11 +204,14 @@ struct PlanningHostSessionLandingView: View {
     
     private func shareActionTapped() {
         Log.log(level: .info, category: .planning, message: "Host - Share tapped")
+        actionSheetType = .share
+        showActionSheet = true
     }
     
     private func menuActionTapped() {
         Log.log(level: .info, category: .planning, message: "Host - Menu tapped")
-        showActionsMenu = true
+        actionSheetType = .menu
+        showActionSheet = true
     }
     
     private func participantSkipVoteTapped(participantId: String) {
@@ -198,7 +220,7 @@ struct PlanningHostSessionLandingView: View {
     }
     
     private func participantRemoveTapped(participantId: String) {
-        Log.log(level: .info, category: .planning, message: "Host - Skip participant vote tapped")
+        Log.log(level: .info, category: .planning, message: "Host - Remove participant tapped")
         viewModel.sendRemoveParticipantCommand(participantId: participantId)
     }
     
@@ -206,6 +228,27 @@ struct PlanningHostSessionLandingView: View {
         let shareView = PlanningHostSessionStartShareView(sessionCode: viewModel.sessionCode, showSheet: $navigation.showSheet)
         navigation.modal(AnyView(shareView))
         navigation.showSheet = true
+    }
+    
+    private func shareSessionCode() {
+        Log.log(level: .info, category: .planning, message: "Host - Share session code tapped")
+        showShareSheet(shareItems: [viewModel.shareSessionCode])
+    }
+    
+    private func shareSessionQRCode() {
+        Log.log(level: .info, category: .planning, message: "Host - Share session QR code tapped")
+        guard let qrCode = viewModel.shareSessionQRCode() else { return }
+        showShareSheet(shareItems: [qrCode])
+    }
+    
+    private func shareSessionLink() {
+        Log.log(level: .info, category: .planning, message: "Host - Share session link tapped")
+        showShareSheet(shareItems: [viewModel.shareSessionLink])
+    }
+    
+    private func showShareSheet(shareItems: [Any]) {
+        let av = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
 }
 

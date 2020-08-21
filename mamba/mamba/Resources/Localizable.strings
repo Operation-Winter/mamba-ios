@@ -7,11 +7,13 @@
 "ADD" = "Add";
 "YES" = "Yes";
 
+
 // MARK: - Landing screen
 "LANDING_PLANNING_HOST" = "HOST PLANNING";
 "LANDING_PLANNING_JOIN" = "JOIN PLANNING";
 "LANDING_RETRO_HOST" = "HOST RETRO";
 "LANDING_RETRO_JOIN" = "JOIN RETRO";
+
 
 // MARK: - Planning host
 "PLANNING_HOST_TITLE" = "Host planning";
@@ -34,6 +36,7 @@
 "PLANNING_HOST_MENU_END_SESSION" = "End session";
 "PLANNING_HOST_MENU_END_SESSION_CONFIRM" = "Are you sure you want to end the session?";
 
+
 // MARK: - Planning join
 "PLANNING_JOIN_TITLE" = "Join planning";
 "PLANNING_JOIN_SETUP_TITLE" = "Planning Join Setup";
@@ -45,6 +48,7 @@
 "PLANNING_JOIN_MENU_LEAVE_SESSION" = "Leave session";
 "PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM" = "Are you sure you want to leave the session?";
 
+
 // MARK: Planning common
 "PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
 "PLANNING_TICKET_DESCRIPTION_TITLE" = "Ticket description";
@@ -55,10 +59,15 @@
 "PLANNING_FINISHED_STATE_VOTING_RESULTS_TITLE" = "Voting results";
 "PLANNING_ADDITIONAL_ACTION_SHEET_TITLE" = "Additional actions";
 "PLANNING_VOTING_FINISHED_NO_VOTES_DESCRIPTION" = "No votes have been made.";
+"PLANNING_SHARE_SESSION_SHEET_TITLE" = "Share session";
+"PLANNING_SHARE_SESSION_SESSION_CODE" = "Share session code";
+"PLANNING_SHARE_SESSION_LINK" = "Share link";
+"PLANNING_SHARE_SESSION_QR_CODE" = "Share QR code";
 
 // MARK: - Planning errors
 "PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";
 "PLANNING_INVALID_SESSION_ERROR_DESCRIPTION" = "The specified session code doesn't exist or is no longer available.";
+
 
 // MARK: - Networking errors
 "NETWORKING_ERROR_ENCODING_ERROR_INVALID_VALUE_DESCRIPTION" = "Failed to encode command being sent to session";

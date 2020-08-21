@@ -40,6 +40,12 @@
 		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
 		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */; };
+		26467D4424EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4324EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift */; };
+		26467D4624EFDF87008A36AD /* QrScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4524EFDF87008A36AD /* QrScannerViewModel.swift */; };
+		26467D4824EFDFB9008A36AD /* QrScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4724EFDFB9008A36AD /* QrScannerView.swift */; };
+		26467D4A24EFE001008A36AD /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4924EFE001008A36AD /* QrCodeCameraDelegate.swift */; };
+		26467D4C24EFE03C008A36AD /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4B24EFE03C008A36AD /* CameraPreview.swift */; };
+		26467D4E24EFE072008A36AD /* QrCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4D24EFE072008A36AD /* QrCodeScannerView.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */; };
@@ -180,6 +186,12 @@
 		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
 		26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingActionSheetType.swift; sourceTree = "<group>"; };
+		26467D4324EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupQRCameraView.swift; sourceTree = "<group>"; };
+		26467D4524EFDF87008A36AD /* QrScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerViewModel.swift; sourceTree = "<group>"; };
+		26467D4724EFDFB9008A36AD /* QrScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerView.swift; sourceTree = "<group>"; };
+		26467D4924EFE001008A36AD /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
+		26467D4B24EFE03C008A36AD /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		26467D4D24EFE072008A36AD /* QrCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeScannerView.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningStartSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
@@ -453,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */,
+				26467D4324EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +476,26 @@
 				263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		26467D4F24EFE126008A36AD /* QR Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				26467D5024EFE139008A36AD /* Views */,
+				26467D4524EFDF87008A36AD /* QrScannerViewModel.swift */,
+				26467D4924EFE001008A36AD /* QrCodeCameraDelegate.swift */,
+			);
+			path = "QR Scanner";
+			sourceTree = "<group>";
+		};
+		26467D5024EFE139008A36AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26467D4724EFDFB9008A36AD /* QrScannerView.swift */,
+				26467D4B24EFE03C008A36AD /* CameraPreview.swift */,
+				26467D4D24EFE072008A36AD /* QrCodeScannerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2661E01024BC5ED500D46119 /* Commands */ = {
@@ -488,6 +521,7 @@
 		26772AF724B4A5C9003FB1A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				26467D4F24EFE126008A36AD /* QR Scanner */,
 				26E2F86024E52840008B2B4B /* Graphs */,
 				26F98A4D24D96129007CA2B8 /* LoadingIndicators */,
 				263ECA4724D190E500EEAB1E /* Card */,
@@ -1086,6 +1120,7 @@
 				269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */,
 				26F98A5724D97ACA007CA2B8 /* DoneBarButton.swift in Sources */,
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
+				26467D4824EFDFB9008A36AD /* QrScannerView.swift in Sources */,
 				26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */,
 				263ECC2424D40CBC00EEAB1E /* PlanningJoinSessionMessage.swift in Sources */,
 				260FBDF324E563E000DF4189 /* PlanningSessionLandingService.swift in Sources */,
@@ -1095,6 +1130,7 @@
 				260FBDF024E562FB00DF4189 /* PlanningSessionLandingViewModel.swift in Sources */,
 				ED38EAD624AE64EC00564F85 /* NavigationHost.swift in Sources */,
 				ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */,
+				26467D4A24EFE001008A36AD /* QrCodeCameraDelegate.swift in Sources */,
 				26E2F85F24E526A7008B2B4B /* PlanningFinishedVotingStateGraphCardView.swift in Sources */,
 				26F98A5F24D99646007CA2B8 /* PlanningJoinSessionLandingViewModel.swift in Sources */,
 				26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */,
@@ -1105,6 +1141,7 @@
 				26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */,
 				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				EDEDE31524E15BF400CC666B /* LogCategory.swift in Sources */,
+				26467D4424EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift in Sources */,
 				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				26E2F56F24DD89BF008B2B4B /* EncodingError+Extensions.swift in Sources */,
 				2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */,
@@ -1149,11 +1186,13 @@
 				26E2F56B24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift in Sources */,
 				263ECC2824D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift in Sources */,
 				ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */,
+				26467D4C24EFE03C008A36AD /* CameraPreview.swift in Sources */,
 				260FBDFA24E65F3D00DF4189 /* SystemImageButton.swift in Sources */,
 				2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */,
 				263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */,
 				263ECC2624D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift in Sources */,
 				261E1ED324A48AB600937D89 /* AppDelegate.swift in Sources */,
+				26467D4624EFDF87008A36AD /* QrScannerViewModel.swift in Sources */,
 				26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */,
 				263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */,
 				261E1ED524A48AB700937D89 /* SceneDelegate.swift in Sources */,
@@ -1164,6 +1203,7 @@
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				26E2F86924E546F6008B2B4B /* CombinedBarGraphEntry.swift in Sources */,
 				269F557624BC2EF300EEC682 /* URLCenter+Planning.swift in Sources */,
+				26467D4E24EFE072008A36AD /* QrCodeScannerView.swift in Sources */,
 				26F98A5124D96A52007CA2B8 /* PlanningHostSessionStartShareView.swift in Sources */,
 				263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */,
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,

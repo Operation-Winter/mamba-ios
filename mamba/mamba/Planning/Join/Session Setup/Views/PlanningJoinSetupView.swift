@@ -42,11 +42,13 @@ struct PlanningJoinSetupView: View {
                                          code6: self.$viewModel.sessionCode6)
                         .padding(leading: 20, top: 15, trailing: 20)
                     
+                    self.qrCodeButton
+                    
                     RoundedButton(titleKey: "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE") {
                         self.navigateToJoinLanding()
                     }
                     .disabled(!self.viewModel.inputValid)
-                    .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
+                    .padding(leading: 20, top: 10, bottom: 20, trailing: 20)
                 }
                 
                 Spacer()
@@ -65,6 +67,20 @@ struct PlanningJoinSetupView: View {
         guard let sessionCode = viewModel.sessionCode else { return }
         let joinLandingView = PlanningJoinSessionLandingView(sessionCode: sessionCode, participantName: viewModel.participantName)
         navigation.present(AnyView(joinLandingView))
+    }
+    
+    private var qrCodeButton: some View {
+        NavigationLink(destination: PlanningJoinSetupQRCameraView(sessionCode: self.$viewModel.sessionCode)) {
+            HStack {
+                Image(systemName: "qrcode.viewfinder")
+                Text("PLANNING_JOIN_SETUP_QR_BUTTON_TITLE")
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(11)
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }.padding(leading: 20, top: 30, trailing: 20)
     }
 }
 

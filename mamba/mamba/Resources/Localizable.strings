@@ -47,7 +47,8 @@
 "PLANNING_JOIN_LANDING_CONNECTING_TITLE" = "Joining session...";
 "PLANNING_JOIN_MENU_LEAVE_SESSION" = "Leave session";
 "PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM" = "Are you sure you want to leave the session?";
-
+"PLANNING_JOIN_SETUP_QR_BUTTON_TITLE" = "QR CODE";
+"PLANNING_JOIN_SETUP_QR_VIEW_TITLE" = "Scan QR code";
 
 // MARK: Planning common
 "PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
@@ -63,6 +64,7 @@
 "PLANNING_SHARE_SESSION_SESSION_CODE" = "Share session code";
 "PLANNING_SHARE_SESSION_LINK" = "Share link";
 "PLANNING_SHARE_SESSION_QR_CODE" = "Share QR code";
+
 
 // MARK: - Planning errors
 "PLANNING_INVALID_SESSION_ERROR_CODE" = "0001";

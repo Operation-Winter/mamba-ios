@@ -33,8 +33,8 @@ class NetworkEnvironmentTests: XCTestCase {
         let socketBaseURL = networkEnvironment.webSocketBaseURL
         
         // Then: the URLs match expected values
-        XCTAssertEqual(baseURL.absoluteString, "http://mamba.armandkamffer.co.za:83")
-        XCTAssertEqual(socketBaseURL.absoluteString, "ws://mamba.armandkamffer.co.za:83")
+        XCTAssertEqual(baseURL.absoluteString, "https://mamba.armandkamffer.co.za:82")
+        XCTAssertEqual(socketBaseURL.absoluteString, "wss://mamba.armandkamffer.co.za:82")
     }
 
 }

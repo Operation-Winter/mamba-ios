@@ -46,8 +46,9 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     }
     
     private func pingWebSocket() {
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10) { [weak self] in
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.webSocket?.ping()
+            self?.pingWebSocket()
         }
     }
     
@@ -73,10 +74,12 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
             let command = try JSONDecoder().decode(Command.self, from: data)
             return Result<Command, NetworkError>.success(command)
         } catch let error as DecodingError {
-            Log.log(level: .error, category: .networking, message: "%{private}@: ParseDecodingError: %{private}@ %@ %@", args: String(describing: PlanningSessionNetworkHandler.self), error.localizedDescription, String(describing: Send.self), String(describing: Receive.self))
+            Log.log(level: .error, category: .networking, message: "ParseDecodingError: %@",
+                    args: "\(String(describing: PlanningSessionNetworkHandler.self)) \(error.localizedDescription) \(String(describing: Send.self)) \(String(describing: Receive.self))")
             return Result<Command, NetworkError>.failure(NetworkError.parseDecodingError(error))
         } catch {
-            Log.log(level: .error, category: .networking, message: "%{private}@: UnknownError: %{private}@ %@ %@", args: String(describing: PlanningSessionNetworkHandler.self), error.localizedDescription, String(describing: Send.self), String(describing: Receive.self))
+            Log.log(level: .error, category: .networking, message: "UnknownError: %@",
+                    args: "\(String(describing: PlanningSessionNetworkHandler.self)) \(error.localizedDescription) \(String(describing: Send.self)) \(String(describing: Receive.self))")
             return Result<Command, NetworkError>.failure(NetworkError.unknownError(error))
         }
     }

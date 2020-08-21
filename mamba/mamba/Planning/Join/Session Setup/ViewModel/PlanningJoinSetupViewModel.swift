@@ -19,17 +19,42 @@ class PlanningJoinSetupViewModel: ObservableObject {
     @Published var sessionCode6: Int?
     
     var sessionCode: String? {
-        guard
-            let code1 = sessionCode1,
-            let code2 = sessionCode2,
-            let code3 = sessionCode3,
-            let code4 = sessionCode4,
-            let code5 = sessionCode5,
-            let code6 = sessionCode6
-        else {
-            return nil
+        get {
+            guard
+                let code1 = sessionCode1,
+                let code2 = sessionCode2,
+                let code3 = sessionCode3,
+                let code4 = sessionCode4,
+                let code5 = sessionCode5,
+                let code6 = sessionCode6
+            else {
+                return nil
+            }
+            return "\(code1)\(code2)\(code3)\(code4)\(code5)\(code6)"
         }
-        return "\(code1)\(code2)\(code3)\(code4)\(code5)\(code6)"
+        set {
+            guard let newValue = newValue else { return }
+            let sessionCodeArray: [String] = newValue.map { String($0) }
+            
+            if let code = sessionCodeArray.element(at: 0) {
+                sessionCode1 = NumberFormatter().number(from: code)?.intValue
+            }
+            if let code = sessionCodeArray.element(at: 1) {
+                sessionCode2 = NumberFormatter().number(from: code)?.intValue
+            }
+            if let code = sessionCodeArray.element(at: 2) {
+                sessionCode3 = NumberFormatter().number(from: code)?.intValue
+            }
+            if let code = sessionCodeArray.element(at: 3) {
+                sessionCode4 = NumberFormatter().number(from: code)?.intValue
+            }
+            if let code = sessionCodeArray.element(at: 4) {
+                sessionCode5 = NumberFormatter().number(from: code)?.intValue
+            }
+            if let code = sessionCodeArray.element(at: 5) {
+                sessionCode6 = NumberFormatter().number(from: code)?.intValue
+            }
+        }
     }
     
     var inputValid: Bool {

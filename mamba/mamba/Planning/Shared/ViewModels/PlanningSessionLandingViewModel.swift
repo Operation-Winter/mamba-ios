@@ -96,7 +96,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func executeError(code: String, description: String) {
-        Log.log(level: .error, category: .planning, message: "Executing error state: %@-%@", args: code, description)
+        Log.log(level: .error, category: .planning, message: "Executing error state: %@", args: "\(code) \(description)")
         let planningError = PlanningLandingError(code: code, description: description)
         self.state = .error(planningError)
     }

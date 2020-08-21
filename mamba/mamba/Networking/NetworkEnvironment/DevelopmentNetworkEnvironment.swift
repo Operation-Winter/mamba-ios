@@ -10,12 +10,12 @@ import Foundation
 
 class DevelopmentNetworkEnvironment: NetworkEnvironment {
     var baseURL: URL = {
-        guard let url = URL(string: "http://mamba.armandkamffer.co.za:83") else { fatalError() }
+        guard let url = URL(string: "https://mamba.armandkamffer.co.za:82") else { fatalError() }
         return url
     }()
     
     var webSocketBaseURL: URL = {
-        guard let url = URL(string: "ws://mamba.armandkamffer.co.za:83") else { fatalError() }
+        guard let url = URL(string: "wss://mamba.armandkamffer.co.za:82") else { fatalError() }
         return url
     }()
 }

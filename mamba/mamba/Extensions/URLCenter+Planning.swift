@@ -27,4 +27,20 @@ extension URLCenter {
     func planningJoinURL(sessionCode: String) -> URL {
         planningJoinURL.appendingPathComponent(sessionCode)
     }
+    
+    func planningSessionCode(from url: String) -> String? {
+        guard
+            let url = URL(string: url),
+            let baseQRURL = url.baseURL,
+            baseURL == baseQRURL,
+            let feature = url.pathComponents.element(at: 1),
+            feature == "planning",
+            let type = url.pathComponents.element(at: 2),
+            type == "join",
+            let sessionCode = url.pathComponents.element(at: 3),
+            sessionCode.count == 6
+        else { return nil }
+        
+        return sessionCode
+    }
 }

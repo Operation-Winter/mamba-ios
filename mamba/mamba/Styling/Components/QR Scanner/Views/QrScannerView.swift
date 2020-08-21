@@ -10,11 +10,12 @@ import SwiftUI
 
 struct QrScannerView: View {
     @ObservedObject var viewModel = QrScannerViewModel()
-        
+    var onQrFound: (String) -> Void
+    
     var body: some View {
         ZStack {
             QrCodeScannerView()
-                .found(r: self.viewModel.onFoundQrCode)
+                .found(completion: self.onQrFound)
                 .torchLight(isOn: self.viewModel.torchIsOn)
                 .interval(delay: self.viewModel.scanInterval)
             
@@ -40,6 +41,6 @@ struct QrScannerView: View {
 
 struct QrScannerView_Previews: PreviewProvider {
     static var previews: some View {
-        QrScannerView()
+        QrScannerView(onQrFound: {_ in})
     }
 }

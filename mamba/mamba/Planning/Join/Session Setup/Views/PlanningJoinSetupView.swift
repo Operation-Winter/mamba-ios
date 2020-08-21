@@ -11,6 +11,7 @@ import SwiftUI
 struct PlanningJoinSetupView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @ObservedObject private var viewModel = PlanningJoinSetupViewModel()
+    @State private var showQrCode: Bool = false
     @Binding var showSheet: Bool
 
     func configure(sessionCode: String) {
@@ -70,7 +71,7 @@ struct PlanningJoinSetupView: View {
     }
     
     private var qrCodeButton: some View {
-        NavigationLink(destination: PlanningJoinSetupQRCameraView(sessionCode: self.$viewModel.sessionCode)) {
+        NavigationLink(destination: PlanningJoinSetupQRCameraView(sessionCode: self.$viewModel.sessionCode, showQrCode: self.$showQrCode), isActive: self.$showQrCode) {
             HStack {
                 Image(systemName: "qrcode.viewfinder")
                 Text("PLANNING_JOIN_SETUP_QR_BUTTON_TITLE")

@@ -39,6 +39,7 @@
 		263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */; };
 		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
 		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
+		26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */; };
 		2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */; };
 		2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */; };
 		2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */; };
@@ -178,6 +179,7 @@
 		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
 		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
+		26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingActionSheetType.swift; sourceTree = "<group>"; };
 		2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostSend+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningStartSessionMessage.swift; sourceTree = "<group>"; };
 		2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 		26E2F56724DD6DB9008B2B4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */,
 				269CA0E324D94BCC000F42B9 /* PlanningSessionLandingState.swift */,
 				26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */,
 			);
@@ -1094,6 +1097,7 @@
 				ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */,
 				26E2F85F24E526A7008B2B4B /* PlanningFinishedVotingStateGraphCardView.swift in Sources */,
 				26F98A5F24D99646007CA2B8 /* PlanningJoinSessionLandingViewModel.swift in Sources */,
+				26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */,
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
 				26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */,
 				263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */,
@@ -1350,7 +1354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1372,7 +1376,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

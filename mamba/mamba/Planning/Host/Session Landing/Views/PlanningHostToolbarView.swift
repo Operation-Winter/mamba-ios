@@ -27,7 +27,6 @@ struct PlanningHostToolbarView: View {
             Spacer()
 
             SystemImageButton(imageSystemName: "square.and.arrow.up", action: shareAction)
-                .disabled(true)
             
             Spacer()
 

@@ -15,7 +15,6 @@ struct PlanningJoinToolbarView: View {
     var body: some View {
         HStack {
             SystemImageButton(imageSystemName: "square.and.arrow.up", action: shareAction)
-                .disabled(true)
             
             Spacer()
             

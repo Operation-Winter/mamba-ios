@@ -12,7 +12,7 @@ import XCTest
 class NetworkEnvironmentTests: XCTestCase {
 
     func testLocalNetworkEnvironmentURLs() {
-        //Given: a local network environment
+        // Given: a local network environment
         let networkEnvironment = LocalNetworkEnvironment()
         
         // When: the base URLs are mapped
@@ -25,7 +25,7 @@ class NetworkEnvironmentTests: XCTestCase {
     }
     
     func testDevelopmentNetworkEnvironmentURLs() {
-        //Given: a development network environment
+        // Given: a development network environment
         let networkEnvironment = DevelopmentNetworkEnvironment()
         
         // When: the base URLs are mapped
@@ -33,7 +33,7 @@ class NetworkEnvironmentTests: XCTestCase {
         let socketBaseURL = networkEnvironment.webSocketBaseURL
         
         // Then: the URLs match expected values
-        XCTAssertEqual(baseURL.absoluteString, "https://mamba.armandkamffer.co.za:82")
+        XCTAssertEqual(baseURL.absoluteString, "https://mamba.armandkamffer.co.za")
         XCTAssertEqual(socketBaseURL.absoluteString, "wss://mamba.armandkamffer.co.za:82")
     }
 

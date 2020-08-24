@@ -17,6 +17,10 @@ class PlanningSessionLandingService<Send: Encodable, Receive: Decodable> {
         self.sessionURL = sessionURL
     }
     
+    func configure(sessionHandler: PlanningSessionNetworkHandler<Send, Receive>) {
+        self.sessionHandler = sessionHandler
+    }
+    
     func startSession() -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
         return sessionHandler.start(webSocketURL: sessionURL)
     }

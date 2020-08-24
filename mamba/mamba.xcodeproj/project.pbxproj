@@ -37,6 +37,9 @@
 		263ECC2824D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */; };
 		263ECC2C24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */; };
 		263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */; };
+		2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */; };
+		2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */; };
+		2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */; };
 		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
 		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */; };
@@ -51,6 +54,7 @@
 		2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */; };
 		2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01C24BC931C00D46119 /* WebSocketHandler.swift */; };
 		2662004124F38D0D00B24408 /* URLCenter+PlanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2662004024F38D0D00B24408 /* URLCenter+PlanningTests.swift */; };
+		2662004624F393AE00B24408 /* PlanningCommands.HostSendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */; };
 		26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */; };
 		26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */; };
 		26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AFC24B4AA04003FB1A4 /* ClearButton.swift */; };
@@ -182,6 +186,9 @@
 		263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.JoinReceive+Extensions.swift"; sourceTree = "<group>"; };
 		263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionNetworkHandler.swift; sourceTree = "<group>"; };
 		263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupViewModel.swift; sourceTree = "<group>"; };
+		2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinSendTests.swift; sourceTree = "<group>"; };
+		2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.HostReceiveTests.swift; sourceTree = "<group>"; };
+		2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinReceiveTests.swift; sourceTree = "<group>"; };
 		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
 		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
@@ -197,6 +204,7 @@
 		2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01C24BC931C00D46119 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
 		2662004024F38D0D00B24408 /* URLCenter+PlanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCenter+PlanningTests.swift"; sourceTree = "<group>"; };
+		2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.HostSendTests.swift; sourceTree = "<group>"; };
 		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = "mamba/Planning/Host/Session Setup/ViewModels/PlanningHostSetupViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldStyle.swift; sourceTree = "<group>"; };
 		26772AFC24B4AA04003FB1A4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
@@ -979,6 +987,10 @@
 			children = (
 				EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */,
 				EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */,
+				2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */,
+				2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */,
+				2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */,
+				2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */,
 			);
 			path = Planning;
 			sourceTree = "<group>";
@@ -1233,12 +1245,16 @@
 			files = (
 				EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */,
 				EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */,
+				2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */,
 				EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */,
 				EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */,
+				2662004624F393AE00B24408 /* PlanningCommands.HostSendTests.swift in Sources */,
 				EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */,
 				EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */,
+				2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */,
 				EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */,
 				EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */,
+				2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */,
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
 				EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */,
 				EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */,

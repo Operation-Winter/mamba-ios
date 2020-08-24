@@ -22,7 +22,7 @@ public extension PlanningCommands.HostSend {
         case .startSession(let message): try container.encode(message, forKey: .message)
         case .addTicket(let message): try container.encode(message, forKey: .message)
         case .skipVote(let message): try container.encode(message, forKey: .message)
-        case .removeParticipant(let message):  try container.encode(message, forKey: .message)
+        case .removeParticipant(let message): try container.encode(message, forKey: .message)
         default:
             break
         }

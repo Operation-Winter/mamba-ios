@@ -40,6 +40,13 @@
 		2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */; };
 		2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */; };
 		2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */; };
+		2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545B24F3AA580047F9EF /* LandingViewModelTests.swift */; };
+		2644546224F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546124F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift */; };
+		2644546424F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546324F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift */; };
+		2644546624F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546524F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift */; };
+		2644546824F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546724F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift */; };
+		2644546A24F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546924F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift */; };
+		2644546E24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546D24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift */; };
 		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
 		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */; };
@@ -189,6 +196,13 @@
 		2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinSendTests.swift; sourceTree = "<group>"; };
 		2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.HostReceiveTests.swift; sourceTree = "<group>"; };
 		2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinReceiveTests.swift; sourceTree = "<group>"; };
+		2644545B24F3AA580047F9EF /* LandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModelTests.swift; sourceTree = "<group>"; };
+		2644546124F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipantRowViewModelTests.swift; sourceTree = "<group>"; };
+		2644546324F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
+		2644546524F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlanningSessionLandingService.swift; sourceTree = "<group>"; };
+		2644546724F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupViewModelTests.swift; sourceTree = "<group>"; };
+		2644546924F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupViewModelTests.swift; sourceTree = "<group>"; };
+		2644546D24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningAddTicketViewModelTests.swift; sourceTree = "<group>"; };
 		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
 		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
@@ -384,6 +398,8 @@
 		261E1EE824A48ABA00937D89 /* mambaTests */ = {
 			isa = PBXGroup;
 			children = (
+				2644545A24F3AA460047F9EF /* Landing */,
+				2644545D24F3AB750047F9EF /* Planning */,
 				2662003F24F38CF200B24408 /* Extensions */,
 				EDEDE31224E15BDD00CC666B /* Logging */,
 				EDEDE31324E15BE200CC666B /* Networking */,
@@ -485,6 +501,51 @@
 				263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2644545A24F3AA460047F9EF /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				2644545B24F3AA580047F9EF /* LandingViewModelTests.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		2644545D24F3AB750047F9EF /* Planning */ = {
+			isa = PBXGroup;
+			children = (
+				2644545E24F3AB880047F9EF /* Shared */,
+				2644545F24F3AB8D0047F9EF /* Join */,
+				2644546024F3AB920047F9EF /* Host */,
+			);
+			path = Planning;
+			sourceTree = "<group>";
+		};
+		2644545E24F3AB880047F9EF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2644546124F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift */,
+				2644546324F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift */,
+				2644546524F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2644545F24F3AB8D0047F9EF /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				2644546724F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		2644546024F3AB920047F9EF /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				2644546924F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift */,
+				2644546D24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift */,
+			);
+			path = Host;
 			sourceTree = "<group>";
 		};
 		26467D4F24EFE126008A36AD /* QR Scanner */ = {
@@ -1246,10 +1307,14 @@
 				EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */,
 				EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */,
 				2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */,
+				2644546E24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift in Sources */,
 				EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */,
+				2644546A24F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift in Sources */,
 				EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */,
 				2662004624F393AE00B24408 /* PlanningCommands.HostSendTests.swift in Sources */,
 				EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */,
+				2644546224F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift in Sources */,
+				2644546424F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift in Sources */,
 				EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */,
 				2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */,
 				EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */,
@@ -1257,7 +1322,10 @@
 				2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */,
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
 				EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */,
+				2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */,
 				EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */,
+				2644546624F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift in Sources */,
+				2644546824F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift in Sources */,
 				EDEDE32324E1621F00CC666B /* NetworkErrorTests.swift in Sources */,
 				2662004124F38D0D00B24408 /* URLCenter+PlanningTests.swift in Sources */,
 			);

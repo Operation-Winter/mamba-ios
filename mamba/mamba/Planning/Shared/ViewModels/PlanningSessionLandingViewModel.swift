@@ -63,6 +63,11 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         startSession()
     }
     
+    init(service: PlanningSessionLandingService<Send, Receive>) {
+        self.service = service
+        startSession()
+    }
+    
     public func configure(availableCards: [PlanningCard]) {
         self.availableCards = availableCards
     }
@@ -129,9 +134,12 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
             PlanningParticipantRowViewModel(participantId: $0.id,
-                                            participantName: $0.name,
-                                            votingValue: $0.selectedCard?.title)
+                                            participantName: $0.name)
         }
+    }
+    
+    private func votingFinishedParticipantRowImage(cardSelected: Bool) -> String? {
+        cardSelected ? nil : "arrowshape.turn.up.right"
     }
     
     private func votingParticipantRowImage(skipped: Bool, cardSelected: Bool) -> String {
@@ -157,18 +165,25 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         let filteredGroupedVotes = Dictionary(grouping: filteredVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
         let meanCount = filteredGroupedVotes.last?.value.count ?? 0
 
-        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }.sorted { $0.value.count < $1.value.count }
+        let groupedVotes = Dictionary(grouping: ticketVotes) { $0.selectedCard }.sorted {
+            if $0.value.first?.selectedCard == nil {
+                return false
+            } else if $1.value.first?.selectedCard == nil {
+                return true
+            } else {
+                return $0.value.count < $1.value.count
+            }
+        }
         
         var list = [PlanningParticipantRowViewModel]()
         for group in groupedVotes {
-            let filteredParticipants: [PlanningParticipantRowViewModel] = participants.filter {
-                group.key == $0.selectedCard
-            }.map {
-                let meanCard = group.value.count == meanCount ? $0.selectedCard : groupedVotes.last?.key
-                let highlighted = meanCard != $0.selectedCard && meanCard != nil
-                let imageName = $0.selectedCard?.title == nil ? votingParticipantRowImage(skipped: $0.skipped ?? false, cardSelected: $0.selectedCard != nil) : nil
-                return PlanningParticipantRowViewModel(participantId: $0.id,
-                                                       participantName: $0.name,
+            let filteredParticipants: [PlanningParticipantRowViewModel] = group.value.map {
+                let skipped = $0.selectedCard == nil
+                let meanCard = group.value.count == meanCount ? $0.selectedCard : nil
+                let highlighted = meanCard != $0.selectedCard && !skipped
+                let imageName = votingFinishedParticipantRowImage(cardSelected: !skipped)
+                return PlanningParticipantRowViewModel(participantId: $0.user.id,
+                                                       participantName: $0.user.name,
                                                        votingValue: $0.selectedCard?.title,
                                                        votingImageName: imageName,
                                                        highlighted: highlighted)

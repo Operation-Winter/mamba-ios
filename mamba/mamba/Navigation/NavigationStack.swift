@@ -70,4 +70,3 @@ final class NavigationStack: ObservableObject {
         accentColor = DefaultStyle.shared.accent
     }
 }
-

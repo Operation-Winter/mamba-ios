@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum LandingItem {
+enum LandingItem: CaseIterable {
     case planningHost
     case planningJoin
     case retroHost

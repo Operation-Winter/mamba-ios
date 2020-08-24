@@ -31,8 +31,7 @@ extension URLCenter {
     func planningSessionCode(from url: String) -> String? {
         guard
             let url = URL(string: url),
-            let baseQRURL = url.baseURL,
-            baseURL == baseQRURL,
+            url.host == baseURL.host,
             let feature = url.pathComponents.element(at: 1),
             feature == "planning",
             let type = url.pathComponents.element(at: 2),

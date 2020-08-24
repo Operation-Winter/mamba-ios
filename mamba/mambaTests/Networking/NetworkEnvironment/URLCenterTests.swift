@@ -43,5 +43,15 @@ class URLCenterTests: XCTestCase {
         // Then: Environment is of type LocalNetworkEnvironment
         XCTAssert(environment is DevelopmentNetworkEnvironment)
     }
+    
+    func testBaseUrl() {
+        // Then: Base URL matches expected value
+        XCTAssertEqual(URLCenter.shared.baseURL.absoluteString, "http://localhost:8080")
+    }
+    
+    func testWebSocketBaseUrl() {
+        // Then: Base WebSocket URL matches expected value
+        XCTAssertEqual(URLCenter.shared.webSocketBaseURL.absoluteString, "ws://localhost:8080")
+    }
 
 }

@@ -21,6 +21,15 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         super.init(websocketURL: URLCenter.shared.planningHostWSURL)
+        commonInit(sessionName: sessionName, availableCards: availableCards)
+    }
+    
+    init(sessionName: String, availableCards: [PlanningCard], service: PlanningSessionLandingService<PlanningCommands.HostSend, PlanningCommands.HostReceive>) {
+        super.init(service: service)
+        commonInit(sessionName: sessionName, availableCards: availableCards)
+    }
+    
+    private func commonInit(sessionName: String, availableCards: [PlanningCard]) {
         self.sessionName = sessionName
         configure(availableCards: availableCards)
     }
@@ -57,7 +66,6 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         let commandMessage = PlanningRemoveParticipantMessage(participantId: participantId)
         sendCommand(.removeParticipant(commandMessage))
     }
-    
     
     public override func executeCommand(_ command: PlanningCommands.HostReceive) {
         super.executeCommand(command)

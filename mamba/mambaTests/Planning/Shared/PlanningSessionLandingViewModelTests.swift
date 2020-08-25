@@ -381,7 +381,6 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
     }
    
-    
 }
 
 fileprivate class Mocks {

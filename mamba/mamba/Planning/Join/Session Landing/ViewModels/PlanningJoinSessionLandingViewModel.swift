@@ -14,6 +14,15 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     init(sessionCode: String, participantName: String) {
         super.init(websocketURL: URLCenter.shared.planningJoinWSURL)
+        commonInit(sessionCode: sessionCode, participantName: participantName)
+    }
+    
+    init(sessionCode: String, participantName: String, service: PlanningSessionLandingService<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>) {
+        super.init(service: service)
+        commonInit(sessionCode: sessionCode, participantName: participantName)
+    }
+    
+    private func commonInit(sessionCode: String, participantName: String) {
         configure(sessionCode: sessionCode)
         configure(participantName: participantName)
         
@@ -33,7 +42,7 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         closeSession()
     }
     
-    private func sendVoteCommand(_ selectedCard: PlanningCard) {
+    func sendVoteCommand(_ selectedCard: PlanningCard) {
         guard let ticketId = ticket?.identifier else { return }
         let commandMessage = PlanningVoteMessage(ticketId: ticketId, selectedCard: selectedCard)
         sendCommand(.vote(commandMessage))

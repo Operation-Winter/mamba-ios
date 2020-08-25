@@ -50,6 +50,7 @@
 		2644547624F3E35B0047F9EF /* PlanningColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547524F3E35B0047F9EF /* PlanningColorSchemeTests.swift */; };
 		2644547824F3E3680047F9EF /* RetroColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547724F3E3680047F9EF /* RetroColorSchemeTests.swift */; };
 		2644547C24F3EC9D0047F9EF /* LandingItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547B24F3EC9D0047F9EF /* LandingItemTests.swift */; };
+		2644547E24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547D24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift */; };
 		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
 		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		26467D3F24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D3E24EFBF4E008A36AD /* PlanningSessionLandingActionSheetType.swift */; };
@@ -85,6 +86,7 @@
 		269F557924BC300600EEC682 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557824BC300600EEC682 /* NetworkEnvironment.swift */; };
 		269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */; };
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
+		26B7192D24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7192C24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift */; };
 		26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E11B3524D429FF00C50F43 /* IntegerTextField.swift */; };
 		26E2F56424DD5B31008B2B4B /* PlanningJoinVotingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */; };
 		26E2F56624DD68AF008B2B4B /* PlanningErrorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */; };
@@ -209,6 +211,7 @@
 		2644547524F3E35B0047F9EF /* PlanningColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningColorSchemeTests.swift; sourceTree = "<group>"; };
 		2644547724F3E3680047F9EF /* RetroColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroColorSchemeTests.swift; sourceTree = "<group>"; };
 		2644547B24F3EC9D0047F9EF /* LandingItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItemTests.swift; sourceTree = "<group>"; };
+		2644547D24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
 		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
 		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
@@ -245,6 +248,7 @@
 		269F557824BC300600EEC682 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
+		26B7192C24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
 		26E11B3524D429FF00C50F43 /* IntegerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextField.swift; sourceTree = "<group>"; };
 		26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinVotingCardView.swift; sourceTree = "<group>"; };
 		26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningErrorCardView.swift; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				2644546724F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift */,
+				2644547D24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift */,
 			);
 			path = Join;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 			children = (
 				2644546924F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift */,
 				2644546D24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift */,
+				26B7192C24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -1341,6 +1347,7 @@
 				2644546224F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift in Sources */,
 				2644546424F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift in Sources */,
 				EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */,
+				2644547E24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift in Sources */,
 				2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */,
 				EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */,
 				EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */,
@@ -1348,6 +1355,7 @@
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
 				EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */,
 				2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */,
+				26B7192D24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift in Sources */,
 				EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */,
 				2644546624F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift in Sources */,
 				2644546824F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift in Sources */,
@@ -1522,7 +1530,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.4;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1544,7 +1552,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.4;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;

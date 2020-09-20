@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PlanningAddTicketView: View {
-    @ObservedObject private var viewModel = PlanningAddTicketViewModel()
+    @StateObject private var viewModel = PlanningAddTicketViewModel()
     @Binding var showSheet: Bool
     
     let doneTapped: (_ identifier: String, _ description: String) -> Void
@@ -18,17 +18,17 @@ struct PlanningAddTicketView: View {
         NavigationView {
             VStack {
                 VCardView {
-                    Text("Ticket details")
+                    Text("PLANNING_HOST_ADD_TICKET_DETAILS")
                         .foregroundColor(.accentColor)
                         .font(.system(size: 16))
                         .fontWeight(.light)
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    ClearableTextField(text: self.$viewModel.ticketIdentifier,
+                    ClearableTextField(text: $viewModel.ticketIdentifier,
                                        placeholder: "PLANNING_HOST_ADD_TICKET_IDENTIFIER_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
-                    ClearableTextField(text: self.$viewModel.ticketDescription,
+                    ClearableTextField(text: $viewModel.ticketDescription,
                                        placeholder: "PLANNING_HOST_ADD_TICKET_DESCRIPTION_PLACEHOLDER")
                         .padding(leading: 20, top: 10, bottom: 20, trailing: 20)
                 }
@@ -36,11 +36,11 @@ struct PlanningAddTicketView: View {
                 Spacer()
             }
             .navigationBarTitle("PLANNING_HOST_LANDING_ADD_TICKET_MODAL_TITLE", displayMode: .inline)
-            .navigationBarItems(leading: CancelBarButton { self.showSheet.toggle() },
+            .navigationBarItems(leading: CancelBarButton { showSheet.toggle() },
                                 trailing: AddBarButton {
-                                    self.doneTapped(self.viewModel.ticketIdentifier, self.viewModel.ticketDescription)
-                                    self.showSheet.toggle()
-                                }.disabled(!self.viewModel.isInputValid))
+                                    doneTapped(viewModel.ticketIdentifier, viewModel.ticketDescription)
+                                    showSheet.toggle()
+                                }.disabled(!viewModel.isInputValid))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

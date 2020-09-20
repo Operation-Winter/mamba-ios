@@ -30,7 +30,7 @@ public class URLCenter {
         #else
         environmentType = .development
         #endif
-        Log.log(level: .debug, category: .networking, message: "Networking environment: %@", args: "\(String(describing: URLCenter.self)) \(String(describing: networkEnvironment.webSocketBaseURL))")
+        Log.networking.logger.debug("Networking environment: \(String(describing: URLCenter.self)) \(String(describing: self.networkEnvironment.webSocketBaseURL))")
     }
     
     public func makeNetworkEnvironment(_ environment: NetworkEnvironmentType) -> NetworkEnvironment {

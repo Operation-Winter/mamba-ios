@@ -27,11 +27,11 @@ class WebSocketHandler: WebSocketAbstractHandler {
     required public init(url: URL) {
         let urlSession = URLSession(configuration: .ephemeral)
         self.webSocketTask = urlSession.webSocketTask(with: url)
-        Log.log(level: .info, category: .networking, message: "URLSession webSocketTask opened to %{private}@", args: url.absoluteString)
+        Log.networking.logger.info("URLSession webSocketTask opened to \(url.absoluteString)")
     }
     
     public func start() {
-        Log.log(level: .info, category: .networking, message: "Start WebSocketTask Session")
+        Log.networking.logger.info("Start WebSocketTask Session")
         webSocketTask.resume()
         receiveMessage()
     }
@@ -41,36 +41,36 @@ class WebSocketHandler: WebSocketAbstractHandler {
             switch result {
             case .failure(let error):
                 self?.subject.send(completion: .failure(.socketReceiveFailure(error)))
-                Log.log(level: .error, category: .networking, message: "SocketReceiveFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
+                Log.networking.logger.error("SocketReceiveFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
             case .success(let message):
                 self?.subject.send(message)
-                Log.log(level: .info, category: .networking, message: "WebSocket task received message")
+                Log.networking.logger.info("WebSocket task received message")
                 self?.receiveMessage()
             }
         }
     }
     
     public func ping() {
-        Log.log(level: .info, category: .networking, message: "Ping WebSocketTask")
+        Log.networking.logger.info("Ping WebSocketTask")
         webSocketTask.sendPing { [weak self] error in
             guard let error = error else { return }
             self?.subject.send(completion: .failure(.socketPingFailure(error)))
-            Log.log(level: .error, category: .networking, message: "SocketPingFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
+            Log.networking.logger.error("SocketPingFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
         }
     }
     
     public func send(message: URLSessionWebSocketTask.Message) {
-        Log.log(level: .info, category: .networking, message: "Send WebSocketTask Message")
+        Log.networking.logger.info("Send WebSocketTask Message")
         webSocketTask.send(message) { [weak self] error in
             guard let error = error else { return }
             self?.subject.send(completion: .failure(.socketSendFailure(error)))
-            Log.log(level: .error, category: .networking, message: "SocketSendFailure: %@", args: "\(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
+            Log.networking.logger.error("SocketSendFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
         }
     }
     
     public func close() {
         webSocketTask.cancel(with: .normalClosure, reason: nil)
         self.subject.send(completion: .finished)
-        Log.log(level: .error, category: .networking, message: "%{private}@: Close webSocketTask", args: String(describing: WebSocketHandler.self))
+        Log.networking.logger.error("Close webSocketTask")
     }
 }

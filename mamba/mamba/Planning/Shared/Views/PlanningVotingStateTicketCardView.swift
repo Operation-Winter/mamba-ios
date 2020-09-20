@@ -18,7 +18,7 @@ struct PlanningVotingStateTicketCardView: View {
         let description = self.ticketDescription ?? NSLocalizedString("PLANNING_TICKET_NO_DESCRIPTION_DESCRIPTION", comment: "No description")
         
         return VCardView {
-            Text(self.title)
+            Text(title)
                 .font(.system(size: 20))
                 .foregroundColor(.accentColor)
                 .padding(leading: 20, top: 20, trailing: 20)
@@ -55,7 +55,6 @@ struct PlanningVotingStateTicketCardView: View {
 
 struct PlanningHostVotingStateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        
         Group {
             PlanningVotingStateTicketCardView(title: "Planning 1", ticketIdentifier: "MAM-29", ticketDescription: "Test x and y")
                 .environment(\.colorScheme, .light)

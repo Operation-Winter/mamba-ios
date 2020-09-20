@@ -81,7 +81,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func sendCommand(_ command: Send) {
-        Log.log(level: .debug, category: .planning, message: "Sending command: %@", args: String(describing: command))
+        Log.planning.logger.debug("Sending command: \(String(describing: command))")
         do {
             try service.send(command: command)
         } catch let error as EncodingError {
@@ -92,7 +92,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func executeCommand(_ command: Receive) {
-        Log.log(level: .debug, category: .planning, message: "Executing received command: %{private}@", args: String(describing: command))
+        Log.planning.logger.debug("Executing received command: \(String(describing: command))")
     }
     
     public func parseStateMessage(_ message: PlanningSessionStateMessage) {
@@ -110,13 +110,13 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func executeError(code: String, description: String) {
-        Log.log(level: .error, category: .planning, message: "Executing error state: %@", args: "\(code) \(description)")
+        Log.planning.logger.error("Executing error state: \(code) \(description)")
         let planningError = PlanningLandingError(code: code, description: description)
         self.state = .error(planningError)
     }
     
     public func closeSession() {
-        Log.log(level: .info, category: .planning, message: "Closing session")
+        Log.planning.logger.info("Closing session")
         service.close()
     }
     

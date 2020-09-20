@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class LandingViewModel {
     private(set) var landingItems: [LandingItem] = [
@@ -14,9 +15,7 @@ class LandingViewModel {
         .planningJoin
     ]
     
-    private(set) var chunkedLandingItems: [[LandingItem]]
-    
-    init() {
-        chunkedLandingItems = landingItems.chunked(into: 2)
-    }
+    private(set) var gridItems: [GridItem] = [
+        GridItem(.adaptive(minimum: 300, maximum: 500))
+    ]
 }

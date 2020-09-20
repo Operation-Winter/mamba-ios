@@ -12,30 +12,29 @@ struct PlanningJoinVotingCardView: View {
     @Binding var selectedCard: PlanningCard?
     let availableCards: [PlanningCard]
     
-    private var chunkedCards: [[PlanningCard]] {
-        availableCards.chunked(into: 3)
-    }
+    private let gridItems: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     
     var body: some View {
         VCardView {
-            VStack(alignment: .center, spacing: 20) {
-                ForEach(0 ..< self.chunkedCards.count) { index in
-                    HStack(alignment: .center, spacing: 20) {
-                        ForEach(self.chunkedCards[index], id: \.rawValue) { availableCard in
-                            self.storyPointCard(card: availableCard)
-                                .onTapGesture {
-                                    self.selectedCard = availableCard
-                                }
+            LazyVGrid(columns: gridItems) {
+                ForEach(availableCards, id: \.rawValue) { availableCard in
+                    storyPointCard(card: availableCard)
+                        .onTapGesture {
+                            self.selectedCard = availableCard
                         }
-                    }
                 }
             }
             .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
         }
     }
     
-    private func storyPointCard(card: PlanningCard) -> AnyView {
-        if self.selectedCard == card {
+    private func storyPointCard(card: PlanningCard) -> some View {
+        if selectedCard == card {
             return AnyView(StoryPointCard(card: card)
                     .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(DefaultStyle.shared.accent, lineWidth: 4))

@@ -9,29 +9,25 @@
 import SwiftUI
 
 struct PlanningHostAvailableCardsView: View {
-    @ObservedObject private var viewModel: PlanningHostAvailableCardsViewModel
+    @StateObject private var viewModel: PlanningHostAvailableCardsViewModel
     
     init(availableCards: [AvailableCard]) {
-        viewModel = PlanningHostAvailableCardsViewModel(availableCards: availableCards)
+        _viewModel = StateObject(wrappedValue: PlanningHostAvailableCardsViewModel(availableCards: availableCards))
     }
     
     var body: some View {
         ScrollView {
             VCardView {
-                VStack(alignment: .center, spacing: 20) {
-                    ForEach(0 ..< self.viewModel.chunkedCards.count) { index in
-                        HStack(alignment: .center, spacing: 20) {
-                            ForEach(self.viewModel.chunkedCards[index]) { availableCard in
-                                ZStack(alignment: .topTrailing) {
-                                    StoryPointCard(card: availableCard.card)
-                                    
-                                    Image(systemName: self.systemImageName(selected: availableCard.selected))
-                                        .padding(top: 10, trailing: 10)
-                                        .foregroundColor(DefaultStyle.shared.qauternary)
-                                }.onTapGesture {
-                                    availableCard.selected.toggle()
-                                }
-                            }
+                LazyVGrid(columns: viewModel.gridItems) {
+                    ForEach(viewModel.cards) { availableCard in
+                        ZStack(alignment: .topTrailing) {
+                            StoryPointCard(card: availableCard.card)
+                            
+                            Image(systemName: systemImageName(selected: availableCard.selected))
+                                .padding(top: 10, trailing: 10)
+                                .foregroundColor(DefaultStyle.shared.qauternary)
+                        }.onTapGesture {
+                            availableCard.selected.toggle()
                         }
                     }
                 }
@@ -42,7 +38,7 @@ struct PlanningHostAvailableCardsView: View {
     }
     
     private func systemImageName(selected: Bool) -> String {
-        return selected
+        selected
             ? "checkmark.circle.fill"
             : "circle"
     }

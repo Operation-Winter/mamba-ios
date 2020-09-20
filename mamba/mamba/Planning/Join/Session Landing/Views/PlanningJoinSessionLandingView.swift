@@ -10,13 +10,13 @@ import SwiftUI
 
 struct PlanningJoinSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
-    @ObservedObject private var viewModel: PlanningJoinSessionLandingViewModel
+    @StateObject private var viewModel: PlanningJoinSessionLandingViewModel
     @State private var showActionSheet = false
     @State private var showConfirmAlert = false
     @State private var actionSheetType: PlanningSessionLandingActionSheetType = .menu
     
     init(sessionCode: String, participantName: String) {
-        viewModel = PlanningJoinSessionLandingViewModel(sessionCode: sessionCode, participantName: participantName)
+        _viewModel = StateObject(wrappedValue: PlanningJoinSessionLandingViewModel(sessionCode: sessionCode, participantName: participantName))
     }
     
     var body: some View {
@@ -26,33 +26,29 @@ struct PlanningJoinSessionLandingView: View {
         
         return VStack(alignment: .center, spacing: 0) {
             ScrollView {
-                stateViewBuilder()
+                switch viewModel.state {
+                case .error(let planningError):
+                    errorCard(planningError: planningError)
+                case .loading:
+                    loadingView
+                case .none:
+                    noneStateView
+                case .voting:
+                    votingStateView
+                case .finishedVoting:
+                    votingFinishedStateView
+                }
             }
             
             if !self.viewModel.toolBarHidden {
-                PlanningJoinToolbarView(shareAction: self.shareActionTapped, menuAction: self.menuActionTapped)
+                PlanningJoinToolbarView(shareAction: shareActionTapped, menuAction: menuActionTapped)
             }
-        }.actionSheet(isPresented: self.$showActionSheet) {
+        }.actionSheet(isPresented: $showActionSheet) {
             actionSheetBuilder()
-        }.alert(isPresented: self.$showConfirmAlert) {
+        }.alert(isPresented: $showConfirmAlert) {
             Alert(title: Text("PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
-                  secondaryButton: .destructive(Text("YES"), action: self.leaveSession))
-        }
-    }
-    
-    private func stateViewBuilder() -> AnyView {
-        switch viewModel.state {
-        case .error(let planningError):
-            return AnyView(errorCard(planningError: planningError))
-        case .loading:
-            return AnyView(loadingView)
-        case .none:
-            return AnyView(noneStateView)
-        case .voting:
-            return AnyView(votingStateView)
-        case .finishedVoting:
-            return AnyView(votingFinishedStateView)
+                  secondaryButton: .destructive(Text("YES"), action: leaveSession))
         }
     }
     
@@ -135,40 +131,40 @@ struct PlanningJoinSessionLandingView: View {
     }
     
     private func menuActionTapped() {
-        Log.log(level: .info, category: .planning, message: "Join - Menu tapped")
+        Log.planning.logger.info("Join - Menu tapped")
         actionSheetType = .menu
         showActionSheet = true
     }
     
     private func shareActionTapped() {
-        Log.log(level: .info, category: .planning, message: "Join - Share tapped")
+        Log.planning.logger.info("Join - Share tapped")
         actionSheetType = .share
         showActionSheet = true
     }
     
     private func showLeaveSessionConfirmation() {
-        Log.log(level: .info, category: .planning, message: "Join - Leave session tapped")
+        Log.planning.logger.info("Join - Leave session tapped")
         showConfirmAlert = true
     }
     
     private func leaveSession() {
-        Log.log(level: .info, category: .planning, message: "Join - Leave session confirmed")
+        Log.planning.logger.info("Join - Leave session confirmed")
         viewModel.sendLeaveSessionCommand()
     }
     
     private func shareSessionCode() {
-        Log.log(level: .info, category: .planning, message: "Join - Share session code tapped")
+        Log.planning.logger.info("Join - Share session code tapped")
         showShareSheet(shareItems: [viewModel.shareSessionCode])
     }
     
     private func shareSessionQRCode() {
-        Log.log(level: .info, category: .planning, message: "Join - Share session QR code tapped")
+        Log.planning.logger.info("Join - Share session QR code tapped")
         guard let qrCode = viewModel.shareSessionQRCode() else { return }
         showShareSheet(shareItems: [qrCode])
     }
     
     private func shareSessionLink() {
-        Log.log(level: .info, category: .planning, message: "Join - Share session link tapped")
+        Log.planning.logger.info("Join - Share session link tapped")
         showShareSheet(shareItems: [viewModel.shareSessionLink])
     }
     

@@ -146,7 +146,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         if skipped {
             return "arrowshape.turn.up.right"
         } else {
-            return cardSelected ? "checkmark.circle" : "ellipsis"
+            return cardSelected ? "checkmark.circle" : "rectangle.and.pencil.and.ellipsis"
         }
     }
     

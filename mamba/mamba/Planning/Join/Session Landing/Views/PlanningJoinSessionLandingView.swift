@@ -93,7 +93,7 @@ struct PlanningJoinSessionLandingView: View {
     }
 
     private var participantsList: some View {
-        VStack(alignment: .center, spacing: 10) {
+        LazyVGrid(columns: viewModel.gridItems, alignment: .center, spacing: 10) {
             ForEach(self.viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
             }

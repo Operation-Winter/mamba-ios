@@ -52,7 +52,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     var gridItems: [GridItem] = [
-        GridItem(.adaptive(minimum: 300, maximum: 500))
+        GridItem(.adaptive(minimum: 200, maximum: 400))
     ]
 
     var shareSessionCode: String {

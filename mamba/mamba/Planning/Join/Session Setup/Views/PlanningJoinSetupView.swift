@@ -43,12 +43,12 @@ struct PlanningJoinSetupView: View {
                                          code6: $viewModel.sessionCode6)
                         .padding(leading: 20, top: 15, trailing: 20)
                     
-                    self.qrCodeButton
+                    qrCodeButton
                     
                     RoundedButton(titleKey: "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE") {
-                        self.navigateToJoinLanding()
+                        navigateToJoinLanding()
                     }
-                    .disabled(!self.viewModel.inputValid)
+                    .disabled(!viewModel.inputValid)
                     .padding(leading: 20, top: 10, bottom: 20, trailing: 20)
                 }
                 
@@ -57,7 +57,7 @@ struct PlanningJoinSetupView: View {
             .navigationBarTitle("PLANNING_JOIN_TITLE", displayMode: .inline)
             .navigationBarItems(leading:
                 CancelBarButton {
-                    self.showSheet.toggle()
+                    showSheet.toggle()
                 }
             )
         }

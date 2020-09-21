@@ -24,19 +24,17 @@ struct PlanningHostSessionLandingView: View {
         
         return VStack(alignment: .center, spacing: 0) {
             ScrollView {
-                LazyVGrid(columns: viewModel.gridItems) {
-                    switch viewModel.state {
-                    case .error(let planningError):
-                        errorCard(planningError: planningError)
-                    case .loading:
-                        loadingView
-                    case .none:
-                        noneStateView
-                    case .voting:
-                        votingStateView
-                    case .finishedVoting:
-                        votingFinishedStateView
-                    }
+                switch viewModel.state {
+                case .error(let planningError):
+                    errorCard(planningError: planningError)
+                case .loading:
+                    loadingView
+                case .none:
+                    noneStateView
+                case .voting:
+                    votingStateView
+                case .finishedVoting:
+                    votingFinishedStateView
                 }
             }
             
@@ -111,21 +109,21 @@ struct PlanningHostSessionLandingView: View {
     }
     
     private var participantsList: some View {
-        VStack(alignment: .center, spacing: 10) {
+        LazyVGrid(columns: viewModel.gridItems, alignment: .center, spacing: 10) {
             ForEach(viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
                     .contextMenu {
                         ContextMenuButton(title: "PLANNING_HOST_PARTICIPANT_REMOVE", imageSystemName: "xmark", action: {
                             participantRemoveTapped(participantId: viewModel.participantId)
                         })
-                }
+                    }
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
     }
     
     private var votingParticipantsList: some View {
-        VStack(alignment: .center, spacing: 10) {
+        LazyVGrid(columns: viewModel.gridItems, alignment: .center, spacing: 10) {
             ForEach(viewModel.participantList) { viewModel in
                 PlanningParticipantRowView(viewModel: viewModel)
                     .contextMenu {

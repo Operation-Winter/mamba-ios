@@ -11,9 +11,7 @@ import SwiftUI
 struct PlanningHostSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @StateObject private var viewModel: PlanningHostSessionLandingViewModel
-    @State private var showActionSheet = false
     @State private var showConfirmAlert = false
-    @State private var actionSheetType: PlanningSessionLandingActionSheetType = .menu
     
     init(sessionName: String, availableCards: [PlanningCard]) {
         _viewModel = StateObject(wrappedValue: PlanningHostSessionLandingViewModel(sessionName: sessionName, availableCards: availableCards))
@@ -41,49 +39,21 @@ struct PlanningHostSessionLandingView: View {
             }
             
             if !self.viewModel.toolBarHidden {
-                PlanningHostToolbarView(revoteDisabled: viewModel.revoteDisabled, addTicketAction: addTicket, revoteAction: revoteTicket, shareAction: shareActionTapped, menuAction: menuActionTapped)
+                PlanningHostToolbarView(revoteDisabled: viewModel.revoteDisabled,
+                                        showFinishVotingAction: viewModel.finishVotingVisible,
+                                        addTicketAction: addTicket,
+                                        revoteAction: revoteTicket,
+                                        shareSessionCodeAction: shareSessionCode,
+                                        shareLinkAction: shareSessionLink,
+                                        shareQrCodeAction: shareSessionQRCode,
+                                        finishVotingAction: finishVotingActionTapped,
+                                        endSessionAction: showEndSessionConfirmation)
             }
-        }.actionSheet(isPresented: self.$showActionSheet) {
-            self.actionSheetBuilder()
         }.alert(isPresented: self.$showConfirmAlert) {
             Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(Text("YES"), action: self.endSession))
         }
-    }
-    
-    private func actionSheetBuilder() -> ActionSheet {
-        switch actionSheetType {
-        case .share:
-            return shareActionSheet()
-        case .menu:
-            return actionsMenuActionSheet()
-        }
-    }
-    
-    private func actionsMenuActionSheet() -> ActionSheet {
-        switch viewModel.state {
-        case .voting:
-            return ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
-                .default(Text("PLANNING_HOST_MENU_FINISH_VOTING"), action: finishVotingActionTapped),
-                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: showEndSessionConfirmation),
-                .cancel()
-            ])
-        default:
-            return ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
-                .default(Text("PLANNING_HOST_MENU_END_SESSION"), action: showEndSessionConfirmation),
-                .cancel()
-            ])
-        }
-    }
-    
-    private func shareActionSheet() -> ActionSheet {
-        ActionSheet(title: Text("PLANNING_SHARE_SESSION_SHEET_TITLE"), message: nil, buttons: [
-            .default(Text("PLANNING_SHARE_SESSION_SESSION_CODE"), action: shareSessionCode),
-            .default(Text("PLANNING_SHARE_SESSION_LINK"), action: shareSessionLink),
-            .default(Text("PLANNING_SHARE_SESSION_QR_CODE"), action: shareSessionQRCode),
-            .cancel()
-        ])
     }
     
     private func errorCard(planningError: PlanningLandingError) -> some View {
@@ -196,18 +166,6 @@ struct PlanningHostSessionLandingView: View {
     private func endSession() {
         Log.planning.logger.info("Host - End session confirmed")
         viewModel.sendEndSessionCommand()
-    }
-    
-    private func shareActionTapped() {
-        Log.planning.logger.info("Host - Share tapped")
-        actionSheetType = .share
-        showActionSheet = true
-    }
-    
-    private func menuActionTapped() {
-        Log.planning.logger.info("Host - Menu tapped")
-        actionSheetType = .menu
-        showActionSheet = true
     }
     
     private func participantSkipVoteTapped(participantId: String) {

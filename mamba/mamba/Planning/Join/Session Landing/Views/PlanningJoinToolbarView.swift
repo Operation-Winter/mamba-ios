@@ -9,16 +9,42 @@
 import SwiftUI
 
 struct PlanningJoinToolbarView: View {
-    let shareAction: () -> Void
-    let menuAction: () -> Void
+    let shareSessionCodeAction: () -> Void
+    let shareLinkAction: () -> Void
+    let shareQrCodeAction: () -> Void
+    let leaveSessionAction: () -> Void
     
     var body: some View {
         HStack {
-            SystemImageButton(imageSystemName: "square.and.arrow.up", action: shareAction)
+            Menu {
+                Button(action: shareQrCodeAction) {
+                    Label("PLANNING_SHARE_SESSION_QR_CODE", systemImage: "qrcode")
+                }
+                
+                Button(action: shareLinkAction) {
+                    Label("PLANNING_SHARE_SESSION_LINK", systemImage: "link")
+                }
+                
+                Button(action: shareSessionCodeAction) {
+                    Label("PLANNING_SHARE_SESSION_SESSION_CODE", systemImage: "textformat.123")
+                }
+            }
+            label: {
+                Label("PLANNING_SHARE_SESSION_SHEET_TITLE", systemImage: "square.and.arrow.up")
+                    .labelStyle(IconOnlyLabelStyle())
+            }
             
             Spacer()
             
-            SystemImageButton(imageSystemName: "slider.horizontal.3", action: menuAction)
+            Menu {
+                Button(action: leaveSessionAction) {
+                    Label("PLANNING_JOIN_MENU_LEAVE_SESSION", systemImage: "xmark")
+                }
+            }
+            label: {
+                Label("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE", systemImage: "slider.horizontal.3")
+                    .labelStyle(IconOnlyLabelStyle())
+            }
         }
             .padding()
             .background(
@@ -30,6 +56,6 @@ struct PlanningJoinToolbarView: View {
 
 struct PlanningJoinToolbarView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningJoinToolbarView(shareAction: {}, menuAction: {})
+        PlanningJoinToolbarView(shareSessionCodeAction: {}, shareLinkAction: {}, shareQrCodeAction: {}, leaveSessionAction: {})
     }
 }

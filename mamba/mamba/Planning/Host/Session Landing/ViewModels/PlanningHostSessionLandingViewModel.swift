@@ -19,6 +19,13 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         return true
     }
     
+    var finishVotingVisible: Bool {
+        if case .voting = state {
+            return false
+        }
+        return true
+    }
+    
     init(sessionName: String, availableCards: [PlanningCard]) {
         super.init(websocketURL: URLCenter.shared.planningHostWSURL)
         commonInit(sessionName: sessionName, availableCards: availableCards)

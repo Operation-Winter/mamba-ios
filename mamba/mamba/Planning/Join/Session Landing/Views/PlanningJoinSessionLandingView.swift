@@ -11,9 +11,7 @@ import SwiftUI
 struct PlanningJoinSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     @StateObject private var viewModel: PlanningJoinSessionLandingViewModel
-    @State private var showActionSheet = false
     @State private var showConfirmAlert = false
-    @State private var actionSheetType: PlanningSessionLandingActionSheetType = .menu
     
     init(sessionCode: String, participantName: String) {
         _viewModel = StateObject(wrappedValue: PlanningJoinSessionLandingViewModel(sessionCode: sessionCode, participantName: participantName))
@@ -41,42 +39,15 @@ struct PlanningJoinSessionLandingView: View {
             }
             
             if !self.viewModel.toolBarHidden {
-                PlanningJoinToolbarView(shareAction: shareActionTapped, menuAction: menuActionTapped)
+                PlanningJoinToolbarView(shareSessionCodeAction: shareSessionCode, shareLinkAction: shareSessionLink, shareQrCodeAction: shareSessionQRCode, leaveSessionAction: showLeaveSessionConfirmation)
             }
-        }.actionSheet(isPresented: $showActionSheet) {
-            actionSheetBuilder()
         }.alert(isPresented: $showConfirmAlert) {
             Alert(title: Text("PLANNING_JOIN_MENU_LEAVE_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(Text("YES"), action: leaveSession))
         }
     }
-    
-    private func actionSheetBuilder() -> ActionSheet {
-        switch actionSheetType {
-        case .share:
-            return shareActionSheet()
-        case .menu:
-            return actionsMenuActionSheet()
-        }
-    }
-    
-    private func actionsMenuActionSheet() -> ActionSheet {
-        ActionSheet(title: Text("PLANNING_ADDITIONAL_ACTION_SHEET_TITLE"), message: nil, buttons: [
-            .default(Text("PLANNING_JOIN_MENU_LEAVE_SESSION"), action: self.showLeaveSessionConfirmation),
-            .cancel()
-        ])
-    }
-    
-    private func shareActionSheet() -> ActionSheet {
-        ActionSheet(title: Text("PLANNING_SHARE_SESSION_SHEET_TITLE"), message: nil, buttons: [
-            .default(Text("PLANNING_SHARE_SESSION_SESSION_CODE"), action: self.shareSessionCode),
-            .default(Text("PLANNING_SHARE_SESSION_LINK"), action: self.shareSessionLink),
-            .default(Text("PLANNING_SHARE_SESSION_QR_CODE"), action: self.shareSessionQRCode),
-            .cancel()
-        ])
-    }
-    
+
     private func errorCard(planningError: PlanningLandingError) -> some View {
         PlanningErrorCardView(error: PlanningLandingError(code: planningError.code, description: planningError.description), buttonTitle: "PLANNING_ERROR_BUTTON_BACK_TO_LANDING_TITLE") {
             self.navigation.dismiss()
@@ -128,18 +99,6 @@ struct PlanningJoinSessionLandingView: View {
             }
         }
         .padding(leading: 15, top: 20, bottom: 20, trailing: 15)
-    }
-    
-    private func menuActionTapped() {
-        Log.planning.logger.info("Join - Menu tapped")
-        actionSheetType = .menu
-        showActionSheet = true
-    }
-    
-    private func shareActionTapped() {
-        Log.planning.logger.info("Join - Share tapped")
-        actionSheetType = .share
-        showActionSheet = true
     }
     
     private func showLeaveSessionConfirmation() {

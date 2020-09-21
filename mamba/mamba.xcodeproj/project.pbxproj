@@ -126,8 +126,6 @@
 		ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448424AE4DC800034216 /* LandingItemView.swift */; };
 		EDEDE31524E15BF400CC666B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31424E15BF400CC666B /* Log.swift */; };
 		EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31824E15D6C00CC666B /* LogTests.swift */; };
-		EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31A24E15D7700CC666B /* LogCategoryTests.swift */; };
-		EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31C24E15D8500CC666B /* LogLevelTests.swift */; };
 		EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */; };
 		EDEDE32324E1621F00CC666B /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */; };
 		EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */; };
@@ -284,8 +282,6 @@
 		ED9D448424AE4DC800034216 /* LandingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItemView.swift; sourceTree = "<group>"; };
 		EDEDE31424E15BF400CC666B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		EDEDE31824E15D6C00CC666B /* LogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTests.swift; sourceTree = "<group>"; };
-		EDEDE31A24E15D7700CC666B /* LogCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCategoryTests.swift; sourceTree = "<group>"; };
-		EDEDE31C24E15D8500CC666B /* LogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTests.swift; sourceTree = "<group>"; };
 		EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionNetworkHandlerTests.swift; sourceTree = "<group>"; };
 		EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCloseErrorTests.swift; sourceTree = "<group>"; };
@@ -1033,8 +1029,6 @@
 			isa = PBXGroup;
 			children = (
 				EDEDE31824E15D6C00CC666B /* LogTests.swift */,
-				EDEDE31A24E15D7700CC666B /* LogCategoryTests.swift */,
-				EDEDE31C24E15D8500CC666B /* LogLevelTests.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -1345,10 +1339,8 @@
 				EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */,
 				2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */,
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
-				EDEDE31B24E15D7700CC666B /* LogCategoryTests.swift in Sources */,
 				2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */,
 				26B7192D24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift in Sources */,
-				EDEDE31D24E15D8500CC666B /* LogLevelTests.swift in Sources */,
 				2644546624F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift in Sources */,
 				2644546824F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift in Sources */,
 				2644547C24F3EC9D0047F9EF /* LandingItemTests.swift in Sources */,
@@ -1551,7 +1543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47QLT56GDU;
 				INFOPLIST_FILE = mambaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1573,7 +1565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47QLT56GDU;
 				INFOPLIST_FILE = mambaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

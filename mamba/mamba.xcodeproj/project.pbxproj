@@ -18,6 +18,7 @@
 		261E1ED924A48ABA00937D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1ED824A48ABA00937D89 /* Assets.xcassets */; };
 		261E1EDC24A48ABA00937D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1EDB24A48ABA00937D89 /* Preview Assets.xcassets */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
+		263B85B62518CEFC00A267B2 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B85B52518CEFC00A267B2 /* ShareSheet.swift */; };
 		263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */; };
 		263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4224D18BE600EEAB1E /* RoundedButton.swift */; };
 		263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4524D18D4200EEAB1E /* TitleText.swift */; };
@@ -174,6 +175,7 @@
 		261E1EF024A48ABA00937D89 /* mambaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mambaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		263B85B52518CEFC00A267B2 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCard.swift; sourceTree = "<group>"; };
 		263ECA4224D18BE600EEAB1E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		263ECA4524D18D4200EEAB1E /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
@@ -416,6 +418,14 @@
 			path = mambaUITests;
 			sourceTree = "<group>";
 		};
+		263B85B42518CEEF00A267B2 /* ShareSheet */ = {
+			isa = PBXGroup;
+			children = (
+				263B85B52518CEFC00A267B2 /* ShareSheet.swift */,
+			);
+			path = ShareSheet;
+			sourceTree = "<group>";
+		};
 		263ECA4124D1894700EEAB1E /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +636,7 @@
 		26772AF724B4A5C9003FB1A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				263B85B42518CEEF00A267B2 /* ShareSheet */,
 				26467D4F24EFE126008A36AD /* QR Scanner */,
 				26E2F86024E52840008B2B4B /* Graphs */,
 				26F98A4D24D96129007CA2B8 /* LoadingIndicators */,
@@ -1308,6 +1319,7 @@
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,
 				263ECB0224D3081000EEAB1E /* PlanningSessionStateMessage.swift in Sources */,
+				263B85B62518CEFC00A267B2 /* ShareSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

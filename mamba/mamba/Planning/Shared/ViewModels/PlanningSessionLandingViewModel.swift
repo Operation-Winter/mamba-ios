@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import UIKit
+import SwiftUI
 
 class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: ObservableObject {
     private var service: PlanningSessionLandingService<Send, Receive>
@@ -50,6 +51,10 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         }
     }
     
+    var gridItems: [GridItem] = [
+        GridItem(.adaptive(minimum: 300, maximum: 500))
+    ]
+
     var shareSessionCode: String {
         sessionCode
     }

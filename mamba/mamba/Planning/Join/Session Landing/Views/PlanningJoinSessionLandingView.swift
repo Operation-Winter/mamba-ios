@@ -113,23 +113,24 @@ struct PlanningJoinSessionLandingView: View {
     
     private func shareSessionCode() {
         Log.planning.logger.info("Join - Share session code tapped")
-        showShareSheet(shareItems: [viewModel.shareSessionCode])
+        let shareSheet = ShareSheet(activityItems: [viewModel.shareSessionCode]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
     
     private func shareSessionQRCode() {
         Log.planning.logger.info("Join - Share session QR code tapped")
         guard let qrCode = viewModel.shareSessionQRCode() else { return }
-        showShareSheet(shareItems: [qrCode])
+        let shareSheet = ShareSheet(activityItems: [qrCode]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
     
     private func shareSessionLink() {
         Log.planning.logger.info("Join - Share session link tapped")
-        showShareSheet(shareItems: [viewModel.shareSessionLink])
-    }
-    
-    private func showShareSheet(shareItems: [Any]) {
-        let shareController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(shareController, animated: true, completion: nil)
+        let shareSheet = ShareSheet(activityItems: [viewModel.shareSessionLink]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
 }
 

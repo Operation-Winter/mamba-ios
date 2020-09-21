@@ -24,17 +24,19 @@ struct PlanningHostSessionLandingView: View {
         
         return VStack(alignment: .center, spacing: 0) {
             ScrollView {
-                switch viewModel.state {
-                case .error(let planningError):
-                    errorCard(planningError: planningError)
-                case .loading:
-                    loadingView
-                case .none:
-                    noneStateView
-                case .voting:
-                    votingStateView
-                case .finishedVoting:
-                    votingFinishedStateView
+                LazyVGrid(columns: viewModel.gridItems) {
+                    switch viewModel.state {
+                    case .error(let planningError):
+                        errorCard(planningError: planningError)
+                    case .loading:
+                        loadingView
+                    case .none:
+                        noneStateView
+                    case .voting:
+                        votingStateView
+                    case .finishedVoting:
+                        votingFinishedStateView
+                    }
                 }
             }
             
@@ -49,7 +51,8 @@ struct PlanningHostSessionLandingView: View {
                                         finishVotingAction: finishVotingActionTapped,
                                         endSessionAction: showEndSessionConfirmation)
             }
-        }.alert(isPresented: self.$showConfirmAlert) {
+        }
+        .alert(isPresented: $showConfirmAlert) {
             Alert(title: Text("PLANNING_HOST_MENU_END_SESSION_CONFIRM"), message: nil,
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(Text("YES"), action: self.endSession))
@@ -186,23 +189,24 @@ struct PlanningHostSessionLandingView: View {
     
     private func shareSessionCode() {
         Log.planning.logger.info("Host - Share session code tapped")
-        showShareSheet(shareItems: [viewModel.shareSessionCode])
+        let shareSheet = ShareSheet(activityItems: [viewModel.shareSessionCode]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
     
     private func shareSessionQRCode() {
         Log.planning.logger.info("Host - Share session QR code tapped")
         guard let qrCode = viewModel.shareSessionQRCode() else { return }
-        showShareSheet(shareItems: [qrCode])
+        let shareSheet = ShareSheet(activityItems: [qrCode]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
     
     private func shareSessionLink() {
         Log.planning.logger.info("Host - Share session link tapped")
-        showShareSheet(shareItems: [viewModel.shareSessionLink])
-    }
-    
-    private func showShareSheet(shareItems: [Any]) {
-        let shareController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(shareController, animated: true, completion: nil)
+        let shareSheet = ShareSheet(activityItems: [viewModel.shareSessionLink]).edgesIgnoringSafeArea(.all)
+        navigation.modal(AnyView(shareSheet))
+        navigation.showSheet = true
     }
 }
 

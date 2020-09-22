@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlanningHostSetupView: View {
     @EnvironmentObject private var navigation: NavigationStack
-    @ObservedObject private var viewModel = PlanningHostSetupViewModel()
+    @StateObject private var viewModel = PlanningHostSetupViewModel()
     @Binding var showSheet: Bool
     
     var body: some View {
@@ -20,17 +20,17 @@ struct PlanningHostSetupView: View {
                     TitleText(titleKey: "PLANNING_HOST_SETUP_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    ClearableTextField(text: self.$viewModel.sessionName,
+                    ClearableTextField(text: $viewModel.sessionName,
                                        placeholder: "PLANNING_HOST_START_SESSION_NAME_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
-                    SelectCardsButton(cardCount: self.viewModel.selectedCardsCountTitle, destination: PlanningHostAvailableCardsView(availableCards: self.viewModel.availableCards))
+                    SelectCardsButton(cardCount: viewModel.selectedCardsCountTitle, destination: PlanningHostAvailableCardsView(availableCards: viewModel.availableCards))
                     .padding(leading: 20, top: 15, trailing: 20)
     
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {
-                        self.navigateToHostLanding()
+                        navigateToHostLanding()
                     }
-                    .disabled(!self.viewModel.inputValid)
+                    .disabled(!viewModel.inputValid)
                     .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
                 }
                 
@@ -39,7 +39,7 @@ struct PlanningHostSetupView: View {
             .navigationBarTitle("PLANNING_HOST_TITLE", displayMode: .inline)
             .navigationBarItems(leading:
                 CancelBarButton {
-                    self.showSheet.toggle()
+                    showSheet.toggle()
                 }
             )
         }
@@ -47,11 +47,11 @@ struct PlanningHostSetupView: View {
     }
     
     private func navigateToHostLanding() {
-        let planningCards: [PlanningCard] = self.viewModel.availableCards.compactMap {
+        let planningCards: [PlanningCard] = viewModel.availableCards.compactMap {
             guard $0.selected else { return nil }
             return $0.card
         }
-        let hostLandingView = PlanningHostSessionLandingView(sessionName: self.viewModel.sessionName, availableCards: planningCards)
+        let hostLandingView = PlanningHostSessionLandingView(sessionName: viewModel.sessionName, availableCards: planningCards)
         navigation.present(AnyView(hostLandingView))
     }
 }

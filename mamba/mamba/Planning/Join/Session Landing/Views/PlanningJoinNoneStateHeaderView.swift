@@ -13,7 +13,7 @@ struct PlanningJoinNoneStateHeaderView: View {
     
     var body: some View {
         VCardView {
-            Text(self.title)
+            Text(title)
                 .font(.system(size: 20))
                 .foregroundColor(.accentColor)
                 .padding(leading: 20, top: 20, trailing: 20)

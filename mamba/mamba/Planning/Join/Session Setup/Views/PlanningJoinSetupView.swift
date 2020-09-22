@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlanningJoinSetupView: View {
     @EnvironmentObject private var navigation: NavigationStack
-    @ObservedObject private var viewModel = PlanningJoinSetupViewModel()
+    @StateObject private var viewModel = PlanningJoinSetupViewModel()
     @State private var showQrCode: Bool = false
     @Binding var showSheet: Bool
 
@@ -25,7 +25,7 @@ struct PlanningJoinSetupView: View {
                     TitleText(titleKey: "PLANNING_JOIN_SETUP_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    ClearableTextField(text: self.$viewModel.participantName,
+                    ClearableTextField(text: $viewModel.participantName,
                                        placeholder: "PLANNING_JOIN_SETUP_NAME_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
@@ -35,20 +35,20 @@ struct PlanningJoinSetupView: View {
                         .fontWeight(.light)
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    SessionCodeTextField(code1: self.$viewModel.sessionCode1,
-                                         code2: self.$viewModel.sessionCode2,
-                                         code3: self.$viewModel.sessionCode3,
-                                         code4: self.$viewModel.sessionCode4,
-                                         code5: self.$viewModel.sessionCode5,
-                                         code6: self.$viewModel.sessionCode6)
+                    SessionCodeTextField(code1: $viewModel.sessionCode1,
+                                         code2: $viewModel.sessionCode2,
+                                         code3: $viewModel.sessionCode3,
+                                         code4: $viewModel.sessionCode4,
+                                         code5: $viewModel.sessionCode5,
+                                         code6: $viewModel.sessionCode6)
                         .padding(leading: 20, top: 15, trailing: 20)
                     
-                    self.qrCodeButton
+                    qrCodeButton
                     
                     RoundedButton(titleKey: "PLANNING_JOIN_SETUP_JOIN_SESSION_BUTTON_TITLE") {
-                        self.navigateToJoinLanding()
+                        navigateToJoinLanding()
                     }
-                    .disabled(!self.viewModel.inputValid)
+                    .disabled(!viewModel.inputValid)
                     .padding(leading: 20, top: 10, bottom: 20, trailing: 20)
                 }
                 
@@ -57,7 +57,7 @@ struct PlanningJoinSetupView: View {
             .navigationBarTitle("PLANNING_JOIN_TITLE", displayMode: .inline)
             .navigationBarItems(leading:
                 CancelBarButton {
-                    self.showSheet.toggle()
+                    showSheet.toggle()
                 }
             )
         }
@@ -71,7 +71,7 @@ struct PlanningJoinSetupView: View {
     }
     
     private var qrCodeButton: some View {
-        NavigationLink(destination: PlanningJoinSetupQRCameraView(sessionCode: self.$viewModel.sessionCode, showQrCode: self.$showQrCode), isActive: self.$showQrCode) {
+        NavigationLink(destination: PlanningJoinSetupQRCameraView(sessionCode: $viewModel.sessionCode, showQrCode: $showQrCode), isActive: $showQrCode) {
             HStack {
                 Image(systemName: "qrcode.viewfinder")
                 Text("PLANNING_JOIN_SETUP_QR_BUTTON_TITLE")

@@ -19,7 +19,7 @@ struct PlanningFinishedVotingStateGraphCardView: View {
                 .multilineTextAlignment(.center)
                 .padding(leading: 20, top: 15, trailing: 20)
             
-            if self.barGraphEntries.count > 0 {
+            if !barGraphEntries.isEmpty {
                 HorizontalCombinedBarGraphView(barGraphEntries: self.barGraphEntries, barWidth: UIScreen.main.bounds.width - 70)
                     .padding(leading: 20, top: 15, bottom: 20, trailing: 20)
                     .frame(maxWidth: .infinity)

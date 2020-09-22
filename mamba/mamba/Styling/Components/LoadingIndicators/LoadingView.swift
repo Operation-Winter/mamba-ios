@@ -16,7 +16,8 @@ struct LoadingView: View {
             Spacer()
             VStack {
                 Spacer()
-                Text(title)
+                ProgressView(title)
+                    .progressViewStyle(CircularProgressViewStyle())
                 Spacer()
             }
             Spacer()

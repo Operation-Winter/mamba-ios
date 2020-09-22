@@ -6,25 +6,33 @@
 //  Copyright © 2020 Armand Kamffer. All rights reserved.
 //
 
-import os
 import Foundation
+import os
 
-public struct Log {
-    static var subsystem: String {
+public enum Log: String {
+    case logging = "logging"
+    case networking = "networking"
+    case planning = "planning"
+    case retro = "retro"
+    
+    private static var subsystem: String {
         guard let subsystem = Bundle.main.bundleIdentifier else {
-            log(level: .fault, category: .logging, message: "Failed to fetch bundleIdentifier")
             fatalError("Failed to fetch bundleIdentifier")
         }
         return subsystem
     }
-
-    public static func log(level: LogLevel, category: LogCategory, message: StaticString) {
-        os_log(level.type, log: category.log, message)
-    }
-
-    public static func log(level: LogLevel, category: LogCategory, message: StaticString, args: CVarArg) {
-        let type = level.type
-        let log = category.log
-        os_log(type, log: log, message, args)
+    
+    private static let networkingLog = Logger(subsystem: subsystem, category: Log.networking.rawValue)
+    private static let planningLog = Logger(subsystem: subsystem, category: Log.planning.rawValue)
+    private static let retroLog = Logger(subsystem: subsystem, category: Log.retro.rawValue)
+    private static let loggingLog = Logger(subsystem: subsystem, category: Log.logging.rawValue)
+    
+    var logger: Logger {
+        switch self {
+        case .networking: return Log.networkingLog
+        case .planning: return Log.planningLog
+        case .retro: return Log.retroLog
+        case .logging: return Log.loggingLog
+        }
     }
 }

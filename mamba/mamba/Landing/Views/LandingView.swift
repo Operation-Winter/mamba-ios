@@ -13,40 +13,15 @@ struct LandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
     private let viewModel = LandingViewModel()
     
-    init() {
-        UITableView.appearance().separatorStyle = .none
-    }
-    
     var body: some View {
-        Group {
-            if sizeClass == .compact {
-                compactView
-            } else {
-                regularView
-            }
-        }
-    }
-    
-    var compactView: some View {
-        List(viewModel.landingItems, id: \.self) { item in
-            LandingItemView(title: item.titleKey, imageName: item.imageName)
-                .onTapGesture { self.landingItemTapped(item) }
-        }
-    }
-    
-    var regularView: some View {
-        return List {
-            ForEach(0 ..< viewModel.chunkedLandingItems.count) { index in
-                HStack {
-                    ForEach(self.viewModel.chunkedLandingItems[index], id: \.self) { item in
-                        LandingItemView(title: item.titleKey, imageName: item.imageName)
-                            .onTapGesture { self.landingItemTapped(item) }
-                            .padding(.leading, 2)
-                            .padding(.trailing, 2)
-                    }
+        ScrollView {
+            LazyVGrid(columns: viewModel.gridItems) {
+                ForEach(viewModel.landingItems, id: \.self) { item in
+                    LandingItemView(title: item.titleKey, imageName: item.imageName)
+                        .onTapGesture { self.landingItemTapped(item) }
                 }
-            }
-        }.padding(.top, 10)
+            }.padding(10)
+        }
     }
     
     private func landingItemTapped(_ item: LandingItem) {
@@ -58,7 +33,7 @@ struct LandingView: View {
             navigation.modal(AnyView(PlanningJoinSetupView(showSheet: $navigation.showSheet)), colorScheme: .planning)
             navigation.showSheet.toggle()
         default:
-            return
+            break
         }
     }
 }

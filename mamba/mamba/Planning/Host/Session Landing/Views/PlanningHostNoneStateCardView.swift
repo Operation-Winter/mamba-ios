@@ -14,7 +14,7 @@ struct PlanningHostNoneStateCardView: View {
     
     var body: some View {
         VCardView {
-            Text(self.title)
+            Text(title)
                 .font(.system(size: 20))
                 .foregroundColor(.accentColor)
                 .padding(leading: 20, top: 20, trailing: 20)
@@ -26,7 +26,7 @@ struct PlanningHostNoneStateCardView: View {
                 .padding(leading: 20, top: 15, trailing: 20)
             
             RoundedButton(titleKey: "PLANNING_HOST_LANDING_ADD_TICKET_BUTTON_TITLE") {
-                self.buttonAction()
+                buttonAction()
             }
             .padding(leading: 20, top: 20, bottom: 20, trailing: 20)
         }

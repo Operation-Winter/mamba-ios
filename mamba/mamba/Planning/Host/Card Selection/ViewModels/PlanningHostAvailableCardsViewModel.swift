@@ -15,6 +15,12 @@ class PlanningHostAvailableCardsViewModel: ObservableObject {
     private(set) var chunkedCards: [[AvailableCard]]
     private var cancellables = [AnyCancellable]()
 
+    private(set) var gridItems: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     init(availableCards: [AvailableCard]) {
         cards = availableCards
         chunkedCards = cards.chunked(into: 3)

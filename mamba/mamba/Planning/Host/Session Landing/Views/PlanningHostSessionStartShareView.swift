@@ -19,7 +19,7 @@ struct PlanningHostSessionStartShareView: View {
                     TitleText(titleKey: "PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_CODE_TITLE")
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    SessionCodeText(sessionCode: self.sessionCode)
+                    SessionCodeText(sessionCode: sessionCode)
                         .padding(leading: 20, top: 40, bottom: 20, trailing: 20)
                 }
                 Spacer()
@@ -27,7 +27,7 @@ struct PlanningHostSessionStartShareView: View {
             .navigationBarTitle("PLANNING_HOST_LANDING_SESSION_SHARE_MODAL_TITLE", displayMode: .inline)
             .navigationBarItems(trailing:
                 DoneBarButton {
-                    self.showSheet.toggle()
+                    showSheet.toggle()
                 }
             )
         }

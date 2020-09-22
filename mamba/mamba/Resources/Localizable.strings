@@ -35,6 +35,7 @@
 "PLANNING_HOST_MENU_FINISH_VOTING" = "Finish voting";
 "PLANNING_HOST_MENU_END_SESSION" = "End session";
 "PLANNING_HOST_MENU_END_SESSION_CONFIRM" = "Are you sure you want to end the session?";
+"PLANNING_HOST_ADD_TICKET_DETAILS"= "Ticket details";
 
 
 // MARK: - Planning join
@@ -50,7 +51,8 @@
 "PLANNING_JOIN_SETUP_QR_BUTTON_TITLE" = "QR CODE";
 "PLANNING_JOIN_SETUP_QR_VIEW_TITLE" = "Scan QR code";
 
-// MARK: Planning common
+
+// MARK: - Planning common
 "PLANNING_TICKET_IDENTIFIER_TITLE" = "Ticket identifier";
 "PLANNING_TICKET_DESCRIPTION_TITLE" = "Ticket description";
 "PLANNING_TICKET_NO_IDENTIFIER_DESCRIPTION" = "No ticket identifier provided.";

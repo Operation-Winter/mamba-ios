@@ -271,7 +271,7 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         
         XCTAssertEqual(participantsList.element(at: 4)?.participantId, "b")
         XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
-        XCTAssertEqual(participantsList.element(at: 4)?.votingImageName, "ellipsis")
+        XCTAssertEqual(participantsList.element(at: 4)?.votingImageName, "rectangle.and.pencil.and.ellipsis")
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
     }
     

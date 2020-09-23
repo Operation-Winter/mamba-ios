@@ -22,14 +22,56 @@
 
 ### Host journey screenshots
 
-  <img src="docs/Screenshot1.png" alt="Logo" width="200">
-  <img src="docs/Screenshot2.png" alt="Logo" width="200">
-  <img src="docs/Screenshot3.png" alt="Logo" width="200">
-  <img src="docs/Screenshot4.png" alt="Logo" width="200">
-  <img src="docs/Screenshot5.png" alt="Logo" width="200">
-  <img src="docs/Screenshot6.png" alt="Logo" width="200">
-  <img src="docs/Screenshot7.png" alt="Logo" width="200">
-  <img src="docs/Screenshot8.png" alt="Logo" width="200">
+<table>
+  <tr>
+    <td>Landing</td>
+    <td>Host planning setup</td>
+    <td>Host session landing</td>
+  </tr>
+  <tr>
+    <td valign="top">
+        <img src="docs/Screenshot1.png" alt="Screenshot1">
+    </td>
+    <td valign="top">
+        <img src="docs/Screenshot2.png" alt="Screenshot2">
+    </td>
+    <td valign="top">
+        <img src="docs/Screenshot3.png" alt="Screenshot3">
+    </td>
+  </tr>
+  <tr>
+    <td>Add new ticket</td>
+    <td>Voting state</td>
+    <td>Voting state 2</td>
+  </tr>
+  <tr>
+    <td valign="top">
+        <img src="docs/Screenshot4.png" alt="Screenshot4">
+    </td>
+    <td valign="top">
+        <img src="docs/Screenshot5.png" alt="Screenshot5">
+    </td>
+    <td valign="top">
+        <img src="docs/Screenshot6.png" alt="Screenshot6">
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Voting state - Skip vote</td>
+    <td>Finished voting state</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td valign="top">
+        <img src="docs/Screenshot7.png" alt="Screenshot7">
+    </td>
+    <td valign="top">
+        <img src="docs/Screenshot8.png" alt="Screenshot8">
+    </td>
+    <td valign="top">
+    </td>
+  </tr>
+ </table>
 
 ### Description
 

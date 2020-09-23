@@ -1,4 +1,4 @@
-![Contributors][contributors-shield]
+[![Contributors][contributors-shield]][contributors-url]
 [![Stargazers][stars-shield]][stars-url]
 
 <br />
@@ -66,6 +66,7 @@ git clone https://github.com/Operation-Winter/mamba-ios.git
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/Operation-Winter/mamba-ios?style=flat-square
+[contributors-url]: https://github.com/Operation-Winter/mamba-ios/graphs/contributors
 
 [stars-shield]: https://img.shields.io/github/stars/Operation-Winter/mamba-ios?style=flat-square?style=flat-square
 [stars-url]: https://github.com/Operation-Winter/mamba-ios/stargazers

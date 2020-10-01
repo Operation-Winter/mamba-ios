@@ -10,8 +10,8 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Host journey screenshots](#host-journey-screenshots)
   * [Description](#description)
+  * [Journeys](#journeys)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -20,64 +20,20 @@
 
 ## About the project
 
-### Host journey screenshots
-
-<table>
-  <tr>
-    <td>Landing</td>
-    <td>Host planning setup</td>
-    <td>Host session landing</td>
-  </tr>
-  <tr>
-    <td valign="top">
-        <img src="docs/Screenshot1.png" alt="Screenshot1">
-    </td>
-    <td valign="top">
-        <img src="docs/Screenshot2.png" alt="Screenshot2">
-    </td>
-    <td valign="top">
-        <img src="docs/Screenshot3.png" alt="Screenshot3">
-    </td>
-  </tr>
-  <tr>
-    <td>Add new ticket</td>
-    <td>Voting state</td>
-    <td>Voting state 2</td>
-  </tr>
-  <tr>
-    <td valign="top">
-        <img src="docs/Screenshot4.png" alt="Screenshot4">
-    </td>
-    <td valign="top">
-        <img src="docs/Screenshot5.png" alt="Screenshot5">
-    </td>
-    <td valign="top">
-        <img src="docs/Screenshot6.png" alt="Screenshot6">
-    </td>
-  </tr>
-    
-  <tr>
-    <td>Voting state - Skip vote</td>
-    <td>Finished voting state</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td valign="top">
-        <img src="docs/Screenshot7.png" alt="Screenshot7">
-    </td>
-    <td valign="top">
-        <img src="docs/Screenshot8.png" alt="Screenshot8">
-    </td>
-    <td valign="top">
-    </td>
-  </tr>
- </table>
-
 ### Description
 
 The initial purpose for this app was to practice technical skills by making use of SwiftUI, Combine, and WebSockets.
 
 The app allows a user to host or join a Story Point Planning session and vote on a story.
+
+### Journeys
+
+#### Planning journey
+- [iPhone](docs/planning_journey_iphone.md)
+- [iPad](docs/planning_journey_ipad.md)
+
+#### Retrospective journey
+- To be completed
 
 ### Built with
 

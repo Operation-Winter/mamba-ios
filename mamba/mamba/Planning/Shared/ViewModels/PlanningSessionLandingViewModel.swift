@@ -153,10 +153,8 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     private func votingParticipantRows() -> [PlanningParticipantRowViewModel] {
         participants.compactMap { participant in
-            guard
-                let ticketVote = ticket?.ticketVotes.first(where: { $0.participantId == participant.participantId })
-            else { return nil }
-            let imageName = votingParticipantRowImage(skipped: ticketVote.skipped, cardSelected: ticketVote.selectedCard != nil)
+            let ticketVote = ticket?.ticketVotes.first(where: { $0.participantId == participant.participantId })
+            let imageName = votingParticipantRowImage(skipped: ticketVote?.skipped ?? false, cardSelected: ticketVote?.selectedCard != nil)
             return PlanningParticipantRowViewModel(participantId: participant.participantId,
                                                    participantName: participant.name,
                                                    votingImageName: imageName)
@@ -181,17 +179,16 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         
         var list = [PlanningParticipantRowViewModel]()
         for group in groupedVotes {
-            let filteredParticipants: [PlanningParticipantRowViewModel] = group.value.compactMap {
-                guard let participantName = participants.first(where: { $0.participantId == $0.participantId })?.name else {
+            let filteredParticipants: [PlanningParticipantRowViewModel] = group.value.compactMap { ticketVote in
+                guard let participantName = participants.first(where: { $0.participantId == ticketVote.participantId })?.name else {
                     return nil
                 }
-                let skipped = $0.selectedCard == nil
-                let meanCard = group.value.count == meanCount ? $0.selectedCard : nil
-                let highlighted = meanCard != $0.selectedCard && !skipped
-                let imageName = votingFinishedParticipantRowImage(cardSelected: !skipped)
-                return PlanningParticipantRowViewModel(participantId: $0.participantId,
+                let meanCard = group.value.count == meanCount ? ticketVote.selectedCard : nil
+                let highlighted = meanCard != ticketVote.selectedCard && !ticketVote.skipped
+                let imageName = votingFinishedParticipantRowImage(cardSelected: !ticketVote.skipped)
+                return PlanningParticipantRowViewModel(participantId: ticketVote.participantId,
                                                        participantName: participantName,
-                                                       votingValue: $0.selectedCard?.title,
+                                                       votingValue: ticketVote.selectedCard?.title,
                                                        votingImageName: imageName,
                                                        highlighted: highlighted)
             }

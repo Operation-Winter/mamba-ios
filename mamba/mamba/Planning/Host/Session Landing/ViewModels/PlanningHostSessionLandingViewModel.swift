@@ -22,9 +22,9 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     var finishVotingVisible: Bool {
         if case .voting = state {
-            return false
+            return true
         }
-        return true
+        return false
     }
     
     init(sessionName: String, availableCards: [PlanningCard]) {

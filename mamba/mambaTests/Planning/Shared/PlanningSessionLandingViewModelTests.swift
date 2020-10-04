@@ -239,7 +239,7 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         let participantsList = serviceUnderTest.participantList
     
         // Then: the list match expected values
-        XCTAssertEqual(participantsList.count, 4)
+        XCTAssertEqual(participantsList.count, 5)
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 0)?.votingImageName, "checkmark.circle")
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
@@ -255,6 +255,10 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 3)?.votingImageName, "arrowshape.turn.up.right")
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
+        
+        XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
+        XCTAssertEqual(participantsList.element(at: 4)?.votingImageName, "rectangle.and.pencil.and.ellipsis")
+        XCTAssertNil(participantsList.element(at: 4)?.votingValue)
     }
     
     func testParticipantListFinishedVotingState() {
@@ -376,7 +380,7 @@ fileprivate class Mocks {
             PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), selectedCard: .one),
             PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), selectedCard: .one),
             PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), selectedCard: .two),
-            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), selectedCard: nil),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), selectedCard: nil)
         ])
         
         return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [

@@ -8,8 +8,9 @@
 
 import Foundation
 import Combine
+import MambaNetworking
 
-class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.HostSend, PlanningCommands.HostReceive> {
+class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend> {
     @Published var showInitialShareModal: Bool = false
     
     var revoteDisabled: Bool {
@@ -31,7 +32,7 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         commonInit(sessionName: sessionName, availableCards: availableCards)
     }
     
-    init(sessionName: String, availableCards: [PlanningCard], service: PlanningSessionLandingService<PlanningCommands.HostSend, PlanningCommands.HostReceive>) {
+    init(sessionName: String, availableCards: [PlanningCard], service: PlanningSessionLandingService<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>) {
         super.init(service: service)
         commonInit(sessionName: sessionName, availableCards: availableCards)
     }
@@ -43,38 +44,38 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     func sendStartSessionCommand() {
         let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
-        sendCommand(.startSession(commandMessage))
+        sendCommand(.startSession(uuid: uuid, message: commandMessage))
     }
     
-    func sendAddTicketCommand(identifier: String, description: String) {
-        let commandMessage = PlanningAddTicketMessage(identifier: identifier, description: description)
-        sendCommand(.addTicket(commandMessage))
+    func sendAddTicketCommand(title: String, description: String) {
+        let commandMessage = PlanningAddTicketMessage(title: title, description: description)
+        sendCommand(.addTicket(uuid: uuid, message: commandMessage))
     }
     
     func sendRevoteTicketCommand() {
-        sendCommand(.revote)
+        sendCommand(.revote(uuid: uuid))
     }
     
     func sendEndSessionCommand() {
-        sendCommand(.endSession)
+        sendCommand(.endSession(uuid: uuid))
         closeSession()
     }
     
     func sendFinishVotingCommand() {
-        sendCommand(.finishVoting)
+        sendCommand(.finishVoting(uuid: uuid))
     }
     
-    func sendSkipParticipantVoteCommand(participantId: String) {
+    func sendSkipParticipantVoteCommand(participantId: UUID) {
         let commandMessage = PlanningSkipVoteMessage(participantId: participantId)
-        sendCommand(.skipVote(commandMessage))
+        sendCommand(.skipVote(uuid: uuid, message: commandMessage))
     }
     
-    func sendRemoveParticipantCommand(participantId: String) {
+    func sendRemoveParticipantCommand(participantId: UUID) {
         let commandMessage = PlanningRemoveParticipantMessage(participantId: participantId)
-        sendCommand(.removeParticipant(commandMessage))
+        sendCommand(.removeParticipant(uuid: uuid, message: commandMessage))
     }
     
-    public override func executeCommand(_ command: PlanningCommands.HostReceive) {
+    public override func executeCommand(_ command: PlanningCommands.HostServerSend) {
         super.executeCommand(command)
         switch command {
         case .noneState(let message):

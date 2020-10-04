@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MambaNetworking
 
 struct PlanningHostSetupView: View {
     @EnvironmentObject private var navigation: NavigationStack

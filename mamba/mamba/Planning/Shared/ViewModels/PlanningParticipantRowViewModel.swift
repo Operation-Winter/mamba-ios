@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class PlanningParticipantRowViewModel: Identifiable {
-    let participantId: String
+    let participantId: UUID
     let participantName: String
     let votingValue: String?
     let votingImageName: String?
@@ -20,7 +20,7 @@ class PlanningParticipantRowViewModel: Identifiable {
         highlighted ? 2 : 0
     }
     
-    init(participantId: String, participantName: String, votingValue: String? = nil, votingImageName: String? = nil, highlighted: Bool = false) {
+    init(participantId: UUID, participantName: String, votingValue: String? = nil, votingImageName: String? = nil, highlighted: Bool = false) {
         self.participantId = participantId
         self.participantName = participantName
         self.votingValue = votingValue

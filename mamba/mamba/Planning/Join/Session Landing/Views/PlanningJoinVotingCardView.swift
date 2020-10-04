@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MambaNetworking
 
 struct PlanningJoinVotingCardView: View {
     @Binding var selectedCard: PlanningCard?

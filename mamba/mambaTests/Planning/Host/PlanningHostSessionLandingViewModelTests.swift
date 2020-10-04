@@ -7,16 +7,17 @@
 //
 
 import XCTest
+import MambaNetworking
 @testable import Mamba
 
 class PlanningHostSessionLandingViewModelTests: XCTestCase {
     var serviceUnderTest: PlanningHostSessionLandingViewModel!
     var mockWebSocketHandler: MockWebSocketHandler!
-    var mockService: MockPlanningSessionLandingService<PlanningCommands.HostSend, PlanningCommands.HostReceive>!
+    var mockService: MockPlanningSessionLandingService<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>!
     
     override func setUpWithError() throws {
         mockService = .init(sessionURL: URLCenter.shared.webSocketBaseURL)
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         mockWebSocketHandler = MockWebSocketHandler()
         networkHandler.configure(webSocket: mockWebSocketHandler)
         mockService.configure(sessionHandler: networkHandler)
@@ -51,7 +52,7 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.sendCommandCounter, 0)
         
         // When: send a command
-        serviceUnderTest.sendAddTicketCommand(identifier: "x", description: "Test")
+        serviceUnderTest.sendAddTicketCommand(title: "x", description: "Test")
         
         // Then: command send has been called once
         XCTAssertEqual(mockService.sendCommandCounter, 1)
@@ -97,7 +98,7 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.sendCommandCounter, 0)
         
         // When: send a command
-        serviceUnderTest.sendSkipParticipantVoteCommand(participantId: "x")
+        serviceUnderTest.sendSkipParticipantVoteCommand(participantId: UUID())
         
         // Then: command send has been called once
         XCTAssertEqual(mockService.sendCommandCounter, 1)
@@ -108,7 +109,7 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.sendCommandCounter, 0)
         
         // When: send a command
-        serviceUnderTest.sendRemoveParticipantCommand(participantId: "x")
+        serviceUnderTest.sendRemoveParticipantCommand(participantId: UUID())
         
         // Then: command send has been called once
         XCTAssertEqual(mockService.sendCommandCounter, 1)
@@ -172,11 +173,8 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -222,11 +220,8 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -250,11 +245,8 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -279,14 +271,14 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
 }
 
 fileprivate class Mocks {
-    static let ticket = PlanningTicket(identifier: "x", description: "Test", ticketVotes: [PlanningTicketVote(user: PlanningParticipant(id: "x", name: "Test"), selectedCard: .coffee)])
+    static let ticket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(), selectedCard: .coffee)])
     
-    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(id: "x", name: "Test")], ticket: ticket)
+    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(), name: "Test")], ticket: ticket)
     
-    static let noneState = PlanningCommands.HostReceive.noneState(stateMessage)
-    static let votingState = PlanningCommands.HostReceive.votingState(stateMessage)
-    static let finishedState = PlanningCommands.HostReceive.finishedState(stateMessage)
-    static let invalidCommand = PlanningCommands.HostReceive.invalidCommand(PlanningInvalidCommandMessage(code: "0", description: "Test"))
+    static let noneState = PlanningCommands.HostServerSend.noneState(message: stateMessage)
+    static let votingState = PlanningCommands.HostServerSend.votingState(message: stateMessage)
+    static let finishedState = PlanningCommands.HostServerSend.finishedState(message: stateMessage)
+    static let invalidCommand = PlanningCommands.HostServerSend.invalidCommand(message: PlanningInvalidCommandMessage(code: "0", description: "Test"))
 }
 
 fileprivate class Expected {

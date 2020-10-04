@@ -7,20 +7,21 @@
 //
 
 import XCTest
+import MambaNetworking
 @testable import Mamba
 
 class PlanningSessionLandingViewModelTests: XCTestCase {
-    var serviceUnderTest: PlanningSessionLandingViewModel<PlanningCommands.HostSend, PlanningCommands.HostReceive>!
+    var serviceUnderTest: PlanningSessionLandingViewModel<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>!
     var mockWebSocketHandler: MockWebSocketHandler!
-    var mockService: MockPlanningSessionLandingService<PlanningCommands.HostSend, PlanningCommands.HostReceive>!
+    var mockService: MockPlanningSessionLandingService<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>!
     
     override func setUpWithError() throws {
         mockService = .init(sessionURL: URLCenter.shared.webSocketBaseURL)
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         mockWebSocketHandler = MockWebSocketHandler()
         networkHandler.configure(webSocket: mockWebSocketHandler)
         mockService.configure(sessionHandler: networkHandler)
-        serviceUnderTest = PlanningSessionLandingViewModel<PlanningCommands.HostSend, PlanningCommands.HostReceive>(service: mockService)
+        serviceUnderTest = PlanningSessionLandingViewModel<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>(service: mockService)
     }
 
     override func tearDownWithError() throws {
@@ -120,7 +121,7 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.sendCommandCounter, 0)
         
         // When: command is sent
-        serviceUnderTest.sendCommand(.endSession)
+        serviceUnderTest.sendCommand(.endSession(uuid: UUID()))
         
         // Then: Send command has been triggered once
         XCTAssertEqual(mockService.sendCommandCounter, 1)
@@ -173,11 +174,8 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
 
         XCTAssertEqual(serviceUnderTest.availableCards, mockedStateMessage.availableCards)
         
-        XCTAssertEqual(serviceUnderTest.ticket?.identifier, mockedStateMessage.ticket?.identifier)
+        XCTAssertEqual(serviceUnderTest.ticket?.title, mockedStateMessage.ticket?.title)
         XCTAssertEqual(serviceUnderTest.ticket?.description, mockedStateMessage.ticket?.description)
-        
-        XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-        XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
     }
     
     func testBarGraphEntriesNoVotes() {
@@ -212,27 +210,22 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         
         // Then: the list match expected values
         XCTAssertEqual(participantsList.count, 5)
-        XCTAssertEqual(participantsList.element(at: 0)?.participantId, "x")
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 0)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 1)?.participantId, "y")
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 1)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 1)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 2)?.participantId, "z")
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 2)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 2)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 3)?.participantId, "a")
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 3)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 4)?.participantId, "b")
         XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 4)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
@@ -249,27 +242,22 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
     
         // Then: the list match expected values
         XCTAssertEqual(participantsList.count, 5)
-        XCTAssertEqual(participantsList.element(at: 0)?.participantId, "x")
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 0)?.votingImageName, "checkmark.circle")
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 1)?.participantId, "y")
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 1)?.votingImageName, "checkmark.circle")
         XCTAssertNil(participantsList.element(at: 1)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 2)?.participantId, "z")
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 2)?.votingImageName, "checkmark.circle")
         XCTAssertNil(participantsList.element(at: 2)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 3)?.participantId, "a")
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 3)?.votingImageName, "arrowshape.turn.up.right")
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 4)?.participantId, "b")
         XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 4)?.votingImageName, "rectangle.and.pencil.and.ellipsis")
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
@@ -286,22 +274,18 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         
         // Then: the list match expected values
         XCTAssertEqual(participantsList.count, 4)
-        XCTAssertEqual(participantsList.element(at: 0)?.participantId, "z")
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, true)
         XCTAssertNil(participantsList.element(at: 0)?.votingImageName)
         XCTAssertEqual(participantsList.element(at: 0)?.votingValue, "2")
         
-        XCTAssertEqual(participantsList.element(at: 1)?.participantId, "x")
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 1)?.votingImageName)
         XCTAssertEqual(participantsList.element(at: 1)?.votingValue, "1")
         
-        XCTAssertEqual(participantsList.element(at: 2)?.participantId, "y")
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 2)?.votingImageName)
         XCTAssertEqual(participantsList.element(at: 2)?.votingValue, "1")
         
-        XCTAssertEqual(participantsList.element(at: 3)?.participantId, "a")
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 3)?.votingImageName, "arrowshape.turn.up.right")
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
@@ -318,27 +302,22 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         
         // Then: the list match expected values
         XCTAssertEqual(participantsList.count, 5)
-        XCTAssertEqual(participantsList.element(at: 0)?.participantId, "x")
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 0)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 1)?.participantId, "y")
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 1)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 1)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 2)?.participantId, "z")
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 2)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 2)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 3)?.participantId, "a")
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 3)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 4)?.participantId, "b")
         XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 4)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
@@ -355,27 +334,22 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         
         // Then: the list match expected values
         XCTAssertEqual(participantsList.count, 5)
-        XCTAssertEqual(participantsList.element(at: 0)?.participantId, "x")
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 0)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 1)?.participantId, "y")
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 1)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 1)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 2)?.participantId, "z")
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 2)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 2)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 3)?.participantId, "a")
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 3)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
         
-        XCTAssertEqual(participantsList.element(at: 4)?.participantId, "b")
         XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 4)?.votingImageName)
         XCTAssertNil(participantsList.element(at: 4)?.votingValue)
@@ -385,41 +359,41 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
 
 fileprivate class Mocks {
     static let stateMessage: PlanningSessionStateMessage = {
-        let planningTicket = PlanningTicket(identifier: "x", description: "Test", ticketVotes: [PlanningTicketVote(user: PlanningParticipant(id: "x", name: "Test"), selectedCard: .coffee)])
+        let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(), selectedCard: .coffee)])
         
-        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(id: "x", name: "Test")], ticket: planningTicket)
+        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(), name: "Test")], ticket: planningTicket)
     }()
     
     static let barGraphStateMessage: PlanningSessionStateMessage = {
-        let planningTicket = PlanningTicket(identifier: "x", description: "Test", ticketVotes: [
-            PlanningTicketVote(user: PlanningParticipant(id: "x", name: "Test"), selectedCard: .one),
-            PlanningTicketVote(user: PlanningParticipant(id: "y", name: "Test"), selectedCard: .one),
-            PlanningTicketVote(user: PlanningParticipant(id: "z", name: "Test"), selectedCard: .two),
-            PlanningTicketVote(user: PlanningParticipant(id: "a", name: "Test"), selectedCard: nil),
+        let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [
+            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(), selectedCard: .two),
+            PlanningTicketVote(participantId: UUID(), selectedCard: nil),
         ])
         
         return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [
-            PlanningParticipant(id: "x", name: "Test"),
-            PlanningParticipant(id: "y", name: "Test"),
-            PlanningParticipant(id: "z", name: "Test"),
-            PlanningParticipant(id: "a", name: "Test")
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test")
         ], ticket: planningTicket)
     }()
     
     static let participantsListStateMessage: PlanningSessionStateMessage = {
-        let planningTicket = PlanningTicket(identifier: "x", description: "Test", ticketVotes: [
-            PlanningTicketVote(user: PlanningParticipant(id: "x", name: "Test"), selectedCard: .one),
-            PlanningTicketVote(user: PlanningParticipant(id: "y", name: "Test"), selectedCard: .one),
-            PlanningTicketVote(user: PlanningParticipant(id: "z", name: "Test"), selectedCard: .two),
-            PlanningTicketVote(user: PlanningParticipant(id: "a", name: "Test"), selectedCard: nil),
+        let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [
+            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(), selectedCard: .two),
+            PlanningTicketVote(participantId: UUID(), selectedCard: nil),
         ])
         
         return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [
-            PlanningParticipant(id: "x", name: "Test"),
-            PlanningParticipant(id: "y", name: "Test"),
-            PlanningParticipant(id: "z", name: "Test"),
-            PlanningParticipant(id: "a", name: "Test"),
-            PlanningParticipant(id: "b", name: "Test")
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(), name: "Test")
         ], ticket: planningTicket)
     }()
 }

@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "mamba-networking",
-        "repositoryURL": "https://github.com/Operation-Winter/mamba-ios-networking.git",
+        "repositoryURL": "https://github.com/Operation-Winter/mamba-networking.git",
         "state": {
-          "branch": "expose-signatures",
-          "revision": "b78dae3811f2efc4f826c1a71db8ec9cc2f83969",
-          "version": null
+          "branch": null,
+          "revision": "97b606785dffe9df087ff83d59b5437ebbc9ef98",
+          "version": "1.0.4"
         }
       }
     ]

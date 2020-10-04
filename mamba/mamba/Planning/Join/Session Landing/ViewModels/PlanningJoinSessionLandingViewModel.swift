@@ -74,5 +74,4 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             closeSession()
         }
     }
-
 }

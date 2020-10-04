@@ -191,17 +191,6 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.closeCounter, 1)
     }
     
-    func testSendVoteCommandNoTicket() {
-        // Given: Zero send command calls have been made
-        XCTAssertEqual(mockService.sendCommandCounter, 0)
-        
-        // When: command is sent
-        serviceUnderTest.sendVoteCommand(.coffee)
-        
-        // Then: the service has send command not called
-        XCTAssertEqual(mockService.sendCommandCounter, 0)
-    }
-    
     func testSendVoteCommandWithTicket() {
         // Given: Zero send command calls have been made
         XCTAssertEqual(mockService.sendCommandCounter, 0)

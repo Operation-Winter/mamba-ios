@@ -103,8 +103,8 @@
 		ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D447A24AE4BEA00034216 /* LandingItem.swift */; };
 		ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448224AE4C9100034216 /* LandingViewModel.swift */; };
 		ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448424AE4DC800034216 /* LandingItemView.swift */; };
-		EDE83C4F252A050500C988AC /* MambaNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = EDE83C4E252A050500C988AC /* MambaNetworking */; };
 		EDE83C66252A0D3100C988AC /* URLCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE83C65252A0D3100C988AC /* URLCenterTests.swift */; };
+		EDE83C72252A29FC00C988AC /* MambaNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = EDE83C71252A29FC00C988AC /* MambaNetworking */; };
 		EDEDE31524E15BF400CC666B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31424E15BF400CC666B /* Log.swift */; };
 		EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31824E15D6C00CC666B /* LogTests.swift */; };
 		EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */; };
@@ -254,7 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDE83C4F252A050500C988AC /* MambaNetworking in Frameworks */,
+				EDE83C72252A29FC00C988AC /* MambaNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,7 +987,7 @@
 			);
 			name = mamba;
 			packageProductDependencies = (
-				EDE83C4E252A050500C988AC /* MambaNetworking */,
+				EDE83C71252A29FC00C988AC /* MambaNetworking */,
 			);
 			productName = mamba;
 			productReference = 261E1ECF24A48AB600937D89 /* Mamba.app */;
@@ -1062,7 +1062,7 @@
 			);
 			mainGroup = 261E1EC624A48AB600937D89;
 			packageReferences = (
-				EDE83C4D252A050500C988AC /* XCRemoteSwiftPackageReference "mamba-ios-networking" */,
+				EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */,
 			);
 			productRefGroup = 261E1ED024A48AB600937D89 /* Products */;
 			projectDirPath = "";
@@ -1529,20 +1529,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EDE83C4D252A050500C988AC /* XCRemoteSwiftPackageReference "mamba-ios-networking" */ = {
+		EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Operation-Winter/mamba-ios-networking.git";
+			repositoryURL = "https://github.com/Operation-Winter/mamba-networking.git";
 			requirement = {
-				branch = "expose-signatures";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EDE83C4E252A050500C988AC /* MambaNetworking */ = {
+		EDE83C71252A29FC00C988AC /* MambaNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EDE83C4D252A050500C988AC /* XCRemoteSwiftPackageReference "mamba-ios-networking" */;
+			package = EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */;
 			productName = MambaNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -194,9 +194,7 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         // Then: The values match expected
         XCTAssertEqual(barGraphEntries.count, 2)
         XCTAssertEqual(barGraphEntries.element(at: 0)?.count, 2)
-        XCTAssertEqual(barGraphEntries.element(at: 0)?.title, "1")
         XCTAssertEqual(barGraphEntries.element(at: 1)?.count, 1)
-        XCTAssertEqual(barGraphEntries.element(at: 1)?.title, "2")
     }
 
     func testParticipantListNoneState() {
@@ -241,7 +239,7 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         let participantsList = serviceUnderTest.participantList
     
         // Then: the list match expected values
-        XCTAssertEqual(participantsList.count, 5)
+        XCTAssertEqual(participantsList.count, 4)
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 0)?.votingImageName, "checkmark.circle")
         XCTAssertNil(participantsList.element(at: 0)?.votingValue)
@@ -257,10 +255,6 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 3)?.votingImageName, "arrowshape.turn.up.right")
         XCTAssertNil(participantsList.element(at: 3)?.votingValue)
-        
-        XCTAssertEqual(participantsList.element(at: 4)?.highlighted, false)
-        XCTAssertEqual(participantsList.element(at: 4)?.votingImageName, "rectangle.and.pencil.and.ellipsis")
-        XCTAssertNil(participantsList.element(at: 4)?.votingValue)
     }
     
     func testParticipantListFinishedVotingState() {
@@ -276,15 +270,12 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(participantsList.count, 4)
         XCTAssertEqual(participantsList.element(at: 0)?.highlighted, true)
         XCTAssertNil(participantsList.element(at: 0)?.votingImageName)
-        XCTAssertEqual(participantsList.element(at: 0)?.votingValue, "2")
         
         XCTAssertEqual(participantsList.element(at: 1)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 1)?.votingImageName)
-        XCTAssertEqual(participantsList.element(at: 1)?.votingValue, "1")
         
         XCTAssertEqual(participantsList.element(at: 2)?.highlighted, false)
         XCTAssertNil(participantsList.element(at: 2)?.votingImageName)
-        XCTAssertEqual(participantsList.element(at: 2)?.votingValue, "1")
         
         XCTAssertEqual(participantsList.element(at: 3)?.highlighted, false)
         XCTAssertEqual(participantsList.element(at: 3)?.votingImageName, "arrowshape.turn.up.right")
@@ -359,41 +350,41 @@ class PlanningSessionLandingViewModelTests: XCTestCase {
 
 fileprivate class Mocks {
     static let stateMessage: PlanningSessionStateMessage = {
-        let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(), selectedCard: .coffee)])
+        let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), selectedCard: .coffee)])
         
-        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(), name: "Test")], ticket: planningTicket)
+        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), name: "Test")], ticket: planningTicket)
     }()
     
     static let barGraphStateMessage: PlanningSessionStateMessage = {
         let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [
-            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
-            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
-            PlanningTicketVote(participantId: UUID(), selectedCard: .two),
-            PlanningTicketVote(participantId: UUID(), selectedCard: nil),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), selectedCard: .two),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), selectedCard: nil),
         ])
         
         return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test")
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), name: "Test")
         ], ticket: planningTicket)
     }()
     
     static let participantsListStateMessage: PlanningSessionStateMessage = {
         let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [
-            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
-            PlanningTicketVote(participantId: UUID(), selectedCard: .one),
-            PlanningTicketVote(participantId: UUID(), selectedCard: .two),
-            PlanningTicketVote(participantId: UUID(), selectedCard: nil),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), selectedCard: .one),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), selectedCard: .two),
+            PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), selectedCard: nil),
         ])
         
         return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test"),
-            PlanningParticipant(participantId: UUID(), name: "Test")
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), name: "Test"),
+            PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910235") ?? UUID(), name: "Test")
         ], ticket: planningTicket)
     }()
 }

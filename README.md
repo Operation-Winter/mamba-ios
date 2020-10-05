@@ -64,6 +64,8 @@ git clone https://github.com/Operation-Winter/mamba-ios.git
 
 ## Roadmap
 
+White lines indicate completed features.
+
 [![Roadmap][roadmap]](https://example.com)
 
 ## License

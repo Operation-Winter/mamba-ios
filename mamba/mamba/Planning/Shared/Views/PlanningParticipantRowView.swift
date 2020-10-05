@@ -47,20 +47,20 @@ struct PlanningParticipantRowView: View {
 struct PlanningHostParticipantRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingValue: "100"))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Piet Pompies", votingValue: "100"))
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingValue: "5"))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Piet Pompies", votingValue: "5"))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
             
-            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: "", participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
+            PlanningParticipantRowView(viewModel: PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Piet Pompies", votingImageName: "arrowshape.turn.up.right", highlighted: true))
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .background(Color.black)

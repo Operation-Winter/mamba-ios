@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MambaNetworking
 
 struct PlanningHostSessionLandingView: View {
     @EnvironmentObject private var navigation: NavigationStack
@@ -88,7 +89,7 @@ struct PlanningHostSessionLandingView: View {
     private var votingStateView: some View {
         Group {
             PlanningVotingStateTicketCardView(title: viewModel.sessionName,
-                                              ticketIdentifier: viewModel.ticket?.identifier,
+                                              ticketIdentifier: viewModel.ticket?.title,
                                               ticketDescription: viewModel.ticket?.description)
             
             votingParticipantsList
@@ -98,7 +99,7 @@ struct PlanningHostSessionLandingView: View {
     private var votingFinishedStateView: some View {
         Group {
             PlanningVotingStateTicketCardView(title: viewModel.sessionName,
-                                              ticketIdentifier: viewModel.ticket?.identifier,
+                                              ticketIdentifier: viewModel.ticket?.title,
                                               ticketDescription: viewModel.ticket?.description)
             
             PlanningFinishedVotingStateGraphCardView(barGraphEntries: viewModel.barGraphEntries)
@@ -142,8 +143,8 @@ struct PlanningHostSessionLandingView: View {
     
     private func addTicket() {
         Log.planning.logger.info("Host - Add ticket tapped")
-        let addTicketView = PlanningAddTicketView(showSheet: $navigation.showSheet) { identifier, description in
-            self.viewModel.sendAddTicketCommand(identifier: identifier, description: description)
+        let addTicketView = PlanningAddTicketView(showSheet: $navigation.showSheet) { title, description in
+            self.viewModel.sendAddTicketCommand(title: title, description: description)
         }
         navigation.modal(AnyView(addTicketView))
         navigation.showSheet = true
@@ -169,12 +170,12 @@ struct PlanningHostSessionLandingView: View {
         viewModel.sendEndSessionCommand()
     }
     
-    private func participantSkipVoteTapped(participantId: String) {
+    private func participantSkipVoteTapped(participantId: UUID) {
         Log.planning.logger.info("Host - Skip participant vote tapped")
         viewModel.sendSkipParticipantVoteCommand(participantId: participantId)
     }
     
-    private func participantRemoveTapped(participantId: String) {
+    private func participantRemoveTapped(participantId: UUID) {
         Log.planning.logger.info("Host - Remove participant tapped")
         viewModel.sendRemoveParticipantCommand(participantId: participantId)
     }

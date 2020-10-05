@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import MambaNetworking
 @testable import Mamba
 
 class PlanningSessionNetworkHandlerTests: XCTestCase {
@@ -14,10 +15,10 @@ class PlanningSessionNetworkHandlerTests: XCTestCase {
     func testReceiveMessage() {
         // Given: a mock WebSocketHandler and PlanningSessionNetworkHandler
         let mockWebHandler = Mocks.receiveWebHandler
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         networkHandler.configure(webSocket: mockWebHandler)
         
-        var receivedCommand: PlanningCommands.HostReceive?
+        var receivedCommand: PlanningCommands.HostServerSend?
         var networkCloseError: NetworkCloseError?
         var receivedError: Error?
         var finished: Bool = false
@@ -59,10 +60,10 @@ class PlanningSessionNetworkHandlerTests: XCTestCase {
     func testReceiveMessageNetworkCloseError() {
         // Given: a mock WebSocketHandler and PlanningSessionNetworkHandler
         let mockWebHandler = Mocks.receiveErrorWebHandler
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         networkHandler.configure(webSocket: mockWebHandler)
         
-        var receivedCommand: PlanningCommands.HostReceive?
+        var receivedCommand: PlanningCommands.HostServerSend?
         var networkCloseError: NetworkCloseError?
         var receivedError: Error?
         var finished: Bool = false
@@ -104,10 +105,10 @@ class PlanningSessionNetworkHandlerTests: XCTestCase {
     func testDecodingError() {
         // Given: a mock WebSocketHandler and PlanningSessionNetworkHandler
         let mockWebHandler = Mocks.decodingErrorWebHandler
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         networkHandler.configure(webSocket: mockWebHandler)
         
-        var receivedCommand: PlanningCommands.HostReceive?
+        var receivedCommand: PlanningCommands.HostServerSend?
         var networkCloseError: NetworkCloseError?
         var receivedError: Error?
         var finished: Bool = false
@@ -149,10 +150,10 @@ class PlanningSessionNetworkHandlerTests: XCTestCase {
     func testFinishedState() {
         // Given: a mock WebSocketHandler and PlanningSessionNetworkHandler
         let mockWebHandler = Mocks.receiveWebHandler
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostSend, PlanningCommands.HostReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend>()
         networkHandler.configure(webSocket: mockWebHandler)
         
-        var receivedCommand: PlanningCommands.HostReceive?
+        var receivedCommand: PlanningCommands.HostServerSend?
         var networkCloseError: NetworkCloseError?
         var receivedError: Error?
         var finished: Bool = false

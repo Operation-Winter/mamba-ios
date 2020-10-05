@@ -12,7 +12,6 @@ import SwiftUI
 
 class PlanningHostAvailableCardsViewModel: ObservableObject {
     private(set) var cards: [AvailableCard]
-    private(set) var chunkedCards: [[AvailableCard]]
     private var cancellables = [AnyCancellable]()
 
     private(set) var gridItems: [GridItem] = [
@@ -23,7 +22,6 @@ class PlanningHostAvailableCardsViewModel: ObservableObject {
     
     init(availableCards: [AvailableCard]) {
         cards = availableCards
-        chunkedCards = cards.chunked(into: 3)
         cancellables = cards.map { $0.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send() })
         }

@@ -13,7 +13,7 @@ class PlanningParticipantRowViewModelTests: XCTestCase {
 
     func testBorderWidthHighlighted() {
         // When: RowViewModel with highlighted set to true
-        let rowViewModel = PlanningParticipantRowViewModel(participantId: "x", participantName: "Test", highlighted: true)
+        let rowViewModel = PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Test", highlighted: true)
         
         // Then: the borderwidth is equal to 2
         XCTAssertEqual(rowViewModel.borderWidth, 2)
@@ -21,7 +21,7 @@ class PlanningParticipantRowViewModelTests: XCTestCase {
     
     func testBorderWidthNotHighlighted() {
         // When: RowViewModel with highlighted set to false
-        let rowViewModel = PlanningParticipantRowViewModel(participantId: "x", participantName: "Test", highlighted: false)
+        let rowViewModel = PlanningParticipantRowViewModel(participantId: UUID(), participantName: "Test", highlighted: false)
         
         // Then: the borderwidth is equal to 0
         XCTAssertEqual(rowViewModel.borderWidth, 0)

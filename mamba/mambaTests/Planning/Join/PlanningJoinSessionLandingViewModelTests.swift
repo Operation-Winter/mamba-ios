@@ -7,16 +7,17 @@
 //
 
 import XCTest
+import MambaNetworking
 @testable import Mamba
 
 class PlanningJoinSessionLandingViewModelTests: XCTestCase {
     var serviceUnderTest: PlanningJoinSessionLandingViewModel!
     var mockWebSocketHandler: MockWebSocketHandler!
-    var mockService: MockPlanningSessionLandingService<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>!
+    var mockService: MockPlanningSessionLandingService<PlanningCommands.JoinServerReceive, PlanningCommands.JoinServerSend>!
     
     override func setUpWithError() throws {
         mockService = .init(sessionURL: URLCenter.shared.webSocketBaseURL)
-        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>()
+        let networkHandler = PlanningSessionNetworkHandler<PlanningCommands.JoinServerReceive, PlanningCommands.JoinServerSend>()
         mockWebSocketHandler = MockWebSocketHandler()
         networkHandler.configure(webSocket: mockWebSocketHandler)
         mockService.configure(sessionHandler: networkHandler)
@@ -53,11 +54,8 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -81,11 +79,8 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -109,11 +104,8 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
             
             XCTAssertEqual(serviceUnderTest.availableCards, Mocks.stateMessage.availableCards)
             
-            XCTAssertEqual(serviceUnderTest.ticket?.identifier, Mocks.stateMessage.ticket?.identifier)
+            XCTAssertEqual(serviceUnderTest.ticket?.title, Mocks.stateMessage.ticket?.title)
             XCTAssertEqual(serviceUnderTest.ticket?.description, Mocks.stateMessage.ticket?.description)
-            
-            XCTAssertEqual(serviceUnderTest.participants.first?.skipped, false)
-            XCTAssertEqual(serviceUnderTest.participants.first?.selectedCard, PlanningCard.coffee)
         } else {
             XCTFail("ViewModel has wrong state")
         }
@@ -199,17 +191,6 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
         XCTAssertEqual(mockService.closeCounter, 1)
     }
     
-    func testSendVoteCommandNoTicket() {
-        // Given: Zero send command calls have been made
-        XCTAssertEqual(mockService.sendCommandCounter, 0)
-        
-        // When: command is sent
-        serviceUnderTest.sendVoteCommand(.coffee)
-        
-        // Then: the service has send command not called
-        XCTAssertEqual(mockService.sendCommandCounter, 0)
-    }
-    
     func testSendVoteCommandWithTicket() {
         // Given: Zero send command calls have been made
         XCTAssertEqual(mockService.sendCommandCounter, 0)
@@ -224,15 +205,15 @@ class PlanningJoinSessionLandingViewModelTests: XCTestCase {
 }
 
 fileprivate class Mocks {
-    static let ticket = PlanningTicket(identifier: "x", description: "Test", ticketVotes: [PlanningTicketVote(user: PlanningParticipant(id: "x", name: "Test"), selectedCard: .coffee)])
+    static let ticket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(), selectedCard: .coffee)])
     
-    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(id: "x", name: "Test")], ticket: ticket)
+    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(), name: "Test")], ticket: ticket)
     
-    static let noneState = PlanningCommands.JoinReceive.noneState(stateMessage)
-    static let votingState = PlanningCommands.JoinReceive.votingState(stateMessage)
-    static let finishedState = PlanningCommands.JoinReceive.finishedState(stateMessage)
-    static let invalidCommand = PlanningCommands.JoinReceive.invalidCommand(PlanningInvalidCommandMessage(code: "0", description: "Test"))
-    static let invalidSession = PlanningCommands.JoinReceive.invalidSession
-    static let removeParticipant = PlanningCommands.JoinReceive.removeParticipant
-    static let endSession = PlanningCommands.JoinReceive.endSession
+    static let noneState = PlanningCommands.JoinServerSend.noneState(message: stateMessage)
+    static let votingState = PlanningCommands.JoinServerSend.votingState(message: stateMessage)
+    static let finishedState = PlanningCommands.JoinServerSend.finishedState(message: stateMessage)
+    static let invalidCommand = PlanningCommands.JoinServerSend.invalidCommand(message: PlanningInvalidCommandMessage(code: "0", description: "Test"))
+    static let invalidSession = PlanningCommands.JoinServerSend.invalidSession
+    static let removeParticipant = PlanningCommands.JoinServerSend.removeParticipant
+    static let endSession = PlanningCommands.JoinServerSend.endSession
 }

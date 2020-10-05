@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MambaNetworking
 
 struct PlanningHostAvailableCardsView: View {
     @StateObject private var viewModel: PlanningHostAvailableCardsViewModel

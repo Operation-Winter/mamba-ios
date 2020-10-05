@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import UIKit
 import SwiftUI
+import MambaNetworking
 
 class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: ObservableObject {
     private var service: PlanningSessionLandingService<Send, Receive>
@@ -17,6 +18,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     private(set) var sessionCode: String = ""
     private(set) var participantName: String = ""
     private(set) var availableCards: [PlanningCard] = []
+    private(set) var uuid = UUID()
     @Published var state: PlanningSessionLandingState = .loading
     @Published var sessionName: String = ""
     @Published var participants = [PlanningParticipant]()
@@ -106,12 +108,6 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         self.sessionName = message.sessionName
         self.ticket = message.ticket
         self.availableCards = message.availableCards
-        
-        for participant in self.participants {
-            let vote = ticket?.ticketVotes.first(where: { $0.user.id == participant.id })
-            participant.selectedCard = vote?.selectedCard
-            participant.skipped = vote != nil && vote?.selectedCard == nil
-        }
     }
     
     public func executeError(code: String, description: String) {
@@ -138,7 +134,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     private func participantRows() -> [PlanningParticipantRowViewModel] {
         participants.map {
-            PlanningParticipantRowViewModel(participantId: $0.id,
+            PlanningParticipantRowViewModel(participantId: $0.participantId,
                                             participantName: $0.name)
         }
     }
@@ -156,10 +152,11 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     private func votingParticipantRows() -> [PlanningParticipantRowViewModel] {
-        participants.map {
-            let imageName = votingParticipantRowImage(skipped: $0.skipped ?? false, cardSelected: $0.selectedCard != nil)
-            return PlanningParticipantRowViewModel(participantId: $0.id,
-                                                   participantName: $0.name,
+        participants.compactMap { participant in
+            let ticketVote = ticket?.ticketVotes.first(where: { $0.participantId == participant.participantId })
+            let imageName = votingParticipantRowImage(skipped: ticketVote?.skipped ?? false, cardSelected: ticketVote?.selectedCard != nil)
+            return PlanningParticipantRowViewModel(participantId: participant.participantId,
+                                                   participantName: participant.name,
                                                    votingImageName: imageName)
         }
     }
@@ -182,14 +179,16 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
         
         var list = [PlanningParticipantRowViewModel]()
         for group in groupedVotes {
-            let filteredParticipants: [PlanningParticipantRowViewModel] = group.value.map {
-                let skipped = $0.selectedCard == nil
-                let meanCard = group.value.count == meanCount ? $0.selectedCard : nil
-                let highlighted = meanCard != $0.selectedCard && !skipped
-                let imageName = votingFinishedParticipantRowImage(cardSelected: !skipped)
-                return PlanningParticipantRowViewModel(participantId: $0.user.id,
-                                                       participantName: $0.user.name,
-                                                       votingValue: $0.selectedCard?.title,
+            let filteredParticipants: [PlanningParticipantRowViewModel] = group.value.compactMap { ticketVote in
+                guard let participantName = participants.first(where: { $0.participantId == ticketVote.participantId })?.name else {
+                    return nil
+                }
+                let meanCard = group.value.count == meanCount ? ticketVote.selectedCard : nil
+                let highlighted = meanCard != ticketVote.selectedCard && !ticketVote.skipped
+                let imageName = votingFinishedParticipantRowImage(cardSelected: !ticketVote.skipped)
+                return PlanningParticipantRowViewModel(participantId: ticketVote.participantId,
+                                                       participantName: participantName,
+                                                       votingValue: ticketVote.selectedCard?.title,
                                                        votingImageName: imageName,
                                                        highlighted: highlighted)
             }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,6 @@
 		261E1EDC24A48ABA00937D89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1EDB24A48ABA00937D89 /* Preview Assets.xcassets */; };
 		261E1EF524A48ABA00937D89 /* mambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1EF424A48ABA00937D89 /* mambaUITests.swift */; };
 		263B85B62518CEFC00A267B2 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B85B52518CEFC00A267B2 /* ShareSheet.swift */; };
-		263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */; };
 		263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4224D18BE600EEAB1E /* RoundedButton.swift */; };
 		263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4524D18D4200EEAB1E /* TitleText.swift */; };
 		263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA4824D190F000EEAB1E /* VCardView.swift */; };
@@ -29,15 +28,8 @@
 		263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5024D293D300EEAB1E /* StoryPointCard.swift */; };
 		263ECA5524D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5424D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift */; };
 		263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECA5924D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift */; };
-		263ECB0224D3081000EEAB1E /* PlanningSessionStateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */; };
-		263ECC2424D40CBC00EEAB1E /* PlanningJoinSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2324D40CBB00EEAB1E /* PlanningJoinSessionMessage.swift */; };
-		263ECC2624D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2524D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift */; };
-		263ECC2824D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */; };
 		263ECC2C24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */; };
 		263ECC3424D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */; };
-		2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */; };
-		2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */; };
-		2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */; };
 		2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644545B24F3AA580047F9EF /* LandingViewModelTests.swift */; };
 		2644546224F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546124F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift */; };
 		2644546424F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644546324F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift */; };
@@ -49,20 +41,14 @@
 		2644547824F3E3680047F9EF /* RetroColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547724F3E3680047F9EF /* RetroColorSchemeTests.swift */; };
 		2644547C24F3EC9D0047F9EF /* LandingItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547B24F3EC9D0047F9EF /* LandingItemTests.swift */; };
 		2644547E24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644547D24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift */; };
-		26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */; };
-		26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */; };
 		26467D4424EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4324EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift */; };
 		26467D4624EFDF87008A36AD /* QrScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4524EFDF87008A36AD /* QrScannerViewModel.swift */; };
 		26467D4824EFDFB9008A36AD /* QrScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4724EFDFB9008A36AD /* QrScannerView.swift */; };
 		26467D4A24EFE001008A36AD /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4924EFE001008A36AD /* QrCodeCameraDelegate.swift */; };
 		26467D4C24EFE03C008A36AD /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4B24EFE03C008A36AD /* CameraPreview.swift */; };
 		26467D4E24EFE072008A36AD /* QrCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26467D4D24EFE072008A36AD /* QrCodeScannerView.swift */; };
-		2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */; };
-		2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */; };
-		2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */; };
 		2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661E01C24BC931C00D46119 /* WebSocketHandler.swift */; };
 		2662004124F38D0D00B24408 /* URLCenter+PlanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2662004024F38D0D00B24408 /* URLCenter+PlanningTests.swift */; };
-		2662004624F393AE00B24408 /* PlanningCommands.HostSendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */; };
 		26772AF624B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */; };
 		26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */; };
 		26772AFD24B4AA04003FB1A4 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772AFC24B4AA04003FB1A4 /* ClearButton.swift */; };
@@ -73,7 +59,6 @@
 		269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */; };
 		269CA06824D931ED000F42B9 /* PlanningHostSessionLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */; };
 		269CA06C24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */; };
-		269CA0DC24D93BB2000F42B9 /* PlanningParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */; };
 		269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DD24D93E00000F42B9 /* HCardView.swift */; };
 		269CA0E024D9479A000F42B9 /* PlanningParticipantRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */; };
 		269CA0E224D947EA000F42B9 /* PlanningHostNoneStateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */; };
@@ -88,10 +73,7 @@
 		26E2F56424DD5B31008B2B4B /* PlanningJoinVotingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */; };
 		26E2F56624DD68AF008B2B4B /* PlanningErrorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */; };
 		26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */; };
-		26E2F56B24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */; };
 		26E2F56F24DD89BF008B2B4B /* EncodingError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */; };
-		26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */; };
-		26E2F85524E50F6D008B2B4B /* PlanningTicketVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */; };
 		26E2F85D24E52314008B2B4B /* PlanningParticipantRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85C24E52314008B2B4B /* PlanningParticipantRowViewModel.swift */; };
 		26E2F85F24E526A7008B2B4B /* PlanningFinishedVotingStateGraphCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F85E24E526A7008B2B4B /* PlanningFinishedVotingStateGraphCardView.swift */; };
 		26E2F86224E5285B008B2B4B /* HorizontalCombinedBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F86124E5285B008B2B4B /* HorizontalCombinedBarGraphView.swift */; };
@@ -108,11 +90,8 @@
 		26F98A6824DD45C2007CA2B8 /* PlanningAddTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A6724DD45C2007CA2B8 /* PlanningAddTicketView.swift */; };
 		26F98A6A24DD468B007CA2B8 /* PlanningAddTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A6924DD468B007CA2B8 /* PlanningAddTicketViewModel.swift */; };
 		26F98A6C24DD485A007CA2B8 /* AddBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A6B24DD485A007CA2B8 /* AddBarButton.swift */; };
-		26F98A6E24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */; };
 		26F98A7024DD4E6B007CA2B8 /* PlanningVotingStateTicketCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A6F24DD4E6B007CA2B8 /* PlanningVotingStateTicketCardView.swift */; };
-		26F98A7424DD5163007CA2B8 /* PlanningTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F98A7324DD5163007CA2B8 /* PlanningTicket.swift */; };
 		ED208A9D2517B9DD0098FAF9 /* MambaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED208A9C2517B9DD0098FAF9 /* MambaApp.swift */; };
-		ED36B44D24BCCDD5007FF62E /* PlanningCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36B44C24BCCDD5007FF62E /* PlanningCommands.swift */; };
 		ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */; };
 		ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */; };
 		ED38EACF24AE60B300564F85 /* PlanningJoinSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */; };
@@ -124,14 +103,13 @@
 		ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D447A24AE4BEA00034216 /* LandingItem.swift */; };
 		ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448224AE4C9100034216 /* LandingViewModel.swift */; };
 		ED9D448524AE4DC800034216 /* LandingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D448424AE4DC800034216 /* LandingItemView.swift */; };
+		EDE83C66252A0D3100C988AC /* URLCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE83C65252A0D3100C988AC /* URLCenterTests.swift */; };
+		EDE83C72252A29FC00C988AC /* MambaNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = EDE83C71252A29FC00C988AC /* MambaNetworking */; };
 		EDEDE31524E15BF400CC666B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31424E15BF400CC666B /* Log.swift */; };
 		EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31824E15D6C00CC666B /* LogTests.swift */; };
 		EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */; };
 		EDEDE32324E1621F00CC666B /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */; };
 		EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */; };
-		EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */; };
-		EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */; };
-		EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */; };
 		EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */; };
 		EDEDE33224E173BB00CC666B /* NetworkEnvironmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */; };
 		EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */; };
@@ -174,7 +152,6 @@
 		261E1EF424A48ABA00937D89 /* mambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mambaUITests.swift; sourceTree = "<group>"; };
 		261E1EF624A48ABA00937D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		263B85B52518CEFC00A267B2 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
-		263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCard.swift; sourceTree = "<group>"; };
 		263ECA4224D18BE600EEAB1E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		263ECA4524D18D4200EEAB1E /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		263ECA4824D190F000EEAB1E /* VCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCardView.swift; sourceTree = "<group>"; };
@@ -184,15 +161,8 @@
 		263ECA5024D293D300EEAB1E /* StoryPointCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPointCard.swift; sourceTree = "<group>"; };
 		263ECA5424D29B1E00EEAB1E /* PlanningHostAvailableCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostAvailableCardsView.swift; sourceTree = "<group>"; };
 		263ECA5924D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostAvailableCardsViewModel.swift; sourceTree = "<group>"; };
-		263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionStateMessage.swift; sourceTree = "<group>"; };
-		263ECC2324D40CBB00EEAB1E /* PlanningJoinSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSessionMessage.swift; sourceTree = "<group>"; };
-		263ECC2524D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.JoinSend+Extensions.swift"; sourceTree = "<group>"; };
-		263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.JoinReceive+Extensions.swift"; sourceTree = "<group>"; };
 		263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionNetworkHandler.swift; sourceTree = "<group>"; };
 		263ECC3324D4178D00EEAB1E /* PlanningJoinSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupViewModel.swift; sourceTree = "<group>"; };
-		2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinSendTests.swift; sourceTree = "<group>"; };
-		2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.HostReceiveTests.swift; sourceTree = "<group>"; };
-		2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.JoinReceiveTests.swift; sourceTree = "<group>"; };
 		2644545B24F3AA580047F9EF /* LandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModelTests.swift; sourceTree = "<group>"; };
 		2644546124F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipantRowViewModelTests.swift; sourceTree = "<group>"; };
 		2644546324F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
@@ -204,8 +174,6 @@
 		2644547724F3E3680047F9EF /* RetroColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroColorSchemeTests.swift; sourceTree = "<group>"; };
 		2644547B24F3EC9D0047F9EF /* LandingItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItemTests.swift; sourceTree = "<group>"; };
 		2644547D24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
-		26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSkipVoteMessage.swift; sourceTree = "<group>"; };
-		26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningRemoveParticipantMessage.swift; sourceTree = "<group>"; };
 		26467A2424EBCA16008A36AD /* Mamba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mamba.entitlements; sourceTree = "<group>"; };
 		26467D4324EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupQRCameraView.swift; sourceTree = "<group>"; };
 		26467D4524EFDF87008A36AD /* QrScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerViewModel.swift; sourceTree = "<group>"; };
@@ -213,12 +181,8 @@
 		26467D4924EFE001008A36AD /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
 		26467D4B24EFE03C008A36AD /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		26467D4D24EFE072008A36AD /* QrCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeScannerView.swift; sourceTree = "<group>"; };
-		2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostSend+Extensions.swift"; sourceTree = "<group>"; };
-		2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningStartSessionMessage.swift; sourceTree = "<group>"; };
-		2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningCommands.HostReceive+Extensions.swift"; sourceTree = "<group>"; };
 		2661E01C24BC931C00D46119 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
 		2662004024F38D0D00B24408 /* URLCenter+PlanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCenter+PlanningTests.swift"; sourceTree = "<group>"; };
-		2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.HostSendTests.swift; sourceTree = "<group>"; };
 		26772AF524B4A4DC003FB1A4 /* PlanningHostSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanningHostSetupViewModel.swift; path = "mamba/Planning/Host/Session Setup/ViewModels/PlanningHostSetupViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		26772AF924B4A66D003FB1A4 /* ClearableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldStyle.swift; sourceTree = "<group>"; };
 		26772AFC24B4AA04003FB1A4 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
@@ -229,7 +193,6 @@
 		269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeTextField.swift; sourceTree = "<group>"; };
 		269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingView.swift; sourceTree = "<group>"; };
 		269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingViewModel.swift; sourceTree = "<group>"; };
-		269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipant.swift; sourceTree = "<group>"; };
 		269CA0DD24D93E00000F42B9 /* HCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCardView.swift; sourceTree = "<group>"; };
 		269CA0DF24D9479A000F42B9 /* PlanningParticipantRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipantRowView.swift; sourceTree = "<group>"; };
 		269CA0E124D947EA000F42B9 /* PlanningHostNoneStateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostNoneStateCardView.swift; sourceTree = "<group>"; };
@@ -244,10 +207,7 @@
 		26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinVotingCardView.swift; sourceTree = "<group>"; };
 		26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningErrorCardView.swift; sourceTree = "<group>"; };
 		26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningLandingError.swift; sourceTree = "<group>"; };
-		26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningInvalidCommandMessage.swift; sourceTree = "<group>"; };
 		26E2F56E24DD89BF008B2B4B /* EncodingError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EncodingError+Extensions.swift"; sourceTree = "<group>"; };
-		26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningVoteMessage.swift; sourceTree = "<group>"; };
-		26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningTicketVote.swift; sourceTree = "<group>"; };
 		26E2F85C24E52314008B2B4B /* PlanningParticipantRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningParticipantRowViewModel.swift; sourceTree = "<group>"; };
 		26E2F85E24E526A7008B2B4B /* PlanningFinishedVotingStateGraphCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningFinishedVotingStateGraphCardView.swift; sourceTree = "<group>"; };
 		26E2F86124E5285B008B2B4B /* HorizontalCombinedBarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCombinedBarGraphView.swift; sourceTree = "<group>"; };
@@ -264,11 +224,8 @@
 		26F98A6724DD45C2007CA2B8 /* PlanningAddTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningAddTicketView.swift; sourceTree = "<group>"; };
 		26F98A6924DD468B007CA2B8 /* PlanningAddTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningAddTicketViewModel.swift; sourceTree = "<group>"; };
 		26F98A6B24DD485A007CA2B8 /* AddBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBarButton.swift; sourceTree = "<group>"; };
-		26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningAddTicketMessage.swift; sourceTree = "<group>"; };
 		26F98A6F24DD4E6B007CA2B8 /* PlanningVotingStateTicketCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningVotingStateTicketCardView.swift; sourceTree = "<group>"; };
-		26F98A7324DD5163007CA2B8 /* PlanningTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningTicket.swift; sourceTree = "<group>"; };
 		ED208A9C2517B9DD0098FAF9 /* MambaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MambaApp.swift; sourceTree = "<group>"; };
-		ED36B44C24BCCDD5007FF62E /* PlanningCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommands.swift; sourceTree = "<group>"; };
 		ED38EABE24AE5C4800564F85 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		ED38EACC24AE60A800564F85 /* PlanningHostSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSetupView.swift; sourceTree = "<group>"; };
 		ED38EACE24AE60B300564F85 /* PlanningJoinSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinSetupView.swift; sourceTree = "<group>"; };
@@ -280,14 +237,12 @@
 		ED9D447A24AE4BEA00034216 /* LandingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItem.swift; sourceTree = "<group>"; };
 		ED9D448224AE4C9100034216 /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
 		ED9D448424AE4DC800034216 /* LandingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingItemView.swift; sourceTree = "<group>"; };
+		EDE83C65252A0D3100C988AC /* URLCenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLCenterTests.swift; path = mambaTests/Networking/NetworkEnvironment/URLCenterTests.swift; sourceTree = SOURCE_ROOT; };
 		EDEDE31424E15BF400CC666B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		EDEDE31824E15D6C00CC666B /* LogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTests.swift; sourceTree = "<group>"; };
 		EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningSessionNetworkHandlerTests.swift; sourceTree = "<group>"; };
 		EDEDE32224E1621F00CC666B /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		EDEDE32424E1623000CC666B /* NetworkCloseErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCloseErrorTests.swift; sourceTree = "<group>"; };
-		EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCommandsTests.swift; sourceTree = "<group>"; };
-		EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCardTests.swift; sourceTree = "<group>"; };
-		EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLCenterTests.swift; path = ../NetworkEnvironment/URLCenterTests.swift; sourceTree = "<group>"; };
 		EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingErrorExtensionTests.swift; sourceTree = "<group>"; };
 		EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentType.swift; sourceTree = "<group>"; };
 		EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentTests.swift; sourceTree = "<group>"; };
@@ -299,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE83C72252A29FC00C988AC /* MambaNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,26 +549,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2661E01024BC5ED500D46119 /* Commands */ = {
-			isa = PBXGroup;
-			children = (
-				ED36B44E24BCCEAE007FF62E /* Planning */,
-			);
-			path = Commands;
-			sourceTree = "<group>";
-		};
-		2661E01324BC5FF000D46119 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				26F98A7324DD5163007CA2B8 /* PlanningTicket.swift */,
-				263EC96B24D16FBF00EEAB1E /* PlanningCard.swift */,
-				269CA0DB24D93BB2000F42B9 /* PlanningParticipant.swift */,
-				26E2F85424E50F6D008B2B4B /* PlanningTicketVote.swift */,
-				26E2F85624E50F8C008B2B4B /* Messages */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2662003F24F38CF200B24408 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,7 +560,7 @@
 		2662004224F391EE00B24408 /* URLCenter */ = {
 			isa = PBXGroup;
 			children = (
-				EDEDE32A24E1629C00CC666B /* URLCenterTests.swift */,
+				EDE83C65252A0D3100C988AC /* URLCenterTests.swift */,
 			);
 			path = URLCenter;
 			sourceTree = "<group>";
@@ -725,7 +661,6 @@
 				263ECC2B24D4131100EEAB1E /* PlanningSessionNetworkHandler.swift */,
 				2661E01C24BC931C00D46119 /* WebSocketHandler.swift */,
 				ED83E28424C46CCB00FCAB27 /* Error Handling */,
-				2661E01024BC5ED500D46119 /* Commands */,
 				ED01C6EA24BCD2FE00A23727 /* URLCenter */,
 				269F557724BC2FF500EEC682 /* NetworkEnvironment */,
 			);
@@ -750,21 +685,6 @@
 				26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		26E2F85624E50F8C008B2B4B /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				263ECB0124D3081000EEAB1E /* PlanningSessionStateMessage.swift */,
-				2661E01624BC818600D46119 /* PlanningStartSessionMessage.swift */,
-				263ECC2324D40CBB00EEAB1E /* PlanningJoinSessionMessage.swift */,
-				26F98A6D24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift */,
-				26E2F56A24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift */,
-				26E2F85224E50E02008B2B4B /* PlanningVoteMessage.swift */,
-				26467A2024EBB27D008A36AD /* PlanningSkipVoteMessage.swift */,
-				26467A2224EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		26E2F85B24E52305008B2B4B /* ViewModels */ = {
@@ -882,19 +802,6 @@
 				269F557324BC2D4A00EEC682 /* URLCenter.swift */,
 			);
 			path = URLCenter;
-			sourceTree = "<group>";
-		};
-		ED36B44E24BCCEAE007FF62E /* Planning */ = {
-			isa = PBXGroup;
-			children = (
-				ED36B44C24BCCDD5007FF62E /* PlanningCommands.swift */,
-				2661E01124BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift */,
-				2661E01824BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift */,
-				263ECC2524D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift */,
-				263ECC2724D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift */,
-				2661E01324BC5FF000D46119 /* Models */,
-			);
-			path = Planning;
 			sourceTree = "<group>";
 		};
 		ED38EABD24AE5C3800564F85 /* Extensions */ = {
@@ -1037,7 +944,6 @@
 			isa = PBXGroup;
 			children = (
 				2662004224F391EE00B24408 /* URLCenter */,
-				EDEDE32F24E16CF000CC666B /* Commands */,
 				EDEDE32E24E16AF900CC666B /* Error Handling */,
 				EDEDE33324E175D000CC666B /* NetworkEnvironment */,
 				EDEDE31E24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift */,
@@ -1054,27 +960,6 @@
 				EDEDE32C24E16AEE00CC666B /* EncodingErrorExtensionTests.swift */,
 			);
 			path = "Error Handling";
-			sourceTree = "<group>";
-		};
-		EDEDE32F24E16CF000CC666B /* Commands */ = {
-			isa = PBXGroup;
-			children = (
-				EDEDE33024E16CFF00CC666B /* Planning */,
-			);
-			path = Commands;
-			sourceTree = "<group>";
-		};
-		EDEDE33024E16CFF00CC666B /* Planning */ = {
-			isa = PBXGroup;
-			children = (
-				EDEDE32624E1624700CC666B /* PlanningCommandsTests.swift */,
-				EDEDE32824E1626E00CC666B /* PlanningCardTests.swift */,
-				2662004524F393AE00B24408 /* PlanningCommands.HostSendTests.swift */,
-				2644545424F39E130047F9EF /* PlanningCommands.JoinSendTests.swift */,
-				2644545624F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift */,
-				2644545824F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift */,
-			);
-			path = Planning;
 			sourceTree = "<group>";
 		};
 		EDEDE33324E175D000CC666B /* NetworkEnvironment */ = {
@@ -1101,6 +986,9 @@
 			dependencies = (
 			);
 			name = mamba;
+			packageProductDependencies = (
+				EDE83C71252A29FC00C988AC /* MambaNetworking */,
+			);
 			productName = mamba;
 			productReference = 261E1ECF24A48AB600937D89 /* Mamba.app */;
 			productType = "com.apple.product-type.application";
@@ -1173,6 +1061,9 @@
 				Base,
 			);
 			mainGroup = 261E1EC624A48AB600937D89;
+			packageReferences = (
+				EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */,
+			);
 			productRefGroup = 261E1ED024A48AB600937D89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1216,10 +1107,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E2F85524E50F6D008B2B4B /* PlanningTicketVote.swift in Sources */,
 				269CA0E024D9479A000F42B9 /* PlanningParticipantRowView.swift in Sources */,
-				2661E01724BC818600D46119 /* PlanningStartSessionMessage.swift in Sources */,
-				26F98A7424DD5163007CA2B8 /* PlanningTicket.swift in Sources */,
 				ED208A9D2517B9DD0098FAF9 /* MambaApp.swift in Sources */,
 				ED83E28924C46F3A00FCAB27 /* NetworkError.swift in Sources */,
 				260FBE6B24E69BCF00DF4189 /* AvailableCard.swift in Sources */,
@@ -1230,7 +1118,6 @@
 				ED9D447B24AE4BEA00034216 /* LandingItem.swift in Sources */,
 				26467D4824EFDFB9008A36AD /* QrScannerView.swift in Sources */,
 				26772B0224B4ACC4003FB1A4 /* ClearableTextField.swift in Sources */,
-				263ECC2424D40CBC00EEAB1E /* PlanningJoinSessionMessage.swift in Sources */,
 				260FBDF324E563E000DF4189 /* PlanningSessionLandingService.swift in Sources */,
 				269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */,
 				2661E01D24BC931C00D46119 /* WebSocketHandler.swift in Sources */,
@@ -1244,23 +1131,19 @@
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
 				26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */,
 				263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */,
-				ED36B44D24BCCDD5007FF62E /* PlanningCommands.swift in Sources */,
 				26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */,
 				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				EDEDE31524E15BF400CC666B /* Log.swift in Sources */,
 				26467D4424EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift in Sources */,
 				263ECA4324D18BE600EEAB1E /* RoundedButton.swift in Sources */,
 				26E2F56F24DD89BF008B2B4B /* EncodingError+Extensions.swift in Sources */,
-				2661E01924BC81CB00D46119 /* PlanningCommands.HostReceive+Extensions.swift in Sources */,
 				EDEDE33224E173BB00CC666B /* NetworkEnvironmentType.swift in Sources */,
 				269CA0E224D947EA000F42B9 /* PlanningHostNoneStateCardView.swift in Sources */,
-				269CA0DC24D93BB2000F42B9 /* PlanningParticipant.swift in Sources */,
 				26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */,
 				26E2F56624DD68AF008B2B4B /* PlanningErrorCardView.swift in Sources */,
 				26F98A5D24D995A8007CA2B8 /* PlanningJoinSessionLandingView.swift in Sources */,
 				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
 				269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */,
-				26467A2324EBB2D1008A36AD /* PlanningRemoveParticipantMessage.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
@@ -1274,10 +1157,8 @@
 				ED83E28824C46D1400FCAB27 /* NetworkCloseError.swift in Sources */,
 				269CA06C24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift in Sources */,
 				26F98A6824DD45C2007CA2B8 /* PlanningAddTicketView.swift in Sources */,
-				263EC96C24D16FBF00EEAB1E /* PlanningCard.swift in Sources */,
 				26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */,
 				ED38EACD24AE60A900564F85 /* PlanningHostSetupView.swift in Sources */,
-				26F98A6E24DD4B18007CA2B8 /* PlanningAddTicketMessage.swift in Sources */,
 				269CA0E424D94BCC000F42B9 /* PlanningSessionLandingState.swift in Sources */,
 				26E2F85D24E52314008B2B4B /* PlanningParticipantRowViewModel.swift in Sources */,
 				26F98A6A24DD468B007CA2B8 /* PlanningAddTicketViewModel.swift in Sources */,
@@ -1289,20 +1170,14 @@
 				269CA06824D931ED000F42B9 /* PlanningHostSessionLandingView.swift in Sources */,
 				26F98A6C24DD485A007CA2B8 /* AddBarButton.swift in Sources */,
 				ED38EABF24AE5C4800564F85 /* Array+Extensions.swift in Sources */,
-				26E2F56B24DD72CF008B2B4B /* PlanningInvalidCommandMessage.swift in Sources */,
-				263ECC2824D40DDE00EEAB1E /* PlanningCommands.JoinReceive+Extensions.swift in Sources */,
 				ED9D448324AE4C9100034216 /* LandingViewModel.swift in Sources */,
 				26467D4C24EFE03C008A36AD /* CameraPreview.swift in Sources */,
 				260FBDFA24E65F3D00DF4189 /* SystemImageButton.swift in Sources */,
-				2661E01224BC5F0400D46119 /* PlanningCommands.HostSend+Extensions.swift in Sources */,
 				263ECA4B24D1931100EEAB1E /* View+Extensions.swift in Sources */,
-				263ECC2624D40DC800EEAB1E /* PlanningCommands.JoinSend+Extensions.swift in Sources */,
 				26467D4624EFDF87008A36AD /* QrScannerViewModel.swift in Sources */,
-				26467A2124EBB27D008A36AD /* PlanningSkipVoteMessage.swift in Sources */,
 				263ECA5A24D29D3000EEAB1E /* PlanningHostAvailableCardsViewModel.swift in Sources */,
 				26F98A4F24D9613B007CA2B8 /* LoadingView.swift in Sources */,
 				26F98A5324D96CAE007CA2B8 /* SessionCodeText.swift in Sources */,
-				26E2F85324E50E02008B2B4B /* PlanningVoteMessage.swift in Sources */,
 				260FBDFE24E6771F00DF4189 /* ContextMenuButton.swift in Sources */,
 				26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */,
 				26E2F86924E546F6008B2B4B /* CombinedBarGraphEntry.swift in Sources */,
@@ -1312,7 +1187,6 @@
 				263ECA4F24D1952500EEAB1E /* SelectCardsButton.swift in Sources */,
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,
-				263ECB0224D3081000EEAB1E /* PlanningSessionStateMessage.swift in Sources */,
 				263B85B62518CEFC00A267B2 /* ShareSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1323,26 +1197,20 @@
 			files = (
 				EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */,
 				EDEDE32524E1623000CC666B /* NetworkCloseErrorTests.swift in Sources */,
-				2644545524F39E130047F9EF /* PlanningCommands.JoinSendTests.swift in Sources */,
 				2644546E24F3DE3D0047F9EF /* PlanningAddTicketViewModelTests.swift in Sources */,
 				EDEDE31924E15D6C00CC666B /* LogTests.swift in Sources */,
 				2644546A24F3DC740047F9EF /* PlanningHostSetupViewModelTests.swift in Sources */,
-				EDEDE32724E1624700CC666B /* PlanningCommandsTests.swift in Sources */,
-				2662004624F393AE00B24408 /* PlanningCommands.HostSendTests.swift in Sources */,
-				EDEDE32B24E1629C00CC666B /* URLCenterTests.swift in Sources */,
 				2644546224F3ABB10047F9EF /* PlanningParticipantRowViewModelTests.swift in Sources */,
 				2644546424F3ABC10047F9EF /* PlanningSessionLandingViewModelTests.swift in Sources */,
-				EDEDE32924E1626E00CC666B /* PlanningCardTests.swift in Sources */,
 				2644547E24F4DD6E0047F9EF /* PlanningJoinSessionLandingViewModelTests.swift in Sources */,
-				2644545924F3A6B30047F9EF /* PlanningCommands.JoinReceiveTests.swift in Sources */,
 				EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */,
 				EDEDE32D24E16AEE00CC666B /* EncodingErrorExtensionTests.swift in Sources */,
-				2644545724F39FA70047F9EF /* PlanningCommands.HostReceiveTests.swift in Sources */,
 				EDEDE31F24E161D700CC666B /* PlanningSessionNetworkHandlerTests.swift in Sources */,
 				2644545C24F3AA580047F9EF /* LandingViewModelTests.swift in Sources */,
 				26B7192D24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift in Sources */,
 				2644546624F3BA0D0047F9EF /* MockPlanningSessionLandingService.swift in Sources */,
 				2644546824F3D9C10047F9EF /* PlanningJoinSetupViewModelTests.swift in Sources */,
+				EDE83C66252A0D3100C988AC /* URLCenterTests.swift in Sources */,
 				2644547C24F3EC9D0047F9EF /* LandingItemTests.swift in Sources */,
 				EDEDE32324E1621F00CC666B /* NetworkErrorTests.swift in Sources */,
 				2644547824F3E3680047F9EF /* RetroColorSchemeTests.swift in Sources */,
@@ -1505,7 +1373,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.1;
+				MARKETING_VERSION = 0.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1527,7 +1395,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.1;
+				MARKETING_VERSION = 0.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
 				SWIFT_VERSION = 5.0;
@@ -1659,6 +1527,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Operation-Winter/mamba-networking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EDE83C71252A29FC00C988AC /* MambaNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */;
+			productName = MambaNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 261E1EC724A48AB600937D89 /* Project object */;
 }

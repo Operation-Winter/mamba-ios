@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import MambaNetworking
 
 class PlanningHostSetupViewModel: ObservableObject {
     @Published var sessionName: String = ""

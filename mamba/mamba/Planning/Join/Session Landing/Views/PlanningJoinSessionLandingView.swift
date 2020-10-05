@@ -71,7 +71,7 @@ struct PlanningJoinSessionLandingView: View {
     private var votingStateView: some View {
         Group {
             PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
-                                              ticketIdentifier: self.viewModel.ticket?.identifier,
+                                              ticketIdentifier: self.viewModel.ticket?.title,
                                               ticketDescription: self.viewModel.ticket?.description)
             
             PlanningJoinVotingCardView(selectedCard: self.$viewModel.selectedCard, availableCards: self.viewModel.availableCards)
@@ -82,7 +82,7 @@ struct PlanningJoinSessionLandingView: View {
     private var votingFinishedStateView: some View {
         Group {
             PlanningVotingStateTicketCardView(title: self.viewModel.sessionName,
-                                              ticketIdentifier: self.viewModel.ticket?.identifier,
+                                              ticketIdentifier: self.viewModel.ticket?.title,
                                               ticketDescription: self.viewModel.ticket?.description)
             
             PlanningFinishedVotingStateGraphCardView(barGraphEntries: self.viewModel.barGraphEntries)

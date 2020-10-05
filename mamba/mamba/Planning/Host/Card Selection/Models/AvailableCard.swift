@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MambaNetworking
 
 class AvailableCard: Identifiable, ObservableObject {
     let card: PlanningCard

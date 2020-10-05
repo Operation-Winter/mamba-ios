@@ -8,8 +8,9 @@
 
 import Foundation
 import Combine
+import MambaNetworking
 
-class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.JoinSend, PlanningCommands.JoinReceive> {
+class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.JoinServerReceive, PlanningCommands.JoinServerSend> {
     private var cancellable: AnyCancellable?
     
     init(sessionCode: String, participantName: String) {
@@ -17,7 +18,7 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         commonInit(sessionCode: sessionCode, participantName: participantName)
     }
     
-    init(sessionCode: String, participantName: String, service: PlanningSessionLandingService<PlanningCommands.JoinSend, PlanningCommands.JoinReceive>) {
+    init(sessionCode: String, participantName: String, service: PlanningSessionLandingService<PlanningCommands.JoinServerReceive, PlanningCommands.JoinServerSend>) {
         super.init(service: service)
         commonInit(sessionCode: sessionCode, participantName: participantName)
     }
@@ -34,21 +35,20 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     func sendJoinSessionCommand() {
         let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
-        sendCommand(.joinSession(commandMessage))
+        sendCommand(.joinSession(uuid: uuid, message: commandMessage))
     }
     
     func sendLeaveSessionCommand() {
-        sendCommand(.leaveSession)
+        sendCommand(.leaveSession(uuid: uuid))
         closeSession()
     }
     
     func sendVoteCommand(_ selectedCard: PlanningCard) {
-        guard let ticketId = ticket?.identifier else { return }
-        let commandMessage = PlanningVoteMessage(ticketId: ticketId, selectedCard: selectedCard)
-        sendCommand(.vote(commandMessage))
+        let commandMessage = PlanningVoteMessage(selectedCard: selectedCard)
+        sendCommand(.vote(uuid: uuid, message: commandMessage))
     }
     
-    public override func executeCommand(_ command: PlanningCommands.JoinReceive) {
+    public override func executeCommand(_ command: PlanningCommands.JoinServerSend) {
         super.executeCommand(command)
         switch command {
         case .noneState(let message):
@@ -74,5 +74,4 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             closeSession()
         }
     }
-
 }

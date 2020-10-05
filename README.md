@@ -17,6 +17,8 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Roadmap](#roadmap)
+* [License](#license)
+* [Contact](#contact)
 
 ## About the project
 
@@ -24,7 +26,9 @@
 
 The initial purpose for this app was to practice technical skills by making use of SwiftUI, Combine, and WebSockets.
 
-The app allows a user to host or join a Story Point Planning session and vote on a story.
+The backend can be found at [Mamba iOS](https://github.com/Operation-Winter/mamba-backend-vapor)
+
+The Mamba project allows a user to host or join a Story Point Planning session and vote on a story.
 
 ### Journeys
 
@@ -37,7 +41,7 @@ The app allows a user to host or join a Story Point Planning session and vote on
 
 ### Built with
 
-- Swift
+- [Swift 5.3](https://swift.org/blog/)
 - SwiftUI
 - Combine
 - URLSession WebSockets
@@ -62,14 +66,19 @@ git clone https://github.com/Operation-Winter/mamba-ios.git
 
 [![Roadmap][roadmap]](https://example.com)
 
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Armand Kamffer - [@Armgame](https://twitter.com/Armgame) - kamffer1@gmail.com
+
 
 [contributors-shield]: https://img.shields.io/github/contributors/Operation-Winter/mamba-ios?style=flat-square
 [contributors-url]: https://github.com/Operation-Winter/mamba-ios/graphs/contributors
 
 [stars-shield]: https://img.shields.io/github/stars/Operation-Winter/mamba-ios?style=flat-square?style=flat-square
 [stars-url]: https://github.com/Operation-Winter/mamba-ios/stargazers
-
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 
 [roadmap]: docs/Roadmap.png

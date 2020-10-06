@@ -33,10 +33,10 @@ The Mamba project allows a user to host or join a Story Point Planning session a
 ### Journeys
 
 #### Planning journey
-- [iPhone](docs/planning_journey_iphone.md)
-- [iPad](docs/planning_journey_ipad.md)
+- [iPhone implementation screenshots](docs/planning_journey_iphone.md)
+- [iPad implementation screenshots](docs/planning_journey_ipad.md)
 
-##### iPhone designs
+##### Initial iPhone designs
 ![iPhone designs](docs/planning_journey_designs.jpg)
 
 #### Retrospective journey

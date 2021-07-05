@@ -26,6 +26,13 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     @Published var selectedCard: PlanningCard?
     @Published var dismiss: Bool = false
     
+    lazy var timeOutTimer: Timer = {
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] timer in
+            self?.cancellable?.cancel()
+            self?.executeError(code: NetworkCloseError.socketTimeOut.errorCode, description: NetworkCloseError.socketTimeOut.errorDescription)
+        }
+    }()
+    
     var participantList: [PlanningParticipantRowViewModel] {
         switch state {
         case .voting: return votingParticipantRows()
@@ -88,18 +95,21 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func sendCommand(_ command: Send) {
-        Log.planning.logger.debug("Sending command: \(String(describing: command))")
-        do {
-            try service.send(command: command)
-        } catch let error as EncodingError {
-            executeError(code: error.errorCode, description: error.errorCustomDescription)
-        } catch {
-            executeError(code: "3105", description: error.localizedDescription)
+        DispatchQueue.global(qos: .userInitiated).async {
+            Log.planning.logger.debug("Sending command: \(String(describing: command))")
+            do {
+                try self.service.send(command: command)
+            } catch let error as EncodingError {
+                self.executeError(code: error.errorCode, description: error.errorCustomDescription)
+            } catch {
+                self.executeError(code: "3105", description: error.localizedDescription)
+            }
         }
     }
     
     public func executeCommand(_ command: Receive) {
         Log.planning.logger.debug("Executing received command: \(String(describing: command))")
+        timeOutTimer.invalidate()
     }
     
     public func parseStateMessage(_ message: PlanningSessionStateMessage) {

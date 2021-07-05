@@ -36,6 +36,7 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     func sendJoinSessionCommand() {
         let commandMessage = PlanningJoinSessionMessage(sessionCode: sessionCode, participantName: participantName)
         sendCommand(.joinSession(uuid: uuid, message: commandMessage))
+        _ = timeOutTimer
     }
     
     func sendLeaveSessionCommand() {

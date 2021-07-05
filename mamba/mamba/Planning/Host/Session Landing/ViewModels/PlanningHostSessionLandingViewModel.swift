@@ -45,6 +45,7 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     func sendStartSessionCommand() {
         let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
         sendCommand(.startSession(uuid: uuid, message: commandMessage))
+        _ = timeOutTimer
     }
     
     func sendAddTicketCommand(title: String, description: String) {
@@ -77,6 +78,7 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     
     public override func executeCommand(_ command: PlanningCommands.HostServerSend) {
         super.executeCommand(command)
+        
         switch command {
         case .noneState(let message):
             self.state = .none

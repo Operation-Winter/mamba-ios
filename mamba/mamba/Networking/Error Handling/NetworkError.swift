@@ -28,12 +28,12 @@ public enum NetworkError: Error {
     
     public var errorCode: String {
         switch self {
-        case .decodingTypeMistmatch(_): return "3100"
-        case .decodingValueNotFound(_): return "3101"
-        case .decodingKeyNotFound(_): return "3102"
-        case .decodingDataCorrupted(_): return "3103"
-        case .unknownDecodingError(_): return "3104"
-        case .unknownError(_): return "3105"
+        case .decodingTypeMistmatch: return "3100"
+        case .decodingValueNotFound: return "3101"
+        case .decodingKeyNotFound: return "3102"
+        case .decodingDataCorrupted: return "3103"
+        case .unknownDecodingError: return "3104"
+        case .unknownError: return "3105"
         }
     }
     

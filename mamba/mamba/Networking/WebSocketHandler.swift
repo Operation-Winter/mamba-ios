@@ -70,6 +70,7 @@ class WebSocketHandler: NSObject, WebSocketAbstractHandler {
             self?.subject.send(completion: .failure(.socketSendFailure(error)))
             Log.networking.logger.error("SocketSendFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
         }
+        
     }
     
     public func close() {

@@ -11,8 +11,10 @@ import Combine
 
 public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> {
     private var webSocket: WebSocketAbstractHandler?
+    private var pingWebsocketSubject = PassthroughSubject<Void, Never>()
+    private var cancellable: AnyCancellable?
     
-    var connectionStatusPublisher: AnyPublisher<Bool, Never>? {
+    public var connectionStatusPublisher: AnyPublisher<Bool, Never>? {
         webSocket?.connectionStatus.eraseToAnyPublisher()
     }
     
@@ -31,6 +33,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
         Log.networking.logger.debug("Command data sent: \(String(describing: command))")
         let message = URLSessionWebSocketTask.Message.data(messageData)
         webSocket?.send(message: message)
+        pingWebsocketSubject.send()
     }
     
     public func configure(webSocket: WebSocketAbstractHandler) {
@@ -45,20 +48,26 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
         let webSocketHandler = WebSocketHandler(url: url)
         webSocketHandler.start()
         webSocket = webSocketHandler
-        pingWebSocket()
+        
+        cancellable = pingWebsocketSubject
+            .debounce(for: .seconds(10), scheduler: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] in
+                self?.pingWebSocket()
+            })
+        
         return webSocketHandler
     }
     
     private func pingWebSocket() {
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 10) { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.webSocket?.ping()
-            self?.pingWebSocket()
+            self?.pingWebsocketSubject.send()
         }
     }
     
     private func createWebSocketPublisher<Command: Decodable>(_ webSocketSubject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> {
         return webSocketSubject
-            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .receive(on: DispatchQueue.global(qos: .background))
             .compactMap { self.parseMessage($0) }
             .map { self.decodeCommand($0) }
             .eraseToAnyPublisher()

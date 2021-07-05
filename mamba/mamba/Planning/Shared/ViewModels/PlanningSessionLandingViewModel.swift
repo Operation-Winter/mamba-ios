@@ -94,15 +94,13 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func sendCommand(_ command: Send) {
-        DispatchQueue.global(qos: .userInitiated).sync {
-            Log.planning.logger.debug("Sending command: \(String(describing: command))")
-            do {
-                try self.service.send(command: command)
-            } catch let error as EncodingError {
-                self.executeError(code: error.errorCode, description: error.errorCustomDescription)
-            } catch {
-                self.executeError(code: "3105", description: error.localizedDescription)
-            }
+        Log.planning.logger.debug("Sending command: \(String(describing: command))")
+        do {
+            try self.service.send(command: command)
+        } catch let error as EncodingError {
+            executeError(code: error.errorCode, description: error.errorCustomDescription)
+        } catch {
+            executeError(code: "3105", description: error.localizedDescription)
         }
     }
     

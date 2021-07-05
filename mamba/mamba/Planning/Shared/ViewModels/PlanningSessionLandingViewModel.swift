@@ -95,7 +95,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     public func sendCommand(_ command: Send) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             Log.planning.logger.debug("Sending command: \(String(describing: command))")
             do {
                 try self.service.send(command: command)

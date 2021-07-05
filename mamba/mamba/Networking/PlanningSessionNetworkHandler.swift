@@ -54,6 +54,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     
     private func createWebSocketPublisher<Command: Decodable>(_ webSocketSubject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> {
         return webSocketSubject
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
             .compactMap { self.parseMessage($0) }
             .map { self.decodeCommand($0) }
             .eraseToAnyPublisher()

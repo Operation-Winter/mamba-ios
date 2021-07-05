@@ -200,6 +200,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     private func startSession() {
         guard cancellable == nil else { return }
         cancellable = service.startSession()
+            .subscribe(on: DispatchQueue.global(qos: .userInitiated))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] networkError in
                 switch networkError {

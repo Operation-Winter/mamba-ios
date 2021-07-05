@@ -15,7 +15,7 @@ class LocalNetworkEnvironment: NetworkEnvironment {
     }()
     
     var webSocketBaseURL: URL = {
-        guard let url = URL(string: "ws://localhost:8080") else { fatalError() }
+        guard let url = URL(string: "ws://localhost:8080/api") else { fatalError() }
         return url
     }()
 }

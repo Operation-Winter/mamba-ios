@@ -15,7 +15,7 @@ class DevelopmentNetworkEnvironment: NetworkEnvironment {
     }()
     
     var webSocketBaseURL: URL = {
-        guard let url = URL(string: "wss://mamba.armandkamffer.co.za:82") else { fatalError() }
+        guard let url = URL(string: "wss://mamba.armandkamffer.co.za/api") else { fatalError() }
         return url
     }()
 }

@@ -46,7 +46,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     }
     
     private func pingWebSocket() {
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5) { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.webSocket?.ping()
             self?.pingWebSocket()
         }

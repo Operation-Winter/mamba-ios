@@ -75,4 +75,9 @@ class PlanningJoinSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             closeSession()
         }
     }
+    
+    override func connectionSuccessful() {
+        super.connectionSuccessful()
+        sendJoinSessionCommand()
+    }
 }

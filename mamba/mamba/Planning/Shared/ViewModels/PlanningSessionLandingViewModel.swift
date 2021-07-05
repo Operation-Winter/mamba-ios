@@ -14,7 +14,7 @@ import MambaNetworking
 
 class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: ObservableObject {
     private var service: PlanningSessionLandingService<Send, Receive>
-    private var cancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
     private(set) var sessionCode: String = ""
     private(set) var participantName: String = ""
     private(set) var availableCards: [PlanningCard] = []
@@ -28,7 +28,6 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     lazy var timeOutTimer: Timer = {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] timer in
-            self?.cancellable?.cancel()
             self?.executeError(code: NetworkCloseError.socketTimeOut.errorCode, description: NetworkCloseError.socketTimeOut.errorDescription)
         }
     }()
@@ -55,7 +54,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     var toolBarHidden: Bool {
         switch state {
-        case .error(_), .loading: return true
+        case .error, .loading: return true
         default: return false
         }
     }
@@ -208,8 +207,9 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     }
     
     private func startSession() {
-        guard cancellable == nil else { return }
-        cancellable = service.startSession()
+        guard cancellables.isEmpty else { return }
+        
+        service.startSession()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] networkError in
                 switch networkError {
@@ -226,5 +226,19 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
                     self?.executeError(code: error.errorCode, description: error.errorDescription)
                 }
             })
+            .store(in: &cancellables)
+        
+        service.connectionStatusPublisher?
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] connectionStatus in
+                if connectionStatus {
+                    self?.connectionSuccessful()
+                }
+            })
+            .store(in: &cancellables)
+    }
+    
+    public func connectionSuccessful() {
+        Log.planning.logger.debug("Connection successful")
     }
 }

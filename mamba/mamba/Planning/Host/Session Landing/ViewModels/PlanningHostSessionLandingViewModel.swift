@@ -99,4 +99,9 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             executeError(code: message.code, description: message.description)
         }
     }
+    
+    override func connectionSuccessful() {
+        super.connectionSuccessful()
+        sendStartSessionCommand()
+    }
 }

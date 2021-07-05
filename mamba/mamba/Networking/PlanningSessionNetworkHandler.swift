@@ -12,6 +12,10 @@ import Combine
 public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> {
     private var webSocket: WebSocketAbstractHandler?
     
+    var connectionStatusPublisher: AnyPublisher<Bool, Never>? {
+        webSocket?.connectionStatus.eraseToAnyPublisher()
+    }
+    
     public func start(webSocketURL: URL) -> AnyPublisher<Result<Receive, NetworkError>, NetworkCloseError> {
         var webSocket: WebSocketAbstractHandler
         if let socketHandler = self.webSocket {
@@ -46,7 +50,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     }
     
     private func pingWebSocket() {
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 5) { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 10) { [weak self] in
             self?.webSocket?.ping()
             self?.pingWebSocket()
         }

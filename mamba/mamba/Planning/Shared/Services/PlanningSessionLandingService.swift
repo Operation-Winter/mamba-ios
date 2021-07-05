@@ -13,6 +13,10 @@ class PlanningSessionLandingService<Send: Encodable, Receive: Decodable> {
     private var sessionHandler = PlanningSessionNetworkHandler<Send, Receive>()
     private var sessionURL: URL
     
+    var connectionStatusPublisher: AnyPublisher<Bool, Never>? {
+        sessionHandler.connectionStatusPublisher
+    }
+    
     init(sessionURL: URL) {
         self.sessionURL = sessionURL
     }

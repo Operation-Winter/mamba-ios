@@ -12,6 +12,7 @@ import Combine
 
 class MockWebSocketHandler: WebSocketAbstractHandler {
     var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
+    var connectionStatus = CurrentValueSubject<Bool, Never>(false)
     var receivedMessage: URLSessionWebSocketTask.Message?
     var receiveError: Error?
     var pingError: Error?

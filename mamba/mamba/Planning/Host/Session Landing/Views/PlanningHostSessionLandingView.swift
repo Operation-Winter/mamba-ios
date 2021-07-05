@@ -67,7 +67,9 @@ struct PlanningHostSessionLandingView: View {
     private var loadingView: some View {
         LoadingView(title: "PLANNING_HOST_LANDING_CONNECTING_TITLE")
             .onAppear {
-                viewModel.sendStartSessionCommand()
+                DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) {
+                    viewModel.sendStartSessionCommand()
+                }
             }
     }
     

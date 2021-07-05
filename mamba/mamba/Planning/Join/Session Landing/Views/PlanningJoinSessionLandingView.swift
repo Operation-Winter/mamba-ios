@@ -57,7 +57,9 @@ struct PlanningJoinSessionLandingView: View {
     private var loadingView: some View {
         LoadingView(title: "PLANNING_JOIN_LANDING_CONNECTING_TITLE")
             .onAppear {
-                self.viewModel.sendJoinSessionCommand()
+                DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) {
+                    viewModel.sendJoinSessionCommand()
+                }
             }
     }
     

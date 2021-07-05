@@ -51,7 +51,7 @@ class URLCenterTests: XCTestCase {
     
     func testWebSocketBaseUrl() {
         // Then: Base WebSocket URL matches expected value
-        XCTAssertEqual(URLCenter.shared.webSocketBaseURL.absoluteString, "ws://localhost:8080")
+        XCTAssertEqual(URLCenter.shared.webSocketBaseURL.absoluteString, "ws://localhost:8080/api")
     }
 
 }

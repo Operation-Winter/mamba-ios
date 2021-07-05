@@ -16,7 +16,7 @@ class URLCenter_PlanningTests: XCTestCase {
         let url = URLCenter.shared.planningHostWSURL
         
         // Then: the URL matches the expected value
-        XCTAssertEqual(url.absoluteString, "ws://localhost:8080/planning/host")
+        XCTAssertEqual(url.absoluteString, "ws://localhost:8080/api/planning/host")
     }
     
     func testPlanningJoinURL() {
@@ -40,7 +40,7 @@ class URLCenter_PlanningTests: XCTestCase {
         let url = URLCenter.shared.planningJoinWSURL
         
         // Then: the URL matches the expected value
-        XCTAssertEqual(url.absoluteString, "ws://localhost:8080/planning/join")
+        XCTAssertEqual(url.absoluteString, "ws://localhost:8080/api/planning/join")
     }
     
     func testPlanningJoinSessionCodeSuccess() {

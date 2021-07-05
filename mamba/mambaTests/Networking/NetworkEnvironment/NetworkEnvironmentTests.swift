@@ -21,7 +21,7 @@ class NetworkEnvironmentTests: XCTestCase {
         
         // Then: the URLs match expected values
         XCTAssertEqual(baseURL.absoluteString, "http://localhost:8080")
-        XCTAssertEqual(socketBaseURL.absoluteString, "ws://localhost:8080")
+        XCTAssertEqual(socketBaseURL.absoluteString, "ws://localhost:8080/api")
     }
     
     func testDevelopmentNetworkEnvironmentURLs() {
@@ -34,7 +34,7 @@ class NetworkEnvironmentTests: XCTestCase {
         
         // Then: the URLs match expected values
         XCTAssertEqual(baseURL.absoluteString, "https://mamba.armandkamffer.co.za")
-        XCTAssertEqual(socketBaseURL.absoluteString, "wss://mamba.armandkamffer.co.za:82")
+        XCTAssertEqual(socketBaseURL.absoluteString, "wss://mamba.armandkamffer.co.za/api")
     }
 
 }

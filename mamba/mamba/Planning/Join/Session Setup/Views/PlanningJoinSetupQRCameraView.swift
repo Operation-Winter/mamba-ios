@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PlanningJoinSetupQRCameraView: View {
-    @Binding var sessionCode: String?
+    @Binding var sessionCode: String
     @Binding var showQrCode: Bool
     
     var body: some View {

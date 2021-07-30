@@ -6,8 +6,17 @@
         "repositoryURL": "https://github.com/Operation-Winter/mamba-networking.git",
         "state": {
           "branch": null,
-          "revision": "f456a944c06f00bb77b7012c4375276c65297fba",
-          "version": "1.0.6"
+          "revision": "586cf50d731ba29bc9bc648cfa0448ce572e82f4",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "Starscream",
+        "repositoryURL": "https://github.com/daltoniam/Starscream.git",
+        "state": {
+          "branch": null,
+          "revision": "df8d82047f6654d8e4b655d1b1525c64e1059d21",
+          "version": "4.0.4"
         }
       }
     ]

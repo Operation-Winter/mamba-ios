@@ -35,12 +35,8 @@ struct PlanningJoinSetupView: View {
                         .fontWeight(.light)
                         .padding(leading: 20, top: 20, trailing: 20)
                     
-                    SessionCodeTextField(code1: $viewModel.sessionCode1,
-                                         code2: $viewModel.sessionCode2,
-                                         code3: $viewModel.sessionCode3,
-                                         code4: $viewModel.sessionCode4,
-                                         code5: $viewModel.sessionCode5,
-                                         code6: $viewModel.sessionCode6)
+                    ClearableTextField(text: $viewModel.sessionCode,
+                                       placeholder: "PLANNING_JOIN_SETUP_ENTER_SESSION_CODE_PLACEHOLDER")
                         .padding(leading: 20, top: 15, trailing: 20)
                     
                     qrCodeButton
@@ -65,8 +61,9 @@ struct PlanningJoinSetupView: View {
     }
     
     private func navigateToJoinLanding() {
-        guard let sessionCode = viewModel.sessionCode else { return }
-        let joinLandingView = PlanningJoinSessionLandingView(sessionCode: sessionCode, participantName: viewModel.participantName)
+        guard viewModel.inputValid else { return }
+        let joinLandingView = PlanningJoinSessionLandingView(sessionCode: viewModel.sessionCode,
+                                                             participantName: viewModel.participantName)
         navigation.present(AnyView(joinLandingView))
     }
     

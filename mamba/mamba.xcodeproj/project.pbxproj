@@ -56,7 +56,6 @@
 		26772B0424B4ADDF003FB1A4 /* DefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */; };
 		26772B0824B4B428003FB1A4 /* PlanningColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */; };
 		26772B0A24B4B438003FB1A4 /* RetroColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */; };
-		269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */; };
 		269CA06824D931ED000F42B9 /* PlanningHostSessionLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */; };
 		269CA06C24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */; };
 		269CA0DE24D93E00000F42B9 /* HCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269CA0DD24D93E00000F42B9 /* HCardView.swift */; };
@@ -69,7 +68,6 @@
 		269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */; };
 		269F557D24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */; };
 		26B7192D24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7192C24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift */; };
-		26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E11B3524D429FF00C50F43 /* IntegerTextField.swift */; };
 		26E2F56424DD5B31008B2B4B /* PlanningJoinVotingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */; };
 		26E2F56624DD68AF008B2B4B /* PlanningErrorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */; };
 		26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */; };
@@ -114,6 +112,8 @@
 		EDEDE33224E173BB00CC666B /* NetworkEnvironmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */; };
 		EDEDE33524E1774900CC666B /* NetworkEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */; };
 		EDEDE33924E181C600CC666B /* MockWebSocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDE33824E181C600CC666B /* MockWebSocketHandler.swift */; };
+		EDFB46E026B3B2DA00F1B1D0 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = EDFB46DF26B3B2DA00F1B1D0 /* Starscream */; };
+		EDFB46E226B3BB3C00F1B1D0 /* SingleAxisGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB46E126B3BB3C00F1B1D0 /* SingleAxisGeometryReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,7 +190,6 @@
 		26772B0324B4ADDF003FB1A4 /* DefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyle.swift; sourceTree = "<group>"; };
 		26772B0724B4B428003FB1A4 /* PlanningColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningColorScheme.swift; sourceTree = "<group>"; };
 		26772B0924B4B438003FB1A4 /* RetroColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroColorScheme.swift; sourceTree = "<group>"; };
-		269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCodeTextField.swift; sourceTree = "<group>"; };
 		269CA06724D931ED000F42B9 /* PlanningHostSessionLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingView.swift; sourceTree = "<group>"; };
 		269CA06B24D93209000F42B9 /* PlanningHostSessionLandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingViewModel.swift; sourceTree = "<group>"; };
 		269CA0DD24D93E00000F42B9 /* HCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCardView.swift; sourceTree = "<group>"; };
@@ -203,7 +202,6 @@
 		269F557A24BC301600EEC682 /* LocalNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkEnvironment.swift; sourceTree = "<group>"; };
 		269F557C24BC302500EEC682 /* DevelopmentNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentNetworkEnvironment.swift; sourceTree = "<group>"; };
 		26B7192C24F4E43600558890 /* PlanningHostSessionLandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningHostSessionLandingViewModelTests.swift; sourceTree = "<group>"; };
-		26E11B3524D429FF00C50F43 /* IntegerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextField.swift; sourceTree = "<group>"; };
 		26E2F56324DD5B31008B2B4B /* PlanningJoinVotingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningJoinVotingCardView.swift; sourceTree = "<group>"; };
 		26E2F56524DD68AF008B2B4B /* PlanningErrorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningErrorCardView.swift; sourceTree = "<group>"; };
 		26E2F56824DD6DDF008B2B4B /* PlanningLandingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningLandingError.swift; sourceTree = "<group>"; };
@@ -247,6 +245,7 @@
 		EDEDE33124E173BB00CC666B /* NetworkEnvironmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentType.swift; sourceTree = "<group>"; };
 		EDEDE33424E1774900CC666B /* NetworkEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironmentTests.swift; sourceTree = "<group>"; };
 		EDEDE33824E181C600CC666B /* MockWebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketHandler.swift; sourceTree = "<group>"; };
+		EDFB46E126B3BB3C00F1B1D0 /* SingleAxisGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAxisGeometryReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE83C72252A29FC00C988AC /* MambaNetworking in Frameworks */,
+				EDFB46E026B3B2DA00F1B1D0 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				26467A2424EBCA16008A36AD /* Mamba.entitlements */,
-				26772B0524B4B407003FB1A4 /* Styling */,
+				26772AF724B4A5C9003FB1A4 /* Components */,
+				26772B0624B4B414003FB1A4 /* Colors */,
 				ED9D447924AE4BDB00034216 /* Landing */,
 				ED38EAC124AE604300564F85 /* Planning */,
 				ED38EABD24AE5C3800564F85 /* Extensions */,
@@ -578,6 +579,7 @@
 				26772AFE24B4AA68003FB1A4 /* TextField */,
 				26772AFB24B4A9F3003FB1A4 /* ViewModifiers */,
 				26772AF824B4A660003FB1A4 /* Styles */,
+				EDFB46E126B3BB3C00F1B1D0 /* SingleAxisGeometryReader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -602,19 +604,8 @@
 			isa = PBXGroup;
 			children = (
 				26772B0124B4ACC4003FB1A4 /* ClearableTextField.swift */,
-				26E11B3524D429FF00C50F43 /* IntegerTextField.swift */,
-				269CA06424D831D1000F42B9 /* SessionCodeTextField.swift */,
 			);
 			path = TextField;
-			sourceTree = "<group>";
-		};
-		26772B0524B4B407003FB1A4 /* Styling */ = {
-			isa = PBXGroup;
-			children = (
-				26772B0624B4B414003FB1A4 /* Colors */,
-				26772AF724B4A5C9003FB1A4 /* Components */,
-			);
-			path = Styling;
 			sourceTree = "<group>";
 		};
 		26772B0624B4B414003FB1A4 /* Colors */ = {
@@ -988,6 +979,7 @@
 			name = mamba;
 			packageProductDependencies = (
 				EDE83C71252A29FC00C988AC /* MambaNetworking */,
+				EDFB46DF26B3B2DA00F1B1D0 /* Starscream */,
 			);
 			productName = mamba;
 			productReference = 261E1ECF24A48AB600937D89 /* Mamba.app */;
@@ -1063,6 +1055,7 @@
 			mainGroup = 261E1EC624A48AB600937D89;
 			packageReferences = (
 				EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */,
+				EDFB46DE26B3B2DA00F1B1D0 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 261E1ED024A48AB600937D89 /* Products */;
 			projectDirPath = "";
@@ -1131,7 +1124,6 @@
 				263ECA4624D18D4200EEAB1E /* TitleText.swift in Sources */,
 				26E2F56924DD6DDF008B2B4B /* PlanningLandingError.swift in Sources */,
 				263ECA4924D190F000EEAB1E /* VCardView.swift in Sources */,
-				26E11B3624D429FF00C50F43 /* IntegerTextField.swift in Sources */,
 				263ECA5124D293D300EEAB1E /* StoryPointCard.swift in Sources */,
 				EDEDE31524E15BF400CC666B /* Log.swift in Sources */,
 				26467D4424EFDEA7008A36AD /* PlanningJoinSetupQRCameraView.swift in Sources */,
@@ -1143,7 +1135,6 @@
 				26E2F56624DD68AF008B2B4B /* PlanningErrorCardView.swift in Sources */,
 				26F98A5D24D995A8007CA2B8 /* PlanningJoinSessionLandingView.swift in Sources */,
 				263ECA4D24D1943400EEAB1E /* CancelBarButton.swift in Sources */,
-				269CA06524D831D1000F42B9 /* SessionCodeTextField.swift in Sources */,
 				269F557B24BC301600EEC682 /* LocalNetworkEnvironment.swift in Sources */,
 				26772AFA24B4A66D003FB1A4 /* ClearableTextFieldStyle.swift in Sources */,
 				269F557424BC2D4A00EEC682 /* URLCenter.swift in Sources */,
@@ -1188,6 +1179,7 @@
 				ED38EAD424AE643500564F85 /* NavigationStack.swift in Sources */,
 				261E1ED724A48AB700937D89 /* LandingView.swift in Sources */,
 				263B85B62518CEFC00A267B2 /* ShareSheet.swift in Sources */,
+				EDFB46E226B3BB3C00F1B1D0 /* SingleAxisGeometryReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,13 +1362,17 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = mamba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1393,13 +1389,17 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = mamba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.armandkamffer.mamba;
 				PRODUCT_NAME = Mamba;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1539,6 +1539,14 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		EDFB46DE26B3B2DA00F1B1D0 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1546,6 +1554,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EDE83C70252A29FC00C988AC /* XCRemoteSwiftPackageReference "mamba-networking" */;
 			productName = MambaNetworking;
+		};
+		EDFB46DF26B3B2DA00F1B1D0 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDFB46DE26B3B2DA00F1B1D0 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

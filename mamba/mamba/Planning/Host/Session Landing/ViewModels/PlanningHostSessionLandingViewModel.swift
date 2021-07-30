@@ -45,11 +45,10 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     func sendStartSessionCommand() {
         let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
         sendCommand(.startSession(uuid: uuid, message: commandMessage))
-        _ = timeOutTimer
     }
     
     func sendAddTicketCommand(title: String, description: String) {
-        let commandMessage = PlanningAddTicketMessage(title: title, description: description)
+        let commandMessage = PlanningTicketMessage(title: title, description: description)
         sendCommand(.addTicket(uuid: uuid, message: commandMessage))
     }
     

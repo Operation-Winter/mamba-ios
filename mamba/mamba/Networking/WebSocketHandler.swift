@@ -8,23 +8,28 @@
 
 import Foundation
 import Combine
+import Starscream
+
+public enum WebSocketMessage {
+    case text(String)
+    case data(Data)
+}
 
 public protocol WebSocketAbstractHandler {
-    var subject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError> { get }
+    var subject: PassthroughSubject<WebSocketMessage, NetworkCloseError> { get }
     var connectionStatus: CurrentValueSubject<Bool, Never> { get }
     
     init(url: URL)
     func start()
-    func receiveMessage()
     func ping()
-    func send(message: URLSessionWebSocketTask.Message)
+    func send(message: Data)
     func close()
 }
 
-class WebSocketHandler: NSObject, WebSocketAbstractHandler {
-    public private(set) var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
+class WebSocketHandler: WebSocketAbstractHandler {
+    public private(set) var subject = PassthroughSubject<WebSocketMessage, NetworkCloseError>()
     public private(set) var connectionStatus = CurrentValueSubject<Bool, Never>(false)
-    private var webSocketTask: URLSessionWebSocketTask?
+    private var webSocket: WebSocket?
     private var url: URL
     
     required public init(url: URL) {
@@ -32,60 +37,57 @@ class WebSocketHandler: NSObject, WebSocketAbstractHandler {
     }
     
     public func start() {
-        let urlSession = URLSession(configuration: .ephemeral, delegate: self, delegateQueue: OperationQueue.main)
-        webSocketTask = urlSession.webSocketTask(with: url)
-        Log.networking.logger.info("URLSession webSocketTask opened to \(self.url.absoluteString)")
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        webSocket = WebSocket(request: request)
+        Log.networking.logger.info("WebSocket opened to \(self.url.absoluteString)")
         
-        webSocketTask?.resume()
         receiveMessage()
+        webSocket?.connect()
     }
     
     public func receiveMessage() {
-        webSocketTask?.receive { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.subject.send(completion: .failure(.socketReceiveFailure(error)))
-                Log.networking.logger.error("SocketReceiveFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
-            case .success(let message):
-                self?.subject.send(message)
+        webSocket?.onEvent = { [weak self] event in
+            switch event {
+            case .connected:
+                self?.connectionStatus.send(true)
+            case .disconnected:
+                self?.connectionStatus.send(false)
+            case .text(let message):
+                self?.subject.send(.text(message))
                 Log.networking.logger.info("WebSocket task received message")
-                self?.receiveMessage()
+            case .binary(let message):
+                self?.subject.send(.data(message))
+                Log.networking.logger.info("WebSocket task received message")
+            case .pong(_):
+                break
+            case .ping(_):
+                break
+            case .error(let error):
+                self?.subject.send(completion: .failure(.failure(error)))
+                Log.networking.logger.error("SocketReceiveFailure: \(String(describing: WebSocketHandler.self)) \(error?.localizedDescription ?? "")")
+            case .viabilityChanged(_):
+                break
+            case .reconnectSuggested(_):
+                break
+            case .cancelled:
+                self?.subject.send(completion: .finished)
+                Log.networking.logger.info("WebSocket cancelled")
             }
         }
     }
     
     public func ping() {
         Log.networking.logger.info("Ping WebSocketTask")
-        webSocketTask?.sendPing { [weak self] error in
-            guard let error = error else { return }
-            self?.subject.send(completion: .failure(.socketPingFailure(error)))
-            Log.networking.logger.error("SocketPingFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
-        }
+        webSocket?.write(ping: Data())
     }
     
-    public func send(message: URLSessionWebSocketTask.Message) {
+    public func send(message: Data) {
         Log.networking.logger.info("Send WebSocketTask Message")
-        webSocketTask?.send(message) { [weak self] error in
-            guard let error = error else { return }
-            self?.subject.send(completion: .failure(.socketSendFailure(error)))
-            Log.networking.logger.error("SocketSendFailure: \(String(describing: WebSocketHandler.self)) \(error.localizedDescription)")
-        }
-        
+        webSocket?.write(data: message)
     }
     
     public func close() {
-        webSocketTask?.cancel(with: .normalClosure, reason: nil)
-        subject.send(completion: .finished)
-        Log.networking.logger.error("Close webSocketTask")
-    }
-}
-
-extension WebSocketHandler: URLSessionWebSocketDelegate {
-    func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
-        connectionStatus.send(true)
-    }
-    
-    func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
-        connectionStatus.send(false)
+        webSocket?.disconnect()
+        Log.networking.logger.info("Close webSocketTask")
     }
 }

@@ -12,19 +12,12 @@ struct ContextMenuButton: View {
     let title: LocalizedStringKey
     let imageSystemName: String
     let action: () -> Void
-    
-    private var uiImage: UIImage? {
-        UIImage(systemName: imageSystemName)
-    }
-    
+
     var body: some View {
         Button(action: action) {
             HStack {
                 Text(title)
-                
-                if self.uiImage != nil {
-                    Image(uiImage: uiImage!)
-                }
+                Image(systemName: imageSystemName)
             }
         }
     }

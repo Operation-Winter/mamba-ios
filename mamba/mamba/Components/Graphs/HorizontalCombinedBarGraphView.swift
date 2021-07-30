@@ -10,40 +10,42 @@ import SwiftUI
 
 struct HorizontalCombinedBarGraphView: View {
     let barGraphEntries: [CombinedBarGraphEntry]
-    let barWidth: CGFloat
     
     var body: some View {
-        HStack(alignment: .top, spacing: 0) {
-            ForEach(self.barGraphEntries.indices) { index in
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .fill(self.color(index: index))
-                        .frame(width: self.entryWidth(index: index), height: 30)
-                    
-                    StrokeText(text: self.barGraphEntries[index].title, width: 0.5, color: DefaultStyle.shared.accent)
-                        .foregroundColor(.white)
+        SingleAxisGeometryReader { width in
+            HStack(alignment: .top, spacing: 0) {
+                ForEach(self.barGraphEntries.indices) { index in
+                    ZStack(alignment: .center) {
+                        Rectangle()
+                            .fill(self.color(index: index))
+                            .frame(width: self.entryWidth(index: index, barWidth: width), height: 30)
+                        
+                        StrokeText(text: self.barGraphEntries[index].title, width: 0.5, color: DefaultStyle.shared.accent)
+                            .foregroundColor(.white)
+                    }
                 }
-            }
-        }.frame(width: barWidth)
+            }.frame(width: width)
+        }
     }
     
     private func color(index: Int) -> Color {
-        let mainColor = DefaultStyle.shared.uiPrimary
-        guard barGraphEntries.count != 0 else { return Color(mainColor) }
-        let alpha = 1 - CGFloat(index) / CGFloat(barGraphEntries.count)
-        return Color(mainColor.withAlphaComponent(alpha))
+        let mainColor = DefaultStyle.shared.primary
+        guard barGraphEntries.count != 0 else { return mainColor }
+        let alpha = 1 - Double(index) / Double(barGraphEntries.count)
+        return mainColor.opacity(alpha)
     }
     
     private func widthRatio(index: Int) -> CGFloat {
-        guard barGraphEntries.count != 0 else { return 1 }
-        let voteCount = barGraphEntries[index].count
+        guard barGraphEntries.count != 0,
+              let voteCount = barGraphEntries.element(at: index)?.count
+        else { return 1 }
         let totalVotesCount = barGraphEntries.reduce(0) { $0 + $1.count }
         return CGFloat(voteCount) / CGFloat(totalVotesCount)
     }
     
-    private func entryWidth(index: Int) -> CGFloat {
+    private func entryWidth(index: Int, barWidth: CGFloat) -> CGFloat {
         let ratio = widthRatio(index: index)
-        return (ratio * barWidth)
+        return ratio * barWidth
     }
 }
 
@@ -54,7 +56,7 @@ struct HorizontalCombinedBarGraphView_Previews: PreviewProvider {
                 CombinedBarGraphEntry(title: "5", count: 2),
                 CombinedBarGraphEntry(title: "1", count: 1),
                 CombinedBarGraphEntry(title: "8", count: 1)
-            ], barWidth: 400)
+            ])
                 .environment(\.colorScheme, .light)
                 .previewDisplayName("Light mode")
                 .padding()
@@ -63,7 +65,7 @@ struct HorizontalCombinedBarGraphView_Previews: PreviewProvider {
                 CombinedBarGraphEntry(title: "5", count: 6),
                 CombinedBarGraphEntry(title: "1", count: 3),
                 CombinedBarGraphEntry(title: "8", count: 2)
-            ], barWidth: 200)
+            ])
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Dark mode")
                 .padding()

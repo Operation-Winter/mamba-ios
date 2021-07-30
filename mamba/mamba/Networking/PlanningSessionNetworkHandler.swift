@@ -31,8 +31,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
     public func send(command: Send) throws {
         let messageData = try JSONEncoder().encode(command)
         Log.networking.logger.debug("Command data sent: \(String(describing: command))")
-        let message = URLSessionWebSocketTask.Message.data(messageData)
-        webSocket?.send(message: message)
+        webSocket?.send(message: messageData)
         pingWebsocketSubject.send()
     }
     
@@ -65,7 +64,7 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
         }
     }
     
-    private func createWebSocketPublisher<Command: Decodable>(_ webSocketSubject: PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> {
+    private func createWebSocketPublisher<Command: Decodable>(_ webSocketSubject: PassthroughSubject<WebSocketMessage, NetworkCloseError>) -> AnyPublisher<Result<Command, NetworkError>, NetworkCloseError> {
         return webSocketSubject
             .receive(on: DispatchQueue.global(qos: .background))
             .compactMap { self.parseMessage($0) }
@@ -73,11 +72,10 @@ public class PlanningSessionNetworkHandler<Send: Encodable, Receive: Decodable> 
             .eraseToAnyPublisher()
     }
     
-    private func parseMessage(_ message: URLSessionWebSocketTask.Message) -> Data? {
+    private func parseMessage(_ message: WebSocketMessage) -> Data? {
         switch message {
         case .data(let data): return data
-        case .string(let value): return value.data(using: .utf8)
-        @unknown default: return nil
+        case .text(let value): return value.data(using: .utf8)
         }
     }
     

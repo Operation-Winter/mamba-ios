@@ -25,13 +25,7 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     @Published var ticket: PlanningTicket?
     @Published var selectedCard: PlanningCard?
     @Published var dismiss: Bool = false
-    
-    lazy var timeOutTimer: Timer = {
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] timer in
-            self?.executeError(code: NetworkCloseError.socketTimeOut.errorCode, description: NetworkCloseError.socketTimeOut.errorDescription)
-        }
-    }()
-    
+
     var participantList: [PlanningParticipantRowViewModel] {
         switch state {
         case .voting: return votingParticipantRows()
@@ -106,7 +100,6 @@ class PlanningSessionLandingViewModel<Send: Encodable, Receive: Decodable>: Obse
     
     public func executeCommand(_ command: Receive) {
         Log.planning.logger.debug("Executing received command: \(String(describing: command))")
-        timeOutTimer.invalidate()
     }
     
     public func parseStateMessage(_ message: PlanningSessionStateMessage) {

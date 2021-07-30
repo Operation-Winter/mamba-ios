@@ -26,7 +26,7 @@ public class URLCenter {
     
     private init() {
         #if targetEnvironment(simulator)
-        environmentType = .development
+        environmentType = .local
         #else
         environmentType = .development
         #endif

@@ -23,8 +23,8 @@ struct SingleAxisGeometryReader<Content: View>: View {
 
     var body: some View {
         content(size)
-            .frame(maxWidth:  axis == .horizontal ? .infinity : nil,
-                   maxHeight: axis == .vertical   ? .infinity : nil,
+            .frame(maxWidth: axis == .horizontal ? .infinity : nil,
+                   maxHeight: axis == .vertical ? .infinity : nil,
                    alignment: alignment)
             .background(GeometryReader {
                 proxy in

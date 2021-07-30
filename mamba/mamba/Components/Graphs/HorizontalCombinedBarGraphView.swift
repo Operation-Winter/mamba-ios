@@ -14,7 +14,7 @@ struct HorizontalCombinedBarGraphView: View {
     var body: some View {
         SingleAxisGeometryReader { width in
             HStack(alignment: .top, spacing: 0) {
-                ForEach(self.barGraphEntries.indices) { index in
+                ForEach(self.barGraphEntries.indices, id: \.self) { index in
                     ZStack(alignment: .center) {
                         Rectangle()
                             .fill(self.color(index: index))
@@ -36,9 +36,8 @@ struct HorizontalCombinedBarGraphView: View {
     }
     
     private func widthRatio(index: Int) -> CGFloat {
-        guard barGraphEntries.count != 0,
-              let voteCount = barGraphEntries.element(at: index)?.count
-        else { return 1 }
+        guard barGraphEntries.count != 0 else { return 1 }
+        let voteCount = barGraphEntries[index].count
         let totalVotesCount = barGraphEntries.reduce(0) { $0 + $1.count }
         return CGFloat(voteCount) / CGFloat(totalVotesCount)
     }

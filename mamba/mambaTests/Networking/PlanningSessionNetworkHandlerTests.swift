@@ -200,8 +200,7 @@ fileprivate class Mocks {
     }
     
     static var receiveWebHandler: MockWebSocketHandler {
-        let message = URLSessionWebSocketTask.Message.data(startSessionCommandData)
-        return MockWebSocketHandler(url: url, receivedMessage: message)
+        return MockWebSocketHandler(url: url, receivedMessage: .data(startSessionCommandData))
     }
     
     static var receiveErrorWebHandler: MockWebSocketHandler {
@@ -210,8 +209,7 @@ fileprivate class Mocks {
     }
     
     static var decodingErrorWebHandler: MockWebSocketHandler {
-        let message = URLSessionWebSocketTask.Message.data(invalidCommandData)
-        return MockWebSocketHandler(url: url, receivedMessage: message)
+        return MockWebSocketHandler(url: url, receivedMessage: .data(invalidCommandData))
     }
     
     static var startSessionCommandData: Data {

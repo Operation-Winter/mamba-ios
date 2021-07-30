@@ -16,7 +16,7 @@ class NetworkCloseErrorTests: XCTestCase {
         let mockError = NSError(domain: "", code: 0, userInfo: nil)
         
         // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketReceiveFailure(mockError)
+        let networkError = NetworkCloseError.failure(mockError)
         
         // Then: the error code matches expected value
         XCTAssertEqual(networkError.errorCode, "3000")
@@ -27,54 +27,18 @@ class NetworkCloseErrorTests: XCTestCase {
         let mockError = NSError(domain: "", code: 0, userInfo: nil)
         
         // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketReceiveFailure(mockError)
-        
-        // Then: the error description matches expected value
-        XCTAssertEqual(networkError.errorDescription, "The operation couldn’t be completed. ( error 0.)")
-    }
-
-    func testSocketPingFailureErrorCode() throws {
-        // Given: a mock error
-        let mockError = NSError(domain: "", code: 0, userInfo: nil)
-        
-        // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketPingFailure(mockError)
-        
-        // Then: the error code matches expected value
-        XCTAssertEqual(networkError.errorCode, "3001")
-    }
-
-    func testSocketPingFailureErrorDescription() throws {
-        // Given: a mock error
-        let mockError = NSError(domain: "", code: 0, userInfo: nil)
-        
-        // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketPingFailure(mockError)
+        let networkError = NetworkCloseError.failure(mockError)
         
         // Then: the error description matches expected value
         XCTAssertEqual(networkError.errorDescription, "The operation couldn’t be completed. ( error 0.)")
     }
     
-    func testSocketSendFailureErrorCode() throws {
-        // Given: a mock error
-        let mockError = NSError(domain: "", code: 0, userInfo: nil)
-        
+    func testSocketReceiveFailureErrorDescriptionNilError() throws {
         // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketSendFailure(mockError)
-        
-        // Then: the error code matches expected value
-        XCTAssertEqual(networkError.errorCode, "3002")
-    }
-
-    func testSocketSendFailureErrorDescription() throws {
-        // Given: a mock error
-        let mockError = NSError(domain: "", code: 0, userInfo: nil)
-        
-        // When: NetworkCloseError is mapped
-        let networkError = NetworkCloseError.socketSendFailure(mockError)
+        let networkError = NetworkCloseError.failure(nil)
         
         // Then: the error description matches expected value
-        XCTAssertEqual(networkError.errorDescription, "The operation couldn’t be completed. ( error 0.)")
+        XCTAssertEqual(networkError.errorDescription, "Something went wrong with the connection")
     }
-
+    
 }

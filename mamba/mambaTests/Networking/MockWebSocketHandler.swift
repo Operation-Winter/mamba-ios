@@ -11,30 +11,26 @@ import Combine
 @testable import Mamba
 
 class MockWebSocketHandler: WebSocketAbstractHandler {
-    var subject = PassthroughSubject<URLSessionWebSocketTask.Message, NetworkCloseError>()
+    var subject = PassthroughSubject<WebSocketMessage, NetworkCloseError>()
     var connectionStatus = CurrentValueSubject<Bool, Never>(false)
-    var receivedMessage: URLSessionWebSocketTask.Message?
+    var receivedMessage: WebSocketMessage?
     var receiveError: Error?
-    var pingError: Error?
-    var sendError: Error?
     
     required init(url: URL) { }
     
     init() { }
     
-    convenience init(url: URL, receivedMessage: URLSessionWebSocketTask.Message? = nil, receiveError: Error? = nil, pingError: Error? = nil, sendError: Error? = nil) {
+    convenience init(url: URL, receivedMessage: WebSocketMessage? = nil, receiveError: Error? = nil) {
         self.init(url: url)
         self.receivedMessage = receivedMessage
         self.receiveError = receiveError
-        self.pingError = pingError
-        self.sendError = sendError
     }
     
     func start() { }
     
     func receiveMessage() {
         if let error = receiveError {
-            self.subject.send(completion: .failure(.socketReceiveFailure(error)))
+            self.subject.send(completion: .failure(.failure(error)))
         }
         if let message = receivedMessage {
             self.subject.send(message)
@@ -42,15 +38,9 @@ class MockWebSocketHandler: WebSocketAbstractHandler {
     }
     
     func ping() {
-        if let error = pingError {
-            self.subject.send(completion: .failure(.socketPingFailure(error)))
-        }
     }
     
-    func send(message: URLSessionWebSocketTask.Message) {
-        if let error = sendError {
-            self.subject.send(completion: .failure(.socketSendFailure(error)))
-        }
+    func send(message: Data) {
     }
     
     func close() {

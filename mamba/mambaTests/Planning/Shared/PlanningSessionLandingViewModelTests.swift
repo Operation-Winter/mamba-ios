@@ -356,7 +356,7 @@ fileprivate class Mocks {
     static let stateMessage: PlanningSessionStateMessage = {
         let planningTicket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), selectedCard: .coffee)])
         
-        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), name: "Test")], ticket: planningTicket)
+        return PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910231") ?? UUID(), name: "Test")], ticket: planningTicket, timeLeft: nil)
     }()
     
     static let barGraphStateMessage: PlanningSessionStateMessage = {
@@ -372,7 +372,7 @@ fileprivate class Mocks {
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910232") ?? UUID(), name: "Test"),
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), name: "Test"),
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), name: "Test")
-        ], ticket: planningTicket)
+        ], ticket: planningTicket, timeLeft: 5)
     }()
     
     static let participantsListStateMessage: PlanningSessionStateMessage = {
@@ -389,6 +389,6 @@ fileprivate class Mocks {
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910233") ?? UUID(), name: "Test"),
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910234") ?? UUID(), name: "Test"),
             PlanningParticipant(participantId: UUID(uuidString: "754909ED-1648-4B51-AB55-4CA6C8910235") ?? UUID(), name: "Test")
-        ], ticket: planningTicket)
+        ], ticket: planningTicket, timeLeft: 5)
     }()
 }

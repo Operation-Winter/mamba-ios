@@ -1536,7 +1536,7 @@
 			repositoryURL = "https://github.com/Operation-Winter/mamba-networking.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				minimumVersion = 1.4.0;
 			};
 		};
 		EDFB46DE26B3B2DA00F1B1D0 /* XCRemoteSwiftPackageReference "Starscream" */ = {

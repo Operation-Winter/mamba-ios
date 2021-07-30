@@ -96,6 +96,9 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             parseStateMessage(message)
         case .invalidCommand(let message):
             executeError(code: message.code, description: message.description)
+        case .previousTickets(let message):
+            // TODO: Implement what to do with previous tickets command
+            break
         }
     }
     

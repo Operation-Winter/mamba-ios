@@ -43,8 +43,8 @@ class PlanningAddTicketViewModelTests: XCTestCase {
         viewModel.ticketIdentifier = "Test"
         viewModel.ticketDescription = ""
         
-        // Then: the input is not valid
-        XCTAssertFalse(viewModel.isInputValid)
+        // Then: the input is valid
+        XCTAssertTrue(viewModel.isInputValid)
     }
 
 }

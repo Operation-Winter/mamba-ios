@@ -273,7 +273,16 @@ class PlanningHostSessionLandingViewModelTests: XCTestCase {
 fileprivate class Mocks {
     static let ticket = PlanningTicket(title: "x", description: "Test", ticketVotes: [PlanningTicketVote(participantId: UUID(), selectedCard: .coffee)])
     
-    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000", sessionName: "Test", availableCards: [.coffee], participants: [PlanningParticipant(participantId: UUID(), name: "Test")], ticket: ticket, timeLeft: nil)
+    static let stateMessage: PlanningSessionStateMessage = PlanningSessionStateMessage(sessionCode: "000000",
+                                                                                       sessionName: "Test",
+                                                                                       availableCards: [.coffee],
+                                                                                       participants: [
+                                                                                        PlanningParticipant(participantId: UUID(),
+                                                                                                            name: "Test",
+                                                                                                            connected: true)
+                                                                                       ],
+                                                                                       ticket: ticket,
+                                                                                       timeLeft: nil)
     
     static let noneState = PlanningCommands.HostServerSend.noneState(message: stateMessage)
     static let votingState = PlanningCommands.HostServerSend.votingState(message: stateMessage)

@@ -12,6 +12,7 @@ import MambaNetworking
 
 class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<PlanningCommands.HostServerReceive, PlanningCommands.HostServerSend> {
     @Published var showInitialShareModal: Bool = false
+    @Published var autoCompleteVoting: Bool = true
     
     var revoteDisabled: Bool {
         if case .finishedVoting = state {
@@ -27,8 +28,9 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
         return false
     }
     
-    init(sessionName: String, availableCards: [PlanningCard]) {
+    init(sessionName: String, autoCompleteVoting: Bool, availableCards: [PlanningCard]) {
         super.init(websocketURL: URLCenter.shared.planningHostWSURL)
+        self.autoCompleteVoting = autoCompleteVoting
         commonInit(sessionName: sessionName, availableCards: availableCards)
     }
     
@@ -43,7 +45,7 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
     }
     
     func sendStartSessionCommand() {
-        let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, availableCards: availableCards)
+        let commandMessage = PlanningStartSessionMessage(sessionName: sessionName, autoCompleteVoting: autoCompleteVoting, availableCards: availableCards)
         sendCommand(.startSession(uuid: uuid, message: commandMessage))
     }
     
@@ -96,7 +98,7 @@ class PlanningHostSessionLandingViewModel: PlanningSessionLandingViewModel<Plann
             parseStateMessage(message)
         case .invalidCommand(let message):
             executeError(code: message.code, description: message.description)
-        case .previousTickets(let message):
+        case .previousTickets(_):
             // TODO: Implement what to do with previous tickets command
             break
         }

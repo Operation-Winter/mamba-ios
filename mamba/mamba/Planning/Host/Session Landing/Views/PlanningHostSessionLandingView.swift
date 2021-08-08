@@ -14,8 +14,10 @@ struct PlanningHostSessionLandingView: View {
     @StateObject private var viewModel: PlanningHostSessionLandingViewModel
     @State private var showConfirmAlert = false
     
-    init(sessionName: String, availableCards: [PlanningCard]) {
-        _viewModel = StateObject(wrappedValue: PlanningHostSessionLandingViewModel(sessionName: sessionName, availableCards: availableCards))
+    init(sessionName: String, autoCompleteVoting: Bool, availableCards: [PlanningCard]) {
+        _viewModel = StateObject(wrappedValue: PlanningHostSessionLandingViewModel(sessionName: sessionName,
+                                                                                   autoCompleteVoting: autoCompleteVoting,
+                                                                                   availableCards: availableCards))
     }
     
     var body: some View {
@@ -208,6 +210,6 @@ struct PlanningHostSessionLandingView: View {
 
 struct PlanningHostSessionLandingView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanningHostSessionLandingView(sessionName: "Planning 1", availableCards: PlanningCard.allCases)
+        PlanningHostSessionLandingView(sessionName: "Planning 1", autoCompleteVoting: true, availableCards: PlanningCard.allCases)
     }
 }

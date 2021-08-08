@@ -12,6 +12,7 @@ import MambaNetworking
 
 class PlanningHostSetupViewModel: ObservableObject {
     @Published var sessionName: String = ""
+    @Published var autoCompleteVoting: Bool = true
     @Published var availableCards = PlanningCard.allCases.map { AvailableCard(card: $0, selected: true) }
     
     private var cancellables = [AnyCancellable]()

@@ -25,8 +25,12 @@ struct PlanningHostSetupView: View {
                                        placeholder: "PLANNING_HOST_START_SESSION_NAME_PLACEHOLDER")
                         .padding(leading: 20, top: 10, trailing: 20)
                     
+                    Toggle("PLANNING_HOST_SETUP_AUTO_COMPLETE_VOTING_TITLE", isOn: $viewModel.autoCompleteVoting)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                        .padding(leading: 20, top: 20, trailing: 20)
+                    
                     SelectCardsButton(cardCount: viewModel.selectedCardsCountTitle, destination: PlanningHostAvailableCardsView(availableCards: viewModel.availableCards))
-                    .padding(leading: 20, top: 15, trailing: 20)
+                    .padding(leading: 20, top: 20, trailing: 20)
     
                     RoundedButton(titleKey: "PLANNING_HOST_START_SESSION_BUTTON_TITLE") {
                         navigateToHostLanding()
@@ -52,7 +56,9 @@ struct PlanningHostSetupView: View {
             guard $0.selected else { return nil }
             return $0.card
         }
-        let hostLandingView = PlanningHostSessionLandingView(sessionName: viewModel.sessionName, availableCards: planningCards)
+        let hostLandingView = PlanningHostSessionLandingView(sessionName: viewModel.sessionName,
+                                                             autoCompleteVoting: viewModel.autoCompleteVoting,
+                                                             availableCards: planningCards)
         navigation.present(AnyView(hostLandingView))
     }
 }

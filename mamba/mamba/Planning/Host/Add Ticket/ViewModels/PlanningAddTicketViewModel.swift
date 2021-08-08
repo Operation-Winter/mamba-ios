@@ -13,6 +13,6 @@ class PlanningAddTicketViewModel: ObservableObject {
     @Published var ticketDescription: String = ""
     
     var isInputValid: Bool {
-        !ticketIdentifier.isEmpty && !ticketDescription.isEmpty
+        !ticketIdentifier.isEmpty
     }
 }

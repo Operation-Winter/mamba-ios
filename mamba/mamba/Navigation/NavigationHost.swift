@@ -20,13 +20,13 @@ struct NavigationHost: View {
             if self.navigation.userAction == .present {
                 self.navigation.currentView
                     .transition(.asymmetric(insertion: .scale, removal: .opacity))
-                    .animation(.easeInOut)
+                    .animation(.easeInOut, value: self.navigation.userAction)
             }
             
             if self.navigation.userAction == .dismiss {
                 self.navigation.currentView
                     .transition(.opacity)
-                    .animation(.easeInOut)
+                    .animation(.easeInOut, value: self.navigation.userAction)
             }
         }.sheet(isPresented: self.$navigation.showSheet, content: {
             self.navigation.modalView
